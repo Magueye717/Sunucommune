@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/users', 'UserController');
+Route::resource('/roles', 'RoleController')->except('show');
+Route::resource('/permissions', 'PermissionController')->only('index', 'edit', 'update');
