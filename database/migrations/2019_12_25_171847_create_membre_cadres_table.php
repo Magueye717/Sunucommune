@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateMembreCadresTable extends Migration {
+
+	public function up()
+	{
+		Schema::create('membre_cadres', function(Blueprint $table) {
+			$table->increments('id');
+			$table->string('nom');
+			$table->string('prenom');
+			$table->string('adresse')->nullable();
+			$table->string('email')->nullable();
+			$table->string('telephone')->nullable();
+			$table->string('fonction')->nullable();
+			$table->string('statut_cadre', 30);
+			$table->timestamps();
+			$table->integer('cadre_de_concertation_id')->unsigned();
+		});
+	}
+
+	public function down()
+	{
+		Schema::drop('membre_cadres');
+	}
+}
