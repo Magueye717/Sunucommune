@@ -38,6 +38,13 @@ class RoleController extends Controller
      *
      * @return Response
      */
+    //old methode
+//    public function create()
+//    {
+//        $permissions = $this->permRepository->getListe();
+//        return view('admin.securite.roles.create', compact('permissions'));
+//    }
+
     public function create()
     {
         $permissions = $this->permRepository->getListe();
