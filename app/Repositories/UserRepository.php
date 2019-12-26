@@ -22,7 +22,8 @@ class UserRepository extends ResourceRepository
         $user->nom = $inputs['nom'];
         $user->prenom = $inputs['prenom'];
         $user->adresse = $inputs['adresse'];
-        $user->entite_id = $inputs['entite_id'];
+        if (!empty($inputs['commune_id']))
+        $user->commune_id = $inputs['commune_id'];
         if (!empty($inputs['avatar']))
             $user->avatar = $inputs['avatar'];
 
@@ -36,7 +37,7 @@ class UserRepository extends ResourceRepository
 
     public function getData()
     {
-        return $this->model->isNotDeleted()->with('entite')->orderBy('nom')->orderBy('prenom')->get();
+        return $this->model->orderBy('nom')->orderBy('prenom')->get();
     }
 
     public function store(Array $inputs)
@@ -55,12 +56,12 @@ class UserRepository extends ResourceRepository
 
     public function getById($id)
     {
-        return $this->model->isNotDeleted()->findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 
     public function getByEmail($email)
     {
-        return $this->model->isNotDeleted()->where('email', $email)->first();
+        return $this->model->where('email', $email)->first();
     }
 
     public function getListe()
@@ -128,7 +129,7 @@ class UserRepository extends ResourceRepository
 
     public function getNb()
     {
-        return $this->model->isNotDeleted()->count();
+        return $this->model->count();
     }
 
 }

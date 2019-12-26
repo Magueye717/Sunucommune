@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Repositories\EntiteRepository;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use App\Utils\UploadUtil;
@@ -13,21 +12,18 @@ class UserController extends Controller
 {
 
     protected $userRepository;
-    protected $entiteRepository;
     protected $roleRepository;
     protected $uploadUtil;
 
     public function __construct(UserRepository $userRepository,
-                                EntiteRepository $entiteRepository,
                                 RoleRepository $roleRepository,
                                 UploadUtil $uploadUtil)
     {
         $this->userRepository = $userRepository;
-        $this->entiteRepository = $entiteRepository;
         $this->roleRepository = $roleRepository;
         $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
-        $this->middleware('admin');
+        //$this->middleware('admin');
     }
 
     /**
@@ -48,9 +44,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $entites = $this->entiteRepository->getListe();
+        $communes = array();
         $roles = $this->roleRepository->getListe();
-        return view('admin.users.create', compact('entites', 'roles'));
+        return view('admin.users.create', compact('communes', 'roles'));
     }
 
     /**
@@ -66,7 +62,7 @@ class UserController extends Controller
             $inputs['avatar'] = $this->uploadUtil->traiterFile($request->file('avatar'));
         }
         $user = $this->userRepository->store($inputs);
-        return Redirect::route('users.index')->withMessage("L'utilisateur " . $user->identite . " a été créé.");
+        return Redirect::route('users.index')->withMessage("L'utilisateur a été créé.");
     }
 
     /**
@@ -91,8 +87,8 @@ class UserController extends Controller
     {
         $user = $this->userRepository->getById($id);
         $roles = $this->roleRepository->getListe();
-        $entites = $this->entiteRepository->getListe();
-        return view('admin.users.edit', compact('user', 'roles', 'entites'));
+        $communes = array('');
+        return view('admin.users.edit', compact('user', 'roles', 'communes'));
     }
 
     /**
