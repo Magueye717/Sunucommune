@@ -3,6 +3,7 @@
 namespace App\Repositories\Commune;
 
 use App\Models\Commune\Partenaire;
+use App\Repositories\ResourceRepository;
 
 class PartenaireRepository extends ResourceRepository
 {
@@ -12,4 +13,8 @@ class PartenaireRepository extends ResourceRepository
         $this->model = $partenaire;
     }
 
+    public function getListe()
+    {
+        return $this->model->orderBy('nom')->pluck('nom', 'id');
+    }
 }
