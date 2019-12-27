@@ -4,7 +4,7 @@ namespace App\Models\Commune;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mediatheques extends Model 
+class Mediatheque extends Model
 {
 
     protected $table = 'mediatheques';

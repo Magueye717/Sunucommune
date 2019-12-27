@@ -21,14 +21,17 @@
                         <i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Tableau de bord </span>
                     </a>
                 </li>
-                <!-- Suivi construction -->
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false">
-                        <i class="fa fa-building-o fa-fw"></i> <span class="hide-menu"> Suivi des constructions </span>
+                        <i class="fa fa-building-o fa-fw"></i> <span class="hide-menu">Gestion de la commune</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Liste des constructions</a></li>
-                        <li><a href="#">Carte Map</a></li>
+                        <li><a href="#">Infomations de la commune</a></li>
+                        <li><a href="#">Historique</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Médiathéque</a></li>
+                        <li><a href="#">Membre du cabinet</a></li>
+                        <li><a href="#">Partenaires</a></li>
                     </ul>
                 </li>
             </ul>
