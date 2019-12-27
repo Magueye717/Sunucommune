@@ -32,6 +32,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
 
+
+ Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
+
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');
 Route::get('/edit-profil', 'HomeController@showFormProfile')->name('edit.profile');

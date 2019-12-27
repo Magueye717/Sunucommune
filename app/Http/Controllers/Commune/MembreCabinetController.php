@@ -1,12 +1,21 @@
 <?php 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Commune;
 
+use App\Http\Requests\MembreCabinet;
+use App\Http\Controllers\Controller;
+use App\Repositories\Commune\MembreCabinetRepository;
 use Illuminate\Http\Request;
 
 class MembreCabinetController extends Controller 
 {
-
+  protected $membreCabinetRepository;
+  public function __construct(MembreCabinetRepository $membreCabinetRepository)
+    {
+        $this->membreCabinetRepository = $membreCabinetRepository;
+        //$this->middleware('auth');
+        //$this->middleware('admin');
+    }
   /**
    * Display a listing of the resource.
    *
@@ -14,7 +23,8 @@ class MembreCabinetController extends Controller
    */
   public function index()
   {
-    
+        $membre = $this->membreCabinetRepository->getData();
+        return view('gestion.membre_cabinets.index', compact('membre'));
   }
 
   /**
@@ -24,7 +34,8 @@ class MembreCabinetController extends Controller
    */
   public function create()
   {
-    
+        $membre = $this->membreCabinetRepository->getListe();
+        return view('gestion.membre_cabinets.create', compact('membre'));
   }
 
   /**
@@ -32,9 +43,11 @@ class MembreCabinetController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(MembreCabinet $request)
   {
-    
+        $inputs = $request->all();
+        $this->membreCabinetRepository->store($inputs);
+        return \redirect()->route('membre-cabinets.index')->withMessage("L'utilisateur a été créé.");
   }
 
   /**
@@ -56,7 +69,8 @@ class MembreCabinetController extends Controller
    */
   public function edit($id)
   {
-    
+        $membre = $this->membreCabinetRepository->getById($id);
+        return view('gestion.membre_cabinets.edit', compact('membre'));
   }
 
   /**
@@ -65,9 +79,12 @@ class MembreCabinetController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(MembreCabinet $request, $id)
   {
     
+        $this->membreCabinetRepository->update($id, $request->all());
+
+        return \redirect()->route('membre-cabinets.index')->withMessage("L'utilisateur " . $request->input('prenom') . " " . $request->input('nom') . " a été modifié.");
   }
 
   /**
@@ -78,7 +95,10 @@ class MembreCabinetController extends Controller
    */
   public function destroy($id)
   {
-    
+    if ($this->membreCabinetRepository->destroy($id))
+            return redirect()->back()->withMessage("La suppression est effective");
+        else
+            return redirect()->back()->withErrors("Cet utilisateur ne peut être supprimé...");
   }
   
 }
