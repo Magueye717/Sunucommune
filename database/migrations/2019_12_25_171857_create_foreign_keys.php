@@ -8,21 +8,6 @@ class CreateForeignKeys extends Migration {
 
 	public function up()
 	{
-		Schema::table('users', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('commune_infos', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('articles', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
 		Schema::table('articles', function(Blueprint $table) {
 			$table->foreign('type_article_id')->references('id')->on('type_articles')
 						->onDelete('restrict')
@@ -33,33 +18,8 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('membre_cabinets', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('mediatheques', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('parteneaires', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('commune_historiques', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
 		Schema::table('ancien_maires', function(Blueprint $table) {
 			$table->foreign('commune_historique_id')->references('id')->on('commune_historiques')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('procedures', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -99,22 +59,12 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('cascade');
 		});
 		Schema::table('ressources', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('ressources', function(Blueprint $table) {
 			$table->foreign('secteur_id')->references('id')->on('secteurs')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
 		Schema::table('ressources', function(Blueprint $table) {
 			$table->foreign('add_by')->references('id')->on('users')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('agents', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -134,11 +84,6 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('cadre_concertations', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('cadre_concertations', function(Blueprint $table) {
 			$table->foreign('collectivite_id')->references('id')->on('users')
 						->onDelete('restrict')
 						->onUpdate('restrict');
@@ -150,11 +95,6 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('membre_cadres', function(Blueprint $table) {
 			$table->foreign('cadre_de_concertation_id')->references('id')->on('cadre_concertations')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('sondages', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -178,11 +118,6 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('panel', function(Blueprint $table) {
-			$table->foreign('commune_id')->references('id')->on('communes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
 		Schema::table('panel_commentaires', function(Blueprint $table) {
 			$table->foreign('panel_id')->references('id')->on('panel')
 						->onDelete('restrict')
@@ -192,38 +127,14 @@ class CreateForeignKeys extends Migration {
 
 	public function down()
 	{
-		Schema::table('users', function(Blueprint $table) {
-			$table->dropForeign('users_commune_id_foreign');
-		});
-		Schema::table('commune_infos', function(Blueprint $table) {
-			$table->dropForeign('commune_infos_commune_id_foreign');
-		});
-		Schema::table('articles', function(Blueprint $table) {
-			$table->dropForeign('articles_commune_id_foreign');
-		});
 		Schema::table('articles', function(Blueprint $table) {
 			$table->dropForeign('articles_type_article_id_foreign');
 		});
 		Schema::table('articles', function(Blueprint $table) {
 			$table->dropForeign('articles_add_by_foreign');
 		});
-		Schema::table('membre_cabinets', function(Blueprint $table) {
-			$table->dropForeign('membre_cabinets_commune_id_foreign');
-		});
-		Schema::table('mediatheques', function(Blueprint $table) {
-			$table->dropForeign('mediatheques_commune_id_foreign');
-		});
-		Schema::table('parteneaires', function(Blueprint $table) {
-			$table->dropForeign('parteneaires_commune_id_foreign');
-		});
-		Schema::table('commune_historiques', function(Blueprint $table) {
-			$table->dropForeign('commune_historiques_commune_id_foreign');
-		});
 		Schema::table('ancien_maires', function(Blueprint $table) {
 			$table->dropForeign('ancien_maires_commune_historique_id_foreign');
-		});
-		Schema::table('procedures', function(Blueprint $table) {
-			$table->dropForeign('procedures_commune_id_foreign');
 		});
 		Schema::table('procedures', function(Blueprint $table) {
 			$table->dropForeign('procedures_categorie_id_foreign');
@@ -247,16 +158,10 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('procedure_instance_pieces_procedure_piece_id_foreign');
 		});
 		Schema::table('ressources', function(Blueprint $table) {
-			$table->dropForeign('ressources_commune_id_foreign');
-		});
-		Schema::table('ressources', function(Blueprint $table) {
 			$table->dropForeign('ressources_secteur_id_foreign');
 		});
 		Schema::table('ressources', function(Blueprint $table) {
 			$table->dropForeign('ressources_add_by_foreign');
-		});
-		Schema::table('agents', function(Blueprint $table) {
-			$table->dropForeign('agents_commune_id_foreign');
 		});
 		Schema::table('historique_contrats', function(Blueprint $table) {
 			$table->dropForeign('historique_contrats_agent_id_foreign');
@@ -268,9 +173,6 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('conges_agent_id_foreign');
 		});
 		Schema::table('cadre_concertations', function(Blueprint $table) {
-			$table->dropForeign('cadre_concertations_commune_id_foreign');
-		});
-		Schema::table('cadre_concertations', function(Blueprint $table) {
 			$table->dropForeign('cadre_concertations_collectivite_id_foreign');
 		});
 		Schema::table('cadre_concertations', function(Blueprint $table) {
@@ -278,9 +180,6 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('membre_cadres', function(Blueprint $table) {
 			$table->dropForeign('membre_cadres_cadre_de_concertation_id_foreign');
-		});
-		Schema::table('sondages', function(Blueprint $table) {
-			$table->dropForeign('sondages_commune_id_foreign');
 		});
 		Schema::table('sondages', function(Blueprint $table) {
 			$table->dropForeign('sondages_add_by_foreign');
@@ -293,9 +192,6 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('sondage_resultats', function(Blueprint $table) {
 			$table->dropForeign('sondage_resultats_sondage_option_id_foreign');
-		});
-		Schema::table('panel', function(Blueprint $table) {
-			$table->dropForeign('panel_commune_id_foreign');
 		});
 		Schema::table('panel_commentaires', function(Blueprint $table) {
 			$table->dropForeign('panel_commentaires_panel_id_foreign');
