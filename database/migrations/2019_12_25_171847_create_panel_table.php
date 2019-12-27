@@ -9,7 +9,6 @@ class CreatePanelTable extends Migration {
 	{
 		Schema::create('panel', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->string('question');
 			$table->date('date_publication')->nullable();
 			$table->boolean('statut')->default(1);

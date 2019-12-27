@@ -9,7 +9,6 @@ class CreateCommuneHistoriquesTable extends Migration {
 	{
 		Schema::create('commune_historiques', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->mediumText('description');
 			$table->timestamps();
 		});

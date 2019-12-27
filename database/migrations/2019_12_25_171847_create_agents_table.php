@@ -9,7 +9,6 @@ class CreateAgentsTable extends Migration {
 	{
 		Schema::create('agents', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->string('nom');
 			$table->string('prenom');
 			$table->string('fonction');

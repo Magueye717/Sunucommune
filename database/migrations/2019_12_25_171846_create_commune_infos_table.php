@@ -9,7 +9,6 @@ class CreateCommuneInfosTable extends Migration {
 	{
 		Schema::create('commune_infos', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->string('maire');
 			$table->string('date_creation')->nullable();
 			$table->string('superficie')->nullable();

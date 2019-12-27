@@ -11,11 +11,6 @@ class CadreConcertation extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'collectivite_id', 'nom', 'date_creation', 'fichier', 'add_by');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
     public function collectivite()
     {
         return $this->belongsTo('App\Models\Collectivite');

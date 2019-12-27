@@ -11,11 +11,6 @@ class Ressource extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'secteur_id', 'nom', 'description', 'heure_ouverture', 'heure_fermeture', 'photo', 'longitude', 'latittude', 'altitude', 'adresse', 'personne_contact', 'email', 'telephone', 'statut', 'add_by');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
     public function secteur()
     {
         return $this->belongsTo('App\Models\GestionInfrastructure\Secteur');

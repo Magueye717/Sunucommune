@@ -23,8 +23,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Commune <span class="text-danger">*</span></label>
-                {!! Form::select('commune_id', $communes, null, ['id' => 'commune_id', 'class' => 'form-control select2', 'data-placeholder' => 'Choisir une commune']) !!}
+                <label class="control-label">Entite <span class="text-danger">*</span></label>
+                {!! Form::select('entite_id', $entites, null, ['id' => 'entite_id', 'class' => 'form-control select2', 'data-placeholder' => 'Choisir une commune']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>

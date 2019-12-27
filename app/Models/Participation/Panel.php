@@ -11,11 +11,6 @@ class Panel extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'question', 'date_publication', 'statut');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
     public function commentaires()
     {
         return $this->hasMany('App\Models\Participation\PanelCommentaire');

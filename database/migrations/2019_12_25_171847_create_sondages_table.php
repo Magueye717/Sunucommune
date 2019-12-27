@@ -9,7 +9,6 @@ class CreateSondagesTable extends Migration {
 	{
 		Schema::create('sondages', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->string('titre');
 			$table->string('slug')->unique();
 			$table->string('description')->nullable();

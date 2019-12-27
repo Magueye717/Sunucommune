@@ -9,7 +9,6 @@ class CreateArticlesTable extends Migration {
 	{
 		Schema::create('articles', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned()->nullable();
 			$table->string('slug')->nullable();
 			$table->string('titre');
 			$table->text('texte')->nullable();

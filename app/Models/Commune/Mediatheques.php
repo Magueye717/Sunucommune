@@ -11,9 +11,4 @@ class Mediatheques extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'type_media', 'fichier', 'description');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
 }

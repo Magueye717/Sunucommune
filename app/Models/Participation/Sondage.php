@@ -16,11 +16,6 @@ class Sondage extends Model
         return $this->hasMany('App\Models\Participation\SondageResultat');
     }
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
     public function sondageOptions()
     {
         return $this->hasMany('App\Models\Participation\SondageOption');
