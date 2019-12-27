@@ -14,7 +14,7 @@
         {!! Form::model($user, ['method' =>'POST',
                             'route' => ['edit.my.profile'], 'role' => 'form',
                             'class' => 'padess-form', 'data-toggle' => 'validator']) !!}
-        @include('portail.profil.partials._form_edit_profil')
+        @include('gestion.profil.partials._form_edit_profil')
         {!! Form::close() !!}
     </div>
 @endsection

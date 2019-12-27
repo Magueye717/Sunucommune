@@ -9,7 +9,7 @@
             <h5 class="my-title"><i class="fa fa-fw fa-dashboard m-r-5"></i> Tableau de bord</h5>
         </div>
     </div>
-    @include('portail.dashboard.partials._detail')
+    @include('gestion.dashboard.partials._detail')
 @endsection
 
 @section('stylesAdditionnels')

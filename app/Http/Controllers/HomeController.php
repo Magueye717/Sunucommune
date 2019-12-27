@@ -32,19 +32,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('portail.dashboard');
+        return redirect()->route('gestion.dashboard');
     }
 
     public function showProfile()
     {
         $user = \Auth::user();
-        return view('portail.profil.mon_profil', compact('user'));
+        return view('gestion.profil.mon_profil', compact('user'));
     }
 
     public function showFormProfile()
     {
         $user = \Auth::user();
-        return view('portail.profil.edit_profil', compact('user'));
+        return view('gestion.profil.edit_profil', compact('user'));
     }
 
     public function editProfile(Request $request)
@@ -59,7 +59,7 @@ class HomeController extends Controller
 
     public function showFormPwd()
     {
-        return view('portail.profil.edit_pwd');
+        return view('gestion.profil.edit_pwd');
     }
 
     public function changePassword(Request $request)
@@ -75,7 +75,7 @@ class HomeController extends Controller
     public function showFormAvatar()
     {
         $user = \Auth::user();
-        return view('portail.profil.edit_avatar', compact('user'));
+        return view('gestion.profil.edit_avatar', compact('user'));
     }
 
     public function changeAvatar(Request $request)

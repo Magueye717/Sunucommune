@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('/communes', 'CommuneController');
 });
 
-Route::get('/dashboard', ['as' => 'portail.dashboard', 'uses' => 'DashboardController@index']);
+Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
 
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');

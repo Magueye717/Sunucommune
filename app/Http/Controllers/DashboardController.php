@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         $data = array();
-        return view('portail.dashboard.index', compact('data'));
+        return view('gestion.dashboard.index', compact('data'));
     }
 
     /**

@@ -16,8 +16,8 @@
         <nav class="sidebar-nav">
             <ul id="side-menu">
                 <li>
-                    <a href="{{ route('portail.dashboard') }}" aria-expanded="false"
-                       class="{{ areActiveRoutes(['portail.dashboard', 'accueil', 'home'], 'active') }}">
+                    <a href="{{ route('gestion.dashboard') }}" aria-expanded="false"
+                       class="{{ areActiveRoutes(['gestion.dashboard', 'accueil', 'home'], 'active') }}">
                         <i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Tableau de bord </span>
                     </a>
                 </li>

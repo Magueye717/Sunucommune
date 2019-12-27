@@ -13,7 +13,7 @@
         <h3 class="box-title m-b-0">Changement de mot passe</h3>
         {!! Form::open(array('route' => 'reset.my.password', 'method' => 'post',
             'role' => 'form', 'id' => 'padess-form', 'class' => 'padess-form', 'data-toggle' => 'validator')) !!}
-        @include('portail.profil.partials._form_edit_pwd')
+        @include('gestion.profil.partials._form_edit_pwd')
         {!! Form::close() !!}
     </div>
 @endsection
