@@ -9,7 +9,6 @@ class CreateProceduresTable extends Migration {
 	{
 		Schema::create('procedures', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->integer('categorie_id')->unsigned();
 			$table->string('titre');
 			$table->mediumText('description');

@@ -44,9 +44,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $communes = array();
+        $entites = array();
         $roles = $this->roleRepository->getListe();
-        return view('admin.users.create', compact('communes', 'roles'));
+        return view('admin.users.create', compact('entites', 'roles'));
     }
 
     /**
@@ -61,8 +61,8 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $inputs['avatar'] = $this->uploadUtil->traiterFile($request->file('avatar'));
         }
-        $user = $this->userRepository->store($inputs);
-        return Redirect::route('users.index')->withMessage("L'utilisateur a été créé.");
+        $this->userRepository->store($inputs);
+        return \redirect()->route('users.index')->withMessage("L'utilisateur a été créé.");
     }
 
     /**
@@ -87,8 +87,8 @@ class UserController extends Controller
     {
         $user = $this->userRepository->getById($id);
         $roles = $this->roleRepository->getListe();
-        $communes = array('');
-        return view('admin.users.edit', compact('user', 'roles', 'communes'));
+        $entites = array();
+        return view('admin.users.edit', compact('user', 'roles', 'entites'));
     }
 
     /**
@@ -111,7 +111,7 @@ class UserController extends Controller
         if (!empty($oldFilename))
             $this->uploadUtil->deleteFile($oldFilename);
 
-        return Redirect::route('users.index')->withMessage("L'utilisateur " . $request->input('prenom') . " " . $request->input('nom') . " a été modifié.");
+        return \redirect()->route('users.index')->withMessage("L'utilisateur " . $request->input('prenom') . " " . $request->input('nom') . " a été modifié.");
     }
 
     /**

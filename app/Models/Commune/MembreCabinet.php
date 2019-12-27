@@ -11,9 +11,4 @@ class MembreCabinet extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'nom', 'prenom', 'fonction', 'adresse', 'telephone', 'statut');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
 }

@@ -1,29 +1,49 @@
-@extends('layouts.app')
+@extends('layouts.v1.default_admin')
+
+
+@section('title', 'Gestion des rôles')
+@section('pageTitle', 'Gestion des rôles')
+
+@section('filAriane')
+    <li class="active">Gestion des rôles</li>
+@endsection
 
 @section('content')
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Gestion des Roles</div>
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Gestion des rôles</h3>
+                <p class="text-muted m-b-30">Liste des rôles</p>
 
-                <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 m-b-30 m-t-5">
+                        <a href="{{ route('roles.create') }}">
+                            <span class="pull-right m-b-10">
+                                <button class="btn btn-primary btn-block m-b-10">
+                                    <i class="ti-plus m-r-5"></i> Ajouter un rôle
+                                </button>
+                            </span>
+                        </a>
+                    </div>
 
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                   <div style="padding: 0px 0" class="text-rightc">
-                       <a href="{{ route('roles.create') }}" class="text-inverse p-r-10" title="Ajouter Role">
-                           <i class="ti-marker-alt"></i> <span class="btn btn-primary">Ajouter Role</span>
-                       </a>
-                   </div>
-                        <br>
-
-                    @include('admin.securite.roles.partials._liste')
                 </div>
+
+                @include('admin.securite.roles.partials._liste')
             </div>
         </div>
     </div>
 @endsection
+
+@section('stylesAdditionnels')
+    @include('layouts.v1.partials.datatables.style')
+    @include('layouts.v1.partials.swal.style')
+@endsection
+
+@section('scriptsAdditionnels')
+    @include('layouts.v1.partials.datatables.script')
+    <script src="{{ asset('themev1/js/datatables/basic.js') }}"></script>
+    @include('layouts.v1.partials.swal.script')
+@endsection
+
+@push('myJS')
+@endpush

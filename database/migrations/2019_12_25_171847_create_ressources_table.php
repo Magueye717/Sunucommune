@@ -9,7 +9,6 @@ class CreateRessourcesTable extends Migration {
 	{
 		Schema::create('ressources', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->integer('secteur_id')->unsigned();
 			$table->string('nom');
 			$table->string('description')->nullable();

@@ -9,7 +9,6 @@ class CreateMembreCabinetsTable extends Migration {
 	{
 		Schema::create('membre_cabinets', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned()->nullable();
 			$table->string('nom');
 			$table->string('prenom');
 			$table->string('fonction');

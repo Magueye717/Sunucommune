@@ -11,11 +11,6 @@ class Agent extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'nom', 'prenom', 'fonction', 'statut_agent', 'adresse', 'email', 'telephone', 'avatar');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
     public function historiqueContrats()
     {
         return $this->hasMany('App\Models\Rh\HistoriqueContrat');

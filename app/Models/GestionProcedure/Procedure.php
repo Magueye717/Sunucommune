@@ -16,11 +16,6 @@ class Procedure extends Model
         return $this->belongsTo('App\Models\GestionProcedure\Categorie');
     }
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
     public function procedurePieces()
     {
         return $this->hasMany('App\Models\GestionProcedure\ProcedurePiece');

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Config;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom', 'prenom', 'commune_id', 'adresse', 'email', 'password',
+        'nom', 'prenom', 'entite_id', 'adresse', 'email', 'password',
     ];
 
     /**
@@ -45,6 +45,36 @@ class User extends Authenticatable
     public function commune()
     {
         return $this->belongsTo('App\Models\Commune\Commune');
+    }
+
+    /**
+     * Genere l'attribut identite
+     * @return bool
+     */
+    public function getIdentiteAttribute()
+    {
+        return $this->prenom . ' ' . strtoupper($this->nom);
+    }
+
+    public function scopeFilterByRole($query, $role)
+    {
+        return $query->whereHas('roles', function ($q) use ($role) {
+            $q->where('roles.name', $role);
+        });
+    }
+
+    public function scopeFilterByRoles($query, Array $roles)
+    {
+        return $query->whereHas('roles', function ($q) use ($roles) {
+            $q->whereIn('roles.name', $roles);
+        });
+    }
+
+    public function estAdmin()
+    {
+        if ($this->hasRole(Config::get('constants.roles.admin')))
+            return true;
+        else return false;
     }
 
 }

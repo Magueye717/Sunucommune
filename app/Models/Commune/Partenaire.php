@@ -11,9 +11,4 @@ class Partenaire extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'nom', 'type_partenaire', 'logo', 'url');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
 }

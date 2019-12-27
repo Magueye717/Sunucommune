@@ -9,6 +9,7 @@ class CreateMembreCadresTable extends Migration {
 	{
 		Schema::create('membre_cadres', function(Blueprint $table) {
 			$table->increments('id');
+            $table->integer('cadre_de_concertation_id')->unsigned();
 			$table->string('nom');
 			$table->string('prenom');
 			$table->string('adresse')->nullable();
@@ -17,7 +18,6 @@ class CreateMembreCadresTable extends Migration {
 			$table->string('fonction')->nullable();
 			$table->string('statut_cadre', 30);
 			$table->timestamps();
-			$table->integer('cadre_de_concertation_id')->unsigned();
 		});
 	}
 

@@ -36,9 +36,8 @@ class UserRequest extends FormRequest
                         'email' => 'email|required|max:255|unique:users,email',
                         'nom' => 'required|max:225',
                         'prenom' => 'required|max:225',
-                        'commune_id' => 'nullable|numeric',
+                        'entite_id' => 'nullable|numeric',
                         'adresse' => 'nullable|max:225',
-                        'ville' => 'nullable|max:225',
                         'avatar' => 'nullable|mimes:jpeg,png|dimensions:min_width=80,min_height=80,max_width=600,max_height=600',
                         'roles' => 'required|array',
                     ];
@@ -51,9 +50,8 @@ class UserRequest extends FormRequest
                         'email' => 'email|required|max:255|unique:users,email,' . $user->id,
                         'nom' => 'required|max:225',
                         'prenom' => 'required|max:225',
-                        'commune_id' => 'nullable|numeric',
+                        'entite_id' => 'nullable|numeric',
                         'adresse' => 'nullable|max:225',
-                        'ville' => 'nullable|max:225',
                         'avatar' => 'nullable|mimes:jpeg,png|dimensions:min_width=80,min_height=80,max_width=600,max_height=600',
                         'roles' => 'required|array',
                     ];

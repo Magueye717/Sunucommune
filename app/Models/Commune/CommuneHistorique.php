@@ -11,11 +11,6 @@ class CommuneHistorique extends Model
     public $timestamps = true;
     protected $fillable = array('commune_id', 'description');
 
-    public function commune()
-    {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
-
     public function ancienMaires()
     {
         return $this->hasMany('App\Models\Commune\AncienMaire');

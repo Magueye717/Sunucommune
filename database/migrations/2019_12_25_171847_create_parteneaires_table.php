@@ -9,7 +9,6 @@ class CreateParteneairesTable extends Migration {
 	{
 		Schema::create('parteneaires', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned()->nullable();
 			$table->string('nom');
 			$table->string('type_partenaire', 25)->nullable();
 			$table->string('logo')->nullable();

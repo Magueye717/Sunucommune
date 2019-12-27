@@ -9,7 +9,6 @@ class CreateCadreConcertationsTable extends Migration {
 	{
 		Schema::create('cadre_concertations', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_id')->unsigned();
 			$table->integer('collectivite_id')->unsigned();
 			$table->string('nom');
 			$table->date('date_creation')->nullable();
