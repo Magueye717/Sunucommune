@@ -14,8 +14,9 @@
                     <td>{{ $perm->name }}</td>
                     <td>{{ $perm->description }}</td>
                     <td class="text-nowrap text-center">
-                        <a href="{{ route('permissions.edit', $perm) }}" class="text-inverse p-r-10" title="Modifier">
-                            <i class="ti-marker-alt"></i> <span class="btn btn-primary">Edit</span>
+                        <a href="{{ route('permissions.edit', $perm) }}" class="text-inverse p-r-10" data-toggle="tooltip"
+                           title="Modifier">
+                            <i class="ti-marker-alt"></i>
                         </a>
                     </td>
                 </tr>

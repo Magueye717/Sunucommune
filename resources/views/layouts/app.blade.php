@@ -33,31 +33,6 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.index') }}">Utilisateurs</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a id="securite" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false" v-pre>
-                            Gestion sécurité
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="securite">
-                            <a class="dropdown-item" href="{{ route('roles.index') }}">
-                                Gestion des rôles
-                            </a>
-                            <a class="dropdown-item" href="{{ route('permissions.index') }}">
-                                Gestion des permissions
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Gestion des communes</a>
-                    </li>
-                </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->

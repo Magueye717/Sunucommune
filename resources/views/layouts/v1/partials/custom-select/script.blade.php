@@ -1,0 +1,1 @@
+<script src="{{ asset('themev1/libs/custom-select/custom-select.min.js') }}" type="text/javascript"></script>

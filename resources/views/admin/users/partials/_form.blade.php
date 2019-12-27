@@ -23,8 +23,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">commune <span class="text-danger">*</span></label>
-                {!! Form::select('commune_id', $communes, null, ['id' => 'commune_id', 'class' => 'form-control select2', 'placeholder' => 'Choisir une commune']) !!}
+                <label class="control-label">Commune <span class="text-danger">*</span></label>
+                {!! Form::select('commune_id', $communes, null, ['id' => 'commune_id', 'class' => 'form-control select2', 'data-placeholder' => 'Choisir une commune']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
@@ -46,10 +46,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Photo</label>
-                <div class="custom-file">
-                    {!! Form::file('avatar', ['id' => 'avatar', 'class' => 'custom-file-input', 'placeholder'=>'Choisir une photo']) !!}
-                    <label class="custom-file-label" for="avatar">Choisir un fichier</label>
-                </div>
+                {!! Form::file('avatar', ['id' => 'avatar', 'class' => 'form-control', 'placeholder'=>'Choisir une photo']) !!}
                 <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
                 @if(isset($user) && !empty($user->avatar))
                     <img class="avatar-min" src="{{ asset('storage/images/users/'. $user->avatar) }}" alt="avatar"
@@ -71,8 +68,22 @@
 
 @section('stylesAdditionnels')
     @parent
+    @include('layouts.v1.partials.custom-select.style')
 @endsection
 
+@section('scriptsAdditionnels')
+    @parent
+    @include('layouts.v1.partials.custom-select.script')
+    <!-- Validator -->
+    <script src="{{ asset('themev1/js/validator.js') }}" type="text/javascript"></script>
+@endsection
 
 @push('myJS')
+    <script>
+        $(function () {
+            'use strict';
+            // Select2
+            $('.select2').select2();
+        });
+    </script>
 @endpush

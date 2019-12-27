@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.v1.default_admin')
 
 @section('title', 'Gestion des utilisateurs')
 @section('pageTitle', 'Gestion des utilisateurs')
 
 @section('filAriane')
-    <a class="breadcrumb-item active" href="#">Gestion des utilisateurs</a>
+    <li class="active">Gestion des utilisateurs</li>
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
                     <div class="col-sm-12 m-b-30 m-t-5">
                         <a href="{{ route('users.create') }}">
                             <span class="pull-right m-b-10">
-                                <button class="btn btn-primary mb-2">
+                                <button class="btn btn-primary btn-block m-b-10">
                                     <i class="ti-plus m-r-5"></i> Ajouter un utilisateur
                                 </button>
                             </span>
@@ -32,6 +32,16 @@
     </div>
 @endsection
 
+@section('stylesAdditionnels')
+    @include('layouts.v1.partials.datatables.style')
+    @include('layouts.v1.partials.swal.style')
+@endsection
+
+@section('scriptsAdditionnels')
+    @include('layouts.v1.partials.datatables.script')
+    <script src="{{ asset('themev1/js/datatables/basic.js') }}"></script>
+    @include('layouts.v1.partials.swal.script')
+@endsection
 
 @push('myJS')
 @endpush

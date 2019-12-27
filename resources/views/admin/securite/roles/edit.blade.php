@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.v1.default_admin')
+
 @section('title', 'Gestion des rôles')
 @section('pageTitle', 'Gestion des rôles')
 
 @section('filAriane')
-    <a class="breadcrumb-item" href="{{ route('roles.index') }}">Gestion des rôles</a>
-    <a class="breadcrumb-item active" href="#">Modification</a>
+    <li><a href="{{ route('roles.index') }}">Gestion des rôles</a></li>
+    <li class="active">Modification</li>
 @endsection
 
 @section('content')
@@ -25,9 +26,14 @@
 @endsection
 
 @section('stylesAdditionnels')
+    @include('layouts.v1.partials.datatables.style')
+    @include('layouts.v1.partials.swal.style')
 @endsection
 
 @section('scriptsAdditionnels')
+    @include('layouts.v1.partials.datatables.script')
+    <script src="{{ asset('themev1/js/datatables/basic.js') }}"></script>
+    @include('layouts.v1.partials.swal.script')
 @endsection
 
 @push('myJS')

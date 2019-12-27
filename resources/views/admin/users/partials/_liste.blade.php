@@ -5,7 +5,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
-            <th>commune</th>
+            <th>Commune</th>
             <th>Rôles</th>
             <th>Date d'ajout</th>
             <th class="text-nowrap text-center">Actions</th>
@@ -18,7 +18,7 @@
                     <td>{{ $user->nom }}</td>
                     <td>{{ $user->prenom }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ !empty($user->commune) ? $user->commune->nom : "non renseigner" }}</td>
+                    <td>{{ !empty($user->commune) ? $user->entite->nom : '' }}</td>
                     <td>
                         @foreach($user->roles as $role)
                             <span class="label label-primary">{{ $role->name }}</span>
@@ -26,11 +26,13 @@
                     </td>
                     <td>{{ $user->created_at }}</td>
                     <td class="text-nowrap text-center">
-                        <a href="{{ route('users.show', $user) }}" class="text-inverse p-r-10" title="Détail">
-                            <i class="ti-info-alt"></i><span class="btn btn-primary">Details</span>
+                        <a href="{{ route('users.show', $user) }}" class="text-inverse p-r-10" data-toggle="tooltip"
+                           title="Détail">
+                            <i class="ti-info-alt"></i>
                         </a>
-                        <a href="{{ route('users.edit', $user) }}" class="text-inverse p-r-10" title="Modifier">
-                            <i class="ti-marker-alt"></i><span class="btn btn-primary">Edit</span>
+                        <a href="{{ route('users.edit', $user) }}" class="text-inverse p-r-10" data-toggle="tooltip"
+                           title="Modifier">
+                            <i class="ti-marker-alt"></i>
                         </a>
                         {!! Form::open(array(
                                         'method' => 'DELETE',
@@ -38,7 +40,7 @@
                                         'style' => 'display: inline;',
                                         'route' => array('users.destroy', $user))) !!}
                         {{ csrf_field() }}
-                        <a href="#delete" class="text-danger padess-delete" title="Supprimer">
+                        <a href="#delete" class="text-danger padess-delete" data-toggle="tooltip" title="Supprimer">
                             <i class="ti-trash"></i>
                         </a>
                         {!! Form::close() !!}

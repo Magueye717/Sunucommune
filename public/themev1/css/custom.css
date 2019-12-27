@@ -1,0 +1,87 @@
+.profile-pic {
+    padding: 0px 20px;
+    line-height: 50px;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+.profile-pic img {
+    margin-right: 2px;
+}
+.avatar-min {
+    witdh: 30px;
+    height: 30px;
+    margin: 4px;
+    margin-left: 0px;
+}
+.fil-ariane{
+    background: #fefefe;
+    padding: 10px;
+}
+.fil-ariane .breadcrumb a {
+    /*color : #337ab7;*/
+    font-weight: 500;
+    font-size: 11pt;
+}
+.sidebar-nav ul#side-menu li.active > a {
+    color: #2b2b2b;
+}
+.sidebar-nav ul#side-menu li.active i {
+    color: #0283cc;
+}
+.sidebar-nav ul#side-menu li a.active {
+    color: #FFFFFF !important;
+    background: linear-gradient(to right,#0078bc 1%,#00beda 100%);
+}
+.sidebar-nav ul#side-menu li a.active i {
+    color: #ffffff;
+}
+.sidebar-nav ul#side-menu li a:hover {
+    color: #FFFFFF !important;
+    background: linear-gradient(to right,#0078bc 1%,#00beda 100%);
+}
+.sidebar-nav ul#side-menu li a:active i {
+    color: #ffffff;
+}
+.invalid-feedback strong{
+    color: red;
+}
+.profil-avatar {
+    display: block;
+    height: 200px;
+    margin: 0 auto;
+    /*margin-top: 5px;*/
+}
+.text-center-imp {
+    text-align: center !important;
+}
+.score{
+    min-width: 75px !important;
+}
+.bp-section{
+    background-color: #ececec !important;
+}
+.checkbox input[type=checkbox] {
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+    outline: 0!important;
+    min-width: 50px !important;
+}
+.evaluation-section{
+    background-color: #D8E4BC;
+}
+.evaluation-note{
+    background-color: #D1FFE6;
+}
+.score-note{
+    min-width: 100px !important;
+}
+.evaluation-id{
+    min-width: 50px !important;
+}
+
+/*Phone*/
+@media (max-width: 767px) {
+    .navbar-top-links .profile-pic img {
+        margin-right: 0px;
+    }
+}

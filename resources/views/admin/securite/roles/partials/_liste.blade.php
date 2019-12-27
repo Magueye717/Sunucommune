@@ -20,13 +20,21 @@
                         @endforeach
                     </td>
                     <td class="text-nowrap text-center">
-                        <a href="{{ route('roles.edit', $role) }}" class="text-inverse p-r-10" title="Modifier">
-                            <i class="ti-marker-alt"></i> <span class="btn btn-primary">Edit</span>
+                        <a href="{{ route('roles.edit', $role) }}" class="text-inverse p-r-10" data-toggle="tooltip"
+                           title="Modifier">
+                            <i class="ti-marker-alt"></i>
                         </a>
-
+                        {!! Form::open(array(
+                                        'method' => 'DELETE',
+                                        'class' => 'delete-form',
+                                        'style' => 'display: inline;',
+                                        'route' => array('roles.destroy', $role))) !!}
+                        {{ csrf_field() }}
+                        <a href="#delete" class="text-danger padess-delete" data-toggle="tooltip" title="Supprimer">
+                            <i class="ti-trash"></i>
+                        </a>
+                        {!! Form::close() !!}
                     </td>
-
-
                 </tr>
             @endforeach
         @endisset
