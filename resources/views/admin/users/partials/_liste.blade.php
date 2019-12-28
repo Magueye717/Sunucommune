@@ -5,7 +5,6 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
-            <th>Entité</th>
             <th>Rôles</th>
             <th>Date d'ajout</th>
             <th class="text-nowrap text-center">Actions</th>
@@ -18,7 +17,6 @@
                     <td>{{ $user->nom }}</td>
                     <td>{{ $user->prenom }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ !empty($user->entite) ? $user->entite->nom : '' }}</td>
                     <td>
                         @foreach($user->roles as $role)
                             <span class="label label-primary">{{ $role->name }}</span>

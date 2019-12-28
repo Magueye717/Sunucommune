@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Commune;
 
+use App\Enums\TypeUpload;
+use App\Utils\UploadUtil;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MembreCabinetRequest;
 use App\Repositories\Commune\MembreCabinetRepository;
@@ -9,10 +11,12 @@ use App\Repositories\Commune\MembreCabinetRepository;
 class MembreCabinetController extends Controller
 {
     protected $membreCabinetRepository;
+    protected $uploadUtil;
 
-    public function __construct(MembreCabinetRepository $membreCabinetRepository)
+    public function __construct(MembreCabinetRepository $membreCabinetRepository, UploadUtil $uploadUtil)
     {
         $this->membreCabinetRepository = $membreCabinetRepository;
+        $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
 
@@ -45,6 +49,10 @@ class MembreCabinetController extends Controller
     public function store(MembreCabinetRequest $request)
     {
         $inputs = $request->all();
+        //Photo du membreCabinet
+        if ($request->hasFile('photo_membre')) {
+            $inputs['photo_membre'] = $this->uploadUtil->traiterFile($request->file('photo_membre'), TypeUpload::PhotoMembre);
+        }
         $this->membreCabinetRepository->store($inputs);
         return \redirect()->route('membre-cabinets.index')->withMessage("L'utilisateur a été créé.");
     }
@@ -81,7 +89,18 @@ class MembreCabinetController extends Controller
      */
     public function update(MembreCabinetRequest $request, $id)
     {
-        $this->membreCabinetRepository->update($id, $request->all());
+        $membre = $this->membreCabinetRepository->getById($id);
+        $inputs = $request->all();
+        //Photo du membre
+        if ($request->hasFile('photo_membre')) {
+            $inputs['photo_membre'] = $this->uploadUtil->traiterFile($request->file('photo_membre'), TypeUpload::PhotoMembre);
+            $oldFilename = $membre->photo_membre;
+        }
+        $this->membreCabinetRepository->update($id, $inputs);
+        //Suppression ancienne photo
+        if (!empty($oldFilename))
+            $this->uploadUtil->deleteFile($oldFilename, TypeUpload::PhotoMembre);
+
         return \redirect()->route('membre-cabinets.index')->withMessage("Le membre du cabinet " . $request->input('prenom') . " " . $request->input('nom') . " a été modifié.");
     }
 

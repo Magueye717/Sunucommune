@@ -23,13 +23,6 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Entite <span class="text-danger">*</span></label>
-                {!! Form::select('entite_id', $entites, null, ['id' => 'entite_id', 'class' => 'form-control select2', 'data-placeholder' => 'Choisir une commune']) !!}
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
                 <label class="control-label">Adresse </label>
                 {!! Form::text('adresse', null, ['id' => 'adresse', 'class' => 'form-control', 'placeholder' => 'Nom court']) !!}
                 <div class="help-block with-errors"></div>
