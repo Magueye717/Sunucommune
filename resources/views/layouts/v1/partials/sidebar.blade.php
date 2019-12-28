@@ -28,7 +28,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('infos.index') }}">Infos de ma commune</a></li>
                         <li><a href="#">Historique</a></li>
-                        <li><a href="#">Articles</a></li>
+                        <li><a href="{{ route('articles.index') }}">Articles</a></li>
                         <li><a href="#">Médiathéque</a></li>
                         <li><a href="{{ route('membre-cabinets.index') }}">Membre du cabinet</a></li>
                         <li> <a href="{{ route('partenaires.index') }}">Partenaires</a></li>
