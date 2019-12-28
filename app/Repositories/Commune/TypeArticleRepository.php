@@ -7,6 +7,7 @@ use App\Repositories\ResourceRepository;
 
 class TypeArticleRepository extends ResourceRepository
 {
+    protected $typeArticle;
 
     public function __construct(TypeArticle $typeArticle)
     {

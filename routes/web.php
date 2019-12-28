@@ -43,3 +43,4 @@ Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.av
 
 
 Route::resource('/articles', 'ArticleController');
+Route::resource('/type_articles', 'TypeArticleController')->only('create', 'store');

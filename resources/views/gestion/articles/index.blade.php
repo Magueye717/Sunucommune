@@ -5,14 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
     <div class="float-right pb-5">
         <a href="{{ route('articles.create') }}" class="btn btn-primary">+ Ajouter article</a>
+        <a href="{{ route('type_articles.create') }}" class="btn btn-primary">+ Ajouter Un type d'article</a>
     </div>
     <br>
-    <div class="container-fluid row white-box">
+    <div class="container-fluid row">
     @foreach ( $articles as $article )
     <div class="col-md-4 pb-5">
         <div class="card shadow rounded rounded-lg" style="width:400px; height:450px;">
@@ -49,4 +47,6 @@
     @endforeach
 </div>
   <br>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 @endsection
