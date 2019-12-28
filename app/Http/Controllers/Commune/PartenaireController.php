@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\Commune;
 
 use App\Enums\TypePartenariat;
+use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PartenaireRequest;
 use App\Repositories\Commune\PartenaireRepository;
+use App\Utils\UploadUtil;
 
 class PartenaireController extends Controller
 {
     protected $partenaireRepository;
+    protected $uploadUtil;
 
-    public function __construct(PartenaireRepository $partenaireRepository)
+    public function __construct(PartenaireRepository $partenaireRepository, UploadUtil $uploadUtil)
     {
         $this->partenaireRepository = $partenaireRepository;
+        $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
 
@@ -49,6 +53,12 @@ class PartenaireController extends Controller
     public function store(PartenaireRequest $request)
     {
         $inputs = $request->all();
+
+
+        if ($request->hasFile('logo')) {
+            $inputs['logo'] = $this->uploadUtil->traiterFile($request->file('logo'), TypeUpload::LogoPartenaire);
+        }
+
         $partenaire = $this->partenaireRepository->store($inputs);
         return \redirect()->route('partenaires.index')->withMessage("Le Partenaire " . $partenaire->nom . " a été créé.");
     }
@@ -86,8 +96,19 @@ class PartenaireController extends Controller
      */
     public function update(PartenaireRequest $request, $id)
     {
-        $this->partenaireRepository->update($id, $request->all());
-        return \redirect()->route('partenaires.index')->withMessage("Le rôle " . $request->input('nom') . " a été modifié.");
+        $partenaire = $this->partenaireRepository->getById($id);
+        $inputs = $request->all();
+        if ($request->hasFile('logo')) {
+            $inputs['logo'] = $this->uploadUtil->traiterFile($request->file('logo'), TypeUpload::LogoPartenaire);
+            $oldFilename = $partenaire->logo;
+        }
+
+        $this->partenaireRepository->update($id, $inputs);
+        //Suppression ancienne photo
+        if (!empty($oldFilename))
+            $this->uploadUtil->deleteFile($oldFilename, TypeUpload::LogoPartenaire);
+
+        return \redirect()->route('partenaires.index')->withMxessage("Le rôle " . $request->input('nom') . " a été modifié.");
     }
 
     /**
@@ -98,7 +119,17 @@ class PartenaireController extends Controller
      */
     public function destroy($id)
     {
+        $partenaire = $this->partenaireRepository->getById($id);
 
+        if ($this->partenaireRepository->destroy($id))
+        {
+
+            $this->uploadUtil->deleteFile($partenaire->logo, TypeUpload::LogoPartenaire);
+            return redirect()->back()->withMessage("La suppression est effective");
+        }
+
+        else
+            return redirect()->back()->withErrors("Ce partenaire ne peut être supprimé...");
     }
 
 }
