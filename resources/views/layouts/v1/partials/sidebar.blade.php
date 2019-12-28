@@ -31,7 +31,8 @@
                         <li><a href="#">Articles</a></li>
                         <li><a href="#">Médiathéque</a></li>
                         <li><a href="#">Membre du cabinet</a></li>
-                        <li><a href="#">Partenaires</a></li>
+
+                        <li> <a href="{{ route('partenaires.index') }}">Partenaires</a></li>
                     </ul>
                 </li>
             </ul>

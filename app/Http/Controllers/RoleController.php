@@ -19,7 +19,6 @@ class RoleController extends Controller
         $this->roleRepository = $roleRepository;
         $this->permRepository = $permissionRepository;
         $this->middleware('auth');
-        //$this->middleware('admin');
     }
 
     /**

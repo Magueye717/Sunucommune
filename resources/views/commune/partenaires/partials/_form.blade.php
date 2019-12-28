@@ -1,3 +1,4 @@
+
 <div class="form-body">
     <div class="row">
         <div class="col-md-6">
@@ -48,6 +49,7 @@
     <script>
         $(function () {
             'use strict';
+            // For multiselect
             $('#permissions').multiSelect();
         });
     </script>

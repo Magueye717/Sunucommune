@@ -29,6 +29,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('/permissions', 'PermissionController')->only('index', 'edit', 'update');
 });
 
+
+
+
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
 
 Route::resource('/infos', 'Commune\CommuneInfoController');
@@ -41,3 +44,9 @@ Route::get('/reset-password', 'HomeController@showFormPwd')->name('reset.passwor
 Route::post('/reset-password', 'HomeController@changePassword')->name('reset.my.password');
 Route::get('/change-avatar', 'HomeController@showFormAvatar')->name('change.avatar');
 Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.avatar');
+
+
+
+
+
+Route::resource('/partenaires', 'PartenaireController');
