@@ -29,13 +29,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('/permissions', 'PermissionController')->only('index', 'edit', 'update');
 });
 
-
-
-
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
 
 Route::resource('/infos', 'Commune\CommuneInfoController');
 Route::resource('/partenaires', 'Commune\PartenaireController');
+Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
 
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');
