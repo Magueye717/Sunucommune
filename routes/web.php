@@ -32,8 +32,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
 
 Route::resource('/infos', 'Commune\CommuneInfoController');
+Route::resource('/historiques', 'Commune\CommuneHistoriqueController');
 Route::resource('/partenaires', 'Commune\PartenaireController');
 Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
+
+/* Espace participation */
+Route::prefix('participation')->group(function () {
+    Route::namespace('Participation')->group(function () {
+        Route::resource('/cadres', 'CadreConcertationController');
+        Route::resource('/panels', 'PanelController');
+        Route::resource('/sondages', 'SondageController');
+    });
+});
 
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');

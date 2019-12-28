@@ -2,14 +2,14 @@
 
 namespace App\Models\Participation;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\CustomModel;
 
-class Sondage extends Model 
+class Sondage extends CustomModel
 {
 
     protected $table = 'sondages';
     public $timestamps = true;
-    protected $fillable = array('commune_id', 'titre', 'slug', 'description', 'date_publication', 'statut', 'add_by');
+    protected $fillable = array('titre', 'slug', 'description', 'date_publication', 'statut', 'add_by');
 
     public function sondageResultats()
     {

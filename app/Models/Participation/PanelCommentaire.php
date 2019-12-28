@@ -2,9 +2,9 @@
 
 namespace App\Models\Participation;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\CustomModel;
 
-class PanelCommentaire extends Model 
+class PanelCommentaire extends CustomModel
 {
 
     protected $table = 'panel_commentaires';

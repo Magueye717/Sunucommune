@@ -4,7 +4,7 @@ namespace App\Models\Participation;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MembreCadre extends Model 
+class MembreCadre extends Model
 {
 
     protected $table = 'membre_cadres';

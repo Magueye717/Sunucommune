@@ -27,11 +27,21 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('infos.index') }}">Infos de ma commune</a></li>
-                        <li><a href="#">Historique</a></li>
+                        <li><a href="{{ route('historiques.index') }}">Historique</a></li>
                         <li><a href="#">Articles</a></li>
                         <li><a href="#">Médiathéque</a></li>
                         <li><a href="{{ route('membre-cabinets.index') }}">Membre du cabinet</a></li>
                         <li> <a href="{{ route('partenaires.index') }}">Partenaires</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false">
+                        <i class="fa fa-legal fa-fw"></i> <span class="hide-menu">Participation</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{ route('cadres.index') }}">Cadres de concertation</a></li>
+                        <li><a href="{{ route('panels.index') }}">Panels</a></li>
+                        <li><a href="{{ route('sondages.index') }}">Sondages</a></li>
                     </ul>
                 </li>
             </ul>
