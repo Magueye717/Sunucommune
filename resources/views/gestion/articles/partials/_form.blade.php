@@ -47,7 +47,9 @@
                     {!! Form::file('piece_jointe', ['class' => 'form-control', 'placeholder' => 'Joindre un fichier']) !!}
                 </div>
              </div>
-
+             @if(isset($article))
+                {!! Form::hidden('article_id', $article->id) !!}
+             @endif
 
             <div style="margin-bottom: 15px; margin-left: 15px;">
                 <a href="javascript:history.back()" class="btn btn-default">

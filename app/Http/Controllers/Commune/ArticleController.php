@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\Commune\Article;
 use App\Models\Commune\TypeArticle;
 use App\Repositories\Commune\ArticleRepository;
+use App\Repositories\Commune\TypeArticleRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,10 +21,14 @@ class ArticleController extends Controller
    */
 
   protected $articleRepository;
+  protected $typeArticleRepository;
 
-  public function __construct(ArticleRepository $articleRepository)
+  public function __construct(
+        ArticleRepository $articleRepository,
+        TypeArticleRepository $typeArticleRepository)
   {
       $this->articleRepository = $articleRepository;
+      $this->typeArticleRepository = $typeArticleRepository;
       $this->middleware('auth');
   }
 
@@ -40,7 +46,7 @@ class ArticleController extends Controller
    */
   public function create()
   {
-    $TypeArticles= TypeArticle::all()->pluck('libelle', 'id')->prepend('Choisir un type article');
+    $TypeArticles = $this->typeArticleRepository->getListeTypArticle();
     return view('gestion.articles.create', compact('TypeArticles'));
   }
 
@@ -49,23 +55,21 @@ class ArticleController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(ArticleRequest $request)
   {
     $inputs = $request->all();
-    $photo =$request->file('photo')->getClientOriginalName();
-    $fichier =$request->file('piece_jointe')->getClientOriginalName();
+    $photoName =$request->file('photo')->getClientOriginalName();
+    $fichierName =$request->file('piece_jointe')->getClientOriginalName();
           $path = Storage::putFileAs(
               'documentUpload',
               $request->file('photo'),
-              $photo,
+              $photoName,
               $request->file('piece_jointe'),
-              $fichier
+              $fichierName
           );
-          $inputs['photo'] = $photo;
-          $inputs['piece_jointe'] = $fichier;
           $inputs['add_by'] = Auth::user()->id ;
           $article=$this->articleRepository->store($inputs);
-          return redirect('/articles/create')->withMessage("L'article " . $article->titre . " a été créé avec succés.");
+          return redirect('/articles')->withMessage("L'article " . $article->titre . " a été créé avec succés.");
         }
 
   /**
@@ -74,8 +78,9 @@ class ArticleController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function show(Article $article)
+  public function show($id)
   {
+    $article = $this->articleRepository->getById($id);
     return view('gestion.articles.show', compact('article'));
   }
 
@@ -85,9 +90,10 @@ class ArticleController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function edit(Article $article)
+  public function edit($id)
   {
-    $TypeArticles= TypeArticle::all()->pluck('libelle', 'id')->prepend('Choisir un type article');
+    $article = $this->articleRepository->getById($id);
+    $TypeArticles = $this->typeArticleRepository->getListeTypArticle();
     return view('gestion.articles.edit', compact('TypeArticles', 'article'));
   }
 
@@ -97,22 +103,20 @@ class ArticleController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update(Request $request, $id)
+  public function update(ArticleRequest $request, $id)
   {
     $inputs = $request->all();
     $photo =$request->file('photo')->getClientOriginalName();
-    $fichier =$request->file('piece_jointe')->getClientOriginalName();
+    $document =$request->file('piece_jointe')->getClientOriginalName();
           $path = Storage::putFileAs(
               'documentUpload',
               $request->file('photo'),
-              $photo,
               $request->file('piece_jointe'),
-              $fichier
+              $photo,
+              $document
           );
-          $inputs['photo'] = $photo;
-          $inputs['piece_jointe'] = $fichier;
           $inputs['add_by'] = Auth::user()->id ;
-          $article=$this->articleRepository->update($id, $inputs);
+          $this->articleRepository->update($id, $inputs);
           return redirect('/articles')->withMessage("L'article " . $inputs['titre']. " a été modifié avec succés.");
   }
 
@@ -124,7 +128,9 @@ class ArticleController extends Controller
    */
   public function destroy($id)
   {
+    $this->articleRepository->destroy($id);
 
+		return redirect()->back();
   }
 
 }

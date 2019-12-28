@@ -12,12 +12,11 @@ class ArticleRepository extends ResourceRepository
     public function __construct(Article $article)
     {
         $this->model = $article;
-        $this->article = new Article();
     }
 
     public function getListeArticle()
     {
-        return $this->model->orderBy('slug');
+        return $this->model->orderBy('created_at');
     }
 
 }
