@@ -1,10 +1,10 @@
 @extends('layouts.v1.default_admin')
 
-@section('title', 'Gestion des utilisateurs')
-@section('pageTitle', 'Gestion des utilisateurs')
+@section('title', 'Gestion des membres du cabinet')
+@section('pageTitle', 'Gestion des membres du cabinet')
 
 @section('filAriane')
-    <li><a href="{{ route('users.index') }}">Gestion des utilisateurs</a></li>
+    <li><a href="{{ route('membre-cabinets.index') }}">Gestion des membres du cabinet</a></li>
     <li class="active">Détail</li>
 @endsection
 
@@ -15,7 +15,7 @@
                 <h3 class="box-title m-b-0">Gestion des utilisateurs</h3>
                 <p class="text-muted m-b-10">Détail</p>
 
-                @include('admin.users.partials._detail')
+                @include('gestion.membre_cabinets.partials._detail')
             </div>
         </div>
     </div>

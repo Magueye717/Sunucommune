@@ -11,10 +11,9 @@
         </tr>
         </thead>
         <tbody>
-        @isset($membre)
-            @foreach($membre as $membreCabinet)
+        @isset($membres)
+            @foreach($membres as $membreCabinet)
                 <tr>
-                    
                     <td>{{ $membreCabinet->prenom }}</td>
                     <td>{{ $membreCabinet->nom }}</td>
                     <td>{{ $membreCabinet->fonction }}</td>
@@ -35,7 +34,7 @@
                                         'style' => 'display: inline;',
                                         'route' => array('membre-cabinets.destroy', $membreCabinet))) !!}
                         {{ csrf_field() }}
-                        <a href="#delete" class="text-danger padess-delete" data-toggle="tooltip" title="Supprimer">
+                        <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
                             <i class="ti-trash"></i>
                         </a>
                         {!! Form::close() !!}

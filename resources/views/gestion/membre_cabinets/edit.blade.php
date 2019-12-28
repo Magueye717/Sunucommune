@@ -16,7 +16,7 @@
                 <p class="text-muted m-b-20">Création</p>
 
                 {!! Form::model($membre, ['method' =>'PATCH','route' => ['membre-cabinets.update',$membre], 'role' => 'form',
-                'class' => 'padess-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
+                'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
                 @include('gestion.membre_cabinets.partials._form')
                 {!! Form::close() !!}
             </div>

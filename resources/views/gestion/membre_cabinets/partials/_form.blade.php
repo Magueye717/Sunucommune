@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Prénom <span class="text-danger">*</span></label>
-                {!! Form::text('prenom', null, ['id' => 'prenom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Nom']) !!}
+                {!! Form::text('prenom', null, ['id' => 'prenom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
@@ -16,30 +16,30 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">fonction <span class="text-danger">*</span></label>
-                {!! Form::text('fonction', null, ['id' => 'fonction', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Adresse email']) !!}
+                <label class="control-label">Fonction <span class="text-danger">*</span></label>
+                {!! Form::text('fonction', null, ['id' => 'fonction', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Fonction']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Adresse </label>
-                {!! Form::text('adresse', null, ['id' => 'adresse', 'class' => 'form-control', 'placeholder' => 'Nom court']) !!}
+                {!! Form::text('adresse', null, ['id' => 'adresse', 'class' => 'form-control', 'placeholder' => 'Adresse']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Telephone </label>
-                {!! Form::text('telephone', null, ['id' => 'telephone', 'class' => 'form-control', 'placeholder' => 'Nom court']) !!}
+                <label class="control-label">Téléphone </label>
+                {!! Form::text('telephone', null, ['id' => 'telephone', 'class' => 'form-control', 'placeholder' => 'Téléphone']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
     </div>
     <!--/row-->
 
-    @if(isset($user))
-        {!! Form::hidden('user_id', $user->id) !!}
+    @if(isset($membre))
+        {!! Form::hidden('membre_cabinet_id', $membre->id) !!}
     @endif
 </div>
 <div class="form-actions">
@@ -49,22 +49,13 @@
 
 @section('stylesAdditionnels')
     @parent
-    @include('layouts.v1.partials.custom-select.style')
 @endsection
 
 @section('scriptsAdditionnels')
     @parent
-    @include('layouts.v1.partials.custom-select.script')
     <!-- Validator -->
     <script src="{{ asset('themev1/js/validator.js') }}" type="text/javascript"></script>
 @endsection
 
 @push('myJS')
-    <script>
-        $(function () {
-            'use strict';
-            // Select2
-            $('.select2').select2();
-        });
-    </script>
 @endpush

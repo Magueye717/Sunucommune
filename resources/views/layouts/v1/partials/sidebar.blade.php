@@ -30,7 +30,7 @@
                         <li><a href="#">Historique</a></li>
                         <li><a href="#">Articles</a></li>
                         <li><a href="#">Médiathéque</a></li>
-                        <li><a href="#">Membre du cabinet</a></li>
+                        <li><a href="{{ route('membre-cabinets.index') }}">Membre du cabinet</a></li>
                         <li><a href="#">Partenaires</a></li>
                     </ul>
                 </li>

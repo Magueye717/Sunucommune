@@ -33,8 +33,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
 
 
- Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
-
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');
 Route::get('/edit-profil', 'HomeController@showFormProfile')->name('edit.profile');
@@ -43,3 +41,5 @@ Route::get('/reset-password', 'HomeController@showFormPwd')->name('reset.passwor
 Route::post('/reset-password', 'HomeController@changePassword')->name('reset.my.password');
 Route::get('/change-avatar', 'HomeController@showFormAvatar')->name('change.avatar');
 Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.avatar');
+
+Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
