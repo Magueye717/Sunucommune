@@ -6,24 +6,22 @@ use App\Enums\TypePartenariat;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PartenaireRequest;
 use App\Repositories\Commune\PartenaireRepository;
-use Illuminate\Support\Facades\Redirect;
 
 class PartenaireController extends Controller
 {
+    protected $partenaireRepository;
+
+    public function __construct(PartenaireRepository $partenaireRepository)
+    {
+        $this->partenaireRepository = $partenaireRepository;
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-
-    protected $partenaireRepository;
-
-    public function __construct(PartenaireRepository $partenaireRepository)
-    {
-        $this->partenaireRepository = $partenaireRepository;
-    }
-
     public function index()
     {
         $partenaires = $this->partenaireRepository->getData();
