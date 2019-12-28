@@ -1,4 +1,4 @@
-@extends('layouts.v1.default_admin')
+@extends('layouts.v1.default')
 
 @section('title', 'Gestion des utilisateurs')
 @section('pageTitle', 'Gestion des utilisateurs')
