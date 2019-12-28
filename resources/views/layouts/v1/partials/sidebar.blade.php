@@ -26,7 +26,7 @@
                         <i class="fa fa-building-o fa-fw"></i> <span class="hide-menu">Gestion de la commune</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Infos de ma commune</a></li>
+                        <li><a href="{{ route('infos.index') }}">Infos de ma commune</a></li>
                         <li><a href="#">Historique</a></li>
                         <li><a href="#">Articles</a></li>
                         <li><a href="#">Médiathéque</a></li>

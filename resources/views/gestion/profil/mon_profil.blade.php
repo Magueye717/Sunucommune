@@ -1,4 +1,4 @@
-@extends('layouts.v3.default')
+@extends('layouts.v1.default')
 
 @section('title', 'Mon profil')
 @section('pageTitle', 'Mon profil')
@@ -53,7 +53,7 @@
                     <li class="list-group-item">
                         <p class="mg-b-0">
                             <strong class="tx-inverse tx-medium">Entité : </strong>
-                            <span class="text-muted"> {{ $user->entite->nom }} </span>
+                            <span class="text-muted"> {{ isset($user->entite) ? $user->entite->nom : 'Non renseignée' }} </span>
                         </p>
                     </li>
                     <li class="list-group-item">

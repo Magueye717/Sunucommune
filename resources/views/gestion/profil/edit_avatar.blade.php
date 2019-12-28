@@ -1,4 +1,4 @@
-@extends('layouts.v3.default')
+@extends('layouts.v1.default')
 
 @section('title', 'Changement d\'avatar')
 @section('pageTitle', 'Changement d\'avatar')

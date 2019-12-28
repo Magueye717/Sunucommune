@@ -27,10 +27,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('/users', 'UserController');
     Route::resource('/roles', 'RoleController')->except('show');
     Route::resource('/permissions', 'PermissionController')->only('index', 'edit', 'update');
-    Route::resource('/communes', 'CommuneController');
 });
 
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
+
+Route::resource('/infos', 'Commune\CommuneInfoController');
 
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');

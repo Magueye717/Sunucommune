@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 
+use App\Enums\TypeUpload;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -9,7 +10,7 @@ use Illuminate\Support\Str;
 class UploadUtil
 {
     const AVATAR_USER_PATH = '/images/users/';
-    const FORMULATION_PATH = '/formulations';
+    const PHOTO_MAIRE_PATH = '/commune/photos/';
     const DEFAULT_PATH = '/default';
     protected $repertoire;
 
@@ -50,8 +51,8 @@ class UploadUtil
     private function selectPath($mode)
     {
         switch ($mode) {
-            case 'formulation' :
-                return $this->repertoire = self::FORMULATION_PATH;
+            case TypeUpload::PhotoMaire :
+                return $this->repertoire = self::PHOTO_MAIRE_PATH;
                 break;
             default:
                 return self::DEFAULT_PATH;
