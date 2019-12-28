@@ -9,7 +9,7 @@ class MembreCabinet extends Model
 
     protected $table = 'membre_cabinets';
     public $timestamps = true;
-    protected $fillable = array('nom', 'prenom', 'fonction', 'adresse', 'telephone', 'statut');
+    protected $fillable = array('nom', 'prenom', 'fonction', 'adresse', 'telephone','photo_membre', 'statut');
 
 }
 

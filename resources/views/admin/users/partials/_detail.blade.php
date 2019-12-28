@@ -42,12 +42,6 @@
                 </p>
             </li>
             <li class="list-group-item">
-                <p class="m-b-0">
-                    <strong class="tx-inverse tx-medium">Entité : </strong>
-                    <span class="text-muted">{{ !empty($user->entite) ? $user->entite->nom : '' }}</span>
-                </p>
-            </li>
-            <li class="list-group-item">
                 <p class="mg-b-0">
                     <strong class="tx-inverse tx-medium">Date d'ajout : </strong>
                     <span class="text-muted"> {!! $user->created_at !!} </span>
