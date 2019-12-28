@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Commune;
 
-use App\Http\Requests\PartenaireRequest;
-use Illuminate\Http\Request;
-use App\Repositories\Commune\PartenaireRepository;
 use App\Enums\TypePartenariat;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PartenaireRequest;
+use App\Repositories\Commune\PartenaireRepository;
 use Illuminate\Support\Facades\Redirect;
 
 class PartenaireController extends Controller
@@ -28,7 +28,7 @@ class PartenaireController extends Controller
     {
         $partenaires = $this->partenaireRepository->getData();
 
-        return view('admin.commune.partenaires.index', compact('partenaires'));
+        return view('gestion.commune.partenaires.index', compact('partenaires'));
     }
 
     /**
@@ -38,10 +38,9 @@ class PartenaireController extends Controller
      */
     public function create()
     {
-
         $type = TypePartenariat::toSelectArray();
 
-        return view('admin.commune.partenaires.create', compact('type'));
+        return view('gestion.commune.partenaires.create', compact('type'));
     }
 
     /**
@@ -53,7 +52,7 @@ class PartenaireController extends Controller
     {
         $inputs = $request->all();
         $partenaire = $this->partenaireRepository->store($inputs);
-        return Redirect::route('partenaires.index')->withMessage("Le Partenaire " . $partenaire->nom . " a été créé.");
+        return \redirect()->route('partenaires.index')->withMessage("Le Partenaire " . $partenaire->nom . " a été créé.");
     }
 
 
@@ -78,7 +77,7 @@ class PartenaireController extends Controller
     {
         $type = TypePartenariat::toSelectArray();
         $partenaire = $this->partenaireRepository->getById($id);
-        return view('admin.commune.partenaires.edit', compact('partenaire', 'type'));
+        return view('gestion.commune.partenaires.edit', compact('partenaire', 'type'));
     }
 
     /**
@@ -90,7 +89,7 @@ class PartenaireController extends Controller
     public function update(PartenaireRequest $request, $id)
     {
         $this->partenaireRepository->update($id, $request->all());
-        return Redirect::route('partenaires.index')->withMessage("Le rôle " . $request->input('nom') . " a été modifié.");
+        return \redirect()->route('partenaires.index')->withMessage("Le rôle " . $request->input('nom') . " a été modifié.");
     }
 
     /**

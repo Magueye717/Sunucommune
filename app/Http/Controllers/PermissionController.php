@@ -16,7 +16,7 @@ class PermissionController extends Controller
     {
         $this->permRepository = $permissionRepository;
         $this->middleware('auth');
-        //$this->middleware('admin');
+        $this->middleware('admin');
     }
 
     /**

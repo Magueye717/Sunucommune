@@ -11,6 +11,7 @@ class UploadUtil
 {
     const AVATAR_USER_PATH = '/images/users/';
     const PHOTO_MAIRE_PATH = '/commune/photos/';
+    const LOGO_PARTENAIRE_PATH = '/commune/partenaires/';
     const DEFAULT_PATH = '/default';
     protected $repertoire;
 
@@ -53,6 +54,9 @@ class UploadUtil
         switch ($mode) {
             case TypeUpload::PhotoMaire :
                 return $this->repertoire = self::PHOTO_MAIRE_PATH;
+                break;
+            case TypeUpload::LogoPartenaire :
+                return $this->repertoire = self::LOGO_PARTENAIRE_PATH;
                 break;
             default:
                 return self::DEFAULT_PATH;

@@ -24,7 +24,8 @@ class PartenaireRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required|max:255'
+            'nom' => 'required|max:255',
+            'url' => 'nullable|max:255'
         ];
     }
 }

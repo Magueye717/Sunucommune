@@ -12,7 +12,7 @@ class CreateParteneairesTable extends Migration {
 			$table->string('nom');
 			$table->string('type_partenaire', 25)->nullable();
 			$table->string('logo')->nullable();
-			$table->string('url');
+			$table->string('url')->nullable();
 			$table->timestamps();
 		});
 	}

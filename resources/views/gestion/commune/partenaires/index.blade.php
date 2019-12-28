@@ -1,5 +1,4 @@
-@extends('layouts.v1.default_admin')
-
+@extends('layouts.v1.default')
 
 @section('title', 'Gestion des partenaires')
 @section('pageTitle', 'Gestion des partenaires')
@@ -25,10 +24,9 @@
                             </span>
                         </a>
                     </div>
-
                 </div>
 
-                @include('admin.commune.partenaires.partials._liste')
+                @include('gestion.commune.partenaires.partials._liste')
             </div>
         </div>
     </div>
