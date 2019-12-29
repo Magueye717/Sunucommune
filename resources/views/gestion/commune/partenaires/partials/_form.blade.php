@@ -15,11 +15,22 @@
                     'required' => '', 'placeholder' => 'Choisir...']) !!}
             </div>
         </div>
+{{--        <div class="col-md-6">--}}
+{{--            <div class="form-group">--}}
+{{--                <label class="control-label">Logo</label>--}}
+{{--                {!! Form::file('logo', null, ['id' => 'logo', 'class' => 'form-control', 'placeholder' => 'Logo']) !!}--}}
+{{--                <div class="help-block with-errors"></div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group mb-0">
                 <label class="control-label">Logo</label>
-                {!! Form::file('logo', null, ['id' => 'logo', 'class' => 'form-control', 'placeholder' => 'Logo']) !!}
-                <div class="help-block with-errors"></div>
+                {!! Form::file('logo', ['id' => 'logo', 'class' => 'form-control', 'placeholder'=>'Choisir le logo']) !!}
+                <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
+                @if(isset($communeInfo) && !empty($communeInfo->logo))
+                    <img class="avatar-min" src="{{ asset('storage/commune/photos/'. $communeInfo->logo) }}" alt="avatar"
+                         title="Logo"/>
+                @endif
             </div>
         </div>
         <div class="col-md-6">
