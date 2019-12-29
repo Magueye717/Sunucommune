@@ -121,17 +121,12 @@ class PartenaireController extends Controller
     {
         $partenaire = $this->partenaireRepository->getById($id);
 
-        if ($this->partenaireRepository->destroy($id))
-        {
+        if ($this->partenaireRepository->destroy($id)) {
 
             $this->uploadUtil->deleteFile($partenaire->logo, TypeUpload::LogoPartenaire);
             return redirect()->back()->withMessage("La suppression est effective");
-        }
-
-        else
+        } else
             return redirect()->back()->withErrors("Ce partenaire ne peut être supprimé...");
     }
 
 }
-
-?>

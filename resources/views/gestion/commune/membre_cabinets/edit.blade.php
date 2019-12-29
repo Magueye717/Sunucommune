@@ -17,7 +17,7 @@
 
                 {!! Form::model($membre, ['method' =>'PATCH','route' => ['membre-cabinets.update',$membre], 'role' => 'form',
                 'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
-                @include('gestion.membre_cabinets.partials._form')
+                @include('gestion.commune.membre_cabinets.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>

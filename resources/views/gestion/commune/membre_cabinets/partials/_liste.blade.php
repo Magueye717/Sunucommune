@@ -2,7 +2,7 @@
     <table id="myTable" class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>img</th>
+            <th>Photo</th>
             <th>Nom</th>
             <th>Prénom</th>
             <th>Fonction</th>
@@ -15,7 +15,10 @@
         @isset($membres)
             @foreach($membres as $membreCabinet)
                 <tr>
-                    <td><img src="{{ asset('storage/commune/membres/' .$membreCabinet->photo_membre) }}" alt="..." class="img-thumbnail" style="width:20%; height:2%; border-radius:10%;"></td>
+                    <td class="text-center">
+                        <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/' .$membreCabinet->photo) : asset('themev1/images/default.png')}}"
+                             alt="photo" class="img-thumbnail table-photo">
+                    </td>
                     <td>{{ $membreCabinet->prenom }}</td>
                     <td>{{ $membreCabinet->nom }}</td>
                     <td>{{ $membreCabinet->fonction }}</td>

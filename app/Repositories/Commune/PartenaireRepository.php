@@ -17,4 +17,5 @@ class PartenaireRepository extends ResourceRepository
     {
         return $this->model->orderBy('nom')->pluck('nom', 'id');
     }
+    
 }

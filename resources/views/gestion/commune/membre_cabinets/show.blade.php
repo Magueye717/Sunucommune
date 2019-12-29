@@ -15,7 +15,7 @@
                 <h3 class="box-title m-b-0">Gestion des utilisateurs</h3>
                 <p class="text-muted m-b-10">Détail</p>
 
-                @include('gestion.membre_cabinets.partials._detail')
+                @include('gestion.commune.membre_cabinets.partials._detail')
             </div>
         </div>
     </div>

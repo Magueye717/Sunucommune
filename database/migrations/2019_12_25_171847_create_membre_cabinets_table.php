@@ -12,9 +12,9 @@ class CreateMembreCabinetsTable extends Migration {
 			$table->string('nom');
 			$table->string('prenom');
 			$table->string('fonction');
-			$table->string('adresse');
-            $table->string('telephone');
-            $table->string('photo_maire')->nullable();
+			$table->string('adresse')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('photo')->nullable();
 			$table->boolean('statut')->default(1);
 			$table->timestamps();
 		});

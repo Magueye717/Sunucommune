@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Commune;
 
 use App\Enums\TypeUpload;
-use App\Utils\UploadUtil;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MembreCabinetRequest;
 use App\Repositories\Commune\MembreCabinetRepository;
+use App\Utils\UploadUtil;
 
 class MembreCabinetController extends Controller
 {
@@ -28,7 +28,7 @@ class MembreCabinetController extends Controller
     public function index()
     {
         $membres = $this->membreCabinetRepository->getData();
-        return view('gestion.membre_cabinets.index', compact('membres'));
+        return view('gestion.commune.membre_cabinets.index', compact('membres'));
     }
 
     /**
@@ -38,7 +38,7 @@ class MembreCabinetController extends Controller
      */
     public function create()
     {
-        return view('gestion.membre_cabinets.create');
+        return view('gestion.commune.membre_cabinets.create');
     }
 
     /**
@@ -50,8 +50,8 @@ class MembreCabinetController extends Controller
     {
         $inputs = $request->all();
         //Photo du membreCabinet
-        if ($request->hasFile('photo_membre')) {
-            $inputs['photo_membre'] = $this->uploadUtil->traiterFile($request->file('photo_membre'), TypeUpload::PhotoMembre);
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoMembre);
         }
         $this->membreCabinetRepository->store($inputs);
         return \redirect()->route('membre-cabinets.index')->withMessage("L'utilisateur a été créé.");
@@ -66,7 +66,7 @@ class MembreCabinetController extends Controller
     public function show($id)
     {
         $membre = $this->membreCabinetRepository->getById($id);
-        return view('gestion.membre_cabinets.show', compact('membre'));
+        return view('gestion.commune.membre_cabinets.show', compact('membre'));
     }
 
     /**
@@ -78,7 +78,7 @@ class MembreCabinetController extends Controller
     public function edit($id)
     {
         $membre = $this->membreCabinetRepository->getById($id);
-        return view('gestion.membre_cabinets.edit', compact('membre'));
+        return view('gestion.commune.membre_cabinets.edit', compact('membre'));
     }
 
     /**
@@ -92,8 +92,8 @@ class MembreCabinetController extends Controller
         $membre = $this->membreCabinetRepository->getById($id);
         $inputs = $request->all();
         //Photo du membre
-        if ($request->hasFile('photo_membre')) {
-            $inputs['photo_membre'] = $this->uploadUtil->traiterFile($request->file('photo_membre'), TypeUpload::PhotoMembre);
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoMembre);
             $oldFilename = $membre->photo_membre;
         }
         $this->membreCabinetRepository->update($id, $inputs);
@@ -119,5 +119,3 @@ class MembreCabinetController extends Controller
     }
 
 }
-
-?>

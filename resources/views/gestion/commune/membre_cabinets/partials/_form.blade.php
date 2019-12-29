@@ -38,10 +38,10 @@
         <div class="col-md-6">
             <div class="form-group mb-0">
                 <label class="control-label">Photo du membre</label>
-                {!! Form::file('photo_membre', ['id' => 'photo_membre', 'class' => 'form-control', 'placeholder'=>'Choisir la photo du membre']) !!}
+                {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control', 'placeholder'=>'Choisir la photo du membre']) !!}
                 <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
-                @if(isset($membre) && !empty($membre->photo_membre))
-                    <img class="avatar-min" src="{{ asset('storage/commune/membres/'. $membre->photo_membre) }}" alt="avatar"
+                @if(isset($membre) && !empty($membre->photo))
+                    <img class="avatar-min" src="{{ asset('storage/commune/membres/'. $membre->photo) }}" alt="avatar"
                          title="Photo du membre"/>
                 @endif
             </div>

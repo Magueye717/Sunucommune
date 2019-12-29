@@ -28,7 +28,7 @@ class MembreCabinetRequest extends FormRequest
             'prenom' => 'required|max:225',
             'fonction' => 'required|max:225',
             'adresse' => 'nullable|max:225',
-            'telephone' => 'required|max:225'
+            'telephone' => 'nullable|max:50'
         ];
     }
 }

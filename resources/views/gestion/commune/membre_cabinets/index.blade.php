@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                @include('gestion.membre_cabinets.partials._liste')
+                @include('gestion.commune.membre_cabinets.partials._liste')
             </div>
         </div>
     </div>
