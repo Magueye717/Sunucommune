@@ -1,3 +1,10 @@
+@php
+    $defaultTab = $historiqueTab = $ancienMaireTab = '';
+    if (Session::has('historique')) $historiqueTab = 'active';
+    elseif (Session::has('ancien-maire')) $ancienMaireTab = 'active';
+    else $defaultTab ='active';
+@endphp
+
 @extends('layouts.v1.default')
 
 @section('title', 'Informations de ma commune')
@@ -12,66 +19,56 @@
     <div class="white-box">
         <h3 class="box-title m-b-0">Informations de ma commune</h3>
         <p class="text-muted m-b-30">Détail</p>
+        {{-- Actions nav --}}
+        @include('gestion.commune.infos.partials._actions')
 
-        @if(empty($communeInfo))
-            <div class="row">
-                <div class="col-md-12 m-b-20">
-                    <a href="{{ route('infos.create') }}" class="btn btn-primary pull-right m-r-5">
-                        <i class="ti-plus"></i> Créer la page d'information
-                    </a>
+        <div class="row m-t-15">
+            <div class="col-md-12">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item {{ $defaultTab }}">
+                        <a class="nav-link" id="infos-tab" data-toggle="pill"
+                           href="#infos" role="tab" aria-controls="infos" aria-selected="true">
+                            Informations sur la commune</a>
+                    </li>
+                    <li class="nav-item {{ $historiqueTab }}">
+                        <a class="nav-link" id="historique-tab" data-toggle="pill"
+                           href="#historique" role="tab" aria-controls="historique" aria-selected="true">
+                            Historique</a>
+                    </li>
+                    @if(!isset($ancienMaires))
+                        <li class="nav-item {{ $ancienMaireTab }}">
+                            <a class="nav-link" id="ancien-maire-tab" data-toggle="pill"
+                               href="#ancien-maire" role="tab" aria-controls="ancien-maire" aria-selected="true">
+                                Anciens maires</a>
+                        </li>
+                    @endif
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane {{ $defaultTab }}" id="infos" role="tabpanel"
+                         aria-labelledby="infos-tab">
+                        @include('gestion.commune.infos.partials._detail_infos')
+                    </div>
+                    <div class="tab-pane {{ $historiqueTab }}" id="historique" role="tabpanel"
+                         aria-labelledby="historique-tab">
+                        @if(!empty($historique))
+                            @include('gestion.commune.infos.partials._detail_historique')
+                        @else
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p> L'historique de la commune doit être renseigné pour être visible.</p>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    @if(isset($ancienMaires))
+                        <div class="tab-pane {{ $ancienMaireTab }}" id="ancien-maire" role="tabpanel"
+                             aria-labelledby="ancien-maire-tab">
+                            @include('gestion.commune.infos.partials._detail_ancien_maires')
+                        </div>
+                    @endif
                 </div>
             </div>
-        @else
-            <div class="row">
-                <div class="col-md-12 m-b-20">
-                    <a href="{{ route('infos.edit', $communeInfo) }}" class="btn btn-info pull-right m-r-5">
-                        <i class="ti-pencil-alt"></i> Mettre à jour
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2 col-md-3">
-                    <img src="{{ isset($communeInfo->photo_maire) ? asset('storage/commune/photos/' . $communeInfo->photo_maire) : asset('themev1/images/default.png') }}"
-                         alt="avatar" class="profil-avatar">
-                </div>
-                <div class="col-lg-10 col-md-9">
-                    <ul class="list-group list-group-striped list-unstyled">
-                        <li>
-                            <p class="m-b-15">
-                                <strong class="tx-inverse tx-medium">Prénom & Nom du Maire : </strong>
-                                <span class="text-muted">{{ $communeInfo->maire }}</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="m-b-15">
-                                <strong class="tx-inverse tx-medium">Date de création de la commune : </strong>
-                                <span class="text-muted"> {{ $communeInfo->date_creation }} </span>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="m-b-15">
-                                <strong class="tx-inverse tx-medium">Superficie de la commune (en m²) : </strong>
-                                <span class="text-muted"> {{ $communeInfo->superficie }} </span>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="m-b-15">
-                                <strong class="tx-inverse tx-medium">Population : </strong>
-                                <span class="text-muted"> {{ $communeInfo->population }} </span>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="m-b-5"><strong class="tx-inverse tx-medium">Mot du maire</strong></p>
-                        </li>
-                        <li>
-                            <p>
-                                <span class="text-muted"> {!! $communeInfo->mot_du_maire !!} </span>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        @endif
+        </div>
     </div>
 @endsection
 

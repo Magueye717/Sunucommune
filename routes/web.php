@@ -32,7 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
 
 Route::resource('/infos', 'Commune\CommuneInfoController');
-Route::resource('/historiques', 'Commune\CommuneHistoriqueController');
+Route::patch('/historique/{id}', 'Commune\CommuneInfoController@updateHistorique')->name('historiques.update');
+Route::resource('infos.ancien-maires', 'Commune\AncienMaireController')->except('index', 'show');
 Route::resource('/partenaires', 'Commune\PartenaireController');
 Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
 

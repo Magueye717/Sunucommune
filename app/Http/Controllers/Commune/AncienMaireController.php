@@ -1,10 +1,11 @@
 <?php 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Commune;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AncienMaireController extends Controller 
+class AncienMaireController extends Controller
 {
 
   /**

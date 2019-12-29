@@ -9,7 +9,7 @@ class CreateAncienMairesTable extends Migration {
 	{
 		Schema::create('ancien_maires', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('commune_historique_id')->unsigned();
+			$table->integer('commune_info_id')->unsigned();
 			$table->string('nom');
 			$table->string('prenom');
 			$table->string('photo')->nullable();
