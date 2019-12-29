@@ -35,7 +35,7 @@
                            href="#historique" role="tab" aria-controls="historique" aria-selected="true">
                             Historique</a>
                     </li>
-                    @if(!isset($ancienMaires))
+                    @if(isset($ancienMaires))
                         <li class="nav-item {{ $ancienMaireTab }}">
                             <a class="nav-link" id="ancien-maire-tab" data-toggle="pill"
                                href="#ancien-maire" role="tab" aria-controls="ancien-maire" aria-selected="true">
@@ -46,7 +46,15 @@
                 <div class="tab-content">
                     <div class="tab-pane {{ $defaultTab }}" id="infos" role="tabpanel"
                          aria-labelledby="infos-tab">
-                        @include('gestion.commune.infos.partials._detail_infos')
+                        @if(!empty($communeInfo))
+                            @include('gestion.commune.infos.partials._detail_infos')
+                        @else
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p> Ajouter les informations concernant la commune.</p>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <div class="tab-pane {{ $historiqueTab }}" id="historique" role="tabpanel"
                          aria-labelledby="historique-tab">
