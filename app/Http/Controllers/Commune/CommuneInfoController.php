@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommuneInfoRequest;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Utils\UploadUtil;
+use Illuminate\Http\Request;
 
 class CommuneInfoController extends Controller
 {
@@ -29,7 +30,11 @@ class CommuneInfoController extends Controller
     public function index()
     {
         $communeInfo = $this->communeInfoRepository->getInfo();
-        return view('gestion.commune.infos.show', compact('communeInfo'));
+        if($communeInfo != null){
+            $historique = $communeInfo->historique;
+            $ancienMaires = $communeInfo->ancienMaires;
+        }
+        return view('gestion.commune.infos.show', compact('communeInfo', 'historique', 'ancienMaires'));
     }
 
     /**
@@ -67,7 +72,9 @@ class CommuneInfoController extends Controller
     public function show($id)
     {
         $communeInfo = $this->communeInfoRepository->getById($id);
-        return view('gestion.commune.infos.show', compact('communeInfo'));
+        $historique = $communeInfo->historique;
+        $ancienMaires = $communeInfo->ancienMaires;
+        return view('gestion.commune.infos.show', compact('communeInfo', 'historique', 'ancienMaires'));
     }
 
     /**
@@ -114,6 +121,21 @@ class CommuneInfoController extends Controller
     public function destroy($id)
     {
 
+    }
+
+    public function updateHistorique(Request $request, $id){
+        $communeInfo = $this->communeInfoRepository->getById($id);
+        $request->validate($this->historiqueRules());
+        $this->communeInfoRepository->setHistorique($communeInfo, $request->get('historique'));
+
+        $request->session()->flash('historique', true);
+        return \redirect()->route('infos.index')->withMessage("L'historique de la commune a été ajouté avec succés.");
+    }
+
+    private function historiqueRules(){
+        return [
+            'historique' => 'required|max:16777215'
+        ];
     }
 
 }

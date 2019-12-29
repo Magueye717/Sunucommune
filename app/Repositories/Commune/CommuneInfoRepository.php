@@ -18,4 +18,11 @@ class CommuneInfoRepository extends ResourceRepository
         return $this->model->latest()->first();
     }
 
+    public function setHistorique($communeInfo, $historique)
+    {
+        $communeInfo->historique = $historique;
+        $communeInfo->save();
+        return true;
+    }
+
 }

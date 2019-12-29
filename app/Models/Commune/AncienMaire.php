@@ -9,11 +9,11 @@ class AncienMaire extends Model
 
     protected $table = 'ancien_maires';
     public $timestamps = true;
-    protected $fillable = array('commune_historique_id', 'nom', 'prenom', 'photo', 'biographie', 'date_debut_mandat', 'date_fin_mandat');
+    protected $fillable = array('commune_info_id', 'nom', 'prenom', 'photo', 'biographie', 'date_debut_mandat', 'date_fin_mandat');
 
-    public function communeHistorique()
+    public function communeInfo()
     {
-        return $this->belongsTo('App\Models\Commune\CommuneHistorique');
+        return $this->belongsTo('App\Models\Commune\CommuneInfo');
     }
 
 }
