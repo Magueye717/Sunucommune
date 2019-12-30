@@ -43,4 +43,6 @@ Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.av
 
 
 Route::resource('/articles', 'ArticleController');
-Route::resource('/type_articles', 'TypeArticleController')->only('create', 'store');
+Route::resource('/type-articles', 'TypeArticleController')->only('create', 'store');
+Route::resource('/cadre-concertation', 'CadreConcertationController');
+Route::resource('/cadre-concertation', 'MembreCadreController');
