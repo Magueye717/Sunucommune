@@ -53,14 +53,4 @@ Route::post('/edit-profil', 'HomeController@editProfile')->name('edit.my.profile
 Route::get('/reset-password', 'HomeController@showFormPwd')->name('reset.password');
 Route::post('/reset-password', 'HomeController@changePassword')->name('reset.my.password');
 Route::get('/change-avatar', 'HomeController@showFormAvatar')->name('change.avatar');
-<<<<<<< HEAD
 Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.avatar');
-
-
-Route::resource('/articles', 'ArticleController');
-Route::resource('/type-articles', 'TypeArticleController')->only('create', 'store');
-Route::resource('/cadre-concertation', 'CadreConcertationController');
-Route::resource('/cadre-concertation', 'MembreCadreController');
-=======
-Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.avatar');
->>>>>>> develop
