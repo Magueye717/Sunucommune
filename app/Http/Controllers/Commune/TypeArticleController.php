@@ -1,10 +1,12 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TypeArticleRequest;
+use App\Repositories\Commune\TypeArticleRepository;
 use Illuminate\Http\Request;
 
-class TypeArticleController extends Controller 
+class TypeArticleController extends Controller
 {
 
   /**
@@ -12,9 +14,18 @@ class TypeArticleController extends Controller
    *
    * @return Response
    */
+
+  protected $typeArticleRepository;
+
+  public function __construct(TypeArticleRepository $typeArticleRepository)
+  {
+      $this->typeArticleRepository = $typeArticleRepository;
+      $this->middleware('auth');
+  }
+
   public function index()
   {
-    
+
   }
 
   /**
@@ -24,7 +35,7 @@ class TypeArticleController extends Controller
    */
   public function create()
   {
-    
+    return view('gestion.type_article.create');
   }
 
   /**
@@ -32,9 +43,11 @@ class TypeArticleController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(TypeArticleRequest $request)
   {
-    
+        $inputs = $request->all();
+        $typeArticle=$this->typeArticleRepository->store($inputs);
+        return redirect('/articles')->withMessage("L'article " . $typeArticle->libelle . " a été créé avec succés.");
   }
 
   /**
@@ -45,7 +58,7 @@ class TypeArticleController extends Controller
    */
   public function show($id)
   {
-    
+
   }
 
   /**
@@ -56,7 +69,7 @@ class TypeArticleController extends Controller
    */
   public function edit($id)
   {
-    
+
   }
 
   /**
@@ -67,7 +80,7 @@ class TypeArticleController extends Controller
    */
   public function update($id)
   {
-    
+
   }
 
   /**
@@ -78,9 +91,9 @@ class TypeArticleController extends Controller
    */
   public function destroy($id)
   {
-    
+
   }
-  
+
 }
 
 ?>
