@@ -4,7 +4,7 @@ namespace App\Models\Participation;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SondageResultat extends Model 
+class SondageResultat extends Model
 {
 
     protected $table = 'sondage_resultats';

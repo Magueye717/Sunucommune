@@ -16,6 +16,7 @@ class CreateCommuneInfosTable extends Migration {
 			$table->string('delimitation')->nullable();
 			$table->mediumText('mot_du_maire')->nullable();
 			$table->string('photo_maire')->nullable();
+            $table->mediumText('historique')->nullable();
 			$table->timestamps();
 		});
 	}

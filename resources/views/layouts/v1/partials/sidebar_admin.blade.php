@@ -48,7 +48,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('communes.index') }}" aria-expanded="false"
+                    <a href="" aria-expanded="false"
                        class="{{ areActiveRoutes($communeRoutes, 'active') }}">
                         <i class="fa fa-building-o fa-fw"></i> <span class="hide-menu"> Gestion des communes </span>
                     </a>

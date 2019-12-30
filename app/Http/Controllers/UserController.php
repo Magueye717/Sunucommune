@@ -23,7 +23,7 @@ class UserController extends Controller
         $this->roleRepository = $roleRepository;
         $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
-        //$this->middleware('admin');
+        $this->middleware('admin');
     }
 
     /**

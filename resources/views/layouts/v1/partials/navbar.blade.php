@@ -7,9 +7,6 @@
         </a>
         <div class="top-left-part">
             <a class="logo" href="{{ url('/') }}">
-                <b>
-                    {{--<img src="../plugins/images/logo.png" alt="home" />--}}
-                </b>
                 <span>
                     <span class="my-logo-title"> <b>SUNUCOMMUNE</b> </span>
                     {{--<img src="../plugins/images/logo-text.png" alt="homepage" class="dark-logo" />--}}

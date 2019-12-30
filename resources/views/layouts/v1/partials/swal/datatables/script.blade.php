@@ -1,0 +1,1 @@
+ <script src="{{ asset('themev3/libs/datatables/jquery.dataTables.min.js') }}"></script>

@@ -1,0 +1,1 @@
+<link href="{{ asset('themev1/libs/summernote/summernote.css') }}" rel="stylesheet" type="text/css"/>

@@ -2,14 +2,14 @@
 
 namespace App\Models\Participation;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\CustomModel;
 
-class Panel extends Model 
+class Panel extends CustomModel
 {
 
     protected $table = 'panel';
     public $timestamps = true;
-    protected $fillable = array('commune_id', 'question', 'date_publication', 'statut');
+    protected $fillable = array('question', 'date_publication', 'statut');
 
     public function commentaires()
     {

@@ -19,7 +19,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('ancien_maires', function(Blueprint $table) {
-			$table->foreign('commune_historique_id')->references('id')->on('commune_historiques')
+			$table->foreign('commune_info_id')->references('id')->on('commune_infos')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -134,7 +134,7 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('articles_add_by_foreign');
 		});
 		Schema::table('ancien_maires', function(Blueprint $table) {
-			$table->dropForeign('ancien_maires_commune_historique_id_foreign');
+			$table->dropForeign('ancien_maires_commune_info_id_foreign');
 		});
 		Schema::table('procedures', function(Blueprint $table) {
 			$table->dropForeign('procedures_categorie_id_foreign');

@@ -27,10 +27,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('/users', 'UserController');
     Route::resource('/roles', 'RoleController')->except('show');
     Route::resource('/permissions', 'PermissionController')->only('index', 'edit', 'update');
-    Route::resource('/communes', 'CommuneController');
 });
 
 Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardController@index']);
+
+Route::resource('/infos', 'Commune\CommuneInfoController');
+Route::patch('/historique/{id}', 'Commune\CommuneInfoController@updateHistorique')->name('historiques.update');
+Route::resource('infos.ancien-maires', 'Commune\AncienMaireController')->except('index', 'show');
+Route::resource('/partenaires', 'Commune\PartenaireController');
+Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
+
+/* Espace participation */
+Route::prefix('participation')->group(function () {
+    Route::namespace('Participation')->group(function () {
+        Route::resource('/cadres', 'CadreConcertationController');
+        Route::resource('/panels', 'PanelController');
+        Route::resource('/sondages', 'SondageController');
+    });
+});
 
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');
@@ -39,6 +53,7 @@ Route::post('/edit-profil', 'HomeController@editProfile')->name('edit.my.profile
 Route::get('/reset-password', 'HomeController@showFormPwd')->name('reset.password');
 Route::post('/reset-password', 'HomeController@changePassword')->name('reset.my.password');
 Route::get('/change-avatar', 'HomeController@showFormAvatar')->name('change.avatar');
+<<<<<<< HEAD
 Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.avatar');
 
 
@@ -46,3 +61,6 @@ Route::resource('/articles', 'ArticleController');
 Route::resource('/type-articles', 'TypeArticleController')->only('create', 'store');
 Route::resource('/cadre-concertation', 'CadreConcertationController');
 Route::resource('/cadre-concertation', 'MembreCadreController');
+=======
+Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.avatar');
+>>>>>>> develop

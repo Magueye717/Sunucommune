@@ -1,3 +1,6 @@
+.my-logo-title{
+    padding-left: 40px !important;
+}
 .profile-pic {
     padding: 0px 20px;
     line-height: 50px;
@@ -53,9 +56,6 @@
 .text-center-imp {
     text-align: center !important;
 }
-.score{
-    min-width: 75px !important;
-}
 .bp-section{
     background-color: #ececec !important;
 }
@@ -66,17 +66,8 @@
     outline: 0!important;
     min-width: 50px !important;
 }
-.evaluation-section{
-    background-color: #D8E4BC;
-}
-.evaluation-note{
-    background-color: #D1FFE6;
-}
-.score-note{
-    min-width: 100px !important;
-}
-.evaluation-id{
-    min-width: 50px !important;
+.table-photo{
+    width: 50px !important;
 }
 
 /*Phone*/

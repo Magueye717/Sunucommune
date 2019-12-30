@@ -48,7 +48,6 @@
     <script>
         $(function () {
             'use strict';
-            // For multiselect
             $('#permissions').multiSelect();
         });
     </script>

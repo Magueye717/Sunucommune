@@ -1,5 +1,6 @@
 @extends('layouts.v1.default_admin')
 
+
 @section('title', 'Gestion des rôles')
 @section('pageTitle', 'Gestion des rôles')
 
@@ -24,6 +25,7 @@
                             </span>
                         </a>
                     </div>
+
                 </div>
 
                 @include('admin.securite.roles.partials._liste')

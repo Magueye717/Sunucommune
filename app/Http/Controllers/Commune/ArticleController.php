@@ -1,17 +1,10 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ArticleRequest;
-use App\Models\Commune\Article;
-use App\Models\Commune\TypeArticle;
-use App\Repositories\Commune\ArticleRepository;
-use App\Repositories\Commune\TypeArticleRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
-class ArticleController extends Controller
+class ArticleController extends Controller 
 {
 
   /**
@@ -19,24 +12,9 @@ class ArticleController extends Controller
    *
    * @return Response
    */
-
-  protected $articleRepository;
-  protected $typeArticleRepository;
-
-  public function __construct(
-        ArticleRepository $articleRepository,
-        TypeArticleRepository $typeArticleRepository)
-  {
-      $this->articleRepository = $articleRepository;
-      $this->typeArticleRepository = $typeArticleRepository;
-      $this->middleware('auth');
-  }
-
-
   public function index()
   {
-    $articles = $this->articleRepository->getListeArticle()->get();
-        return view('gestion.articles.index', compact('articles'));
+    
   }
 
   /**
@@ -46,8 +24,7 @@ class ArticleController extends Controller
    */
   public function create()
   {
-    $TypeArticles = $this->typeArticleRepository->getListeTypArticle();
-    return view('gestion.articles.create', compact('TypeArticles'));
+    
   }
 
   /**
@@ -55,22 +32,10 @@ class ArticleController extends Controller
    *
    * @return Response
    */
-  public function store(ArticleRequest $request)
+  public function store(Request $request)
   {
-    $inputs = $request->all();
-    $photoName =$request->file('photo')->getClientOriginalName();
-    $fichierName =$request->file('piece_jointe')->getClientOriginalName();
-          $path = Storage::putFileAs(
-              'documentUpload',
-              $request->file('photo'),
-              $photoName,
-              $request->file('piece_jointe'),
-              $fichierName
-          );
-          $inputs['add_by'] = Auth::user()->id ;
-          $article=$this->articleRepository->store($inputs);
-          return redirect('/articles')->withMessage("L'article " . $article->titre . " a été créé avec succés.");
-        }
+    
+  }
 
   /**
    * Display the specified resource.
@@ -80,8 +45,7 @@ class ArticleController extends Controller
    */
   public function show($id)
   {
-    $article = $this->articleRepository->getById($id);
-    return view('gestion.articles.show', compact('article'));
+    
   }
 
   /**
@@ -92,9 +56,7 @@ class ArticleController extends Controller
    */
   public function edit($id)
   {
-    $article = $this->articleRepository->getById($id);
-    $TypeArticles = $this->typeArticleRepository->getListeTypArticle();
-    return view('gestion.articles.edit', compact('TypeArticles', 'article'));
+    
   }
 
   /**
@@ -103,21 +65,9 @@ class ArticleController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update(ArticleRequest $request, $id)
+  public function update($id)
   {
-    $inputs = $request->all();
-    $photo =$request->file('photo')->getClientOriginalName();
-    $document =$request->file('piece_jointe')->getClientOriginalName();
-          $path = Storage::putFileAs(
-              'documentUpload',
-              $request->file('photo'),
-              $request->file('piece_jointe'),
-              $photo,
-              $document
-          );
-          $inputs['add_by'] = Auth::user()->id ;
-          $this->articleRepository->update($id, $inputs);
-          return redirect('/articles')->withMessage("L'article " . $inputs['titre']. " a été modifié avec succés.");
+    
   }
 
   /**
@@ -128,11 +78,9 @@ class ArticleController extends Controller
    */
   public function destroy($id)
   {
-    $this->articleRepository->destroy($id);
-
-		return redirect()->back();
+    
   }
-
+  
 }
 
 ?>
