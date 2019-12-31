@@ -42,10 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function commune()
+   /*  public function collectivite()
     {
-        return $this->belongsTo('App\Models\Commune\Commune');
-    }
+        return $this->belongsTo('App\Models\Collectivite');
+    } */
 
     /**
      * Genere l'attribut identite

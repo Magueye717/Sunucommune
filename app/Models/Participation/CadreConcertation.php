@@ -13,7 +13,7 @@ class CadreConcertation extends Model
 
     public function collectivite()
     {
-        return $this->belongsTo('App\Models\Collectivite');
+        return $this->belongsTo('App\Models\Collectivite', 'collectivite_id');
     }
 
     public function ajouterPar()
