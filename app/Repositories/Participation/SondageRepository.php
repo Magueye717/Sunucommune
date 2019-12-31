@@ -13,4 +13,11 @@ class SondageRepository extends ResourceRepository
         $this->model = $sondage;
     }
 
+
+
+    public function getListe()
+    {
+        return $this->model->orderBy('titre')->pluck('titre', 'id');
+    }
+
 }
