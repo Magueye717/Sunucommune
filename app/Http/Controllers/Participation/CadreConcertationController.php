@@ -36,7 +36,7 @@ class CadreConcertationController extends Controller
     public function index()
     {
         $cadres=$this->cadreConcerationRepository->getData();
-        return view('gestion.participation.index', compact('cadres'));
+        return view('gestion.participation.cadre_concertation.index', compact('cadres'));
     }
 
     /**
@@ -47,7 +47,7 @@ class CadreConcertationController extends Controller
     public function create()
     {
         $collectivites=$this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
-        return view('gestion.participation.create', compact('collectivites'));
+        return view('gestion.participation.cadre_concertation.create', compact('collectivites'));
     }
 
     /**
@@ -91,7 +91,7 @@ class CadreConcertationController extends Controller
         $collectivites=$this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
         $infoLocalisation=$this->getLocalisationData($cadre);
 
-        return view('gestion.participation.edit', compact('collectivites', 'cadre', 'infoLocalisation'));
+        return view('gestion.participation.cadre_concertation.edit', compact('collectivites', 'cadre', 'infoLocalisation'));
     }
 
     /**
@@ -121,14 +121,10 @@ class CadreConcertationController extends Controller
      */
     public function destroy($id)
     {
-        $cadre = $this->cadreConcerationRepository->getById($id);
-
-        if ($this->cadreConcerationRepository->destroy($id)) {
-
-            $this->uploadUtil->deleteFile($cadre->fichier);
+        if ($this->cadreConcerationRepository->destroy($id))
             return redirect()->back()->withMessage("La suppression est effective");
-        } else
-            return redirect()->back()->withErrors("Ce partenaire ne peut être supprimé...");
+         else
+            return redirect()->back()->withErrors("Ce cadre ne peut être supprimée...");
     }
 
     public function fetch(Request $request)

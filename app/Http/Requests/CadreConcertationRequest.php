@@ -23,10 +23,31 @@ class CadreConcertationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'date_creation' => 'required|max:225',
-            'nom' => 'nullable|max:225',
-            'fichier' => 'nullable|max:225',
-        ];
+        switch ($this->method()) {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return [
+                        'nom' => 'email|required|max:255',
+                        'date_creation' => 'required|max:225',
+                        'fichier' => 'required|max:225',
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'nom' => 'email|required|max:255',
+                        'date_creation' => 'required|max:225',
+                        'fichier' => 'required|max:225',
+                    ];
+                }
+            default:
+                break;
+        }
     }
 }

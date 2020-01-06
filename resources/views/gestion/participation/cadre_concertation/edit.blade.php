@@ -17,7 +17,7 @@
 
                 {!! Form::model($cadre, ['method' =>'PATCH','route' => ['cadres.update',$cadre], 'role' => 'form',
                 'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
-                 @include('gestion.participation.partials._form')
+                 @include('gestion.participation.cadre_concertation.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>

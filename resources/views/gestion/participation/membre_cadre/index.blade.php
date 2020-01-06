@@ -16,7 +16,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 m-b-30 m-t-5">
-                        <a href="{{ route('cadres.create') }}">
+                        <a href="{{ route('membre_cadres.create') }}">
                             <span class="pull-right m-b-10">
                                 <button class="btn btn-primary btn-block m-b-10">
                                     <i class="ti-plus m-r-5"></i> Ajouter un cadre
@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                @include('gestion.participation.partials._liste')
+                @include('gestion.participation.membre_cadre.partials._liste')
             </div>
         </div>
     </div>
