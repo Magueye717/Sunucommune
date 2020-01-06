@@ -25,9 +25,9 @@
             </div>
         </div>
         @foreach(range(1,5) as $x)
-        <div class="col-md-6">
+        <div class="col-md-6  ">
 
-            <div class="form-group">
+            <div class="form-group {{$x==1?'':'hide'}}">
                 <label class="control-label">Options #{{$x}}</label>
                 {!! Form::text('sondage_options[]', null, ['id' => 'sondage_option-{{$x}}', 'class' => 'form-control', 'placeholder' => 'Option {{$x}}','multiple']) !!}
                 <div class="help-block with-errors"></div>
@@ -47,4 +47,5 @@
 </div>
 
 @push('myJS')
+
 @endpush
