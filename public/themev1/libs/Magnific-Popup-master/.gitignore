@@ -10,6 +10,7 @@ _site/
 bbin/
 sftp-config*
 _site
+.htaccess
 private-*
 __article/
 node_modules
