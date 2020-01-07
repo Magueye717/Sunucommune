@@ -43,7 +43,6 @@ class CadreConcertationRequest extends FormRequest
                     return [
                         'nom' => 'required|max:255',
                         'date_creation' => 'required|max:225',
-                        'fichier' => 'required|max:225',
                     ];
                 }
             default:

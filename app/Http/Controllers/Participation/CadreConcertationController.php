@@ -143,15 +143,15 @@ class CadreConcertationController extends Controller
     {
         $collectivite = $cadreConcertation->collectivite;
         $selectedCommune = $collectivite->parent;
-        $selectedDepartement = $selectedCommune->parent->parent;
+        $selectedDepartement = $selectedCommune->parent;
         $selectedRegion = $selectedDepartement->parent;
-
         return array(
             'departements' => $this->collectiviteRepository->getListeByParentCode($selectedRegion->code, 'departement'),
             'communes' => $this->collectiviteRepository->getListeByParentCode($selectedDepartement->code, 'commune'),
             'quartiervillages' => $this->collectiviteRepository->getListeByParentCode($selectedCommune->code, 'quartiervillage'),
             'collectivite_id' => $collectivite->id,
-            'commune' => $selectedCommune->id,
+            'commune' => $collectivite->id,
+           // 'commune' => $selectedCommune->id,
             'departement' => $selectedDepartement->id,
             'region' => $selectedRegion->id,
         );

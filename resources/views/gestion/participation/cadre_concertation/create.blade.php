@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion des membres du cabinet</h3>
+                <h3 class="box-title m-b-0">Gestion des cadres</h3>
                 <p class="text-muted m-b-20">Création</p>
                 {!! Form::open(['route' => 'cadres.store', 'class' => 'form-horizontal panel']) !!}
                 @include('gestion.participation.cadre_concertation.partials._form')
