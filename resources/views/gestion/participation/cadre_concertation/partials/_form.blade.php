@@ -13,13 +13,13 @@
                     <select name="departement" id="departement" class="form-control select2 dynamic"
                             data-dependent="commune" required>
                          <option value="">Choisir un département</option>
-                         @if(isset($infoLocalisation) && $infoLocalisation['departements'] != null)
+                         @isset($infoLocalisation)
                          @foreach($infoLocalisation['departements'] as $key=>$value)
-                             <option value="{{ $key }}" {{ $key == $infoLocalisation['departement'] ? 'selected' : ''  }}>
-                                 {{ $value }}
-                             </option>
+                         <option value="{{ $key }}" {{ $key == $infoLocalisation['departement'] ? 'selected' : ''  }}>
+                             {{ $value }}
+                         </option>
                          @endforeach
-                     @endif
+                         @endisset
                     </select>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <select name="commune" id="commune" class="form-control select2 dynamic"
                             data-dependent="quartiervillage" required>
                         <option value="">Choisir un commune</option>
-                        @if(isset($infoLocalisation) && $infoLocalisation['communes'] != null)
-                            @foreach($infoLocalisation['communes'] as $key=>$value)
-                                <option value="{{ $key }}" {{ $key == $infoLocalisation['commune'] ? 'selected' : ''  }}>
-                                    {{ $value }}
-                                </option>
-                            @endforeach
-                        @endif
+                        @isset($infoLocalisation)
+                        @foreach($infoLocalisation['communes'] as $key=>$value)
+                        <option value="{{ $key }}" {{ $key == $infoLocalisation['commune'] ? 'selected' : ''  }}>
+                            {{ $value }}
+                        </option>
+                        @endforeach
+                        @endisset
                     </select>
                 </div>
             </div>

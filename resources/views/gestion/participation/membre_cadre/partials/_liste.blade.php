@@ -24,7 +24,7 @@
                     <td>{{ $membreCadre->email }}</td>
                     <td>{{ $membreCadre->telephone }}</td>
                     <td>{{ $membreCadre->statut_cadre }}</td>
-                    <td>{{ $membreCadre->cadre_de_concertation_id }}</td>
+                    <td>{{ $membreCadre->cadreConcertation->nom }}</td>
                     <td class="text-nowrap text-center">
                         <a href="{{ route('membre_cadres.edit', $membreCadre) }}" class="text-inverse p-r-10" data-toggle="tooltip"
                            title="Modifier">
