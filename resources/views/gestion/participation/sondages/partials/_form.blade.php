@@ -20,20 +20,30 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Description</label>
-                {!! Form::text('description', null, ['id' => 'description', 'class' => 'form-control', 'placeholder' => 'Description']) !!}
+                {!! Form::text('description',null, ['id' => 'description', 'class' => 'form-control', 'placeholder' => 'Description']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
-        @foreach(range(1,5) as $x)
+
+{{--        <div class="col-md-6  ">--}}
+
+{{--            <div class="form-group">--}}
+{{--                <label class="control-label">zsjdjjss </label>--}}
+
+{{--                <imput type="text" name="libelled" value="{{old('libelle') ? : $sondage->libelle}}"></imput>--}}
+{{--                <div class="help-block with-errors"></div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
         <div class="col-md-6  ">
 
-            <div class="form-group {{$x==1?'':'hide'}}">
-                <label class="control-label">Options #{{$x}}</label>
-                {!! Form::text('sondage_options[]', null, ['id' => 'sondage_option-{{$x}}', 'class' => 'form-control', 'placeholder' => 'Option {{$x}}','multiple']) !!}
+            <div class="form-group">
+                <label class="control-label">Options </label>
+                {!! Form::text('libelle',null, ['id' => 'tokenfield', 'class' => 'form-control', 'placeholder' => 'Options','multiple','value'=>'{{old(libelle)? : $options->libelle}}']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
-        @endforeach
+
     </div>
     <!--/row-->
 

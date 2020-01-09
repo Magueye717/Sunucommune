@@ -16,13 +16,14 @@
 
                 {!! Form::model($sondage, ['method' =>'PATCH', 'route' => ['sondages.update',$sondage],
                 'role' => 'form', 'class' =>'sunucommune-form', 'data-toggle' => 'validator', 'files' => true]) !!}
-{{--                    @include('gestion.participation.sondage.partials._form')--}}
-                    @include('gestion.participation.sondages.partials._form')
+                {{--                    @include('gestion.participation.sondage.partials._form')--}}
+                @include('gestion.participation.sondages.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
 @endsection
+
 
 @section('stylesAdditionnels')
 @endsection
@@ -31,4 +32,14 @@
 @endsection
 
 @push('myJS')
+
+    <script>
+
+        var libelle = "@foreach($sondage->sondageOptions as $option){{$option->libelle}},@endforeach";
+        JSON.stringify(libelle);
+        libelle.substring(1, libelle.length - 1);
+        $('#tokenfield').tokenfield().tokenfield('setTokens', libelle);
+
+    </script>
+
 @endpush
