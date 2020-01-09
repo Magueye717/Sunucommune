@@ -36,8 +36,13 @@
     <script>
 
         var libelle = "@foreach($sondage->sondageOptions as $option){{$option->libelle}},@endforeach";
+        var options_id = "@foreach($sondage->sondageOptions as $option){{$option->id}},@endforeach";
         JSON.stringify(libelle);
         libelle.substring(1, libelle.length - 1);
+
+        JSON.stringify(options_id);
+        $('#options_id').val(options_id);
+
         $('#tokenfield').tokenfield().tokenfield('setTokens', libelle);
 
     </script>

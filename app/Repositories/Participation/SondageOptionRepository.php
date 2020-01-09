@@ -15,26 +15,44 @@ class SondageOptionRepository extends ResourceRepository
     }
 
 
-    public function saveMany($options,$sondage)
+    public function saveMany($options, $sondage)
     {
-        $options=explode(",",$options);
-        foreach ($options as $option)
-        {
-            $optionSondage['libelle']=$option;
-            $optionSondage['sondage_id']=$sondage;
+        $options = explode(",", $options);
+        foreach ($options as $option) {
+            $optionSondage['libelle'] = $option;
+            $optionSondage['sondage_id'] = $sondage;
 
             $this->store($optionSondage);
         }
 
     }
 
-    public function optionBySondage($sondage){
+    public function updateMany($libelle, $ids, $sondage)
+    {
+        $ids = rtrim($ids, ",");
+        $ids = explode(",", $ids);
+        $libelle = explode(",", $libelle);
 
-        return   $options = DB::table('sondage_options')
-            ->where('sondage_id', $sondage)
-            ->get();
+        $compteur = max(count($libelle), count($ids));
 
 
+        for ($i = 0; $i < $compteur; $i++) {
+
+            if (isset($ids[$i]) && isset($libelle[$i])) {
+                $optionSondage['libelle'] = $libelle[$i];
+                $optionSondage['sondage_id'] = $sondage;
+                $this->update($ids[$i], $optionSondage);
+            } elseif (isset($libelle[$i])) {
+                $optionSondage['libelle'] = $libelle[$i];
+                $optionSondage['sondage_id'] = $sondage;
+                $this->store($optionSondage);
+            } else
+                $this->destroy($ids[$i]);
+
+
+        }
     }
+
+
 
 }

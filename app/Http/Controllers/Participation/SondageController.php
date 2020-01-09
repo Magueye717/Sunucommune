@@ -72,7 +72,6 @@ class SondageController extends Controller
         $inputs['add_by']= Auth::user()->id;
 
         $sondage = $this->sondageRepository->store($inputs);
-      //  $option = $this->optionRepository->store($sondage);
        $option = $this->optionRepository->saveMany($request->libelle,$sondage->id);
 
 
@@ -103,19 +102,7 @@ class SondageController extends Controller
     public function edit($id)
     {
         $sondage = $this->sondageRepository->getById($id);
-      //  $libelle = $this->optionRepository->getData($sondage);
-     //   $options = $this->optionRepository->getData($sondage);
-//        $libelle="isiisi,ssisiis,skskssk";
-      //  dd($libelle);
-
-        $options =     $this->optionRepository->optionBySondage($id);
-        $libelle =     $this->optionRepository->optionBySondage($id);
-
-
-//        dd($options);
-//        dd($options);
-//        $libelle = $this->optionRepository->sondageOptions;
-        return view('gestion.participation.sondages.edit', compact('sondage','libelle','options'));
+        return view('gestion.participation.sondages.edit', compact('sondage'));
     }
 
     /**
@@ -126,9 +113,12 @@ class SondageController extends Controller
      */
     public function update(SondageRequest $request,$id)
     {
-        $sondage = $this->sondageRepository->getById($id);
+
         $inputs = $request->all();
+
+
         $this->sondageRepository->update($id, $inputs);
+        $this->optionRepository->updateMany($inputs['libelle'],$inputs['options_id'],$id);
         return \redirect()->route('sondages.index')->withMessage("Le rôle " . $request->input('titre') . " a été modifié.");
 
     }

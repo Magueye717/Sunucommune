@@ -49,6 +49,9 @@
 
     @if(isset($sondage))
         {!! Form::hidden('sondage_id', $sondage->id) !!}
+        {{ Form::hidden('options_id', null, array('id' => 'options_id')) }}
+{{--        {{ Form::hidden('options_id', null) ,['id' => 'options_id', 'class' => 'options_id']}}--}}
+
     @endif
 </div>
 <div class="form-actions">
