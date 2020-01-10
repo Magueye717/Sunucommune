@@ -45,6 +45,7 @@ Route::prefix('participation')->group(function () {
     Route::namespace('Participation')->group(function () {
         Route::resource('/cadres', 'CadreConcertationController');
         Route::resource('/panels', 'PanelController');
+        Route::resource('/commentaires', 'PanelCommentaireController');
         Route::resource('/sondages', 'SondageController');
     });
 });
