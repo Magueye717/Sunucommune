@@ -1,4 +1,4 @@
-$('.padess-delete').on('click', function(e){
+$('.sunucommune-delete').on('click', function(e){
     e.preventDefault();
     var self = $(this);
     swal({
@@ -20,7 +20,7 @@ $('.padess-delete').on('click', function(e){
     );
 });
 
-$('.padess-confirm').on('click', function(e){
+$('.sunucommune-confirm').on('click', function(e){
     e.preventDefault();
     var self = $(this);
     swal({
@@ -34,7 +34,7 @@ $('.padess-confirm').on('click', function(e){
         },
         function(isConfirm){
             if(isConfirm){
-                self.parents(".padess-form").submit();
+                self.parents(".sunucommune-form").submit();
             }
         }
     );

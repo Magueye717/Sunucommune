@@ -11,10 +11,11 @@ class CreateArticlesTable extends Migration {
 			$table->increments('id');
 			$table->string('slug')->nullable();
 			$table->string('titre');
-			$table->text('texte')->nullable();
+			$table->mediumText('texte')->nullable();
 			$table->string('photo')->nullable();
 			$table->integer('type_article_id')->unsigned()->nullable();
 			$table->string('piece_jointe')->nullable();
+			$table->boolean('est_publie')->default(0);
 			$table->integer('add_by')->unsigned()->nullable();
 			$table->timestamps();
 		});
