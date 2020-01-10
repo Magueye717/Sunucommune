@@ -4,10 +4,19 @@ namespace App\Http\Controllers\Participation;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\PanelRequest;
+use App\Repositories\Participation\PanelRepository;
 
 class PanelController extends Controller
 {
+    protected $panelRepository;
 
+
+    public function __construct(PanelRepository $panelRepository)
+    {
+        $this->panelRepository = $panelRepository;
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,8 @@ class PanelController extends Controller
      */
     public function index()
     {
-
+        $panels = $this->panelRepository->getData();
+        return view('gestion.panel.index', compact('panels'));
     }
 
     /**
@@ -25,7 +35,7 @@ class PanelController extends Controller
      */
     public function create()
     {
-
+        return view('gestion.panel.create');
     }
 
     /**
@@ -33,9 +43,12 @@ class PanelController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(PanelRequest $request)
     {
-
+        $inputs = $request->all();
+        $inputs['date_publication']=date("Y-m-d");
+        $this->panelRepository->store($inputs);
+        return \redirect()->route('panels.index')->withMessage("Le panel a été créé avec succé.");
     }
 
     /**
@@ -46,7 +59,9 @@ class PanelController extends Controller
      */
     public function show($id)
     {
-
+        // $panels = $this->panelRepository->getById($id)->withCommentaires();
+        $panels = $this->panelRepository->getById($id);
+        return view('gestion.panel.show', compact('panels'));
     }
 
     /**
@@ -57,7 +72,8 @@ class PanelController extends Controller
      */
     public function edit($id)
     {
-
+        $panels = $this->panelRepository->getById($id);
+        return view('gestion.panel.edit', compact('panels'));
     }
 
     /**
@@ -66,9 +82,14 @@ class PanelController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update(PanelRequest $request,$id)
     {
+        $panels = $this->panelRepository->getById($id);
+        $inputs = $request->all();
 
+        $this->panelRepository->update($id, $inputs);
+
+        return \redirect()->route('panels.index')->withMessage("Les informations du panel ont été mises à jour avec succés.");
     }
 
     /**
@@ -79,7 +100,10 @@ class PanelController extends Controller
      */
     public function destroy($id)
     {
-
+        if ($this->panelRepository->destroy($id))
+            return redirect()->back()->withMessage("La suppression est effective");
+        else
+            return redirect()->back()->withErrors("Ce membre ne peut être supprimé...");
     }
 
 }
