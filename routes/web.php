@@ -44,10 +44,8 @@ Route::prefix('participation')->group(function () {
         Route::resource('/panels', 'PanelController');
         Route::resource('/commentaires', 'PanelCommentaireController');
         Route::resource('/sondages', 'SondageController');
-
         Route::resource('/membre_cadres', 'MembreCadreController');
         Route::post('/fetch', 'CadreConcertationController@fetch')->name('collectivites.fetch');
-
     });
 });
 
@@ -59,5 +57,3 @@ Route::get('/reset-password', 'HomeController@showFormPwd')->name('reset.passwor
 Route::post('/reset-password', 'HomeController@changePassword')->name('reset.my.password');
 Route::get('/change-avatar', 'HomeController@showFormAvatar')->name('change.avatar');
 Route::post('/change-avatar', 'HomeController@changeAvatar')->name('change.my.avatar');
-
-
