@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Commune;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MediathequesController extends Controller
+class MediathequeController extends Controller
 {
 
     /**
