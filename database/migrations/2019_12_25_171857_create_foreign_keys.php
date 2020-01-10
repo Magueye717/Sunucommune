@@ -104,7 +104,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('sondage_options', function(Blueprint $table) {
-			$table->foreign('sondage_id')->references('id')->on('users')
+			$table->foreign('sondage_id')->references('id')->on('sondages')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});

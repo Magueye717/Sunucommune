@@ -20,6 +20,10 @@
 <link href="{{ asset('themev1/css/colors/default.css') }}" id="theme" rel="stylesheet">
 <!-- ===== My Custom CSS ===== -->
 <link href="{{ asset('themev1/css/custom.css') }}" rel="stylesheet">
+
+
+<link rel="stylesheet" href="{{ asset('themev1/libs/sliptree-bootstrap-tokenfield/dist/css/bootstrap-tokenfield.css') }}" >
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

@@ -9,6 +9,9 @@
 <!--Wave Effects -->
 <script src="{{ asset('themev1/js/waves.js') }}"></script>
 
+{{--Tokenfield for inputs with multiple values--}}
+<script src="{{ asset('themev1/libs/sliptree-bootstrap-tokenfield/dist/bootstrap-tokenfield.js') }}"></script>
+
 @yield('scriptsAdditionnels')
 
 <!-- Custom Theme JavaScript -->
