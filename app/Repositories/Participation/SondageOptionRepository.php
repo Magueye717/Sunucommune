@@ -43,7 +43,7 @@ class SondageOptionRepository extends ResourceRepository
 
                 $optionSondage['libelle'] = $libelle[$i];
                 $optionSondage['sondage_id'] = $sondage;
-                $this->update($ids[$i], $optionSondage);
+                $this->update($ids[$i], $optionSondage);    
             } elseif (isset($libelle[$i])) {
 
                 $optionSondage['libelle'] = $libelle[$i];

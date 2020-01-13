@@ -119,7 +119,7 @@ class SondageController extends Controller
 
         $this->sondageRepository->update($id, $inputs);
         $this->optionRepository->updateMany($inputs['libelle'],$inputs['options_id'],$id);
-        return \redirect()->route('sondages.index')->withMessage("Le rôle " . $request->input('titre') . " a été modifié.");
+        return \redirect()->route('sondages.index')->withMessage("Le Sondage " . $request->input('titre') . " a été modifié.");
 
     }
 
