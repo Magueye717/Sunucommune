@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\QueryException;
+
 abstract class ResourceRepository
 {
 

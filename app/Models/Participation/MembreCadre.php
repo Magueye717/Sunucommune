@@ -13,7 +13,7 @@ class MembreCadre extends Model
 
     public function cadreConcertation()
     {
-        return $this->belongsTo('App\Models\Participation\CadreConcertation');
+        return $this->belongsTo('App\Models\Participation\CadreConcertation', 'cadre_de_concertation_id');
     }
 
 }

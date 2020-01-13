@@ -14,7 +14,12 @@ class Collectivite extends Model
 
     public function parent()
     {
-        return $this->belongsTo('App\Models\DecoupageTerritorial\Collectivite', 'parent_code', 'code');
+        return $this->belongsTo('App\Models\Collectivite', 'parent_code', 'code');
+    }
+
+    public function cadreConcertations()
+    {
+        return $this->hasMany('App\Models\Participation\CadreConcertation');
     }
 
     public function scopeByCodeParent($query, $code)

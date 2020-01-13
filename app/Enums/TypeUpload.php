@@ -9,4 +9,6 @@ final class TypeUpload extends Enum
     const PhotoMaire = 'photo_maire';
     const PhotoMembre = 'photo_membre';
     const LogoPartenaire = 'logo_partenaire';
+    const ArticlePhoto = 'article_photo';
+    const ArticleFile = 'article_file';
 }

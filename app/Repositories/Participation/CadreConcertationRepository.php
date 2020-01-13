@@ -13,4 +13,9 @@ class CadreConcertationRepository extends ResourceRepository
         $this->model = $cadreConcertation;
     }
 
+    public function getListeCadreConcertation()
+    {
+        return $this->model->orderBy('nom')->pluck('nom', 'id');
+    }
+
 }

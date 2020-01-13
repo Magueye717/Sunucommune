@@ -1,4 +1,9 @@
 @php
+    $infoRoutes = array('infos.index', 'infos.create', 'infos.edit', 'infos.show');
+    $membreRoutes = array('membre-cabinets.index', 'membre-cabinets.create', 'membre-cabinets.edit', 'membre-cabinets.show');
+    $partenaireRoutes = array('partenaires.index', 'partenaires.create', 'partenaires.edit');
+    $articleRoutes = array('articles.index', 'articles.create', 'articles.edit', 'articles.show');
+    $communeRoutes = array_merge($infoRoutes, $membreRoutes, $partenaireRoutes, $articleRoutes);
 @endphp
 <!-- ===== Left-Sidebar ===== -->
 <aside class="sidebar" role="navigation">
@@ -21,16 +26,28 @@
                         <i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> Tableau de bord </span>
                     </a>
                 </li>
-                <li>
+                <li class="{{ areActiveRoutes($communeRoutes, 'active') }}">
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false">
                         <i class="fa fa-building-o fa-fw"></i> <span class="hide-menu">Gestion de la commune</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{ route('infos.index') }}">Infos de ma commune</a></li>
-                        <li><a href="#">Articles</a></li>
-                        <li><a href="#">Médiathéque</a></li>
-                        <li><a href="{{ route('membre-cabinets.index') }}">Membre du cabinet</a></li>
-                        <li> <a href="{{ route('partenaires.index') }}">Partenaires</a></li>
+                        <li>
+                            <a href="{{ route('infos.index') }}" class="{{ areActiveRoutes($infoRoutes, 'active') }}">
+                                Infos de ma commune</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('membre-cabinets.index') }}"
+                               class="{{ areActiveRoutes($membreRoutes, 'active') }}">Membre du cabinet</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('partenaires.index') }}"
+                               class="{{ areActiveRoutes($partenaireRoutes, 'active') }}">Partenaires</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('articles.index') }}"
+                               class="{{ areActiveRoutes($articleRoutes, 'active') }}">Articles</a>
+                        </li>
+                        <li><a href="{{ route('mediatheques.index') }}">Médiathéque</a></li>
                     </ul>
                 </li>
                 <li>

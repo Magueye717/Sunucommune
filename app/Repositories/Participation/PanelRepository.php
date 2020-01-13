@@ -12,5 +12,9 @@ class PanelRepository extends ResourceRepository
     {
         $this->model = $panel;
     }
+    public function getListe()
+    {
+        return $this->model->orderBy('question')->pluck('question', 'id');
+    }
 
 }

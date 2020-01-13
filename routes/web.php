@@ -36,13 +36,19 @@ Route::patch('/historique/{id}', 'Commune\CommuneInfoController@updateHistorique
 Route::resource('infos.ancien-maires', 'Commune\AncienMaireController')->except('index', 'show');
 Route::resource('/partenaires', 'Commune\PartenaireController');
 Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
+Route::resource('/articles', 'Commune\ArticleController');
+Route::put('/articles/{id}/publication', 'Commune\ArticleController@publication')->name('articles.publication');
+Route::resource('/mediatheques', 'Commune\MediathequeController');
 
 /* Espace participation */
 Route::prefix('participation')->group(function () {
     Route::namespace('Participation')->group(function () {
         Route::resource('/cadres', 'CadreConcertationController');
         Route::resource('/panels', 'PanelController');
+        Route::resource('/commentaires', 'PanelCommentaireController');
         Route::resource('/sondages', 'SondageController');
+        Route::resource('/membre_cadres', 'MembreCadreController');
+        Route::post('/fetch', 'CadreConcertationController@fetch')->name('collectivites.fetch');
     });
 });
 

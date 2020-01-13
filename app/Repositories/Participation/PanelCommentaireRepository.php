@@ -12,5 +12,9 @@ class PanelCommentaireRepository extends ResourceRepository
     {
         $this->model = $panelCommentaire;
     }
+    public function getListe()
+    {
+        return $this->model->orderBy('commentaire')->pluck('commentaire', 'id');
+    }
 
 }

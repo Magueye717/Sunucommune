@@ -21,4 +21,8 @@ class Article extends Model
         return $this->belongsTo('App\Models\User', 'add_by');
     }
 
+    public function estPublie(){
+        return $this->est_publie === 1 ? true : false;
+    }
+
 }

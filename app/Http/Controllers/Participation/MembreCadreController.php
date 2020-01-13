@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Participation;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MembreCadreRequest;
+use App\Repositories\Participation\CadreConcertationRepository;
+use App\Repositories\Participation\MembreCadreRepository;
 use Illuminate\Http\Request;
 
 class MembreCadreController extends Controller
@@ -13,9 +16,22 @@ class MembreCadreController extends Controller
      *
      * @return Response
      */
+
+    protected $cadreConcerationRepository;
+    protected $membreCadreRepository;
+
+    public function __construct(CadreConcertationRepository $cadreConcerationRepository,
+                                MembreCadreRepository $membreCadreRepository)
+    {
+        $this->cadreConcerationRepository = $cadreConcerationRepository;
+        $this->membreCadreRepository = $membreCadreRepository;
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-
+        $membreCadres=$this->membreCadreRepository->getData();
+        return view('gestion.participation.membre_cadre.index', compact('membreCadres'));
     }
 
     /**
@@ -25,7 +41,8 @@ class MembreCadreController extends Controller
      */
     public function create()
     {
-
+        $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
+        return view('gestion.participation.membre_cadre.create', compact('cadreConcertations'));
     }
 
     /**
@@ -33,9 +50,12 @@ class MembreCadreController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(MembreCadreRequest $request)
     {
+        $inputs = $request->all();
+        $membre = $this->membreCadreRepository->store($inputs);
 
+        return redirect('/participation/membre_cadres')->withMessage("La le menmbre cadre " . $membre->nom . " a été créé avec succés.");
     }
 
     /**
@@ -57,7 +77,9 @@ class MembreCadreController extends Controller
      */
     public function edit($id)
     {
-
+        $membreCadre = $this->membreCadreRepository->getById($id);
+        $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir une région...', '');
+        return view('gestion.participation.membre_cadre.edit', compact('cadreConcertations', 'membreCadre'));
     }
 
     /**
@@ -66,9 +88,12 @@ class MembreCadreController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update(MembreCadreRequest $request, $id)
     {
+        $inputs = $request->all();
+        $this->membreCadreRepository->update($id, $inputs);
 
+        return redirect('/participation/membre_cadres')->withMessage("Membre Cadre " . $inputs['nom'] . " modifié avec succés.");
     }
 
     /**
@@ -79,7 +104,10 @@ class MembreCadreController extends Controller
      */
     public function destroy($id)
     {
-
+        if ($this->membreCadreRepository->destroy($id))
+            return redirect()->back()->withMessage("La suppression est effective");
+         else
+            return redirect()->back()->withErrors("Ce cadre ne peut être supprimée...");
     }
 
 }
