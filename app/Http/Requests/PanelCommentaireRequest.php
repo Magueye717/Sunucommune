@@ -26,7 +26,7 @@ class PanelCommentaireRequest extends FormRequest
         return [
             'commentaire' => 'required|max:255',
             'nom' => 'required|max:225',
-            'email' => 'email|required|max:255|unique:users,email'
+            'email' => 'email|required|max:255,email'
 
 		];
     }
