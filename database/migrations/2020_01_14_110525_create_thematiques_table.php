@@ -19,6 +19,7 @@ class CreateThematiquesTable extends Migration
             $table->string('description');
 			$table->date('date_publication')->nullable();
             $table->timestamps();
+
         });
     }
 
