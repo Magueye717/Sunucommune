@@ -9,7 +9,11 @@ class CreatePanelTable extends Migration {
 	{
 		Schema::create('panel', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('question');
+            $table->string('question');
+            $table->string('description');
+            $table->string('photo');
+            $table->string('fichier');
+            $table->integer('thematique_id')->unsigned();
 			$table->date('date_publication')->nullable();
 			$table->boolean('statut')->default(1);
 			$table->timestamps();

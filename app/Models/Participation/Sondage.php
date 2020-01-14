@@ -9,7 +9,7 @@ class Sondage extends CustomModel
 
     protected $table = 'sondages';
     public $timestamps = true;
-    protected $fillable = array('titre', 'slug', 'description', 'date_publication', 'statut', 'add_by');
+    protected $fillable = array('titre', 'slug', 'description', 'date_publication', 'statut', 'add_by', 'thematique_id');
 
     public function sondageResultats()
     {
@@ -25,5 +25,11 @@ class Sondage extends CustomModel
     {
         return $this->belongsTo('App\Models\User', 'add_by');
     }
+
+    public function thematiques()
+    {
+        return $this->hasMany('App\Models\Participation\Thematique', 'thematique_id');
+    }
+
 
 }
