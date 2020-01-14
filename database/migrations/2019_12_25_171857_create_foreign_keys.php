@@ -136,8 +136,39 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
         });
 
-        Schema::table('panels', function(Blueprint $table) {
+        Schema::table('panel', function(Blueprint $table) {
 			$table->foreign('thematique_id')->references('id')->on('thematiques')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('panel_commentaires', function(Blueprint $table) {
+			$table->foreign('parent_id')->references('id')->on('panel_commentaires')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+
+        Schema::table('documents', function(Blueprint $table) {
+			$table->foreign('add_by')->references('id')->on('users')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->foreign('add_by')->references('id')->on('users')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->foreign('thematique_id')->references('id')->on('thematiques')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->foreign('add_by')->references('id')->on('users')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->foreign('petition_id')->references('id')->on('petitions')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -224,6 +255,24 @@ class CreateForeignKeys extends Migration {
 
         Schema::table('panel', function(Blueprint $table) {
 			$table->dropForeign('panel_thematique_id_foreign');
+        });
+        Schema::table('panel_commentaires', function(Blueprint $table) {
+			$table->dropForeign('panel_commentaires_parent_id_foreign');
+        });
+        Schema::table('documents', function(Blueprint $table) {
+			$table->dropForeign('documents_add_by_foreign');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->dropForeign('petitions_add_by_foreign');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->dropForeign('petitions_thematique_id_foreign');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->dropForeign('resultat_petitions_add_by_foreign');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->dropForeign('resultat_petitions_petition_id_foreign');
 		});
 	}
 }

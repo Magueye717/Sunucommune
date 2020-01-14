@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThematiquesTable extends Migration
+class CreatePetitionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateThematiquesTable extends Migration
      */
     public function up()
     {
-        Schema::create('thematiques', function (Blueprint $table) {
+        Schema::create('petitions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('thematique_id')->unsigned();
+            $table->integer('add_by')->unsigned();
             $table->string('libelle');
-            $table->string('description');
-			$table->date('date_publication')->nullable();
+            $table->string('photo');
+            $table->string('fichier');
+            $table->date('date_expiration');
+            $table->string('objectif');
             $table->timestamps();
-
         });
     }
 
@@ -30,6 +33,6 @@ class CreateThematiquesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('thematiques');
+        Schema::dropIfExists('petitions');
     }
 }

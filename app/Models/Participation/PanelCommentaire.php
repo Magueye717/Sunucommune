@@ -16,4 +16,9 @@ class PanelCommentaire extends CustomModel
         return $this->belongsTo('App\Models\Participation\Panel');
     }
 
+    public function panelCommentaires()
+    {
+        return $this->hasMany('App\Models\Participation\Panel', 'parent_id');
+    }
+
 }
