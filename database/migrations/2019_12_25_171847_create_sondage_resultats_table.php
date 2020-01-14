@@ -11,7 +11,8 @@ class CreateSondageResultatsTable extends Migration {
 			$table->increments('id');
 			$table->integer('sondage_id')->unsigned();
 			$table->bigInteger('sondage_option_id')->unsigned();
-			$table->string('adresse_ip')->nullable();
+            $table->string('adresse_ip')->nullable();
+            $table->string('commentaire');
 			$table->timestamps();
 		});
 	}
