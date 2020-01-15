@@ -8,6 +8,13 @@ class CreateForeignKeys extends Migration {
 
 	public function up()
 	{
+
+        Schema::table('commune_infos', function(Blueprint $table) {
+			$table->foreign('collectivite_id')->references('id')->on('collectivites')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+
 		Schema::table('articles', function(Blueprint $table) {
 			$table->foreign('type_article_id')->references('id')->on('type_articles')
 						->onDelete('restrict')
@@ -101,7 +108,12 @@ class CreateForeignKeys extends Migration {
 		Schema::table('sondages', function(Blueprint $table) {
 			$table->foreign('add_by')->references('id')->on('users')
 						->onDelete('restrict')
-						->onUpdate('restrict');
+                        ->onUpdate('restrict');
+        });
+        Schema::table('sondages', function(Blueprint $table) {
+            $table->foreign('thematique_id')->references('id')->on('thematiques')
+                        ->onDelete('restrict')
+                        ->onUpdate('restrict');
 		});
 		Schema::table('sondage_options', function(Blueprint $table) {
 			$table->foreign('sondage_id')->references('id')->on('sondages')
@@ -122,11 +134,52 @@ class CreateForeignKeys extends Migration {
 			$table->foreign('panel_id')->references('id')->on('panel')
 						->onDelete('restrict')
 						->onUpdate('restrict');
+        });
+
+        Schema::table('panel', function(Blueprint $table) {
+			$table->foreign('thematique_id')->references('id')->on('thematiques')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('panel_commentaires', function(Blueprint $table) {
+			$table->foreign('parent_id')->references('id')->on('panel_commentaires')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+
+        Schema::table('documents', function(Blueprint $table) {
+			$table->foreign('add_by')->references('id')->on('users')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->foreign('add_by')->references('id')->on('users')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->foreign('thematique_id')->references('id')->on('thematiques')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->foreign('add_by')->references('id')->on('users')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->foreign('petition_id')->references('id')->on('petitions')
+						->onDelete('restrict')
+						->onUpdate('restrict');
 		});
 	}
 
 	public function down()
 	{
+
+        Schema::table('commune_infos', function(Blueprint $table) {
+			$table->dropForeign('commune_infos_collectivite_id_foreign');
+		});
 		Schema::table('articles', function(Blueprint $table) {
 			$table->dropForeign('articles_type_article_id_foreign');
 		});
@@ -182,7 +235,10 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('membre_cadres_cadre_de_concertation_id_foreign');
 		});
 		Schema::table('sondages', function(Blueprint $table) {
-			$table->dropForeign('sondages_add_by_foreign');
+            $table->dropForeign('sondages_thematique_id_foreign');
+        });
+        Schema::table('sondages', function(Blueprint $table) {
+            $table->dropForeign('sondages_add_by_foreign');
 		});
 		Schema::table('sondage_options', function(Blueprint $table) {
 			$table->dropForeign('sondage_options_sondage_id_foreign');
@@ -195,6 +251,28 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('panel_commentaires', function(Blueprint $table) {
 			$table->dropForeign('panel_commentaires_panel_id_foreign');
+        });
+
+        Schema::table('panel', function(Blueprint $table) {
+			$table->dropForeign('panel_thematique_id_foreign');
+        });
+        Schema::table('panel_commentaires', function(Blueprint $table) {
+			$table->dropForeign('panel_commentaires_parent_id_foreign');
+        });
+        Schema::table('documents', function(Blueprint $table) {
+			$table->dropForeign('documents_add_by_foreign');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->dropForeign('petitions_add_by_foreign');
+        });
+        Schema::table('petitions', function(Blueprint $table) {
+			$table->dropForeign('petitions_thematique_id_foreign');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->dropForeign('resultat_petitions_add_by_foreign');
+        });
+        Schema::table('resultat_petitions', function(Blueprint $table) {
+			$table->dropForeign('resultat_petitions_petition_id_foreign');
 		});
 	}
 }
