@@ -13,11 +13,10 @@ class CreateThematiquesTable extends Migration
      */
     public function up()
     {
-        Schema::enableForeignKeyConstraints();
         Schema::create('thematiques', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
 
         });

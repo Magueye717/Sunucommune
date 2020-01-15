@@ -15,7 +15,7 @@ class SondageResultatController extends Controller
      */
     public function index()
     {
-
+          
     }
 
     /**
