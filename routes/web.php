@@ -49,6 +49,7 @@ Route::prefix('participation')->group(function () {
         Route::resource('/sondages', 'SondageController');
         Route::resource('/membre_cadres', 'MembreCadreController');
         Route::post('/fetch', 'CadreConcertationController@fetch')->name('collectivites.fetch');
+        Route::resource('/thematiques', 'ThematiqueController');
     });
 });
 

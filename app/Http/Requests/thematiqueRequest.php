@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PanelCommentaireRequest extends FormRequest
+class ThematiqueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class PanelCommentaireRequest extends FormRequest
     public function rules()
     {
         return [
-            'commentaire' => 'required|max:255',
-            'nom' => 'required|max:225',
-            'email' => 'email|required|max:255,email'
-
-		];
+            'libelle' => 'required|max:225',
+            'description' => 'nullable|max:16777215',
+        ];
     }
 }

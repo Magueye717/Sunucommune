@@ -10,14 +10,14 @@ use App\Repositories\Participation\PanelRepository;
 
 class PanelCommentaireController extends Controller
 {
-    protected $PanelCommentaireRepository;
-    protected $PanelRepository;
+    protected $panelCommentaireRepository;
+    protected $panelRepository;
 
-    public function __construct(PanelCommentaireRepository $PanelCommentaireRepository,
-                                PanelRepository $PanelRepository)
+    public function __construct(PanelCommentaireRepository $panelCommentaireRepository,
+                                PanelRepository $panelRepository)
     {
-        $this->PanelCommentaireRepository = $PanelCommentaireRepository;
-        $this->PanelRepository = $PanelRepository;
+        $this->panelCommentaireRepository = $panelCommentaireRepository;
+        $this->panelRepository = $panelRepository;
         $this->middleware('auth');
     }
     /**
@@ -37,8 +37,8 @@ class PanelCommentaireController extends Controller
      */
     public function create()
     {
-        $panels = $this->PanelRepository->getListe();
-        // $panels = $this->PanelRepository->getListe();
+        $panels = $this->panelRepository->getListe();
+        // $panels = $this->panelRepository->getListe();
         return view('gestion.panel.panel_commentaires.create',compact('panels'));
     }
 
@@ -51,7 +51,7 @@ class PanelCommentaireController extends Controller
     {
         $inputs = $request->all();
         // dd($inputs);
-        $this->PanelCommentaireRepository->store($inputs);
+        $this->panelCommentaireRepository->store($inputs);
         return \redirect()->route('panels.index')->withMessage("Le commentaire a été créé avec succé.");
     }
 
@@ -74,8 +74,8 @@ class PanelCommentaireController extends Controller
      */
     public function edit($id)
     {
-        $panels = $this->PanelRepository->getListe();
-        $commentaires = $this->PanelCommentaireRepository->getById($id);
+        $panels = $this->panelRepository->getListe();
+        $commentaires = $this->panelCommentaireRepository->getById($id);
         return view('gestion.panel.panel_commentaires.edit', compact('commentaires','panels'));
     }
 
@@ -90,7 +90,7 @@ class PanelCommentaireController extends Controller
         $inputs = $request->all();
         // dd($inputs);
 
-        $this->PanelCommentaireRepository->update($id, $inputs);
+        $this->panelCommentaireRepository->update($id, $inputs);
 
         return \redirect()->route('panels.index')->withMessage("Les informations du panel ont été mises à jour avec succés.");
 
@@ -104,7 +104,7 @@ class PanelCommentaireController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->PanelCommentaireRepository->destroy($id))
+        if ($this->panelCommentaireRepository->destroy($id))
             return redirect()->back()->withMessage("La suppression est effective");
         else
             return redirect()->back()->withErrors("Ce commentaire ne peut être supprimé...");
