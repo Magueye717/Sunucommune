@@ -75,12 +75,12 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('historique_contrats', function(Blueprint $table) {
+		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->foreign('agent_id')->references('id')->on('agents')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('historique_contrats', function(Blueprint $table) {
+		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->foreign('contrat_id')->references('id')->on('contrats')
 						->onDelete('restrict')
 						->onUpdate('restrict');
@@ -216,10 +216,10 @@ class CreateForeignKeys extends Migration {
 		Schema::table('ressources', function(Blueprint $table) {
 			$table->dropForeign('ressources_add_by_foreign');
 		});
-		Schema::table('historique_contrats', function(Blueprint $table) {
+		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->dropForeign('historique_contrats_agent_id_foreign');
 		});
-		Schema::table('historique_contrats', function(Blueprint $table) {
+		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->dropForeign('historique_contrats_contrat_id_foreign');
 		});
 		Schema::table('conges', function(Blueprint $table) {

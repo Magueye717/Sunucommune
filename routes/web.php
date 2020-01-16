@@ -53,6 +53,16 @@ Route::prefix('participation')->group(function () {
     });
 });
 
+
+Route::prefix('RessourcesHumaines')->group(function (){
+    Route::namespace('Rh')->group(function () {
+        Route::resource('/agents', 'AgentController');
+        Route::resource('/contrats', 'ContratController');
+        Route::resource('/historique-contrats', 'HistoriqueContratController');
+        Route::resource('/conges', 'CongeController');
+    });
+});
+
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');
 Route::get('/edit-profil', 'HomeController@showFormProfile')->name('edit.profile');

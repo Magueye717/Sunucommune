@@ -7,7 +7,7 @@ class CreateHistoriqueContratsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('historique_contrats', function(Blueprint $table) {
+		Schema::create('historique_contrat', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('agent_id')->unsigned();
 			$table->integer('contrat_id')->unsigned();
@@ -19,6 +19,6 @@ class CreateHistoriqueContratsTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('historique_contrats');
+		Schema::drop('historique_contrat');
 	}
 }
