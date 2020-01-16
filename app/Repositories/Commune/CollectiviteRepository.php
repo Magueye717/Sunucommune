@@ -28,5 +28,9 @@ class CollectiviteRepository extends ResourceRepository
     {
         return $this->getById($id)->code;
     }
+    public function getCollectiviteId()
+    {
+        return $this->model->orderBy('nom')->pluck('nom', 'id');
+    }
 
 }

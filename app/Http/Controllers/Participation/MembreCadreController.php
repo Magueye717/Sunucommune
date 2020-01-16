@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Participation;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MembreCadreRequest;
+use App\Models\Collectivite;
+use App\Repositories\Commune\CollectiviteRepository;
+use App\Repositories\Commune\CommuneInfoRepository;
 use App\Repositories\Participation\CadreConcertationRepository;
 use App\Repositories\Participation\MembreCadreRepository;
 use Illuminate\Http\Request;
@@ -19,12 +22,18 @@ class MembreCadreController extends Controller
 
     protected $cadreConcerationRepository;
     protected $membreCadreRepository;
+    protected $communeInfoRepository;
+    protected $collectiviteRepository;
 
     public function __construct(CadreConcertationRepository $cadreConcerationRepository,
-                                MembreCadreRepository $membreCadreRepository)
+                                MembreCadreRepository $membreCadreRepository,
+                                CommuneInfoRepository $communeInfoRepository,
+                                CollectiviteRepository $collectiviteRepository)
     {
         $this->cadreConcerationRepository = $cadreConcerationRepository;
         $this->membreCadreRepository = $membreCadreRepository;
+        $this->communeInfoRepository = $communeInfoRepository;
+        $this->collectiviteRepository = $collectiviteRepository;
         $this->middleware('auth');
     }
 
@@ -41,8 +50,13 @@ class MembreCadreController extends Controller
      */
     public function create()
     {
-        $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
-        return view('gestion.participation.membre_cadre.create', compact('cadreConcertations'));
+         $communeInfo=$this->communeInfoRepository->getCollectiviteId();
+          $quartierVillage = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE');
+       /*  dd($quartierVillage); */
+          $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
+        /* $communeInfo=$this->communeInfoRepository->getCommune(); */
+        /* $quartierVillage=Collectivite::where('parent_code', $communeInfo)->pluck('nom', 'id'); */
+        return view('gestion.participation.membre_cadre.create', compact('cadreConcertations', 'quartierVillage'));
     }
 
     /**

@@ -28,7 +28,7 @@
                         <a href="{{ route('membre_cadres.index') }}">
                             <span class="pull-right m-b-10">
                                 <button class="btn btn-primary btn-block m-b-10">
-                                    <i class="ti-plus m-r-5"></i> Liste des cadres
+                                    <i class="ti-plus m-r-5"></i> Liste des membres cadres
                                 </button>
                             </span>
                         </a>
