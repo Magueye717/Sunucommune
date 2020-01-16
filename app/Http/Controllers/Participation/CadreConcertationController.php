@@ -51,7 +51,7 @@ class CadreConcertationController extends Controller
     public function create()
     {
         $communeInfo=$this->communeInfoRepository->getCollectiviteId();
-          $collectivites = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE');
+          $collectivites = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE')->prepend('Choisir un quartier ou village...');
         return view('gestion.participation.cadre_concertation.create', compact('collectivites'));
     }
 
@@ -63,7 +63,7 @@ class CadreConcertationController extends Controller
     public function store(CadreConcertationRequest $request)
     {
         $inputs = $request->all();
-        $inputs['collectivite_id'] = $this->collectiviteRepository->getById($inputs['commune'])->id;
+        /* $inputs['collectivite_id'] = $this->collectiviteRepository->getById($inputs['commune'])->id; */
         $inputs['add_by'] = Auth::user()->id;
         if ($request->hasFile('fichier')) {
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'));
@@ -93,10 +93,11 @@ class CadreConcertationController extends Controller
     public function edit($id)
     {
         $cadre = $this->cadreConcerationRepository->getById($id);
-        $collectivites=$this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
-        $infoLocalisation=$this->getLocalisationData($cadre);
+        $communeInfo=$this->communeInfoRepository->getCollectiviteId();
+        $collectivites = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE')->prepend('Choisir un quartier ou village...');
+        ($communeDuCadre=$cadre->collectivite);
 
-        return view('gestion.participation.cadre_concertation.edit', compact('collectivites', 'cadre', 'infoLocalisation'));
+        return view('gestion.participation.cadre_concertation.edit', compact('collectivites', 'cadre', 'communeDuCadre'));
     }
 
     /**
@@ -108,7 +109,6 @@ class CadreConcertationController extends Controller
     public function update(CadreConcertationRequest $request, $id)
     {
         $inputs = $request->all();
-        $inputs['collectivite_id'] = $this->collectiviteRepository->getById($inputs['commune'])->id;
         $inputs['add_by'] = Auth::user()->id;
         if ($request->hasFile('fichier')) {
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'));

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Nom du cadre <span class="text-danger">*</span></label>
+                <label class="control-label">cadre de concertation<span class="text-danger">*</span></label>
                 {!! Form::text('nom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
                 <div class="help-block with-errors"></div>
             </div>
@@ -10,8 +10,8 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Quartier  <span class="text-danger">*</span></label>
-                {!! Form::select('commune', $collectivites , null, ['id' => 'collectivite', 'class' => 'form-control select2 dynamic', 'required' => '']) !!}
+                <label class="control-label">Quartier / Village  <span class="text-danger">*</span></label>
+                {!! Form::select('collectivite_id', $collectivites ,null, ['id' => 'collectivite', 'class' => 'form-control select2 dynamic', 'required' => '']) !!}
             </div>
         </div>
     </div>
@@ -27,11 +27,11 @@
 
         <div class="col-md-6">
             <div class="form-group mb-0">
-                <label class="control-label">Photo du membre</label>
+                <label class="control-label">Photo</label>
                 {!! Form::file('fichier', ['id' => 'fichier', 'class' => 'form-control', 'placeholder'=>'Choisir la photo']) !!}
                 <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
-                @if(isset($membre) && !empty($membre->photo))
-                    <img class="avatar-min" src="{{ asset('storage/commune/membres/'. $membre->photo) }}" alt="avatar"
+                @if(isset($cadre) && !empty($cadre->fichier))
+                    <img class="avatar-min" src="{{ asset('storage/commune/membres/'. $cadre->fichier) }}" alt="avatar"
                         title="Photo du membre"/>
                 @endif
             </div>
