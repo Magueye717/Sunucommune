@@ -4,15 +4,15 @@
 @section('pageTitle', 'Gestion des membres du cabinet')
 
 @section('filAriane')
-    <li class="active">cadres de concertation</li>
+    <li class="active">Agents</li>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion participation</h3>
-                <p class="text-muted m-b-10">Liste des cadres de la participation</p>
+                <h3 class="box-title m-b-0">Gestion agent</h3>
+                <p class="text-muted m-b-10">Liste des agents</p>
 
                 <div class="row">
                     <div class="col-sm-12 m-b-30 m-t-5">

@@ -40,7 +40,7 @@ class AgentController extends Controller
    */
   public function create()
   {
-
+      return view('rh.agent.create');
   }
 
   /**

@@ -1,12 +1,12 @@
 <div class="mx-auto">
     <div class="row">
         <div class="col-md-6">
-            <div >
-                <div class="form-group">
-                    <label class="control-label">Cadre de concertation <span class="text-danger">*</span></label>
-                    {!! Form::select('cadre_de_concertation_id', $cadreConcertations, isset($infoLocalisation) ? $infoLocalisation['region'] : null, ['id' => 'region', 'class' => 'form-control select2 dynamic', 'data-dependent' => 'departement']) !!}
-                </div>
-            </div>
+{{--            <div >--}}
+{{--                <div class="form-group">--}}
+{{--                    <label class="control-label">Cadre de concertation <span class="text-danger">*</span></label>--}}
+{{--                    {!! Form::select('cadre_de_concertation_id', $cadreConcertations, isset($infoLocalisation) ? $infoLocalisation['region'] : null, ['id' => 'region', 'class' => 'form-control select2 dynamic', 'data-dependent' => 'departement']) !!}--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="form-group">
                 <label class="control-label">Prénom: <span class="text-danger">*</span></label>

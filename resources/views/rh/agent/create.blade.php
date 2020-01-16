@@ -15,7 +15,7 @@
                 <h3 class="box-title m-b-0">Gestion des membres cadres</h3>
                 <p class="text-muted m-b-20">Création</p>
                 {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel']) !!}
-                @include('gestion.participation.membre_cadre.partials._form')
+                @include('rh.agent.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>
