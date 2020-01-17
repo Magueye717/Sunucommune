@@ -109,6 +109,12 @@ class PanelCommentaireController extends Controller
         else
             return redirect()->back()->withErrors("Ce commentaire ne peut être supprimé...");
     }
+    public function valider($id)
+    {
+        $commentaire = $this->panelCommentaireRepository->getById($id);
+        $this->panelRepository->valider($commentaire, !$commentaire->estActive());
+        return redirect()->back()->withMessage("Le changement de status a été bien prise en compte");
+    }
 
 }
 

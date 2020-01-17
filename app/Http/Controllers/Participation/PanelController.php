@@ -125,7 +125,7 @@ class PanelController extends Controller
         if (!empty($oldPJFilename))
             $this->uploadUtil->deleteFile($oldPJFilename, TypeUpload::PanelFile);
 
-        return \redirect()->route('panels.index')->withMessage("Les informations du panel ont été mises à jour avec succés.");
+          return \redirect()->route('panels.index')->withMessage("Les informations du panel ont été mises à jour avec succés.");
     }
 
     /**
@@ -141,7 +141,11 @@ class PanelController extends Controller
         else
             return redirect()->back()->withErrors("Ce membre ne peut être supprimé...");
     }
-
+    public function valider($id)
+    {
+        $panel = $this->panelRepository->getById($id);
+        $this->panelRepository->valider($panel, !$panel->estActive());
+        return redirect()->back()->withMessage("Le changement de status a été bien prise en compte");
+    }
 }
-
 ?>

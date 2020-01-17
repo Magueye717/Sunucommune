@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call('TypeArticleTableSeeder');
         $this->command->info('TypeArticle table seeded!');
 
-        /*$this->call('CollectiviteTableSeeder');
-        $this->command->info('Collectivite table seeded!');*/
+        $this->call('CollectiviteTableSeeder');
+        $this->command->info('Collectivite table seeded!');
     }
 }

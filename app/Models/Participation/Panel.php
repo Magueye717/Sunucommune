@@ -16,8 +16,12 @@ class Panel extends CustomModel
         return $this->hasMany('App\Models\Participation\PanelCommentaire');
     }
 
-    public function thematiques()
+    public function thematique()
     {
-        return $this->hasMany('App\Models\Participation\Thematique','thematique_id');
+        return $this->belongsTo('App\Models\Participation\Thematique','thematique_id');
+    }
+    public function estActive()
+    {
+        return $this->statut === 1 ? true : false;
     }
 }
