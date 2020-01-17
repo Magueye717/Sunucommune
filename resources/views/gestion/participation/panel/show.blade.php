@@ -30,7 +30,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="activite" role="tabpanel"
                                  aria-labelledby="activite-tab">
-                                @include('gestion.panel.partials._detail')
+                                @include('gestion.participation.panel.partials._detail')
                             </div>
                         </div>
                     </div>

@@ -3,12 +3,12 @@
         <div class="col-md-10">
             <div class="form-group">
                 <label class="control-label">libelle <span class="text-danger">*</span></label>
-                {!! Form::text('libelle', null, ['id' => 'libelle', 'class' => 'form-control', 'required' => '', 'placeholder' => 'libelle ??']) !!}
+                {!! Form::text('libelle', null, ['id' => 'libelle', 'class' => 'form-control', 'required' => '', 'placeholder' => 'libelle']) !!}
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label class="control-label">libelle <span class="text-danger">*</span></label>
-                {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control', 'placeholder' => 'description ??']) !!}
+                <label class="control-label">Description</label>
+                {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control', 'placeholder' => 'Ajouter une description pour le theme']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>

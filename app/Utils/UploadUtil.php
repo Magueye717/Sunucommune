@@ -12,9 +12,11 @@ class UploadUtil
     const AVATAR_USER_PATH = '/images/users/';
     const PHOTO_MAIRE_PATH = '/commune/photos/';
     const PHOTO_MEMBRE_PATH = '/commune/membres/';
+    const PHOTO_PANEL_PATH = '/participation/panels/';
     const LOGO_PARTENAIRE_PATH = '/commune/partenaires/';
     const ARTICLE_PHOTO_PATH = '/commune/articles/photos/';
     const ARTICLE_FILE_PATH = '/commune/articles/files/';
+    const PANEL_FILE_PATH = '/participation/panels/files/';
     const DEFAULT_PATH = '/default';
     protected $repertoire;
 
@@ -67,8 +69,14 @@ class UploadUtil
             case TypeUpload::ArticlePhoto:
                 return $this->repertoire = self::ARTICLE_PHOTO_PATH;
                 break;
+            case TypeUpload::PhotoPanel :
+                return $this->repertoire = self::PHOTO_PANEL_PATH;
+                break;
             case TypeUpload::ArticleFile:
                 return $this->repertoire = self::ARTICLE_FILE_PATH;
+                break;
+            case TypeUpload::PanelFile:
+                return $this->repertoire = self::PANEL_FILE_PATH;
                 break;
             default:
                 return self::DEFAULT_PATH;

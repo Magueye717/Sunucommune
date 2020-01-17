@@ -6,6 +6,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Fonction</th>
+            <th>Hierarchie</th>
             <th>Adresse</th>
             <th>Telephone</th>
             <th class="text-nowrap text-center">Actions</th>
@@ -22,6 +23,7 @@
                     <td>{{ $membreCabinet->prenom }}</td>
                     <td>{{ $membreCabinet->nom }}</td>
                     <td>{{ $membreCabinet->fonction }}</td>
+                    <td>{{ $membreCabinet->hierarchie }}</td>
                     <td>{{ $membreCabinet->adresse }}</td>
                     <td>{{ $membreCabinet->telephone }}</td>
                     <td class="text-nowrap text-center">
