@@ -145,7 +145,7 @@ class PanelController extends Controller
     {
         $panel = $this->panelRepository->getById($id);
         $this->panelRepository->valider($panel, !$panel->estActive());
-        return redirect()->back()->withMessage("Le changement de status a été bien prise en compte");
+        return redirect()->back()->withMessage($panel->statut?"Le panel a été activé.":"Le panel a été désactivé.");
     }
 }
 ?>
