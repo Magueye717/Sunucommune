@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
 
         /*$this->call('CollectiviteTableSeeder');
         $this->command->info('Collectivite table seeded!');*/
+        $this->call(CollectiviteTableSeeder::class);
     }
 }
