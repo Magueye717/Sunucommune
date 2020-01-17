@@ -25,4 +25,13 @@ class CommuneInfoRepository extends ResourceRepository
         return true;
     }
 
+    public function getCommune()
+    {
+        return $this->model->orderBy('nom')->pluck('nom', 'id');
+    }
+    public function getCollectiviteId()
+    {
+        return $this->model->pluck('collectivite_id')->first();
+
+    }
 }

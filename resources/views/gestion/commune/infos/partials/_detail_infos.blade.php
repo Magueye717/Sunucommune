@@ -7,6 +7,12 @@
         <ul class="list-group list-group-striped list-unstyled">
             <li>
                 <p class="m-b-20">
+                    <strong class="tx-inverse tx-medium">Commune: </strong>
+                    <span class="text-muted">{{ $communeInfo->collectivite->nom }}</span>
+                </p>
+            </li>
+            <li>
+                <p class="m-b-20">
                     <strong class="tx-inverse tx-medium">Prénom & Nom du Maire : </strong>
                     <span class="text-muted">{{ $communeInfo->maire }}</span>
                 </p>
