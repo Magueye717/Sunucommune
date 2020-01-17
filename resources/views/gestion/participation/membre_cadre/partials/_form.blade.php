@@ -1,54 +1,74 @@
-<div class="mx-auto">
+<div class="" align="center">
     <div class="row">
         <div class="col-md-6">
-            <div >
+
                 <div class="form-group">
                     <label class="control-label">Cadre de concertation <span class="text-danger">*</span></label>
                     {!! Form::select('cadre_de_concertation_id', $cadreConcertations, isset($infoLocalisation) ? $infoLocalisation['region'] : null, ['id' => 'region', 'class' => 'form-control select2 dynamic', 'data-dependent' => 'departement']) !!}
                 </div>
             </div>
+            <div class="col-md-6">
 
             <div class="form-group">
                 <label class="control-label">Prénom: <span class="text-danger">*</span></label>
                 {!! Form::text('prenom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
                 <div class="help-block with-errors"></div>
             </div>
+        </div>
+    </div>
 
+        <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Nom: <span class="text-danger">*</span></label>
-                {!! Form::text('nom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+                {!! Form::text('nom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Nom']) !!}
                 <div class="help-block with-errors"></div>
             </div>
-
+        </div>
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Adresse <span class="text-danger">*</span></label>
-                {!! Form::text('adresse', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+                {!! Form::text('adresse', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Adresse']) !!}
                 <div class="help-block with-errors"></div>
             </div>
-
+</div>
+</div>
+<div class="row">
+    <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Téléphone: <span class="text-danger">*</span></label>
-                {!! Form::text('telephone', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+                {!! Form::text('telephone', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Tel']) !!}
                 <div class="help-block with-errors"></div>
             </div>
+        </div>
+            <div class="col-md-6">
 
             <div class="form-group">
                 <label class="control-label">Email: <span class="text-danger">*</span></label>
-                {!! Form::text('email', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+                {!! Form::text('email', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Email']) !!}
                 <div class="help-block with-errors"></div>
             </div>
+        </div>
+    </div>
+        <div class="row">
+
+        <div class="col-md-6">
 
             <div class="form-group">
                 <label class="control-label">Fonction: <span class="text-danger">*</span></label>
-                {!! Form::text('fonction', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+                {!! Form::text('fonction', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Fonction']) !!}
                 <div class="help-block with-errors"></div>
             </div>
+        </div>
+            <div class="col-md-6">
+
                 <div class="form-group">
                     <label class="control-label">Statut <span class="text-danger">*</span></label>
-                    {!! Form::text('statut_cadre',null, ['id' => 'date_creation', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Nom']) !!}
+                    {!! Form::text('statut_cadre',null, ['id' => 'date_creation', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Statut du cadres']) !!}
                     <div class="help-block with-errors"></div>
                 </div>
         </div>
+    </div>
     </div>
     <!--/row-->
 
