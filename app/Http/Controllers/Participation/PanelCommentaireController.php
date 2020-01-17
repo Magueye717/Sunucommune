@@ -39,7 +39,7 @@ class PanelCommentaireController extends Controller
     {
         $panels = $this->panelRepository->getListe();
         // $panels = $this->panelRepository->getListe();
-        return view('gestion.panel.panel_commentaires.create',compact('panels'));
+        return view('gestion.participation.panel.panel_commentaires.create',compact('panels'));
     }
 
     /**
@@ -76,7 +76,7 @@ class PanelCommentaireController extends Controller
     {
         $panels = $this->panelRepository->getListe();
         $commentaires = $this->panelCommentaireRepository->getById($id);
-        return view('gestion.panel.panel_commentaires.edit', compact('commentaires','panels'));
+        return view('gestion.participation.panel.panel_commentaires.edit', compact('commentaires','panels'));
     }
 
     /**

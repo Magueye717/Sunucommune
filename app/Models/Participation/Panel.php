@@ -9,7 +9,7 @@ class Panel extends CustomModel
 
     protected $table = 'panel';
     public $timestamps = true;
-    protected $fillable = array('question', 'date_publication', 'statut', 'thematique_id');
+    protected $fillable = array('question','description','photo','fichier','date_publication', 'statut', 'thematique_id');
 
     public function commentaires()
     {
@@ -18,7 +18,6 @@ class Panel extends CustomModel
 
     public function thematiques()
     {
-        return $this->hasMany('App\Models\Participation\Thematique', 'thematique_id');
+        return $this->hasMany('App\Models\Participation\Thematique','thematique_id');
     }
-
 }
