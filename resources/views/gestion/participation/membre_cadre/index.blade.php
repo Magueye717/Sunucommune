@@ -24,6 +24,7 @@
                             </span>
                         </a>
                     </div>
+                    
                     <div class="col-sm-12">
                         @if (Session::has('warning'))
                             <div class="alert alert-warning" role="alert">
