@@ -4,7 +4,7 @@
 @section('pageTitle', 'Gestion des membres du cabinet')
 
 @section('filAriane')
-    <li class="active">cadres de concertation</li>
+    <li class="active">cadres de membres cadres</li>
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="white-box">
                 <h3 class="box-title m-b-0">Gestion participation</h3>
-                <p class="text-muted m-b-10">Liste des cadres de la participation</p>
+                <p class="text-muted m-b-10">Liste des membres</p>
 
                 <div class="row">
                     <div class="col-sm-12 m-b-30 m-t-5">
@@ -24,8 +24,17 @@
                             </span>
                         </a>
                     </div>
+                    <div class="col-sm-12">
+                        @if (Session::has('warning'))
+                            <div class="alert alert-warning" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                {{ Session::get('warning') }}
+                            </div>
+                        @endif
+                    </div>
                 </div>
-
                 @include('gestion.participation.membre_cadre.partials._liste')
             </div>
         </div>

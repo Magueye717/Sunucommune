@@ -50,13 +50,15 @@ class MembreCadreController extends Controller
      */
     public function create()
     {
-         $communeInfo=$this->communeInfoRepository->getCollectiviteId();
-          $quartierVillage = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE');
-       /*  dd($quartierVillage); */
-          $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
-        /* $communeInfo=$this->communeInfoRepository->getCommune(); */
-        /* $quartierVillage=Collectivite::where('parent_code', $communeInfo)->pluck('nom', 'id'); */
-        return view('gestion.participation.membre_cadre.create', compact('cadreConcertations', 'quartierVillage'));
+        try{
+            $communeInfo=$this->communeInfoRepository->getCollectiviteId();
+            $quartierVillage = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE');
+            $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
+            return view('gestion.participation.membre_cadre.create', compact('cadreConcertations', 'quartierVillage'));
+
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return redirect('/participation/membre_cadres')->withWarning("Veuillez renseigner d'abord les information concernant la commune");
+        }
     }
 
     /**
