@@ -15,7 +15,7 @@ class CreatePanelTable extends Migration {
             $table->string('photo')->nullable();
             $table->string('fichier')->nullable();
 			$table->date('date_publication')->nullable();
-			$table->boolean('statut')->default(1);
+			$table->boolean('statut')->default(0);
 			$table->timestamps();
 		});
 	}

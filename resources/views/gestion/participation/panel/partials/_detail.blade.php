@@ -26,11 +26,32 @@
                     <td>{{ $commentaire->nom }}</td>
                     <td>{{ $commentaire->email }}</td>
                     <td>{{ $commentaire->created_at }}</td>
-                    <td> {!! Form::checkbox('status', $commentaire, null, ['id' => 'status','class' => 'form-control']) !!}
-                        {{--  {!! Form::checkbox('responsable_id['.$responsable->id.']' , '1', '0', ['id'=>'responsable_'.$id,
-                            'class'=>'form-control' ]) !!}  --}}
+                    <td class="text-center">
+                        @if($commentaire->estActive())
+                            <span class="label label-success">Oui</span>
+                        @else
+                            <span class="label label-danger">Non</span>
+                        @endif
                     </td>
                     <td class="text-nowrap text-center">
+                        {!! Form::open(array(
+                            'method' => 'PUT',
+                            'class' => 'sunucommune-form',
+                            'style' => 'display: inline;',
+                            'route' => array('commentaires.valider', $commentaire))) !!}
+                        {{ csrf_field() }}
+                        @if($commentaire->estActive())
+                            <a href="#desactve" class="text-warning sunucommune-confirm p-r-5" data-toggle="tooltip"
+                            title="Désactivé">
+                                <i class="ti-archive"></i>
+                            </a>
+                        @else
+                            <a href="#active" class="text-success sunucommune-confirm p-r-5" data-toggle="tooltip"
+                            title="Activé">
+                                <i class="ti-check-box"></i>
+                            </a>
+                        @endif
+                        {!! Form::close() !!}
                         <a href="{{ route('commentaires.edit', $commentaire) }}" class="text-inverse p-r-10" data-toggle="tooltip"
                            title="Modifier">
                             <i class="ti-marker-alt"></i>

@@ -35,6 +35,8 @@ class CommuneInfoController extends Controller
     public function index()
     {
         $communeInfo = $this->communeInfoRepository->getInfo();
+        // $historique=[];
+        // $ancienMaires=[];
         if($communeInfo != null){
             $historique = $communeInfo->historique;
             $ancienMaires = $communeInfo->ancienMaires;

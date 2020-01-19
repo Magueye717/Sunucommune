@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Commune;
 
+use App\Enums\TypeHierarchie;
 use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MembreCabinetRequest;
@@ -38,7 +39,8 @@ class MembreCabinetController extends Controller
      */
     public function create()
     {
-        return view('gestion.commune.membre_cabinets.create');
+        $type = TypeHierarchie::toSelectArray();
+        return view('gestion.commune.membre_cabinets.create', compact('type'));
     }
 
     /**
@@ -49,6 +51,7 @@ class MembreCabinetController extends Controller
     public function store(MembreCabinetRequest $request)
     {
         $inputs = $request->all();
+
         //Photo du membreCabinet
         if ($request->hasFile('photo')) {
             $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoMembre);
@@ -77,8 +80,9 @@ class MembreCabinetController extends Controller
      */
     public function edit($id)
     {
+        $type = TypeHierarchie::toSelectArray();
         $membre = $this->membreCabinetRepository->getById($id);
-        return view('gestion.commune.membre_cabinets.edit', compact('membre'));
+        return view('gestion.commune.membre_cabinets.edit', compact('membre','type'));
     }
 
     /**
