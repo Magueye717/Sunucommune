@@ -3,8 +3,8 @@
         <thead>
         <tr>
             <th>Photo</th>
-            <th>Nom</th>
             <th>Prénom</th>
+            <th>Nom</th>
             <th>Fonction</th>
             <th>Hierarchie</th>
             <th>Adresse</th>
@@ -23,7 +23,7 @@
                     <td>{{ $membreCabinet->prenom }}</td>
                     <td>{{ $membreCabinet->nom }}</td>
                     <td>{{ $membreCabinet->fonction }}</td>
-                    <td>{{ $membreCabinet->hierarchie }}</td>
+                    <td><span class="label label-info">{{ $membreCabinet->hierarchie }}</span></td>
                     <td>{{ $membreCabinet->adresse }}</td>
                     <td>{{ $membreCabinet->telephone }}</td>
                     <td class="text-nowrap text-center">

@@ -15,11 +15,11 @@
             @foreach($panels as $panel)
                 <tr>
                     <td class="text-center">
-                        <img src="{{ !empty($panel->photo) ? asset('themev1/images/' .$panel->photo) : asset('themev1/images/default.png')}}"
+                        <img src="{{ !empty($panel->photo) ? asset('storage/participation/panels/' .$panel->photo) : asset('themev1/images/default.png')}}"
                              alt="photo" class="img-thumbnail table-photo">
                     </td>
                     <td>{{ $panel->question }}</td>
-                    <td>{{ $panel->thematique->libelle}}</td>
+                    <td><span class="label label-info">{{ $panel->thematique->libelle}}</span></td>
                     <td>{{ $panel->date_publication }}</td>
                     <td class="text-center">
                         @if($panel->estActive())
