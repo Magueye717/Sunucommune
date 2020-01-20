@@ -16,7 +16,7 @@ class CreateSondagesTable extends Migration {
             $table->string('fichier')->nullable();
             $table->date('date_publication')->nullable();
             $table->integer('thematique_id')->unsigned();
-			$table->boolean('statut')->default(1);
+			$table->boolean('statut')->default(0);
 			$table->integer('add_by')->unsigned();
 			$table->timestamps();
 		});

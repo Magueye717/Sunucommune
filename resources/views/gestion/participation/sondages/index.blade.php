@@ -3,10 +3,13 @@
 @section('title', 'Gestion des sondages')
 @section('pageTitle', 'Gestion des sondages')
 
-@section('filAriane')
-    <li class="active">Gestion des Sondages</li>
-@endsection
 
+@section('filAriane')
+    <a class="breadcrumb-item" href="{{ route('sondages.index') }}">> Sondages</a>
+{{--    <a class="breadcrumb-item active" href="#">> Gestion des Sondages</a>--}}
+{{--    <a class="breadcrumb-item active" href="#">> Liste des Sondages</a>--}}
+    <a class="breadcrumb-item active" href="#">> Liste </a>
+@endsection
 @section('content')
     <div class="row">
         <div class="col-md-12">

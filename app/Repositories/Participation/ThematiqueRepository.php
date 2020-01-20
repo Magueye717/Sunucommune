@@ -16,5 +16,9 @@ class ThematiqueRepository extends ResourceRepository
     {
         return $this->model->orderBy('libelle')->pluck('libelle', 'id');
     }
+    public function getListeThematiques()
+    {
+        return $this->model->orderBy('libelle')->pluck('libelle', 'id');
+    }
 
 }

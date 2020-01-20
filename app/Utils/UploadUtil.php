@@ -11,6 +11,7 @@ class UploadUtil
 {
     const AVATAR_USER_PATH = '/images/users/';
     const PHOTO_MAIRE_PATH = '/commune/photos/';
+    const PHOTO_SONDAGE_PATH = '/participation/sondage/photos/';
     const PHOTO_MEMBRE_PATH = '/commune/membres/';
     const PHOTO_PANEL_PATH = '/participation/panels/';
     const LOGO_PARTENAIRE_PATH = '/commune/partenaires/';
