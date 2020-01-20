@@ -171,7 +171,7 @@ class CreateForeignKeys extends Migration {
 			$table->foreign('petition_id')->references('id')->on('petitions')
 						->onDelete('restrict')
 						->onUpdate('restrict');
-		});
+        });
 	}
 
 	public function down()
@@ -273,6 +273,6 @@ class CreateForeignKeys extends Migration {
         });
         Schema::table('resultat_petitions', function(Blueprint $table) {
 			$table->dropForeign('resultat_petitions_petition_id_foreign');
-		});
+        });
 	}
 }

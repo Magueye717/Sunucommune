@@ -21,4 +21,9 @@ class PanelCommentaire extends CustomModel
         return $this->hasMany('App\Models\Participation\Panel', 'parent_id');
     }
 
+    public function estActive()
+    {
+        return $this->statut === 1 ? true : false;
+    }
+
 }

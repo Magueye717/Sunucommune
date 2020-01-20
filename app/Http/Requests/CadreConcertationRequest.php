@@ -33,8 +33,9 @@ class CadreConcertationRequest extends FormRequest
                 {
                     return [
                         'nom' => 'required|max:255',
-                        'date_creation' => 'required|max:225',
-                        'fichier' => 'required|max:225',
+                        'date_creation' => 'required',
+
+                        /* 'fichier' => 'nullable|mimes:jpeg,png|dimensions:min_width=80,min_height=80,max_width=600,max_height=600' */
                     ];
                 }
             case 'PUT':
@@ -42,7 +43,8 @@ class CadreConcertationRequest extends FormRequest
                 {
                     return [
                         'nom' => 'required|max:255',
-                        'date_creation' => 'required|max:225',
+                        'date_creation' => 'required',
+                        'fichier' => 'nullable|mimes:jpeg,png|dimensions:min_width=80,min_height=80,max_width=600,max_height=600'
                     ];
                 }
             default:

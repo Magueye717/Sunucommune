@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Commune;
 use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommuneInfoRequest;
+use App\Repositories\Commune\CollectiviteRepository;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Utils\UploadUtil;
 use Illuminate\Http\Request;
@@ -13,11 +14,15 @@ class CommuneInfoController extends Controller
 {
 
     protected $CommuneInfoRepository;
+    protected $collectiviteRepository;
     protected $uploadUtil;
 
-    public function __construct(CommuneInfoRepository $communeInfoRepository, UploadUtil $uploadUtil)
+    public function __construct(CommuneInfoRepository $communeInfoRepository,
+                                 UploadUtil $uploadUtil,
+                                 CollectiviteRepository $collectiviteRepository)
     {
         $this->communeInfoRepository = $communeInfoRepository;
+        $this->collectiviteRepository = $collectiviteRepository;
         $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
@@ -30,6 +35,8 @@ class CommuneInfoController extends Controller
     public function index()
     {
         $communeInfo = $this->communeInfoRepository->getInfo();
+        // $historique=[];
+        // $ancienMaires=[];
         if($communeInfo != null){
             $historique = $communeInfo->historique;
             $ancienMaires = $communeInfo->ancienMaires;
@@ -44,7 +51,8 @@ class CommuneInfoController extends Controller
      */
     public function create()
     {
-        return view('gestion.commune.infos.create');
+        $collectivites=$this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
+        return view('gestion.commune.infos.create', compact('collectivites'));
     }
 
     /**
@@ -86,7 +94,9 @@ class CommuneInfoController extends Controller
     public function edit($id)
     {
         $communeInfo = $this->communeInfoRepository->getById($id);
-        return view('gestion.commune.infos.edit', compact('communeInfo'));
+        $collectivites=$this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
+        $infoLocalisation=$this->getLocalisationData($communeInfo);
+        return view('gestion.commune.infos.edit', compact('communeInfo', 'collectivites', 'infoLocalisation'));
     }
 
     /**
@@ -136,6 +146,36 @@ class CommuneInfoController extends Controller
         return [
             'historique' => 'required|max:16777215'
         ];
+    }
+
+    public function fetch(Request $request)
+    {
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $data = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($value), $dependent);
+        $output = '<option value="">Choisir...</option>';
+        foreach ($data as $key => $value) {
+            $output .= '<option value="' . $key . '">' . $value . '</option>';
+        }
+        echo $output;
+    }
+
+    private function getLocalisationData($communeInfo)
+    {
+        $collectivite = $communeInfo->collectivite;
+        $selectedCommune = $collectivite->parent;
+        $selectedDepartement = $selectedCommune->parent;
+        $selectedRegion = $selectedDepartement->parent;
+        return array(
+            'departements' => $this->collectiviteRepository->getListeByParentCode($selectedRegion->code, 'departement'),
+            'communes' => $this->collectiviteRepository->getListeByParentCode($selectedDepartement->code, 'commune'),
+            'quartiervillages' => $this->collectiviteRepository->getListeByParentCode($selectedCommune->code, 'quartiervillage'),
+            'collectivite_id' => $collectivite->id,
+            'commune' => $collectivite->id,
+           // 'commune' => $selectedCommune->id,
+            'departement' => $selectedDepartement->id,
+            'region' => $selectedRegion->id,
+        );
     }
 
 }

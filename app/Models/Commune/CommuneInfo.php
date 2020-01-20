@@ -9,7 +9,7 @@ class CommuneInfo extends Model
 
     protected $table = 'commune_infos';
     public $timestamps = true;
-    protected $fillable = array('commune_id', 'collectivite_id', 'nom', 'maire', 'date_creation', 'superficie', 'population', 'delimitation',
+    protected $fillable = array('collectivite_id', 'maire', 'date_creation', 'superficie', 'population', 'delimitation',
         'mot_du_maire', 'photo_maire', 'historique');
 
     public function ancienMaires()
@@ -19,7 +19,12 @@ class CommuneInfo extends Model
 
     public function collectivite()
     {
-        return $this->hasOne('App\Models\Collectivites', 'collectivite_id');
+        return $this->belongsTo('App\Models\Collectivite', 'collectivite_id');
+    }
+
+    public function membreCadres()
+    {
+        return $this->hasMany('App\Models\Participation\MembreCadre');
     }
 
 }

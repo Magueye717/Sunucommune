@@ -1,7 +1,7 @@
-<div class="table-responsive">
+<div class="table">
     <table id="myTable" class="table table-striped table-bordered">
         <thead>
-        <tr>
+                    <tr>
             <th>Nom</th>
             <th>Collectivité</th>
             <th>Date création</th>

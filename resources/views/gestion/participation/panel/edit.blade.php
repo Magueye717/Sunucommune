@@ -17,7 +17,7 @@
 
                 {!! Form::model($panels, ['method' =>'PATCH', 'route' => ['panels.update', $panels], 'role' => 'form',
                                             'class' => 'padess-form', 'data-toggle' => 'validator']) !!}
-                @include('gestion.panel.partials._form')
+                @include('gestion.participation.panel.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>
