@@ -47,6 +47,8 @@ Route::prefix('participation')->group(function () {
         Route::resource('/panels', 'PanelController');
         Route::resource('/commentaires', 'PanelCommentaireController');
         Route::resource('/sondages', 'SondageController');
+        Route::put('/sondages/{id}/publication', 'SondageController@publication')->name('sondages.publication');
+
         Route::resource('/membre_cadres', 'MembreCadreController');
         Route::post('/fetch', 'CadreConcertationController@fetch')->name('collectivites.fetch');
         Route::resource('/thematiques', 'ThematiqueController');
@@ -54,7 +56,7 @@ Route::prefix('participation')->group(function () {
 });
 
 
-Route::prefix('RessourcesHumaines')->group(function (){
+Route::prefix('ressources_humaines')->group(function (){
     Route::namespace('Rh')->group(function () {
         Route::resource('/agents', 'AgentController');
         Route::resource('/contrats', 'ContratController');

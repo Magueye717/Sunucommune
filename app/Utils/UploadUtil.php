@@ -11,6 +11,7 @@ class UploadUtil
 {
     const AVATAR_USER_PATH = '/images/users/';
     const PHOTO_MAIRE_PATH = '/commune/photos/';
+    const PHOTO_SONDAGE_PATH = '/participation/sondage/photos/';
     const PHOTO_MEMBRE_PATH = '/commune/membres/';
     const LOGO_PARTENAIRE_PATH = '/commune/partenaires/';
     const ARTICLE_PHOTO_PATH = '/commune/articles/photos/';
@@ -69,6 +70,9 @@ class UploadUtil
                 break;
             case TypeUpload::ArticleFile:
                 return $this->repertoire = self::ARTICLE_FILE_PATH;
+                break;
+            case TypeUpload::PhotoSondage:
+                return $this->repertoire = self::PHOTO_SONDAGE_PATH;
                 break;
             default:
                 return self::DEFAULT_PATH;

@@ -14,7 +14,7 @@
             <div class="white-box">
                 <h3 class="box-title m-b-0">Gestion des membres cadres</h3>
                 <p class="text-muted m-b-20">Création</p>
-                {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel']) !!}
+                {!! Form::open(['route' => 'agents.store', 'class' => 'form-horizontal panel']) !!}
                 @include('rh.agent.partials._form')
                 {!! Form::close() !!}
             </div>

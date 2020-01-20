@@ -50,7 +50,10 @@ class AgentController extends Controller
    */
   public function store(Request $request)
   {
+      $inputs = $request->all();
+      $agent = $this->agentRepository->store($inputs);
 
+      return redirect('/ressources_humaines/agents')->withMessage("L'agent' " . $agent->prenom . " ". $agent->nom . " a été créé avec succés.");
   }
 
   /**

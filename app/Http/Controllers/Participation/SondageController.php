@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Participation;
 
+use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SondageRequest;
 use App\Models\Participation\SondageOption;
 use App\Repositories\Participation\SondageOptionRepository;
 use App\Repositories\Participation\SondageRepository;
+use App\Repositories\Participation\ThematiqueRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Utils\UploadUtil;
 
 
 class SondageController extends Controller
@@ -23,12 +26,17 @@ class SondageController extends Controller
 
     protected $sondageRepository;
     protected $optionRepository;
+    protected $thematiqueRepository;
+    protected $uploadUtil;
 
 
-    public function __construct(SondageRepository $sondageRepository,SondageOptionRepository $optionRepository)
+
+    public function __construct(SondageRepository $sondageRepository, SondageOptionRepository $optionRepository, ThematiqueRepository $thematiqueRepository,UploadUtil $uploadUtil)
     {
         $this->sondageRepository = $sondageRepository;
         $this->optionRepository = $optionRepository;
+        $this->thematiqueRepository = $thematiqueRepository;
+        $this->uploadUtil = $uploadUtil;
 
         $this->middleware('auth');
     }
@@ -50,8 +58,11 @@ class SondageController extends Controller
      */
     public function create()
     {
-
-        return view('gestion.participation.sondages.create');
+//$thematiques=$this->thematiqueRepository->getData();
+        $thematiques = $this->thematiqueRepository->getListeThematiques()->prepend('Choisir la thématique...', '');
+//dd($thematiques);
+//dd($thematique);
+        return view('gestion.participation.sondages.create', compact('thematiques'));
     }
 
     /**
@@ -63,22 +74,28 @@ class SondageController extends Controller
     {
 
 
-
-
         $inputs = $request->all();
 
+        $inputs['add_by'] = Auth::user()->id;
+
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoSondage);
+        }
+//dd($inputs);
 
 
-        $inputs['add_by']= Auth::user()->id;
 
         $sondage = $this->sondageRepository->store($inputs);
-       $option = $this->optionRepository->saveMany($request->libelle,$sondage->id);
 
 
-           $optionSondage['libelle']=$request->libelle;
-           $optionSondage['sondage_id']=$sondage->id;
 
-//        $this->optionRepository->store($optionSondage);
+        if ($request->libelle)
+            $option = $this->optionRepository->saveMany($request->libelle, $sondage->id);
+        $optionSondage['libelle'] = $request->libelle;
+        $optionSondage['sondage_id'] = $sondage->id;
+
+
+
         return \redirect()->route('sondages.index')->withMessage("Le Sondage " . $sondage->titre . " a été créé.");
     }
 
@@ -102,7 +119,9 @@ class SondageController extends Controller
     public function edit($id)
     {
         $sondage = $this->sondageRepository->getById($id);
-        return view('gestion.participation.sondages.edit', compact('sondage'));
+        $thematiques = $this->thematiqueRepository->getListeThematiques()->prepend('Choisir la thématique...', '');
+
+        return view('gestion.participation.sondages.edit', compact('sondage', 'thematiques'));
     }
 
     /**
@@ -111,14 +130,14 @@ class SondageController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(SondageRequest $request,$id)
+    public function update(SondageRequest $request, $id)
     {
 
         $inputs = $request->all();
 
 
         $this->sondageRepository->update($id, $inputs);
-        $this->optionRepository->updateMany($inputs['libelle'],$inputs['options_id'],$id);
+        $this->optionRepository->updateMany($inputs['libelle'], $inputs['options_id'], $id);
         return \redirect()->route('sondages.index')->withMessage("Le Sondage " . $request->input('titre') . " a été modifié.");
 
     }
@@ -138,6 +157,18 @@ class SondageController extends Controller
         else
             return redirect()->back()->withErrors("Ce Sondage ne peut être supprimé...");
 
+    }
+
+    public function publication($id)
+    {
+        $sondage = $this->sondageRepository->getById($id);
+        $this->sondageRepository->publication($sondage, !$sondage->estPublie());
+
+
+        if ($sondage->statut)
+            return redirect()->back()->withAlert("Votre sondage est dépublié ");
+        else
+            return redirect()->back()->withMessage("Votre sondage est publié");
     }
 
 }
