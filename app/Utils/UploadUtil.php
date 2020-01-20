@@ -14,6 +14,7 @@ class UploadUtil
     const PHOTO_MEMBRE_PATH = '/commune/membres/';
     const PHOTO_PANEL_PATH = '/participation/panels/';
     const LOGO_PARTENAIRE_PATH = '/commune/partenaires/';
+    const FICHIER_MEDIA_PATH = '/commune/mediatheques/';
     const ARTICLE_PHOTO_PATH = '/commune/articles/photos/';
     const ARTICLE_FILE_PATH = '/commune/articles/files/';
     const PANEL_FILE_PATH = '/participation/panels/files/';
@@ -77,6 +78,9 @@ class UploadUtil
                 break;
             case TypeUpload::PanelFile:
                 return $this->repertoire = self::PANEL_FILE_PATH;
+                break;
+            case TypeUpload::MediaFile:
+                return $this->repertoire = self::FICHIER_MEDIA_PATH;
                 break;
             default:
                 return self::DEFAULT_PATH;
