@@ -50,9 +50,14 @@ class CadreConcertationController extends Controller
      */
     public function create()
     {
-        $communeInfo=$this->communeInfoRepository->getCollectiviteId();
-          $collectivites = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE')->prepend('Choisir un quartier ou village...');
-        return view('gestion.participation.cadre_concertation.create', compact('collectivites'));
+        try{
+            $communeInfo=$this->communeInfoRepository->getCollectiviteId();
+            $collectivites = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE')->prepend('Choisir un quartier ou village...');
+            return view('gestion.participation.cadre_concertation.create', compact('collectivites'));
+        }
+        catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return redirect('/participation/cadres')->withWarning("Veuillez renseigner d'abord les information concernant la commune");
+        }
     }
 
     /**

@@ -62,6 +62,17 @@
                         <li><a href="{{ route('thematiques.index') }}">Thematiques</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false">
+                        <i class="fa fa-users fa-fw"></i> <span class="hide-menu">Ressource Humaines</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{ route('agents.index') }}">Agents</a></li>
+                        <li><a href="{{ route('contrats.index') }}">Contrats</a></li>
+                        <li><a href="{{ route('historique-contrats.index') }}">Historique Contrats</a></li>
+                        <li><a href="{{ route('conges.index') }}">Conges</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>

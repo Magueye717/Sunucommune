@@ -2,6 +2,18 @@
 <div class="form-body">
     <div class="row">
         <div class="col-md-6">
+            <div class="form-group mb-0">
+                <label class="control-label">Illustration</label>
+                {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control', 'placeholder'=>"Choisir l'ilustration "]) !!}
+                <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
+                @if(isset($sondage) && !empty($sondage->photo))
+                    <img class="avatar-min" src="{{ asset('storage/commune/photos/'. $sondage->photo) }}" alt="avatar"
+                         title="Logo"/>
+                @endif
+            </div>
+        </div>
+
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Titre <span class="text-danger">*</span></label>
                 {!! Form::text('titre', null, ['id' => 'titre', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Titre']) !!}
@@ -10,8 +22,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Slug </label>
-                {!! Form::text('slug', null, ['id' => 'slug', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Slug']) !!}
+                <label class="control-label">Thématique </label>
+                {!! Form::select('thematique_id', $thematiques, null, ['id' => 'thematique', 'class' => 'form-control','required' => ''/*, 'placeholder' => 'Choisir...'*/]) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>

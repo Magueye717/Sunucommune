@@ -4,10 +4,10 @@ namespace App\Models\Rh;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistoriqueContrat extends Model 
+class HistoriqueContrat extends Model
 {
 
-    protected $table = 'historique_contrats';
+    protected $table = 'historique_contrat';
     public $timestamps = true;
     protected $fillable = array('agent_id', 'contrat_id', 'date_debut', 'date_fin');
 

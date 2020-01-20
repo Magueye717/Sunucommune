@@ -1,10 +1,13 @@
-<?php 
+<?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rh;
 
+use App\Models\Rh\Agent;
+use App\Repositories\Rh\AgentRepository;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AgentController extends Controller 
+class AgentController extends Controller
 {
 
   /**
@@ -12,9 +15,22 @@ class AgentController extends Controller
    *
    * @return Response
    */
-  public function index()
+
+
+    protected $agentRepository;
+
+    public function __construct(AgentRepository $agentRepository)
+    {
+        $this->agentRepository = $agentRepository;
+        $this->middleware('auth');
+    }
+
+    public function index()
   {
-    
+      $agents=$this->agentRepository->getData();
+//      dd($agents    );
+      return view('rh.agent.index', compact('agents'));
+
   }
 
   /**
@@ -24,7 +40,7 @@ class AgentController extends Controller
    */
   public function create()
   {
-    
+      return view('rh.agent.create');
   }
 
   /**
@@ -34,7 +50,10 @@ class AgentController extends Controller
    */
   public function store(Request $request)
   {
-    
+      $inputs = $request->all();
+      $agent = $this->agentRepository->store($inputs);
+
+      return redirect('/ressources_humaines/agents')->withMessage("L'agent' " . $agent->prenom . " ". $agent->nom . " a été créé avec succés.");
   }
 
   /**
@@ -45,7 +64,7 @@ class AgentController extends Controller
    */
   public function show($id)
   {
-    
+
   }
 
   /**
@@ -56,7 +75,7 @@ class AgentController extends Controller
    */
   public function edit($id)
   {
-    
+
   }
 
   /**
@@ -67,7 +86,7 @@ class AgentController extends Controller
    */
   public function update($id)
   {
-    
+
   }
 
   /**
@@ -78,9 +97,9 @@ class AgentController extends Controller
    */
   public function destroy($id)
   {
-    
+
   }
-  
+
 }
 
 ?>

@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers\Commune;
 
-use App\Enums\TypeMediatheque;
-use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MediathequeRequest;
-use App\Repositories\Commune\CommuneInfoRepository;
-use App\Repositories\Commune\MediathequeRepository;
-use App\Utils\UploadUtil;
+use Illuminate\Http\Request;
 
 class MediathequeController extends Controller
 {
@@ -18,25 +13,9 @@ class MediathequeController extends Controller
      *
      * @return Response
      */
-
-    protected $mediathequeRepository;
-    protected $uploadUtil;
-    protected $communeInfoRepository;
-    public function __construct(MediathequeRepository $mediathequeRepository,
-                                UploadUtil $uploadUtil,
-                                CommuneInfoRepository $communeInfoRepository)
-    {
-            $this->mediathequeRepository = $mediathequeRepository;
-            $this->communeInfoRepository = $communeInfoRepository;
-            $this->uploadUtil = $uploadUtil;
-            $this->middleware('auth');
-    }
-
-
     public function index()
     {
-        $medias=$this->mediathequeRepository->getData();
-        return view('gestion.commune.mediatheques.index', compact('medias'));
+
     }
 
     /**
@@ -46,8 +25,7 @@ class MediathequeController extends Controller
      */
     public function create()
     {
-        $typeMedia =TypeMediatheque::toSelectArray();
-        return view('gestion.commune.mediatheques.create', compact('typeMedia'));
+
     }
 
     /**
@@ -55,17 +33,9 @@ class MediathequeController extends Controller
      *
      * @return Response
      */
-    public function store(MediathequeRequest $request)
+    public function store(Request $request)
     {
-        $inputs = $request->all();
-        if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::MediaFile);
-        }
-        $media = $this->mediathequeRepository->store($inputs);
 
-        if (!$media)
-            return \redirect()->back()->withErrors("L'ajout de média échoué. Veuillez réessayer ou contacter l'administrateur.");
-        return redirect('/mediatheques')->withMessage(" Média créé avec succés.");
     }
 
     /**
@@ -76,8 +46,7 @@ class MediathequeController extends Controller
      */
     public function show($id)
     {
-        $media = $this->mediathequeRepository->getById($id);
-        return view('gestion.commune.mediatheques.show', compact('media'));
+
     }
 
     /**
@@ -88,9 +57,7 @@ class MediathequeController extends Controller
      */
     public function edit($id)
     {
-        $media = $this->mediathequeRepository->getById($id);
-        $typeMedia =TypeMediatheque::toSelectArray();
-        return view('gestion.commune.mediatheques.edit', compact('media', 'typeMedia'));
+
     }
 
     /**
@@ -99,22 +66,9 @@ class MediathequeController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id, MediathequeRequest $request)
+    public function update($id)
     {
-        $media = $this->mediathequeRepository->getById($id);
-        $inputs = $request->all();
-        //Illustration
-        if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::MediaFile);
-            $oldPhotoFilename = $media->photo;
-        }
-        $this->mediathequeRepository->update($id, $inputs);
 
-        //Suppression ancienne photo
-        if (!empty($oldPhotoFilename))
-            $this->uploadUtil->deleteFile($oldPhotoFilename, TypeUpload::MediaFile);
-
-        return \redirect()->route('mediatheques.index')->withMessage("Média modifié avec succés.");
     }
 
     /**
@@ -125,10 +79,7 @@ class MediathequeController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->mediathequeRepository->destroy($id))
-            return redirect()->back()->withMessage("La suppression est effective");
-        else
-            return redirect()->back()->withErrors("Ce média ne peut être supprimé...");
+
     }
 
 }

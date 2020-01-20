@@ -49,9 +49,21 @@ Route::prefix('participation')->group(function () {
         Route::resource('/commentaires', 'PanelCommentaireController');
         Route::put('/commentaires/{id}/valider', 'PanelCommentairesController@valider')->name('commentaires.valider');
         Route::resource('/sondages', 'SondageController');
+        Route::put('/sondages/{id}/publication', 'SondageController@publication')->name('sondages.publication');
+
         Route::resource('/membre_cadres', 'MembreCadreController');
         Route::post('/fetch', 'CadreConcertationController@fetch')->name('collectivites.fetch');
         Route::resource('/thematiques', 'ThematiqueController');
+    });
+});
+
+
+Route::prefix('ressources_humaines')->group(function (){
+    Route::namespace('Rh')->group(function () {
+        Route::resource('/agents', 'AgentController');
+        Route::resource('/contrats', 'ContratController');
+        Route::resource('/historique-contrats', 'HistoriqueContratController');
+        Route::resource('/conges', 'CongeController');
     });
 });
 
