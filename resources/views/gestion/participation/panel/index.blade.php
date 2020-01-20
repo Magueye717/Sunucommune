@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 {{-- Liste des comités --}}
-                @include('gestion.panel.partials._liste')
+                @include('gestion.participation.panel.partials._liste')
             </div>
         </div>
     </div>

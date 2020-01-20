@@ -45,7 +45,9 @@ Route::prefix('participation')->group(function () {
     Route::namespace('Participation')->group(function () {
         Route::resource('/cadres', 'CadreConcertationController');
         Route::resource('/panels', 'PanelController');
+        Route::put('/panels/{id}/valider', 'PanelController@valider')->name('panels.valider');
         Route::resource('/commentaires', 'PanelCommentaireController');
+        Route::put('/commentaires/{id}/valider', 'PanelCommentairesController@valider')->name('commentaires.valider');
         Route::resource('/sondages', 'SondageController');
         Route::resource('/membre_cadres', 'MembreCadreController');
         Route::post('/fetch', 'CadreConcertationController@fetch')->name('collectivites.fetch');

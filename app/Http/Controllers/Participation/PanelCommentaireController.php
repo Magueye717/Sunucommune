@@ -39,7 +39,7 @@ class PanelCommentaireController extends Controller
     {
         $panels = $this->panelRepository->getListe();
         // $panels = $this->panelRepository->getListe();
-        return view('gestion.panel.panel_commentaires.create',compact('panels'));
+        return view('gestion.participation.panel.panel_commentaires.create',compact('panels'));
     }
 
     /**
@@ -76,7 +76,7 @@ class PanelCommentaireController extends Controller
     {
         $panels = $this->panelRepository->getListe();
         $commentaires = $this->panelCommentaireRepository->getById($id);
-        return view('gestion.panel.panel_commentaires.edit', compact('commentaires','panels'));
+        return view('gestion.participation.panel.panel_commentaires.edit', compact('commentaires','panels'));
     }
 
     /**
@@ -108,6 +108,12 @@ class PanelCommentaireController extends Controller
             return redirect()->back()->withMessage("La suppression est effective");
         else
             return redirect()->back()->withErrors("Ce commentaire ne peut être supprimé...");
+    }
+    public function valider($id)
+    {
+        $commentaire = $this->panelCommentaireRepository->getById($id);
+        $this->panelRepository->valider($commentaire, !$commentaire->estActive());
+        return redirect()->back()->withMessage("Le changement de status a été bien prise en compte");
     }
 
 }

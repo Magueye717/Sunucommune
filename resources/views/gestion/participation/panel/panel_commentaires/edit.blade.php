@@ -16,7 +16,7 @@
                 <p class="text-muted m-b-30">Modification</p>
                 {!! Form::model($commentaires, ['method' =>'PATCH', 'route' => ['commentaires.update', $commentaires], 'role' => 'form',
                                             'class' => 'padess-form', 'data-toggle' => 'validator']) !!}
-                @include('gestion.panel.panel_commentaires.partials._form')
+                @include('gestion.participation.panel.panel_commentaires.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>
