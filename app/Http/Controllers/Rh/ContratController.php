@@ -1,10 +1,12 @@
-<?php 
+<?php
 
-namespace App\Http\Controllers;
+
+namespace App\Http\Controllers\Rh;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ContratController extends Controller 
+class ContratController extends Controller
 {
 
   /**
@@ -14,7 +16,7 @@ class ContratController extends Controller
    */
   public function index()
   {
-    
+
   }
 
   /**
@@ -24,7 +26,7 @@ class ContratController extends Controller
    */
   public function create()
   {
-    
+
   }
 
   /**
@@ -34,7 +36,7 @@ class ContratController extends Controller
    */
   public function store(Request $request)
   {
-    
+
   }
 
   /**
@@ -45,7 +47,7 @@ class ContratController extends Controller
    */
   public function show($id)
   {
-    
+
   }
 
   /**
@@ -56,7 +58,7 @@ class ContratController extends Controller
    */
   public function edit($id)
   {
-    
+
   }
 
   /**
@@ -67,7 +69,7 @@ class ContratController extends Controller
    */
   public function update($id)
   {
-    
+
   }
 
   /**
@@ -78,9 +80,9 @@ class ContratController extends Controller
    */
   public function destroy($id)
   {
-    
+
   }
-  
+
 }
 
 ?>
