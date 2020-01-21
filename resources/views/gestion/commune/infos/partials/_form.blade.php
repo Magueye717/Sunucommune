@@ -8,7 +8,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label">Région <span class="text-danger">*</span></label>
-                        {!! Form::select('region', $collectivites, isset($infoLocalisation) ? $infoLocalisation['region'] : null, ['id' => 'region', 'class' => 'form-control select2 dynamic', 'data-dependent' => 'departement']) !!}
+                        {!! Form::select('region', $collectivites, isset($infoLocalisation) ? $infoLocalisation['region'] : null, ['id' => 'region', 'required' => 'required', 'class' => 'form-control select2 dynamic', 'data-dependent' => 'departement']) !!}
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@
                         </div>
                         <div class="help-block with-errors"></div>
                     </div>
-                    
+
                 </div>
 
                 <div class="col-md-6">
