@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Commune;
 
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use App\Http\Requests\MediathequeRequest;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Repositories\Commune\MediathequeRepository;
@@ -12,7 +11,7 @@ use App\Utils\UploadUtil;
 =======
 use Illuminate\Http\Request;
 
->>>>>>> e096443759c5bcbd3da743bef52634d33ca2dbe6
+
 
 class MediathequeController extends Controller
 {
@@ -22,7 +21,7 @@ class MediathequeController extends Controller
      *
      * @return Response
      */
-<<<<<<< HEAD
+
 
     protected $mediathequeRepository;
     protected $uploadUtil;
@@ -41,8 +40,7 @@ class MediathequeController extends Controller
     }
 
 
-=======
->>>>>>> e096443759c5bcbd3da743bef52634d33ca2dbe6
+
     public function index()
     {
 
@@ -65,7 +63,6 @@ class MediathequeController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         $inputs = $request->all();
 
         if ($request->hasFile('fichier')) {
@@ -87,9 +84,7 @@ class MediathequeController extends Controller
         if (!$media)
             return \redirect()->back()->withErrors("L'ajout de média échoué. Veuillez réessayer ou contacter l'administrateur.");
         return redirect('/mediatheques')->withMessage(" Média créé avec succés.");
-=======
 
->>>>>>> e096443759c5bcbd3da743bef52634d33ca2dbe6
     }
 
     /**
