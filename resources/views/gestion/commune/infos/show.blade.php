@@ -68,6 +68,7 @@
                             </div>
                         @endif
                     </div>
+
                     @if(isset($ancienMaires))
                         <div class="tab-pane {{ $ancienMaireTab }}" id="ancien-maire" role="tabpanel"
                              aria-labelledby="ancien-maire-tab">

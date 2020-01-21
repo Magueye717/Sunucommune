@@ -53,7 +53,7 @@
     <div class="panel panel-default col-12">
         <div class="panel-heading">Informations supplémentaires</div>
         <div class="panel-body">
-            <div class="row">
+            <div class="row" style="padding: 0 15px  ">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Maire <span class="text-danger">*</span></label>

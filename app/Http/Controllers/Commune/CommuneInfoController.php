@@ -18,8 +18,8 @@ class CommuneInfoController extends Controller
     protected $uploadUtil;
 
     public function __construct(CommuneInfoRepository $communeInfoRepository,
-                                 UploadUtil $uploadUtil,
-                                 CollectiviteRepository $collectiviteRepository)
+                                UploadUtil $uploadUtil,
+                                CollectiviteRepository $collectiviteRepository)
     {
         $this->communeInfoRepository = $communeInfoRepository;
         $this->collectiviteRepository = $collectiviteRepository;
@@ -35,25 +35,28 @@ class CommuneInfoController extends Controller
     public function index()
     {
         $communeInfo = $this->communeInfoRepository->getInfo();
-        // $historique=[];
-        // $ancienMaires=[];
-        if($communeInfo != null){
+        $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
+
+        if ($communeInfo != null) {
             $historique = $communeInfo->historique;
             $ancienMaires = $communeInfo->ancienMaires;
-        }
-        return view('gestion.commune.infos.show', compact('communeInfo', 'historique', 'ancienMaires'));
+            return view('gestion.commune.infos.show', compact('communeInfo', 'historique', 'ancienMaires'));
+
+        } else
+            return view('gestion.commune.infos.create', compact('collectivites'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        $collectivites=$this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
-        return view('gestion.commune.infos.create', compact('collectivites'));
-    }
+//    /**
+//     * Show the form for creating a new resource.
+//     *
+//     * @return Response
+//     */
+//    public function create()
+//    {
+//
+//        $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
+//        return view('gestion.commune.infos.create', compact('collectivites'));
+//    }
 
     /**
      * Store a newly created resource in storage.
@@ -74,7 +77,7 @@ class CommuneInfoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -88,21 +91,21 @@ class CommuneInfoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
     public function edit($id)
     {
         $communeInfo = $this->communeInfoRepository->getById($id);
-        $collectivites=$this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
-        $infoLocalisation=$this->getLocalisationData($communeInfo);
+        $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
+        $infoLocalisation = $this->getLocalisationData($communeInfo);
         return view('gestion.commune.infos.edit', compact('communeInfo', 'collectivites', 'infoLocalisation'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
     public function update(CommuneInfoRequest $request, $id)
@@ -125,7 +128,7 @@ class CommuneInfoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
@@ -133,7 +136,8 @@ class CommuneInfoController extends Controller
 
     }
 
-    public function updateHistorique(Request $request, $id){
+    public function updateHistorique(Request $request, $id)
+    {
         $communeInfo = $this->communeInfoRepository->getById($id);
         $request->validate($this->historiqueRules());
         $this->communeInfoRepository->setHistorique($communeInfo, $request->get('historique'));
@@ -142,7 +146,8 @@ class CommuneInfoController extends Controller
         return \redirect()->route('infos.index')->withMessage("L'historique de la commune a été ajouté avec succés.");
     }
 
-    private function historiqueRules(){
+    private function historiqueRules()
+    {
         return [
             'historique' => 'required|max:16777215'
         ];
@@ -172,7 +177,7 @@ class CommuneInfoController extends Controller
             'quartiervillages' => $this->collectiviteRepository->getListeByParentCode($selectedCommune->code, 'quartiervillage'),
             'collectivite_id' => $collectivite->id,
             'commune' => $collectivite->id,
-           // 'commune' => $selectedCommune->id,
+            // 'commune' => $selectedCommune->id,
             'departement' => $selectedDepartement->id,
             'region' => $selectedRegion->id,
         );
