@@ -46,17 +46,17 @@ class CommuneInfoController extends Controller
             return view('gestion.commune.infos.create', compact('collectivites'));
     }
 
-//    /**
-//     * Show the form for creating a new resource.
-//     *
-//     * @return Response
-//     */
-//    public function create()
-//    {
-//
-//        $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
-//        return view('gestion.commune.infos.create', compact('collectivites'));
-//    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+
+        $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
+        return view('gestion.commune.infos.create', compact('collectivites'));
+     }
 
     /**
      * Store a newly created resource in storage.
