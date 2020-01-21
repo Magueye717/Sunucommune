@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Commune;
 
-use App\Enums\TypeMediatheque;
-use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Http\Requests\MediathequeRequest;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Repositories\Commune\MediathequeRepository;
 use App\Utils\MediaUtile;
 use App\Utils\UploadUtil;
+=======
+use Illuminate\Http\Request;
+
+>>>>>>> e096443759c5bcbd3da743bef52634d33ca2dbe6
 
 class MediathequeController extends Controller
 {
@@ -19,6 +22,7 @@ class MediathequeController extends Controller
      *
      * @return Response
      */
+<<<<<<< HEAD
 
     protected $mediathequeRepository;
     protected $uploadUtil;
@@ -37,10 +41,11 @@ class MediathequeController extends Controller
     }
 
 
+=======
+>>>>>>> e096443759c5bcbd3da743bef52634d33ca2dbe6
     public function index()
     {
-        $medias=$this->mediathequeRepository->getData();
-        return view('gestion.commune.mediatheques.index', compact('medias'));
+
     }
 
     /**
@@ -50,8 +55,7 @@ class MediathequeController extends Controller
      */
     public function create()
     {
-        $typeMedia =TypeMediatheque::toSelectArray();
-        return view('gestion.commune.mediatheques.create', compact('typeMedia'));
+
     }
 
     /**
@@ -59,8 +63,9 @@ class MediathequeController extends Controller
      *
      * @return Response
      */
-    public function store(MediathequeRequest $request)
+    public function store(Request $request)
     {
+<<<<<<< HEAD
         $inputs = $request->all();
 
         if ($request->hasFile('fichier')) {
@@ -82,6 +87,9 @@ class MediathequeController extends Controller
         if (!$media)
             return \redirect()->back()->withErrors("L'ajout de média échoué. Veuillez réessayer ou contacter l'administrateur.");
         return redirect('/mediatheques')->withMessage(" Média créé avec succés.");
+=======
+
+>>>>>>> e096443759c5bcbd3da743bef52634d33ca2dbe6
     }
 
     /**
@@ -92,8 +100,7 @@ class MediathequeController extends Controller
      */
     public function show($id)
     {
-        $media = $this->mediathequeRepository->getById($id);
-        return view('gestion.commune.mediatheques.show', compact('media'));
+
     }
 
     /**
@@ -104,9 +111,7 @@ class MediathequeController extends Controller
      */
     public function edit($id)
     {
-        $media = $this->mediathequeRepository->getById($id);
-        $typeMedia =TypeMediatheque::toSelectArray();
-        return view('gestion.commune.mediatheques.edit', compact('media', 'typeMedia'));
+
     }
 
     /**
@@ -115,8 +120,9 @@ class MediathequeController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id, MediathequeRequest $request)
+    public function update($id)
     {
+<<<<<<< HEAD
         $media = $this->mediathequeRepository->getById($id);
         $inputs = $request->all();
         //Illustration
@@ -132,6 +138,9 @@ class MediathequeController extends Controller
             $this->uploadUtil->deleteFile($oldPhotoFilename, TypeUpload::MediaFile);
 
         return \redirect()->route('mediatheques.index')->withMessage("Média modifié avec succés.");
+=======
+
+>>>>>>> e096443759c5bcbd3da743bef52634d33ca2dbe6
     }
 
     /**
@@ -142,10 +151,7 @@ class MediathequeController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->mediathequeRepository->destroy($id))
-            return redirect()->back()->withMessage("La suppression est effective");
-        else
-            return redirect()->back()->withErrors("Ce média ne peut être supprimé...");
+
     }
 
 }
