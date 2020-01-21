@@ -67,7 +67,7 @@ class MediathequeController extends Controller
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::MediaFile);
             $inputs['type_media'] = $this->mediaUtil->mediaExtentionControl($inputs['fichier']);
 
-            $listExtention = array('jpg', 'jpeg', 'jpg', 'mp3','mp4','avi'n );
+            $listExtention = array('jpg', 'jpeg', 'jpg', 'mp3','mp4','avi');
             $fileExtension = pathinfo($inputs['fichier'], PATHINFO_EXTENSION);
 
             if (!in_array($fileExtension,$listExtention))
