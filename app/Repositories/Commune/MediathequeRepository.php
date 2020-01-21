@@ -3,6 +3,7 @@
 namespace App\Repositories\Commune;
 
 use App\Models\Commune\Mediatheque;
+use App\Repositories\ResourceRepository;
 
 class MediathequeRepository extends ResourceRepository
 {

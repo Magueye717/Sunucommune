@@ -50,8 +50,7 @@ class MediathequeController extends Controller
      */
     public function create()
     {
-        $typeMedia =TypeMediatheque::toSelectArray();
-        return view('gestion.commune.mediatheques.create', compact('typeMedia'));
+        return view('gestion.commune.mediatheques.create');
     }
 
     /**
@@ -67,12 +66,12 @@ class MediathequeController extends Controller
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::MediaFile);
             $inputs['type_media'] = $this->mediaUtil->mediaExtentionControl($inputs['fichier']);
 
-            $listExtention = array('jpg', 'jpeg', 'jpg', 'mp3','mp4','avi');
+            $listExtention = array('jpg', 'jpeg', 'jpg', 'mp3','mp4','avi', 'flv','wav');
             $fileExtension = pathinfo($inputs['fichier'], PATHINFO_EXTENSION);
 
             if (!in_array($fileExtension,$listExtention))
                      {
-                        return \redirect()->back()->withErrors("Formats autorisés: Audio (mp3,wav) | Photo (mp4,3gp,flv,avi) | Photo(jpeg,jpg,png)");
+                        return \redirect()->back()->withErrors("Formats autorisés: Audio (mp3,wav) | Vidéo (mp4,3gp,flv,avi) | Photo(jpeg,jpg,png)");
                      }
 
      /*  dd( $inputs['type_fichier']); */
@@ -105,7 +104,6 @@ class MediathequeController extends Controller
     public function edit($id)
     {
         $media = $this->mediathequeRepository->getById($id);
-        $typeMedia =TypeMediatheque::toSelectArray();
         return view('gestion.commune.mediatheques.edit', compact('media', 'typeMedia'));
     }
 
