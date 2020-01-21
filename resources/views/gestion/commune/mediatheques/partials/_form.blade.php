@@ -1,11 +1,11 @@
 <div class="form-body">
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
-                <div class="form-group">
-                    <label class="control-label">Genre de l'OP</label>
+                {{-- <div class="form-group">
+                    <label class="control-label">Type de média</label>
                     {!! Form::select('type_media', $typeMedia, isset($media->type_fichier) ? $media->type_fichier : null, ['id' => 'type_media', 'class' =>
                     'form-control select2', 'required' => '', 'placeholder' => 'Choisir...']) !!}
-            </div>
+                </div> --}}
             <div class="form-group mb-0">
                 <label class="control-label">Upload Média</label>
                 {!! Form::file('fichier', ['id' => 'fichier', 'class' => 'form-control', 'placeholder'=>'Choisir la photo d\'illustration']) !!}

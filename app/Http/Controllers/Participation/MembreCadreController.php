@@ -57,7 +57,7 @@ class MembreCadreController extends Controller
             return view('gestion.participation.membre_cadre.create', compact('cadreConcertations', 'quartierVillage'));
 
         }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
-            return redirect('/participation/membre_cadres')->withWarning("Veuillez renseigner d'abord les information concernant la commune");
+            return redirect('/infos/create')->withWarning("Veuillez renseigner d'abord les informations concernant la commune");
         }
     }
 

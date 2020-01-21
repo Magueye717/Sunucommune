@@ -22,17 +22,6 @@
                             </span>
                         </a>
 
-                        <div class="col-sm-12">
-                            @if (Session::has('warning'))
-                                <div class="alert alert-warning" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    {{ Session::get('warning') }}
-                                </div>
-                            @endif
-                        </div>
-
                     </div>
                     @include('gestion.participation.cadre_concertation.partials._liste')
             </div>

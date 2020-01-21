@@ -15,6 +15,17 @@
                 <h3 class="box-title m-b-0">Informations de ma commune</h3>
                 <p class="text-muted m-b-30">Création</p>
 
+                <div class="col-sm-12">
+                    @if (Session::has('warning'))
+                        <div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ Session::get('warning') }}
+                        </div>
+                    @endif
+                </div>
+
                 {!! Form::model(new App\Models\Commune\CommuneInfo(), ['route' => ['infos.store'], 'role' => 'form',
                 'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
                 @include('gestion.commune.infos.partials._form')
