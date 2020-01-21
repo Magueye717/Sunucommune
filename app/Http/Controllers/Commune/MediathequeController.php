@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MediathequeRequest;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Repositories\Commune\MediathequeRepository;
+use App\Utils\MediaUtile;
 use App\Utils\UploadUtil;
 
 class MediathequeController extends Controller
@@ -21,14 +22,17 @@ class MediathequeController extends Controller
 
     protected $mediathequeRepository;
     protected $uploadUtil;
+    protected $mediaUtil;
     protected $communeInfoRepository;
     public function __construct(MediathequeRepository $mediathequeRepository,
                                 UploadUtil $uploadUtil,
+                                MediaUtile $mediaUtil,
                                 CommuneInfoRepository $communeInfoRepository)
     {
             $this->mediathequeRepository = $mediathequeRepository;
             $this->communeInfoRepository = $communeInfoRepository;
             $this->uploadUtil = $uploadUtil;
+            $this->mediaUtil = $mediaUtil;
             $this->middleware('auth');
     }
 
@@ -58,8 +62,20 @@ class MediathequeController extends Controller
     public function store(MediathequeRequest $request)
     {
         $inputs = $request->all();
+
         if ($request->hasFile('fichier')) {
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::MediaFile);
+            $inputs['type_media'] = $this->mediaUtil->mediaExtentionControl($inputs['fichier']);
+
+            $listExtention = array('jpg', 'jpeg', 'jpg', 'mp3','mp4','avi', 'flv','wav');
+            $fileExtension = pathinfo($inputs['fichier'], PATHINFO_EXTENSION);
+
+            if (!in_array($fileExtension,$listExtention))
+                     {
+                        return \redirect()->back()->withErrors("Formats autorisés: Audio (mp3,wav) | Vidéo (mp4,3gp,flv,avi) | Photo(jpeg,jpg,png)");
+                     }
+
+     /*  dd( $inputs['type_fichier']); */
         }
         $media = $this->mediathequeRepository->store($inputs);
 
@@ -107,6 +123,7 @@ class MediathequeController extends Controller
         if ($request->hasFile('fichier')) {
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::MediaFile);
             $oldPhotoFilename = $media->photo;
+            $inputs['type_media'] = $this->mediaUtil->mediaExtentionControl($inputs['fichier']);
         }
         $this->mediathequeRepository->update($id, $inputs);
 

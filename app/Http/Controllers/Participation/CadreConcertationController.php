@@ -56,7 +56,7 @@ class CadreConcertationController extends Controller
             return view('gestion.participation.cadre_concertation.create', compact('collectivites'));
         }
         catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
-            return redirect('/participation/cadres')->withWarning("Veuillez renseigner d'abord les information concernant la commune");
+            return redirect('/infos/create')->withWarning("Veuillez renseigner d'abord les informations concernant la commune");
         }
     }
 

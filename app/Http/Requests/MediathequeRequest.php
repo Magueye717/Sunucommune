@@ -31,22 +31,55 @@ class MediathequeRequest extends FormRequest
                 }
             case 'POST':
                 {
-                    return [
-                        'type_media' => 'required',
-                        'fichier' => 'required|mimes:jpeg,png,mp4,wav',
-                        'description' => 'required',
 
-                        /* 'fichier' => 'nullable|mimes:jpeg,png|dimensions:min_width=80,min_height=80,max_width=600,max_height=600' */
+                     $rules = [
+                        'fichier' => 'required',
+                        'description' => 'required',
                     ];
+
+                    //  si le type_fichier est audio
+                    if ($this->input('type_media') == 'audio') {
+                        $rules['fichier'] = 'mimes:mp3,wav';
+                    }
+
+                    //si le type_fichier est audio
+                    if ($this->input('type_media') == 'video') {
+                         $rules['fichier'] = 'mimes:mp4,3gp,flv,avi';
+
+                    }
+                    //si le type_fichier est photo
+                    if ($this->input('type_media') == 'photo') {
+                        $rules['fichier'] = 'mimes:jpeg,jpg,png';
+
+                   }
+
+                    return $rules;
                 }
             case 'PUT':
             case 'PATCH':
                 {
-                    return [
-                        'type_media' => 'required',
-                        'fichier' => 'required|mimes:jpeg,png,mp4,wav',
+                    $rules = [
+                        'fichier' => 'required',
                         'description' => 'required',
                     ];
+
+                    //  si le type_fichier est audio
+                    if ($this->input('type_media') == 'audio') {
+                        $rules['fichier'] = 'mimes:mp3,wav';
+                    }
+
+                    //si le type_fichier est audio
+                    if ($this->input('type_media') == 'video') {
+                         $rules['fichier'] = 'mimes:mp4,3gp,flv,avi';
+
+                    }
+                    //si le type_fichier est photo
+                    if ($this->input('type_media') == 'photo') {
+                        $rules['fichier'] = 'mimes:jpeg,jpg,png';
+
+                   }
+
+                    return $rules;
                 }
             default:
                 break;
