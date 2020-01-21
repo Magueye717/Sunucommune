@@ -22,9 +22,5 @@ class DatabaseSeeder extends Seeder
 
         $this->call('CollectiviteTableSeeder');
         $this->command->info('Collectivite table seeded!');
-<<<<<<< HEAD
-
-=======
->>>>>>> 20e37450d1b5f8d54f3cbd1a85eab3a9fe670aa9
     }
 }
