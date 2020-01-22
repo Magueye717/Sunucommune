@@ -12,13 +12,19 @@
         @isset($partenaires)
             @foreach($partenaires as $partenaire)
                 <tr>
-                    <td class="text-center"><a href="{{  url($partenaire->url) }}"  target="_blank"><img src="{{ asset('storage/commune/partenaires/'.$partenaire->logo) }}" class="css-class" alt="alt text" width="105px"></a></td>
+
+                        <td class="text-center">
+                            <a href="{{  url($partenaire->url) }}" target="_blank">
+                                <img src="{{ isset($partenaire->logo) ? asset('storage/commune/partenaires/' . $partenaire->logo) : asset('themev1/images/default.png') }}" alt="ss" width="105px">
+                            </a>
+                        </td>
 
                     <td>{{ $partenaire->nom }}</td>
 
                     <td>{{ $partenaire->type_partenaire }}</td>
                     <td class="text-nowrap text-center">
-                        <a href="{{ route('partenaires.edit', $partenaire) }}" class="text-inverse p-r-10" data-toggle="tooltip"
+                        <a href="{{ route('partenaires.edit', $partenaire) }}" class="text-inverse p-r-10"
+                           data-toggle="tooltip"
                            title="Modifier">
                             <i class="ti-marker-alt"></i>
                         </a>
@@ -28,7 +34,8 @@
                                         'style' => 'display: inline;',
                                         'route' => array('partenaires.destroy', $partenaire))) !!}
                         {{ csrf_field() }}
-                        <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
+                        <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip"
+                           title="Supprimer">
                             <i class="ti-trash"></i>
                         </a>
                         {!! Form::close() !!}
