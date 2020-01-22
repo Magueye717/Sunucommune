@@ -67,6 +67,15 @@ Route::prefix('ressources_humaines')->group(function (){
     });
 });
 
+Route::prefix('procedures')->group(function (){
+    Route::namespace('GestionProcedure')->group(function () {
+        Route::resource('/categories', 'CategorieController');
+        Route::resource('/procedures', 'ProcedureController');
+        Route::resource('/procedure-pieces', 'ProcedurePieceController');
+        Route::resource('/usagers', 'ProcedureUsagerController');
+    });
+});
+
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');
 Route::get('/edit-profil', 'HomeController@showFormProfile')->name('edit.profile');
