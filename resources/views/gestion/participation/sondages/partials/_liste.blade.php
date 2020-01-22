@@ -15,15 +15,20 @@
         @isset($sondages)
             @foreach($sondages as $sondage)
                 <tr>
-                    <td class="text-center"><img src="{{ asset('storage/participation/sondage/photos/'.$sondage->photo) }}" class="css-class" alt="alt text" width="105px"></td>
+
+
+
+                        <td class="text-center">
+                                <img src="{{ isset($sondage->photo) ? asset('storage/participation/sondage/photos/' . $sondage->photo) : asset('themev1/images/default.png') }}" alt="ss" width="105px">
+                        </td>
 
                     <td>{{ $sondage->titre }}</td>
                     <td>{{ $sondage->description }}</td>
                     <td>{{ $sondage->thematique->libelle }}</td>
-{{--                    <td>{{ $sondage->sondage_options_id }}</td>--}}
+                    {{--                    <td>{{ $sondage->sondage_options_id }}</td>--}}
                     <td>
                         @foreach($sondage->sondageOptions as $option)
-                          <span class="label label-info" style="margin: 2px;  display:block;
+                            <span class="label label-info" style="margin: 2px;  display:block;
    float:left; ">  {{$option->libelle}} </span>
                         @endforeach
                     </td>

@@ -12,13 +12,13 @@ class SondageRepository extends ResourceRepository
     protected $slug;
     const EST_PUBLIE = 1;
     const EST_NON_PUBLIE = 0;
+
     public function __construct(Sondage $sondage, Slug $slug)
     {
         $this->model = $sondage;
         $this->slug = $slug;
 
     }
-
 
 
     public function getListe()
@@ -37,7 +37,6 @@ class SondageRepository extends ResourceRepository
     }
 
 
-
     public function update($id, Array $inputs)
     {
         $article = $this->getById($id);
@@ -53,6 +52,7 @@ class SondageRepository extends ResourceRepository
 
         return $article->update($inputs);
     }
+
     public function publication($sondage, $estPublie = true)
     {
         $sondage->statut = self::EST_PUBLIE;
@@ -62,4 +62,6 @@ class SondageRepository extends ResourceRepository
         $sondage->save();
         return true;
     }
+
+
 }
