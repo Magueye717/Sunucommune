@@ -171,7 +171,7 @@ class CadreConcertationController extends Controller
         echo $output;
     }
 
-    private function getLocalisationData($cadreConcertation)
+   /*  private function getLocalisationData($cadreConcertation)
     {
         $collectivite = $cadreConcertation->collectivite;
         $selectedCommune = $collectivite->parent;
@@ -187,7 +187,7 @@ class CadreConcertationController extends Controller
             'departement' => $selectedDepartement->id,
             'region' => $selectedRegion->id,
         );
-    }
+    } */
 
 }
 

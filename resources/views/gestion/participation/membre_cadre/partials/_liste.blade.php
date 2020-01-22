@@ -32,13 +32,13 @@
                         </a>
                         {!! Form::open(array(
                             'method' => 'DELETE',
-                            'class' => 'sunucommune-delete',
+                            'class' => 'delete-form',
                             'style' => 'display: inline;',
-                            'route' => array('membre_cadress.destroy', $membreCadre->id))) !!}
-                         {{ csrf_field() }}
-                        <a href="#delete" class="text-danger padess-delete" data-toggle="tooltip" title="Supprimer">
-                            <i class="ti-trash"></i>
-                        </a>
+                            'route' => array('membre_cadres.destroy', $cadre))) !!}
+                            {{ csrf_field() }}
+                            <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
+                                <i class="ti-trash"></i>
+                            </a>
                         {!! Form::close() !!}
                     </td>
                 </tr>
