@@ -56,7 +56,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('cadres.index') }}">Cadres de concertation</a></li>
-                        <li><a href="{{ route('membre_cadres.index') }}">Memebres cadres</a></li>
+                        <li><a href="{{ route('membre_cadress.index') }}">Memebres cadres</a></li>
                         <li><a href="{{ route('panels.index') }}">Panels</a></li>
                         <li><a href="{{ route('sondages.index') }}">Sondages</a></li>
                         <li><a href="{{ route('thematiques.index') }}">Thematiques</a></li>

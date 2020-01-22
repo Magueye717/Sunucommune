@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Participation;
 use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CadreConcertationRequest;
+use App\Http\Requests\MembreCadreRequest;
 use App\Repositories\Commune\CollectiviteRepository;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Repositories\Participation\CadreConcertationRepository;
+use App\Repositories\Participation\MembreCadreRepository;
 use App\Utils\UploadUtil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,23 +26,33 @@ class CadreConcertationController extends Controller
     protected $collectiviteRepository;
     protected $communeInfoRepository;
     protected $uploadUtil;
+    protected $membreCadreRepository;
 
     public function __construct(CadreConcertationRepository $cadreConcerationRepository,
                                 UploadUtil $uploadUtil,
                                 CollectiviteRepository $collectiviteRepository,
-                                CommuneInfoRepository $communeInfoRepository)
+                                CommuneInfoRepository $communeInfoRepository,
+                                MembreCadreRepository $membreCadreRepository)
     {
         $this->cadreConcerationRepository = $cadreConcerationRepository;
         $this->collectiviteRepository = $collectiviteRepository;
         $this->communeInfoRepository = $communeInfoRepository;
+        $this->membreCadreRepository = $membreCadreRepository;
         $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
 
+
     public function index()
     {
-        $cadres=$this->cadreConcerationRepository->getData();
-        return view('gestion.participation.cadre_concertation.index', compact('cadres'));
+        try{
+            $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
+            $cadres=$this->cadreConcerationRepository->getData();
+            return view('gestion.participation.cadre_concertation.index', compact('cadres','cadreConcertations'));
+
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return redirect('/infos/create')->withWarning("Veuillez renseigner d'abord les informations concernant la commune");
+        }
     }
 
     /**
@@ -60,6 +72,8 @@ class CadreConcertationController extends Controller
         }
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -68,7 +82,6 @@ class CadreConcertationController extends Controller
     public function store(CadreConcertationRequest $request)
     {
         $inputs = $request->all();
-        /* $inputs['collectivite_id'] = $this->collectiviteRepository->getById($inputs['commune'])->id; */
         $inputs['add_by'] = Auth::user()->id;
         if ($request->hasFile('fichier')) {
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'));
@@ -76,6 +89,15 @@ class CadreConcertationController extends Controller
         $cardre = $this->cadreConcerationRepository->store($inputs);
 
         return redirect('/participation/cadres')->withMessage("La le menmbre cadre " . $cardre->nom . " a été créé avec succés.");
+    }
+
+
+    public function storeMembre(MembreCadreRequest $request)
+    {
+        $inputs = $request->all();
+        $membre = $this->membreCadreRepository->store($inputs);
+
+        return redirect('/participation/cadres')->withMessage("La le menmbre cadre " . $membre->nom . " a été créé avec succés.");
     }
 
     /**

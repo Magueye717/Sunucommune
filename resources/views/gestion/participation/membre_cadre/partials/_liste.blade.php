@@ -26,15 +26,15 @@
                     <td>{{ $membreCadre->statut_cadre }}</td>
                     <td>{{ $membreCadre->cadreConcertation->nom }}</td>
                     <td class="text-nowrap text-center">
-                        <a href="{{ route('membre_cadres.edit', $membreCadre) }}" class="text-inverse p-r-10" data-toggle="tooltip"
+                        <a href="{{ route('membre_cadress.edit', $membreCadre) }}" class="text-inverse p-r-10" data-toggle="tooltip"
                            title="Modifier">
                             <i class="ti-marker-alt"></i>
                         </a>
                         {!! Form::open(array(
                             'method' => 'DELETE',
-                            'class' => 'delete-form',
+                            'class' => 'sunucommune-delete',
                             'style' => 'display: inline;',
-                            'route' => array('membre_cadres.destroy', $membreCadre->id))) !!}
+                            'route' => array('membre_cadress.destroy', $membreCadre->id))) !!}
                          {{ csrf_field() }}
                         <a href="#delete" class="text-danger padess-delete" data-toggle="tooltip" title="Supprimer">
                             <i class="ti-trash"></i>
