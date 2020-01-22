@@ -38,7 +38,7 @@
                                         'style' => 'display: inline;',
                                         'route' => array('users.destroy', $user))) !!}
                         {{ csrf_field() }}
-                        <a href="#delete" class="text-danger padess-delete" data-toggle="tooltip" title="Supprimer">
+                        <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
                             <i class="ti-trash"></i>
                         </a>
                         {!! Form::close() !!}
