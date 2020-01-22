@@ -14,4 +14,5 @@ final class TypeUpload extends Enum
     const ArticleFile = 'article_file';
     const PanelFile = 'panel_file';
     const MediaFile = 'media_file';
+    const PhotoSondage = 'photo_sondage';
 }
