@@ -14,11 +14,7 @@ class CategorieRepository extends ResourceRepository
     }
     public function getListe()
     {
-        return $this->model->orderBy('libelle')->pluck('libelle', 'id');
-    }
-    public function getListeCategories()
-    {
-        return $this->model->orderBy('libelle')->pluck('libelle', 'id');
+        return $this->model->orderBy('nom')->pluck('nom', 'id');
     }
 
 }
