@@ -4,7 +4,7 @@
 @section('pageTitle', 'Gestion des activité')
 
 @section('filAriane')
-    <a class="breadcrumb-item" href="{{ route('thematiques.index') }}">thematique</a>
+    <a class="breadcrumb-item" href="{{ route('categories.index') }}">categorie</a>
     <a class="breadcrumb-item active" href="#">Ajout</a>
 @endsection
 
@@ -12,12 +12,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion des thematiques</h3>
+                <h3 class="box-title m-b-0">Gestion des categories</h3>
                 <p class="text-muted m-b-30">Ajout</p>
 
-                {!! Form::model(new App\Models\Participation\thematique(), ['route' => ['thematiques.store'], 'role' => 'form',
+                {!! Form::model(new App\Models\GestionProcedure\categorie(), ['route' => ['categories.store'], 'role' => 'form',
                 'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
-                @include('gestion.participation.thematique.partials._form')
+                @include('gestion.procedure.categorie.partials._form')
                 {!! Form::close() !!}
 
             </div>
