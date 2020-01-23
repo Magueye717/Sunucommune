@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ThematiqueRequest extends FormRequest
+class CategorieRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ThematiqueRequest extends FormRequest
     public function rules()
     {
         return [
-            'libelle' => 'required|max:225',
+            'nom' => 'required|max:225',
             'description' => 'nullable|max:16777215'
         ];
     }

@@ -30,8 +30,7 @@ class SondageController extends Controller
     protected $uploadUtil;
 
 
-
-    public function __construct(SondageRepository $sondageRepository, SondageOptionRepository $optionRepository, ThematiqueRepository $thematiqueRepository,UploadUtil $uploadUtil)
+    public function __construct(SondageRepository $sondageRepository, SondageOptionRepository $optionRepository, ThematiqueRepository $thematiqueRepository, UploadUtil $uploadUtil)
     {
         $this->sondageRepository = $sondageRepository;
         $this->optionRepository = $optionRepository;
@@ -44,9 +43,6 @@ class SondageController extends Controller
     public function index()
     {
         $sondages = $this->sondageRepository->getData();
-        $libelle = $this->sondageRepository->getData();
-//        dd($sondages);
-//        $sondages=$this->sondageRepository->getListe();
         return view('gestion.participation.sondages.index', compact('sondages'));
 
     }
@@ -81,19 +77,14 @@ class SondageController extends Controller
         if ($request->hasFile('photo')) {
             $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoSondage);
         }
-//dd($inputs);
-
-
 
         $sondage = $this->sondageRepository->store($inputs);
 
-
-
         if ($request->libelle)
-            $option = $this->optionRepository->saveMany($request->libelle, $sondage->id);
+            $this->optionRepository->saveMany($request->libelle, $sondage->id);
+
         $optionSondage['libelle'] = $request->libelle;
         $optionSondage['sondage_id'] = $sondage->id;
-
 
 
         return \redirect()->route('sondages.index')->withMessage("Le Sondage " . $sondage->titre . " a été créé.");
@@ -136,6 +127,9 @@ class SondageController extends Controller
         $inputs = $request->all();
 
 
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoSondage);
+        }
         $this->sondageRepository->update($id, $inputs);
         $this->optionRepository->updateMany($inputs['libelle'], $inputs['options_id'], $id);
         return \redirect()->route('sondages.index')->withMessage("Le Sondage " . $request->input('titre') . " a été modifié.");
@@ -150,11 +144,15 @@ class SondageController extends Controller
      */
     public function destroy($id)
     {
-
-        if ($this->sondageRepository->destroy($id))
-
+        $sondage = $this->sondageRepository->getById($id);
+        foreach ($sondage->SondageOptions as $options) {
+            $this->optionRepository->destroy($options->id);
+        }
+        if ($this->sondageRepository->destroy($id)) {
+            $this->uploadUtil->deleteFile($sondage->photo, TypeUpload::PhotoSondage);
             return redirect()->back()->withMessage("La suppression est effective");
-        else
+
+        } else
             return redirect()->back()->withErrors("Ce Sondage ne peut être supprimé...");
 
     }

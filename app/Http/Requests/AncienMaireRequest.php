@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ThematiqueRequest extends FormRequest
+class AncienMaireRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,12 @@ class ThematiqueRequest extends FormRequest
     public function rules()
     {
         return [
-            'libelle' => 'required|max:225',
-            'description' => 'nullable|max:16777215'
+            'nom' => 'required|max:225',
+            'prenom' => 'required|max:225',
+            'date_debut_mandat' => 'required|max:225',
+            'date_fin_mandat' => 'required|max:225',
+            'biographie' => 'nullable',
+            'photo' => 'nullable|mimes:jpeg,png|dimensions:min_width=80,min_height=80,max_width=600,max_height=600'
         ];
     }
 }

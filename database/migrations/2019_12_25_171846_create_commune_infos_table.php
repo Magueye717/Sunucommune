@@ -12,7 +12,8 @@ class CreateCommuneInfosTable extends Migration {
             $table->integer('collectivite_id')->unsigned();
            /*  $table->string('nom'); */
 			$table->string('maire');
-			$table->string('date_creation')->nullable();
+//			$table->string('date_creation')->nullable();
+            $table->date('date_creation')->nullable();
             $table->string('superficie')->nullable();
 			$table->string('population')->nullable();
 			$table->string('delimitation')->nullable();

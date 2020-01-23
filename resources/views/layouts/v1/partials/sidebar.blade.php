@@ -64,6 +64,17 @@
                 </li>
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false">
+                        <i class="fa fa-file fa-fw"></i> <span class="hide-menu">Gestion de procedures</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{ route('categories.index') }}">Categorie</a></li>
+                        <li><a href="{{ route('procedures.index') }}">Procedure</a></li>
+                        <li><a href="{{ route('procedure-pieces.index') }}">Procedures Pieces</a></li>
+                        <li><a href="{{ route('usagers.index') }}">Usagers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false">
                         <i class="fa fa-users fa-fw"></i> <span class="hide-menu">Ressource Humaines</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
