@@ -16,7 +16,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 m-b-30 m-t-5">
-                        <a href="{{ route('membre_cadres.create') }}">
+                        <a href="{{ route('membre_cadress.create') }}">
                             <span class="pull-right m-b-10">
                                 <button class="btn btn-primary btn-block m-b-10">
                                     <i class="ti-plus m-r-5"></i> Ajouter un membre
@@ -24,7 +24,7 @@
                             </span>
                         </a>
                     </div>
-                    
+
                     <div class="col-sm-12">
                         @if (Session::has('warning'))
                             <div class="alert alert-warning" role="alert">

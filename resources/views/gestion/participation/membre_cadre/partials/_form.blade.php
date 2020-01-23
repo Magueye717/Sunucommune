@@ -70,14 +70,13 @@
         </div>
     </div>
     </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary waves-effect waves-light"><i class="ti-check"></i> Enregistrer</button>
+        <button type="button" class="btn btn-default waves-effect waves-light" data-dismiss="modal">Annuler</button>
+    </div>
     <!--/row-->
 
 </div>
-<div class="form-actions">
-    <button type="submit" class="btn btn-primary waves-effect waves-light"><i class="ti-check"></i> Enregistrer</button>
-    <a href="{{ url()->previous() }}" class="btn btn-default waves-effect waves-light">Annuler</a>
-</div>
-
 @push('myJS')
 <script>
     $(function () {
