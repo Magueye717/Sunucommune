@@ -1,10 +1,10 @@
 @extends('layouts.v1.default')
 
-@section('title', 'Gestion des utilisateurs')
-@section('pageTitle', 'Gestion des utilisateurs')
+@section('title', 'Gestion des agents')
+@section('pageTitle', 'Gestion des agents')
 
 @section('filAriane')
-    <li><a href="{{ route('users.index') }}">Gestion des membres</a></li>
+    <li><a href="{{ route('agents.index') }}">Gestion des agents</a></li>
     <li class="active">Modification</li>
 @endsection
 

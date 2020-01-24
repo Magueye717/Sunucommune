@@ -1,7 +1,7 @@
 @extends('layouts.v1.default')
 
-@section('title', 'Gestion des utilisateurs')
-@section('pageTitle', 'Gestion des membres du cabinet')
+@section('title', 'Gestion des agents')
+@section('pageTitle', 'Gestion des agents')
 
 @section('filAriane')
     <li class="active">Agents</li>
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion agent</h3>
+                <h3 class="box-title m-b-0">Gestion des agent</h3>
                 <p class="text-muted m-b-10">Liste des agents</p>
 
                 <div class="row">
