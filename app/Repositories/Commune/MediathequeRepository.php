@@ -13,9 +13,4 @@ class MediathequeRepository extends ResourceRepository
         $this->model = $mediatheque;
     }
 
-    public function getListMedia()
-    {
-        return $this->model->orderBy('nom')->pluck('nom', 'id');
-    }
-
 }

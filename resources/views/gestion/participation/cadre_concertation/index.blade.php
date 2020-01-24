@@ -21,7 +21,6 @@
                                 </button>
                             </span>
                         </a>
-
                     </div>
                     @include('gestion.participation.cadre_concertation.partials._liste')
             </div>

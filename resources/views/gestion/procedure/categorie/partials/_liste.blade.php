@@ -11,7 +11,7 @@
         @isset($categories)
             @foreach($categories as $categorie)
                 <tr>
-                    <td>{{ $categorie->libelle }}</td>
+                    <td>{{ $categorie->nom }}</td>
                     <td>{{ $categorie->description }}</td>
                     <td class="text-nowrap text-center">
                         <a href="{{ route('categories.edit', $categorie) }}" class="text-inverse p-r-10" data-toggle="tooltip"

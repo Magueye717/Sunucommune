@@ -50,8 +50,7 @@ class MediathequeController extends Controller
      */
     public function create()
     {
-        $typeMedia =TypeMediatheque::toSelectArray();
-        return view('gestion.commune.mediatheques.create', compact('typeMedia'));
+        return view('gestion.commune.mediatheques.create');
     }
 
     /**
@@ -105,7 +104,6 @@ class MediathequeController extends Controller
     public function edit($id)
     {
         $media = $this->mediathequeRepository->getById($id);
-        $typeMedia =TypeMediatheque::toSelectArray();
         return view('gestion.commune.mediatheques.edit', compact('media', 'typeMedia'));
     }
 

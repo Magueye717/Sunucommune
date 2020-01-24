@@ -66,13 +66,13 @@ class MembreCadreController extends Controller
      *
      * @return Response
      */
-    public function store(MembreCadreRequest $request)
+    /* public function store(MembreCadreRequest $request)
     {
         $inputs = $request->all();
         $membre = $this->membreCadreRepository->store($inputs);
 
         return redirect('/participation/membre_cadres')->withMessage("La le menmbre cadre " . $membre->nom . " a été créé avec succés.");
-    }
+    } */
 
     /**
      * Display the specified resource.

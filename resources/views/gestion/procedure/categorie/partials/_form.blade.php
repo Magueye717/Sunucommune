@@ -2,21 +2,21 @@
     <div class="row">
         <div class="col-md-10">
             <div class="form-group">
-                <label class="control-label">libelle <span class="text-danger">*</span></label>
-                {!! Form::text('libelle', null, ['id' => 'libelle', 'class' => 'form-control', 'required' => '', 'placeholder' => 'libelle']) !!}
+                <label class="control-label">Intitule <span class="text-danger">*</span></label>
+                {!! Form::text('nom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Intitule']) !!}
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label class="control-label">Description</label>
-                {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control', 'placeholder' => 'Ajouter une description pour le theme']) !!}
+                {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control', 'placeholder' => 'Ajouter une description pour la categorie']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>
     </div>
     <!--/row-->
 
-    @if(isset($thematique))
-        {!! Form::hidden('thematique_id', $thematique->id) !!}
+    @if(isset($categorie))
+        {!! Form::hidden('categorie_id', $categorie->id) !!}
     @endif
 </div>
 <div class="form-actions">

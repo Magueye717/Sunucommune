@@ -9,7 +9,7 @@ class Categorie extends Model
 
     protected $table = 'categories';
     public $timestamps = false;
-    protected $fillable = array('nom', 'slug');
+    protected $fillable = array('nom', 'description', 'slug');
 
     public function procedures()
     {
