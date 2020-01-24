@@ -217,3 +217,10 @@ $('.visited li a').on('click', function(e) {
     }
     e.preventDefault();
 });
+// Date Picker
+jQuery('.mydatepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    language: 'fr',
+    todayHighlight: true,
+    endDate: '+2d'
+});

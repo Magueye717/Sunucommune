@@ -34,6 +34,8 @@ Route::get('/dashboard', ['as' => 'gestion.dashboard', 'uses' => 'DashboardContr
 Route::resource('/infos', 'Commune\CommuneInfoController');
 Route::patch('/historique/{id}', 'Commune\CommuneInfoController@updateHistorique')->name('historiques.update');
 Route::resource('infos.ancien-maires', 'Commune\AncienMaireController')->except('index', 'show');
+//Ajout elmoth
+Route::resource('ancien-maires', 'Commune\AncienMaireController');
 Route::resource('/partenaires', 'Commune\PartenaireController');
 Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
 Route::resource('/articles', 'Commune\ArticleController');
