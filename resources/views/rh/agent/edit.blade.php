@@ -12,12 +12,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion des membres</h3>
-                <p class="text-muted m-b-20">Création</p>
+                <h3 class="box-title m-b-0">Gestion des agents</h3>
+                <p class="text-muted m-b-20">Modification</p>
 
-                {!! Form::model($membreCadre, ['method' =>'PATCH','route' => ['membre_cadres.update',$membreCadre], 'role' => 'form',
-                'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
-                 @include('gestion.participation.membre_cadre.partials._form')
+                {!! Form::model($agent, ['method' =>'PATCH','route' => ['agents.update',$agent], 'role' => 'form',
+                'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => true]) !!}
+
+                 @include('rh.agent.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>
