@@ -25,11 +25,8 @@ class CommuneInfoRequest extends FormRequest
     {
         return [
             'maire' => 'required|max:225',
-
             'collectivite_id' => 'required',
-
             'date_creation' => 'required',
-
             'superficie' => 'nullable|max:225',
             'population' => 'nullable|max:225',
             'delimitation' => 'nullable|max:225',
