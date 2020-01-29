@@ -23,7 +23,7 @@
 <!--====== HEADER PART START ======-->
 
 <header class="header-area">
-    @include('layouts.portail.partials.header-area')
+    @include('layouts.portail.partials.header')
 
 </header>
 
