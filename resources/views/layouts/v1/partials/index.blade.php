@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('themev2/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('themev2/css/style.css')}}" />
 
-    
+
 
     <title>PADESS</title>
   </head>
