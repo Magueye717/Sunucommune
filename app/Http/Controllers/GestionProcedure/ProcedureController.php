@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\GestionProcedure;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProcedureController extends Controller 
+class ProcedureController extends Controller
 {
 
   /**
@@ -15,7 +15,7 @@ class ProcedureController extends Controller
    */
   public function index()
   {
-    
+
   }
 
   /**
@@ -25,7 +25,7 @@ class ProcedureController extends Controller
    */
   public function create()
   {
-    
+
   }
 
   /**
@@ -35,7 +35,7 @@ class ProcedureController extends Controller
    */
   public function store(Request $request)
   {
-    
+
   }
 
   /**
@@ -46,7 +46,7 @@ class ProcedureController extends Controller
    */
   public function show($id)
   {
-    
+
   }
 
   /**
@@ -57,7 +57,7 @@ class ProcedureController extends Controller
    */
   public function edit($id)
   {
-    
+
   }
 
   /**
@@ -68,7 +68,7 @@ class ProcedureController extends Controller
    */
   public function update($id)
   {
-    
+
   }
 
   /**
@@ -79,9 +79,9 @@ class ProcedureController extends Controller
    */
   public function destroy($id)
   {
-    
+
   }
-  
+
 }
 
 ?>
