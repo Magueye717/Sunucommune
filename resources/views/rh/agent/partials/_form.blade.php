@@ -1,18 +1,26 @@
-<div class="" >
+<div class=" "  >
 
     <div class="row ">
-        <div class="col-md-4"  >Photo</div>
-        <div class="col-md-8"  >
+{{--        <div class="col-md-4"  >Photo</div>--}}
+        <div class="col-md-6"  >
             <div class="form-group mb-0">
                 <label class="control-label">Photo</label>
-                {!! Form::file('logo', ['id' => 'logo', 'class' => 'form-control', 'placeholder'=>'Choisir le logo']) !!}
-                <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
-                @if(isset($communeInfo) && !empty($communeInfo->logo))
-                    <img class="avatar-min" src="{{ asset('storage/commune/photos/'. $communeInfo->logo) }}" alt="avatar"
-                         title="Logo"/>
-                @endif
+                {!! Form::file('avatar', ['id' => 'avatar', 'class' => 'form-control', 'placeholder'=>'Choisir le avatar']) !!}
+                <span class="help-block"><small>La avatar doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
+{{--                @if(isset($agent) && !empty($agent->avatar))--}}
+{{--                    <img class="avatar-min" src="{{ asset('storage/rh/agents/'. $agent->avatar) }}" alt="avatar"--}}
+{{--                         title="Logo"/>--}}
+{{--                @endif--}}
             </div>
         </div>
+                <div class="col-md-4"  >
+
+                    @if(isset($agent) && !empty($agent->avatar))
+                        <img class="pull-right" src="{{ asset('storage/rh/agents/'. $agent->avatar) }}" alt="avatar" width="100px"
+                             title="Logo" style="  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border: 6px solid #ffffff;"/>
+                    @endif
+                </div>
+
     </div>
     <div class="row">
 

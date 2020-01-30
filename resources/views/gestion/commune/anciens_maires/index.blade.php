@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                @include('gestion.commune.mediatheques.partials._liste')
+                @include('gestion.commune.anciens_maires.partials._liste')
             </div>
         </div>
     </div>

@@ -40,7 +40,6 @@ class MembreCadreRequest extends FormRequest
                         'statut_cadre' => 'nullable|max:225',
                         'telephone' => 'required|max:225',
                         'adresse' => 'required|max:225',
-                        'cadre_de_concertation_id' => 'required|max:225',
                     ];
                 }
             case 'PUT':
@@ -54,7 +53,6 @@ class MembreCadreRequest extends FormRequest
                         'statut_cadre' => 'nullable|max:225',
                         'telephone' => 'required|max:225',
                         'adresse' => 'required|max:225',
-                        'cadre_de_concertation_id' => 'required|max:225',
                     ];
                 }
             default:

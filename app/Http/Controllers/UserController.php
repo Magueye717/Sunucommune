@@ -57,7 +57,6 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $inputs = $request->all();
-        //Avatar
         if ($request->hasFile('avatar')) {
             $inputs['avatar'] = $this->uploadUtil->traiterFile($request->file('avatar'));
         }

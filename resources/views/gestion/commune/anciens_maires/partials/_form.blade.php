@@ -104,52 +104,12 @@
 @push('myJS')
     <script>
        $(function () {
-        'use strict';
-        // Select2
-        $('.select2').select2();
-
-        //Gestion collectivite
-        $('.dynamic').change(function () {
-            if ($(this).val() != '') {
-                var select = $(this).attr("id");
-                var value = $(this).val();
-                var dependent = $(this).data('dependent');
-                var _token = $('input[name="_token"]').val();
-
-                $.ajax({
-                    url: "{{ route('collectivites.fetch') }}",
-                    type: "POST",
-                    data: {select: select, value: value, _token: _token, dependent: dependent},
-                    success: function (result) {
-                        $('#' + dependent).html(result);
-                    }
-                })
-            }
-        });
 
 
 
-            //Summernote
-            $('.summernote').summernote({
-                placeholder: 'Ajouter le mot du maire...',
-                tabsize: 2,
-                minHeight: 150,
-                lang: 'fr-FR'
-            });
 
-        /* datadependant chaging input */
-        $('#region').change(function () {
-            $('#departement').val('').trigger("change");
-            $('#commune').val('').trigger("change").empty();
-            $('#quartiervillage').val('').trigger("change").empty();
-        });
-        $('#departement').change(function () {
-            $('#commune').val('').trigger("change");
-            $('#quartiervillage').val('').trigger("change").empty();
-        });
-        $('#commune').change(function () {
-            $('#quartiervillage').val('').trigger("change")
-        });
+
+
     });
     </script>
 @endpush

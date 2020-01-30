@@ -1,10 +1,10 @@
 @extends('layouts.v1.default')
 
-@section('title', 'Gestion des membres du cabinet')
-@section('pageTitle', 'Gestion des membres du cabinet')
+@section('title', 'Gestion des agents')
+@section('pageTitle', 'Gestion des agents')
 
 @section('filAriane')
-    <li><a href="{{ route('users.index') }}">Gestion des membres cadres</a></li>
+    <li><a href="{{ route('agents.index') }}">Gestion des agents</a></li>
     <li class="active">Création</li>
 @endsection
 
@@ -12,9 +12,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion des membres cadres</h3>
+                <h3 class="box-title m-b-0">Gestion des agents</h3>
                 <p class="text-muted m-b-20">Création</p>
-                {!! Form::open(['route' => 'agents.store', 'class' => 'form-horizontal panel']) !!}
+                {!! Form::model(new App\Models\Rh\Agent(), ['route' => ['agents.store'], 'role' => 'form',
+                   'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
+{{--                {!! Form::close() !!}(['route' => 'agents.store', 'class' => 'form-horizontal panel']) !!}--}}
                 @include('rh.agent.partials._form')
                 {!! Form::close() !!}
             </div>

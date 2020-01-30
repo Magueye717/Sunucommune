@@ -54,7 +54,6 @@ class PartenaireController extends Controller
     {
         $inputs = $request->all();
 
-
         if ($request->hasFile('logo')) {
             $inputs['logo'] = $this->uploadUtil->traiterFile($request->file('logo'), TypeUpload::LogoPartenaire);
         }
@@ -98,7 +97,9 @@ class PartenaireController extends Controller
     {
         $partenaire = $this->partenaireRepository->getById($id);
         $inputs = $request->all();
+
         if ($request->hasFile('logo')) {
+
             $inputs['logo'] = $this->uploadUtil->traiterFile($request->file('logo'), TypeUpload::LogoPartenaire);
             $oldFilename = $partenaire->logo;
         }
