@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Rh;
 
+use App\Enums\TypeUpload;
+use App\Http\Requests\AgentRequest;
 use App\Models\Rh\Agent;
 use App\Repositories\Rh\AgentRepository;
+use App\Utils\UploadUtil;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,10 +21,12 @@ class AgentController extends Controller
 
 
     protected $agentRepository;
+    protected $uploadUtil;
 
-    public function __construct(AgentRepository $agentRepository)
+    public function __construct(AgentRepository $agentRepository, UploadUtil $uploadUtil)
     {
         $this->agentRepository = $agentRepository;
+        $this->uploadUtil=$uploadUtil;
         $this->middleware('auth');
     }
 
@@ -48,9 +53,15 @@ class AgentController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(AgentRequest $request)
   {
       $inputs = $request->all();
+
+//      dd($inputs);
+      if ($request->hasFile('avatar')) {
+          $inputs['avatar'] = $this->uploadUtil->traiterFile($request->file('avatar'), TypeUpload::PhotoAgent);
+      }
+
       $agent = $this->agentRepository->store($inputs);
 
       return redirect('/ressources_humaines/agents')->withMessage("L'agent' " . $agent->prenom . " ". $agent->nom . " a été créé avec succés.");
@@ -75,6 +86,8 @@ class AgentController extends Controller
    */
   public function edit($id)
   {
+      $agent=$this->agentRepository->getById($id);
+      return view('rh.agent.edit',compact('agent'));
 
   }
 
@@ -84,8 +97,25 @@ class AgentController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(AgentRequest $request,$id)
   {
+      $agent=$this->agentRepository->getById($id);
+      $inputs = $request->all();
+
+
+
+      if ($request->hasFile('avatar')) {
+          $inputs['avatar'] = $this->uploadUtil->traiterFile($request->file('avatar'), TypeUpload::PhotoAgent);
+          $oldFilename = $agent->logo;
+      }
+
+          $this->agentRepository->update($id, $inputs);
+
+          if (!empty($oldFilename))
+              $this->uploadUtil->deleteFile($oldFilename, TypeUpload::PhotoAgent);
+
+          return \redirect()->route('agents.index')->withMessage("L'Agent  " . $request->input('prenom') ." ".$request->input('nom') . " a été modifié.");
+
 
   }
 
@@ -97,8 +127,16 @@ class AgentController extends Controller
    */
   public function destroy($id)
   {
+       $agent = $this->agentRepository->getById($id);
 
-  }
+        if ($this->agentRepository->destroy($id)) {
+
+            $this->uploadUtil->deleteFile($agent->avatar, TypeUpload::PhotoAgent);
+            return redirect()->back()->withMessage("La suppression est effective");
+        } else
+            return redirect()->back()->withErrors("Ce partenaire ne peut être supprimé...");
+    }
+
 
 }
 

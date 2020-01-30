@@ -2,14 +2,14 @@
     <table id="myTable" class="table table-striped table-bordered">
         <thead>
         <tr>
+            <th>Photo</th>
             <th>Prénom</th>
             <th>Nom</th>
             <th>Fonction</th>
             <th>Adresse</th>
             <th>Email</th>
             <th>Tel</th>
-            <th>Satut du memebre</th>
-{{--            <th>Cadre de concertation</th>--}}
+{{--            <th>Satut du agent</th>--}}
             <th class="text-nowrap text-center">Actions</th>
         </tr>
         </thead>
@@ -17,16 +17,20 @@
         @isset($agents)
             @foreach($agents as $agent)
                 <tr>
+                    <td class="text-center">
+                        <img src="{{ isset($agent->avatar) ? asset('storage/rh/agents/' . $agent->avatar) : asset('themev1/images/default.png') }}" alt="ss" width="105px">
+
+                    </td>
                     <td>{{ $agent->prenom }}</td>
                     <td>{{ $agent->nom }}</td>
                     <td>{{ $agent->fonction }}</td>
                     <td>{{ $agent->adresse }}</td>
                     <td>{{ $agent->email }}</td>
                     <td>{{ $agent->telephone }}</td>
-                    <td>{{ $agent->statut_agent }}</td>
+{{--                    <td>{{ $agent->statut_agent }}</td>--}}
 {{--                    <td>{{ $agent->cadreConcertation->nom }}</td>--}}
                     <td class="text-nowrap text-center">
-                        <a href="{{ route('membre_cadres.edit', $agent) }}" class="text-inverse p-r-10" data-toggle="tooltip"
+                        <a href="{{ route('agents.edit', $agent) }}" class="text-inverse p-r-10" data-toggle="tooltip"
                            title="Modifier">
                             <i class="ti-marker-alt"></i>
                         </a>
@@ -34,9 +38,9 @@
                             'method' => 'DELETE',
                             'class' => 'delete-form',
                             'style' => 'display: inline;',
-                            'route' => array('membre_cadres.destroy', $agent->id))) !!}
+                            'route' => array('agents.destroy', $agent->id))) !!}
                          {{ csrf_field() }}
-                        <a href="#delete" class="text-danger padess-delete" data-toggle="tooltip" title="Supprimer">
+                        <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
                             <i class="ti-trash"></i>
                         </a>
                         {!! Form::close() !!}

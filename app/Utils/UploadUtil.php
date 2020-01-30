@@ -80,15 +80,12 @@ class UploadUtil
             case TypeUpload::PanelFile:
                 return $this->repertoire = self::PANEL_FILE_PATH;
                 break;
-<<<<<<< HEAD
-=======
             case TypeUpload::MediaFile:
                 return $this->repertoire = self::FICHIER_MEDIA_PATH;
                 break;
            case TypeUpload::PhotoSondage:
                 return $this->repertoire = self::PHOTO_SONDAGE_PATH;
                 break;
->>>>>>> develop
             default:
                 return self::DEFAULT_PATH;
         }
