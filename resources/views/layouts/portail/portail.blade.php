@@ -52,6 +52,23 @@
             </h4>
         </div>
     </div>
+    @if(isset($communeInfo))
+    <div class="col-md-8" style="background-color: #1179D5; ">
+        <div class="media align-middle mt-40" style="display: flex; align-items: center;">
+            <img class="img-thumbnail" style="margin-bottom:48px; width: 20%; border-radius: 50%; !important"
+            src="{{ isset($communeInfo->photo_maire) ? asset('storage/commune/photos/' . $communeInfo->photo_maire) : asset('themev1/images/default.png') }}"
+            alt="avatar" class="profil-avatar"  width="250px" alt="Team Member">
+            <div class="media-body">
+
+            <p style=" color: white; margin: 18px;">{{$communeInfo->mot_du_maire}}</p>
+                <h7 class="ml-20" style=" color: yellow;"> M. {{$communeInfo->maire}} <a href="blog-details.html"
+                                                                           class="theme-btn mb-20 br-10"
+                                                                           style="background-color: white; float: right; color: #12BDE3;">Présentation de la commune<i
+                            class="fal fa-arrow-alt-right ml-15"> </i></a></h7>
+            </div>
+        </div>
+    </div>
+    @else
     <div class="col-md-8" style="background-color: #1179D5; ">
 
 
@@ -73,6 +90,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 <!--====== ABOUT PART ENDS ======-->
 
