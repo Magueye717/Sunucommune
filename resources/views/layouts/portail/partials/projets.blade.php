@@ -62,8 +62,14 @@
                     <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
                 </div>
             </div>
-            <a href="" class="theme-btn br-30" style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <a href="" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT
                 VOIR<i class="fal fa-arrow-alt-right ml-15"> </i></a>
         </div>
+
     </div>
 </div>
