@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
 use App\Http\Requests\RoleRequest;
+use App\Repositories\Commune\PartenaireRepository;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Support\Facades\Redirect;
@@ -12,9 +13,11 @@ use Illuminate\Support\Facades\Redirect;
 class PortailController extends Controller
 {
     protected $permRepository;
+    protected $partenaireRepository;
 
-    public function __construct()
+    public function __construct(PartenaireRepository $partenaireRepository)
     {
+        $this->partenaireRepository = $partenaireRepository;
 
     }
 
@@ -25,14 +28,14 @@ class PortailController extends Controller
      */
     public function index()
     {
-
-        return view('portail.index');
+        $partenaires = $this->partenaireRepository->getData();
+        return view('portail.index', compact('partenaires'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
     public function edit($id)
@@ -44,7 +47,7 @@ class PortailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
     public function update(PermissionRequest $request, $id)
