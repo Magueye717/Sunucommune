@@ -1,4 +1,4 @@
-<div class="blog-list white-bg mt-50 ml-0 mr-0 hoverable" style="border-radius: 5%;">
+<div class="blog-list white-bg mt-50 ml-0 mr-0" style="border-radius: 5%;">
     <div class="blog-title">
         <h3 class="title">Agenda de la mairie</h3>
     </div>

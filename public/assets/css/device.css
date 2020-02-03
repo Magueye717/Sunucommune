@@ -269,5 +269,7 @@
     padding-left: 15px;
   }
 
-
+  .our-team-box img{
+    display: inline-block;
+}
   
