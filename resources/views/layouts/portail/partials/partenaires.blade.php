@@ -6,41 +6,20 @@
         <ul class="divider"><img src="assets/images/Sep.png" alt=" "></ul>
 
     </div>
+
+
+
     <div class="row brand-active">
+
+        @foreach($partenaires as $partenaire)
         <div class="col-lg-2">
             <div class="brand-item text-center">
-                <img src="assets/images/barand-1.png" alt="">
+                <img src="{{ isset($partenaire->logo) ? asset('storage/commune/partenaires/' . $partenaire->logo) : asset('themev1/images/default.png') }}" alt="ss" width="105px">
+
             </div>
         </div>
-        <div class="col-lg-2">
-            <div class="brand-item text-center">
-                <img src="assets/images/barand-2.png" alt="">
-            </div>
-        </div>
-        <div class="col-lg-2">
-            <div class="brand-item text-center">
-                <img src="assets/images/barand-3.png" alt="">
-            </div>
-        </div>
-        <div class="col-lg-2">
-            <div class="brand-item text-center">
-                <img src="assets/images/barand-4.png" alt="">
-            </div>
-        </div>
-        <div class="col-lg-2">
-            <div class="brand-item text-center">
-                <img src="assets/images/barand-5.png" alt="">
-            </div>
-        </div>
-        <div class="col-lg-2">
-            <div class="brand-item text-center">
-                <img src="assets/images/barand-6.png" alt="">
-            </div>
-        </div>
-        <div class="col-lg-2">
-            <div class="brand-item text-center">
-                <img src="assets/images/barand-2.png" alt="">
-            </div>
-        </div>
+
+        @endforeach
+
     </div>
 </div>
