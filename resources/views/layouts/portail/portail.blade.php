@@ -66,6 +66,7 @@
                                                                            style="background-color: white; float: right; color: #12BDE3;">Présentation de la commune<i
                             class="fal fa-arrow-alt-right ml-15"> </i></a></h7>
             </div>
+            
         </div>
     </div>
     @else
