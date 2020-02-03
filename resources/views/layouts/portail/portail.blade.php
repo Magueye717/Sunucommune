@@ -61,7 +61,7 @@
             <div class="media-body">
 
             <p style=" color: white; margin: 18px;">{!!$communeInfo->mot_du_maire!!}</p>
-                <h7 class="ml-20" style=" color: yellow;"> M. {{$communeInfo->maire}} <a href="blog-details.html"
+                <h7 class="ml-20" style=" color: yellow;"> M. {{Str::upper($communeInfo->maire)}} <a href="blog-details.html"
                                                                            class="theme-btn mb-20 br-10"
                                                                            style="background-color: white; float: right; color: #12BDE3;">Présentation de la commune<i
                             class="fal fa-arrow-alt-right ml-15"> </i></a></h7>

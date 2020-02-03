@@ -5,17 +5,24 @@ namespace App\Http\Controllers\Portail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
 use App\Http\Requests\RoleRequest;
+use App\Models\Commune\Article;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Models\Commune\CommuneInfo;
+use App\Models\Commune\TypeArticle;
+use App\Repositories\Commune\ArticleRepository;
+
 class PortailController extends Controller
 {
     protected $permRepository;
     protected $communeInfoRepository;
+    protected $articlefoRepository;
 
-    public function __construct(CommuneInfoRepository $communeInfoRepository)
+    public function __construct(
+        CommuneInfoRepository $communeInfoRepository,
+        ArticleRepository $articlefoRepository)
     {
         $this->communeInfoRepository = $communeInfoRepository;
     }
@@ -27,8 +34,9 @@ class PortailController extends Controller
      */
     public function index()
     {
+        $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
-        return view('portail.index', compact('communeInfo'));
+        return view('portail.index', compact('communeInfo', 'projets'));
     }
 
     /**

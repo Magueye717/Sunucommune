@@ -54,4 +54,5 @@ class ArticleRepository extends ResourceRepository
         return true;
     }
 
+
 }
