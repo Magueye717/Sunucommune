@@ -7,69 +7,25 @@
     </div>
 
     <div class="row blog-load">
-        <div class="col-lg-3 col-md-6">
-            <div class="our-service-box">
-                <div class="our-service-img">
-                    <img src="assets/images/service/service-1.png" alt="Service Image">
+        @foreach ($projets as $projet)
+                
+        @if($projet->typeArticle->libelle==='Projet'&& $projet->est_publie===1  )
+            <div class="col-lg-3 col-md-6 ">
+                <div class="our-service-box" style="min-height:550px;">
+                    <div class="our-service-img">
+                        <img src="{{ isset($projet->photo) ? asset('storage/commune/articles/photos/'. $projet->photo) : asset('themev1/images/default.png') }}" alt="Service Image">
+                    </div>
+                    <div class="our-service-content">
+                    <h6><a href="service-details.html">{{Str::upper($projet->titre)}}</a></h6>
+                        <span class="line"></span>
+                        <p>
+                        {!! \Illuminate\Support\Str::limit($projet->texte, 80, $end='...') !!}
+                        </p>
+                        <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
+                    </div>
                 </div>
-                <div class="our-service-content">
-                    <h6><a href="service-details.html">NOTRE PROJET DE PAVAGE</a></h6>
-                    <span class="line"></span>
-                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, ullamcorper laoreet,
-                        lectus arcu pulvinar.</p>
-                    <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="our-service-box">
-                <div class="our-service-img">
-                    <img src="assets/images/service/service-2.png" alt="Service Image">
-                </div>
-                <div class="our-service-content">
-                    <h6><a href="service-details.html">NOTRE PROJET D'ECLAIRAGE</a></h6>
-                    <span class="line"></span>
-                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, ullamcorper laoreet,
-                        lectus arcu pulvinar.</p>
-                    <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="our-service-box">
-                <div class="our-service-img">
-                    <img src="assets/images/service/service-3.png" alt="Service Image">
-                </div>
-                <div class="our-service-content">
-                    <h6><a href="service-details.html">APPUI AUX FEMMES</a></h6>
-                    <span class="line"></span>
-                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, ullamcorper laoreet,
-                        lectus arcu pulvinar.</p>
-                    <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="our-service-box">
-                <div class="our-service-img">
-                    <img src="assets/images/service/service-3.png" alt="Service Image">
-                </div>
-                <div class="our-service-content">
-                    <h6><a href="service-details.html">CONSTRUCTION DE STADE </a></h6>
-                    <span class="line"></span>
-                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, ullamcorper laoreet,
-                        lectus arcu pulvinar.</p>
-                    <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-right">
-            <a href="" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT
-                VOIR<i class="fal fa-arrow-alt-right ml-15"> </i></a>
-        </div>
-
+            </div> 
+            @endif
+     @endforeach
     </div>
 </div>

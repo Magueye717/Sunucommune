@@ -5,19 +5,31 @@ namespace App\Http\Controllers\Portail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
 use App\Http\Requests\RoleRequest;
+
+use App\Models\Commune\Article;
+
 use App\Repositories\Commune\PartenaireRepository;
+
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Models\Commune\CommuneInfo;
+use App\Models\Commune\TypeArticle;
+use App\Repositories\Commune\ArticleRepository;
+
 class PortailController extends Controller
 {
     protected $permRepository;
 
-    protected $partenaireRepository;
     protected $communeInfoRepository;
-    public function __construct(PartenaireRepository $partenaireRepository,CommuneInfoRepository $communeInfoRepository)
+    protected $articlefoRepository;
+    protected $partenaireRepository;
+  
+  
+
+    public function __construct(ArticleRepository $articlefoRepository,PartenaireRepository $partenaireRepository,CommuneInfoRepository $communeInfoRepository)
+
     {
         $this->partenaireRepository = $partenaireRepository;
 
@@ -33,10 +45,12 @@ class PortailController extends Controller
     public function index()
     {
 
-        $partenaires = $this->partenaireRepository->getData();
+        $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
-        return view('portail.index', compact('communeInfo','partenaires'));
-
+        $partenaires = $this->partenaireRepository->getData();
+    
+        
+  return view('portail.index', compact('communeInfo', 'projets','partenaires'));
     }
 
     /**
