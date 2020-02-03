@@ -92,7 +92,7 @@
                                                 <li><i class="fas fa-comments"></i>20</li>
                                             </ul>
                                             <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn">Lire la suite</a>
+                                                <a href="blog-details.html" class="theme-btn" style=" background-color:#12BDE3;">Lire la suite</a>
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
                                                 <li><i class="fas fa-comments"></i>20</li>
                                             </ul>
                                             <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn">Lire la suite</a>
+                                                <a href="blog-details.html" class="theme-btn" style=" background-color:#12BDE3;">Lire la suite</a>
                                             </div>
                                         </div>
                                     </div>
@@ -136,15 +136,17 @@
                                                 <li><i class="fas fa-comments"></i>20</li>
                                             </ul>
                                             <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn">Lire la suite</a>
+                                                <a href="blog-details.html" class="theme-btn" style=" background-color:#12BDE3;">Lire la suite</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="blog-btn text-center w-100 mt-25 mb-30 !important "><a href="blog.html"
-                                                                                               class="theme-btn br-30">TOUT VOIR<i class="fal fa-arrow-alt-right ml-15">
-                                    </i></a></div>
+                            <div class=" text-right w-100 mt-25 mb-30 !important ">
+                                <a href="blog.html" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
+                                    <i class="fal fa-arrow-alt-right ml-15"> </i>
+                                </a>
+                            </div>
                         </div>
                     </section>
                 </div>
