@@ -14,7 +14,8 @@
                 <tr>
 
                         <td class="text-center">
-                            <a href="{{  url($partenaire->url) }}" target="_blank">
+                            <a href="{{ isset($partenaire->url) ? url($partenaire->url):'#' }}" target="_blank">
+
                                 <img src="{{ isset($partenaire->logo) ? asset('storage/commune/partenaires/' . $partenaire->logo) : asset('themev1/images/default.png') }}" alt="ss" width="105px">
                             </a>
                         </td>
