@@ -8,14 +8,16 @@ use App\Http\Requests\RoleRequest;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Support\Facades\Redirect;
-
+use App\Repositories\Commune\CommuneInfoRepository;
+use App\Models\Commune\CommuneInfo;
 class PortailController extends Controller
 {
     protected $permRepository;
+    protected $communeInfoRepository;
 
-    public function __construct()
+    public function __construct(CommuneInfoRepository $communeInfoRepository)
     {
-
+        $this->communeInfoRepository = $communeInfoRepository;
     }
 
     /**
@@ -25,8 +27,8 @@ class PortailController extends Controller
      */
     public function index()
     {
-
-        return view('portail.index');
+        $communeInfo = $this->communeInfoRepository->getInfo();
+        return view('portail.index', compact('communeInfo'));
     }
 
     /**

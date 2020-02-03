@@ -19,7 +19,6 @@ class UploadUtil
     const ARTICLE_PHOTO_PATH = '/commune/articles/photos/';
     const ARTICLE_FILE_PATH = '/commune/articles/files/';
     const PANEL_FILE_PATH = '/participation/panels/files/';
-    const PHOTO_AGENT = '/rh/agents/';
     const DEFAULT_PATH = '/default';
     protected $repertoire;
 
@@ -30,8 +29,6 @@ class UploadUtil
 
     public function traiterFile($fichier, $mode = 'avatar')
     {
-
-
         if ($mode != 'avatar')
             $this->repertoire = $this->selectPath($mode);
 
@@ -83,18 +80,12 @@ class UploadUtil
             case TypeUpload::PanelFile:
                 return $this->repertoire = self::PANEL_FILE_PATH;
                 break;
-
             case TypeUpload::MediaFile:
                 return $this->repertoire = self::FICHIER_MEDIA_PATH;
                 break;
            case TypeUpload::PhotoSondage:
                 return $this->repertoire = self::PHOTO_SONDAGE_PATH;
                 break;
-
-           case TypeUpload::PhotoAgent:
-                return $this->repertoire = self::PHOTO_AGENT;
-                break;
-
             default:
                 return self::DEFAULT_PATH;
         }
