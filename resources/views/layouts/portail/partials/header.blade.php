@@ -39,7 +39,7 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul class="navbar-nav m-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">ACCEUIL </a>
+                                    <a class="nav-link" href="{{ route('portail.index') }}">ACCEUIL </a>
 
                                 </li>
                                 <li class="nav-item">

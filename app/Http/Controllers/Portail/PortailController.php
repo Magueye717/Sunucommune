@@ -9,15 +9,19 @@ use App\Repositories\Commune\PartenaireRepository;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Support\Facades\Redirect;
-
+use App\Repositories\Commune\CommuneInfoRepository;
+use App\Models\Commune\CommuneInfo;
 class PortailController extends Controller
 {
     protected $permRepository;
-    protected $partenaireRepository;
 
-    public function __construct(PartenaireRepository $partenaireRepository)
+    protected $partenaireRepository;
+    protected $communeInfoRepository;
+    public function __construct(PartenaireRepository $partenaireRepository,CommuneInfoRepository $communeInfoRepository)
     {
         $this->partenaireRepository = $partenaireRepository;
+
+        $this->communeInfoRepository = $communeInfoRepository;
 
     }
 
@@ -28,8 +32,11 @@ class PortailController extends Controller
      */
     public function index()
     {
+
         $partenaires = $this->partenaireRepository->getData();
-        return view('portail.index', compact('partenaires'));
+        $communeInfo = $this->communeInfoRepository->getInfo();
+        return view('portail.index', compact('communeInfo','partenaires'));
+
     }
 
     /**
