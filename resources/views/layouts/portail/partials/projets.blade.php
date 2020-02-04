@@ -6,25 +6,28 @@
         <p>Something knows About Our Cases</p>
     </div>
 
-    <div class="row blog-load">
+    <div class="our-service-inner four-item-carousel">
         @foreach ($projets as $projet)
                 
         @if($projet->typeArticle->libelle==='Projet'&& $projet->est_publie===1  )
-            <div class="col-lg-3 col-md-6 ">
-                <div class="our-service-box" style="min-height:550px;">
+                <div class="our-service-box" style="min-height:560px; max-height:560px;">
                     <div class="our-service-img">
-                        <img src="{{ isset($projet->photo) ? asset('storage/commune/articles/photos/'. $projet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" style="height: 150px">
+                        <img src="{{ isset($projet->photo) ? asset('storage/commune/articles/photos/'. $projet->photo) : asset('themev1/images/default.png') }}" height="200px" alt="Service Image">
                     </div>
-                    <div class="our-service-content">
-                    <h6><a href="service-details.html">{{Str::upper($projet->titre)}}</a></h6>
-                        <span class="line"></span>
-                        <p>
-                        {!! \Illuminate\Support\Str::limit($projet->texte, 150, $end='...') !!}
-                        </p>
+                    <div class="our-service-content" style="min-height: 240px; max-height: 240px;">
+                        <div  style="min-height: 80px; max-height: 80px;">
+                            <h6><a>{{Str::upper($projet->titre)}}</a></h6>
+                            <span class="line"></span>
+                        </div>
+                        
+                        <div style="min-height: 160px; max-height: 160px; padding-bottom: 0;">
+                            <p>
+                            {!! \Illuminate\Support\Str::limit($projet->texte, 130, $end='...') !!}
+                            </p>
+                        </div>
                         <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
                     </div>
                 </div>
-            </div> 
             @endif
      @endforeach
     </div>

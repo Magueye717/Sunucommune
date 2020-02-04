@@ -96,15 +96,15 @@
 <!--====== ABOUT PART ENDS ======-->
 
 <!--====== EQUIPE MUNICIPALE ======-->
-<section class="team-page text-center mt-50 container-xl projet">
+<div>
     @include('layouts.portail.partials.equipe-municipale')
+</div>
 
-</section>
 
 <!--====== PROJECTS PART START ======-->
 
 
-<section class="service-page mt-10">
+<section class="our-service mb-150 mt-100 rmb-100">
 
     @include('layouts.portail.partials.projets')
 
