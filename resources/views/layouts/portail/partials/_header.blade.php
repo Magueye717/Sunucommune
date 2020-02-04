@@ -43,7 +43,7 @@
 
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="service public.html">SERVICES PUBLICS </a>
+                                    <a class="nav-link" href="">SERVICES PUBLICS </a>
 
                                 </li>
                                 <li class="nav-item">
@@ -51,7 +51,7 @@
 
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="participation.html">PARTICIPATION CITOYENNE </a>
+                                    <a class="nav-link" href="{{ route('participation.index') }}">PARTICIPATION CITOYENNE </a>
 
                                 </li>
 
