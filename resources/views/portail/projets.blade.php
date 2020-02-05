@@ -16,7 +16,7 @@
                     </div>
                     <div class="our-service-content" style="min-height: 240px; max-height: 240px;">
                         <div  style="min-height: 80px; max-height: 80px;">
-                            <h6><a>{{Str::upper($projet->titre)}}</a></h6>
+                            <h6 class="text-uppercase"><a>{{\Illuminate\Support\Str::limit($projet->titre,65, $end='...')}}</a></h6>
                             <span class="line"></span>
                         </div>
                         
