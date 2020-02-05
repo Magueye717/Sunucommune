@@ -1,7 +1,7 @@
 <div class="table-responsive">
     <table id="myTable" class="table table-striped table-bordered">
         <thead>
-        <tr>
+        <tr><th>Equipe</th>
             <th>Photo</th>
             <th>Prénom</th>
             <th>Nom</th>
@@ -16,6 +16,7 @@
         @isset($membres)
             @foreach($membres as $membreCabinet)
                 <tr>
+                    <td>{{ $membreCabinet->equipeMunicipale->libelle }}</td>
                     <td class="text-center">
                         <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/' .$membreCabinet->photo) : asset('themev1/images/default.png')}}"
                              alt="photo" class="img-thumbnail table-photo">

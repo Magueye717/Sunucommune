@@ -2,6 +2,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
+                <label class="control-label">Equipe <span class="text-danger">*</span></label>
+                {!! Form::select('equipe_municipale_id',$equipe, null, ['id' => 'equipe_municipale', 'class' => 'form-control', 'required' => '',]) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 <label class="control-label">Prénom <span class="text-danger">*</span></label>
                 {!! Form::text('prenom', null, ['id' => 'prenom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
                 <div class="help-block with-errors"></div>
