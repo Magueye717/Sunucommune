@@ -59,10 +59,9 @@ class PortailController extends Controller
      * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function team()
     {
-        $permission = $this->permRepository->getById($id);
-        return view('admin.securite.permissions.edit', compact('permission'));
+        return view('portail.team');
     }
 
     /**
