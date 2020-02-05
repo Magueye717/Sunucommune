@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;"> 
                 <div class="team-img">
                 <img src="assets/images/team/team-2.png" alt="Team Member">
                 </div>
@@ -33,7 +33,7 @@
                 </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;">
                 <div class="team-img">
                 <img src="assets/images/team/team-2.png" alt="Team Member">
                 </div>
@@ -49,7 +49,7 @@
                 </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;">
                 <div class="team-img">
                 <img src="assets/images/team/team-3.png" alt="Team Member">
                 </div>
@@ -65,7 +65,7 @@
                 </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;">
                 <div class="team-img">
                 <img src="assets/images/team/team-4.png" alt="Team Member">
                 </div>
@@ -81,7 +81,7 @@
                 </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;">
                 <div class="team-img">
                 <img src="assets/images/team/team-5.png" alt="Team Member">
                 </div>
@@ -97,7 +97,7 @@
                 </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;">
                 <div class="team-img">
                 <img src="assets/images/team/team-6.png" alt="Team Member">
                 </div>
@@ -113,7 +113,7 @@
                 </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;">
                 <div class="team-img">
                 <img src="assets/images/team/team-7.png" alt="Team Member">
                 </div>
@@ -129,7 +129,7 @@
                 </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 350px;">
                 <div class="team-img">
                 <img src="assets/images/team/team-8.png" alt="Team Member">
                 </div>

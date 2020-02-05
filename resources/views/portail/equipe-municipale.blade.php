@@ -3,7 +3,9 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-5 col-md-4 mt-50">
                     <div class="section-title text-center">
-                        <h7 style="font-size: 25px; "> <span>Cabinet du <span>Maire</span></span></h7>
+                        <a href="{{ route('portail.team')}}"> 
+                        <h7 style="font-size: 25px;"> <span>Cabinet du <span>Maire</span></span></h7>
+                        </a>
                         <ul class="divider"><img src="assets/images/Sep.png" alt=""></ul>
         
                         <p style="font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ab
