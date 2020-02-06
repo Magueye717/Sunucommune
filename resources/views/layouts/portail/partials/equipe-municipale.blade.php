@@ -56,6 +56,7 @@
             </div>
             <div class="col-xl-9 col-lg-7 col-md-8">
                 <div class="our-team-inner three-item-carousel mb-0 ">
+
                     @foreach($membreCabinets as $membreCabinet)
                 @if($membreCabinet->equipeMunicipale->libelle==='Secretariat municipale')
                     <div class="our-team-box">
@@ -74,6 +75,7 @@
                     </div>
                     @endif
                     @endforeach
+                    
                 </div>
             </div>
         </div>
@@ -86,7 +88,7 @@
                 <div class="section-title text-center">
                     <h7 style="font-size: 25px; "> <span>Conseil <span>Municipale</span></span></h7>
                     <ul class="divider"><img src="assets/images/Sep.png" alt=""></ul>
-    
+        
                     <p style="font-size: 14px;">
                         @foreach ($equipeMunicipales->where('libelle', 'Conseil Municipal') as $equipe)
                         {{ $equipe->description }}
