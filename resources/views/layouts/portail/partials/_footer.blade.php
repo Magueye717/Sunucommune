@@ -1,14 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <div class="footer-logo text-center pb-45">
-                <a href="#"><img src="assets/images/footer-logo.png" alt=""></a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-lg-4 col-md-6">
-            <div class="footer-widget mt-30">
+            <div class="footer-widget ">
                 <div class="footer-title">
                     <h4 class="title">SUNU-COMMUNE</h4>
                 </div>
@@ -26,7 +19,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6">
-            <div class="footer-widget ml-30 mt-30">
+            <div class="footer-widget ml-30 ">
                 <div class="footer-title">
                     <h4 class="title">MENU</h4>
                 </div>
@@ -43,7 +36,7 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-8">
-            <div class="footer-widget ml-10 mt-30">
+            <div class="footer-widget ml-10 ">
                 <div class="footer-title">
                     <h4 class="title">Actualités récentes</h4>
                 </div>
