@@ -64,6 +64,11 @@ class PortailController extends Controller
         return view('portail.team');
     }
 
+    public function actualite()
+    {
+        return view('portail.actualites-page');
+    }
+
     /**
      * Update the specified resource in storage.
      *
