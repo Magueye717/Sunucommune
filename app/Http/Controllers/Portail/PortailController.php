@@ -31,7 +31,6 @@ class PortailController extends Controller
     public function __construct(ArticleRepository $articlefoRepository,PartenaireRepository $partenaireRepository,CommuneInfoRepository $communeInfoRepository)
 
     {
-        
         $this->partenaireRepository = $partenaireRepository;
 
         $this->communeInfoRepository = $communeInfoRepository;
