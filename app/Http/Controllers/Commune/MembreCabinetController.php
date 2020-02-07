@@ -6,21 +6,17 @@ use App\Enums\TypeHierarchie;
 use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MembreCabinetRequest;
-use App\Models\Commune\EquipeMunicipale;
-use App\Repositories\Commune\EquipeMunicipaleRepository;
 use App\Repositories\Commune\MembreCabinetRepository;
 use App\Utils\UploadUtil;
 
 class MembreCabinetController extends Controller
 {
     protected $membreCabinetRepository;
-    protected $equipeMunicipaleRepository;
     protected $uploadUtil;
 
-    public function __construct(MembreCabinetRepository $membreCabinetRepository,UploadUtil $uploadUtil, EquipeMunicipaleRepository $equipeMunicipaleRepository)
+    public function __construct(MembreCabinetRepository $membreCabinetRepository, UploadUtil $uploadUtil)
     {
         $this->membreCabinetRepository = $membreCabinetRepository;
-        $this->equipeMunicipaleRepository = $equipeMunicipaleRepository;
         $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
@@ -44,8 +40,7 @@ class MembreCabinetController extends Controller
     public function create()
     {
         $type = TypeHierarchie::toSelectArray();
-        $equipe= $this->equipeMunicipaleRepository->getListeEquipeMunicipale()->prepend("Choisissez l'équipe de l'agent");
-        return view('gestion.commune.membre_cabinets.create', compact('type', 'equipe'));
+        return view('gestion.commune.membre_cabinets.create', compact('type'));
     }
 
     /**
@@ -87,8 +82,7 @@ class MembreCabinetController extends Controller
     {
         $type = TypeHierarchie::toSelectArray();
         $membre = $this->membreCabinetRepository->getById($id);
-        $equipe= $this->equipeMunicipaleRepository->getListeEquipeMunicipale()->prepend("Choisissez l'équipe de l'agent");
-        return view('gestion.commune.membre_cabinets.edit', compact('membre','type', 'equipe'));
+        return view('gestion.commune.membre_cabinets.edit', compact('membre','type'));
     }
 
     /**
