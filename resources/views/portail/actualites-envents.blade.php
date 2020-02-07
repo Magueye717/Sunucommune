@@ -12,16 +12,17 @@
                     <section class="blog-page text-center">
                         <div class="container">
                             <div class="row blog-load ">
+                                @foreach ($projets as $ActualiteEvenement)
+                                @if($ActualiteEvenement->typeArticle->libelle==='Actualité'&& $ActualiteEvenement->est_publie===1  )
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="latest-news-box">
                                         <div class="latest-news-img">
-                                            <img src="assets/images/blog/blog-1.png" alt="Blog Image">
+                                            <img src="{{ isset($ActualiteEvenement->photo) ? asset('storage/commune/articles/photos/'. $ActualiteEvenement->photo) : asset('themev1/images/default.png') }}" alt="Blog Image">
                                         </div>
                                         <div class="latest-news-content">
-                                            <h3><a href="blog-details.html">We Need to Rent a Room For</a></h3>
+                                        <h3><a href="blog-details.html">{{$ActualiteEvenement->photo}}</a></h3>
                                             <span class="date">12 Aug, 2019</span>
-                                            <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia,
-                                                mag ullamcorper laoreet, lectus arcu pulvinar risus, vitae.</p>
+                                            <p>{{ Str::limit($ActualiteEvenement->texte, 130, $end='...') }}</p>
                                             <ul class="blog-statistics">
                                                 <li><i class="fas fa-share"></i>126</li>
                                                 <li><i class="fas fa-eye"></i>400</li>
@@ -33,120 +34,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="latest-news-box">
-                                        <div class="latest-news-img">
-                                            <img src="assets/images/blog/blog-1.png" alt="Blog Image">
-                                        </div>
-                                        <div class="latest-news-content">
-                                            <h3><a href="blog-details.html">We Need to Rent a Room For </a></h3>
-                                            <span class="date">12 Aug, 2019</span>
-                                            <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia,
-                                                mag ullamcorper laoreet, lectus arcu pulvinar risus, vitae.</p>
-                                            <ul class="blog-statistics">
-                                                <li><i class="fas fa-share"></i>126</li>
-                                                <li><i class="fas fa-eye"></i>400</li>
-                                                <li><i class="fas fa-comments"></i>20</li>
-                                            </ul>
-                                            <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn">Lire la suite</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="latest-news-box">
-                                        <div class="latest-news-img">
-                                            <img src="assets/images/blog/blog-2.png" alt="Blog Image">
-                                        </div>
-                                        <div class="latest-news-content">
-                                            <h3><a href="blog-details.html">Sama khar amena doom</a></h3>
-                                            <span class="date">13 Aug, 2019</span>
-                                            <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia,
-                                                mag ullamcorper laoreet, lectus arcu pulvinar risus, vitae.</p>
-                                            <ul class="blog-statistics">
-                                                <li> <i class="fas fa-share"></i>126</li>
-                                                <li><i class="fas fa-eye"></i>400</li>
-                                                <li><i class="fas fa-comments"></i>20</li>
-                                            </ul>
-                                            <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn">Lire la suite</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="latest-news-box">
-                                        <div class="latest-news-img">
-                                            <img src="assets/images/blog/blog-3.png" alt="Blog Image">
-                                        </div>
-                                        <div class="latest-news-content">
-                                            <h3><a href="blog-details.html">Keeping First Responders Safe</a>
-                                            </h3>
-                                            <span class="date">14 Aug, 2019</span>
-                                            <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia,
-                                                mag ullamcorper laoreet, lectus arcu pulvinar risus, vitae.</p>
-                                            <ul class="blog-statistics">
-                                                <li><i class="fas fa-share"></i>126</li>
-                                                <li><i class="fas fa-eye"></i>400</li>
-                                                <li><i class="fas fa-comments"></i>20</li>
-                                            </ul>
-                                            <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn" style=" background-color:#12BDE3;">Lire la suite</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="latest-news-box">
-                                        <div class="latest-news-img">
-                                            <img src="assets/images/blog/blog-3.png" alt="Blog Image">
-                                        </div>
-                                        <div class="latest-news-content">
-                                            <h3><a href="blog-details.html">Keeping First Responders Safe</a>
-                                            </h3>
-                                            <span class="date">14 Aug, 2019</span>
-                                            <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia,
-                                                mag ullamcorper laoreet, lectus arcu pulvinar risus, vitae.</p>
-                                            <ul class="blog-statistics">
-                                                <li> <i class="fas fa-share"></i>126</li>
-                                                <li><i class="fas fa-eye"></i>400</li>
-                                                <li><i class="fas fa-comments"></i>20</li>
-                                            </ul>
-                                            <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn" style=" background-color:#12BDE3;">Lire la suite</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="latest-news-box">
-                                        <div class="latest-news-img">
-                                            <img src="assets/images/blog/blog-3.png" alt="Blog Image">
-                                        </div>
-                                        <div class="latest-news-content">
-                                            <h3><a href="blog-details.html">Keeping First Responders Safe</a>
-                                            </h3>
-                                            <span class="date">14 Aug, 2019</span>
-                                            <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia,
-                                                mag ullamcorper laoreet, lectus arcu pulvinar risus, vitae.</p>
-                                            <ul class="blog-statistics">
-                                                <li><i class="fas fa-share"></i>126</li>
-                                                <li><i class="fas fa-eye"></i>400</li>
-                                                <li><i class="fas fa-comments"></i>20</li>
-                                            </ul>
-                                            <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn" style=" background-color:#12BDE3;">Lire la suite</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endif
+                                @endforeach
                             </div>
+                            @if(isset($ActualiteEvenement))
                             <div class=" text-right w-100 mt-25 mb-30 !important ">
                                 <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
                                     <i class="fal fa-arrow-alt-right ml-15"> </i>
                                 </a>
                             </div>
+                            @endif
                         </div>
                     </section>
                 </div>
@@ -166,33 +63,17 @@
                     <div class="blog-title">
                         <h3 class="title">Recent News</h3>
                     </div>
+                    @foreach ($projets->last()->limit(3)->get() as $news)
                     <div class="blog-news-item">
                         <div class="item">
                             <a href="#">
-                                <h5 class="title">Quick Win For Improe Perfor Securitys. </h5>
+                                <h5 class="title">{{ $news->titre }}</h5>
                             </a>
                             <span>05 Apr 2019</span>
-                            <img src="assets/images/blog-news-1.png" alt="">
+                            <img src="{{ isset($news->photo) ? asset('storage/commune/articles/photos/'. $news->photo) : asset('themev1/images/default.png') }}" class="rounded-circle" style="width: 87px;" alt="">
                         </div>
                     </div>
-                    <div class="blog-news-item">
-                        <div class="item">
-                            <a href="#">
-                                <h5 class="title">Quick Win Imperfora Security Web ses </h5>
-                            </a>
-                            <span>05 Apr 2019</span>
-                            <img src="assets/images/blog-news-2.png" alt="">
-                        </div>
-                    </div>
-                    <div class="blog-news-item none">
-                        <div class="item">
-                            <a href="#">
-                                <h5 class="title">We’ve Got Announce ment Make Rachel</h5>
-                            </a>
-                            <span>05 Apr 2019</span>
-                            <img src="assets/images/blog-news-3.png" alt="">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="blog-list white-bg mt-50 br-10">
                     <div class="blog-title">
