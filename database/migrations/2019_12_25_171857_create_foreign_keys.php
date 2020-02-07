@@ -171,11 +171,6 @@ class CreateForeignKeys extends Migration {
 			$table->foreign('petition_id')->references('id')->on('petitions')
 						->onDelete('restrict')
 						->onUpdate('restrict');
-		});
-		Schema::table('membre_cabinets', function(Blueprint $table) {
-			$table->foreign('equipe_municipale_id')->references('id')->on('equipe_municipales')
-						->onDelete('restrict')
-						->onUpdate('restrict');
         });
 	}
 
@@ -278,9 +273,6 @@ class CreateForeignKeys extends Migration {
         });
         Schema::table('resultat_petitions', function(Blueprint $table) {
 			$table->dropForeign('resultat_petitions_petition_id_foreign');
-		});
-		Schema::table('membre_cabinets', function(Blueprint $table) {
-			$table->dropForeign('membre_cabinets_equipe_municipale_id_foreign');
         });
 	}
 }

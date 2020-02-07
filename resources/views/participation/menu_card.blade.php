@@ -1,6 +1,6 @@
 <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-7 col-sm-9 ">
+                <div class="col-lg-4 col-md-6 col-sm-9 ">
                     <a href="panel.html ">
                         <div class="services-item text-center mt-10 wow fadeIn hoverable" style="border-radius: 10px;" data-wow-duration="1500ms" data-wow-delay="0ms">
                             <h3 class="title">Panels citoyens</h3>
@@ -10,7 +10,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
+                <div class="col-lg-4 col-md-6 col-sm-9">
                     <a href="">
                         <div class="services-item text-center mt-10 wow fadeIn hoverable" style="border-radius: 10px;" data-wow-duration="1500ms" data-wow-delay="400ms">
                             <h3 class="title" style="font-size: larger;">Comites consultatifs</h3>
@@ -20,8 +20,8 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                <a href="">
+                <div class="col-lg-4 col-md-6 col-sm-9">
+                    <a href="">
                     <div class="services-item text-center mt-10 wow fadeIn hoverable" style="border-radius: 10px;" data-wow-duration="1500ms" data-wow-delay="800ms">
                         <h3 class="title">Sondages</h3>
                         <img class="mt-30 mb-30" src="assets/images/icon-sondage.svg" width="20%" height="20%"  alt="">
@@ -32,3 +32,4 @@
                 </a>
             </div>
         </div>
+
