@@ -43,7 +43,7 @@
 
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">SERVICES PUBLICS </a>
+                                    <a class="nav-link" href="{{ route('procedure.index')}}">SERVICES PUBLICS </a>
 
                                 </li>
                                 <li class="nav-item">

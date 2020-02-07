@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 class CreateMembreCabinetsTable extends Migration {
 
@@ -16,8 +15,7 @@ class CreateMembreCabinetsTable extends Migration {
 			$table->string('adresse')->nullable();
             $table->string('telephone')->nullable();
             $table->string('photo')->nullable();
-			$table->string('hierarchie');
-			$table->integer('equipe_municipale_id')->unsigned();
+            $table->string('hierarchie');
 			$table->boolean('statut')->default(1);
 			$table->timestamps();
 		});

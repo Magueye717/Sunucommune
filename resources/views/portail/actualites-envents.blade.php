@@ -39,7 +39,7 @@
                             </div>
                             @if(isset($ActualiteEvenement))
                             <div class=" text-right w-100 mt-25 mb-30 !important ">
-                                <a href="blog.html" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
+                                <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
                                     <i class="fal fa-arrow-alt-right ml-15"> </i>
                                 </a>
                             </div>
