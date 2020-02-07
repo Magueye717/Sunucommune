@@ -44,6 +44,7 @@ class PortailController extends Controller
         $this->equipeMunicipaleRepository = $equipeMunicipaleRepository;
         $this->communeInfoRepository = $communeInfoRepository;
         $this->membreCabinetRepository = $membreCabinetRepository;
+        
 
     }
 
