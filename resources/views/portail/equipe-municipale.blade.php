@@ -20,7 +20,7 @@
                     @if($membreCabinet->equipeMunicipale->libelle==='Cabinet du maire')
                         <div class="our-team-box">
                             <div class="team-img">
-                            <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" style="display: inline;" alt="Membre du canbinet">
+                            <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="width: 160px;">
                             </div>
                         <h3>{{ $membreCabinet->nom }} {{ $membreCabinet->prenom }}</h3>
                             <span>{{ $membreCabinet->hierarchie }}</span>
@@ -61,7 +61,7 @@
                 @if($membreCabinet->equipeMunicipale->libelle==='Secretariat municipale')
                     <div class="our-team-box">
                         <div class="team-img">
-                        <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" style="display: inline;" alt="Membre du canbinet">
+                        <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" class="rounded-circle" style="width: 160px;" alt="Membre du canbinet">
                         </div>
                     <h3>{{ $membreCabinet->nom }} {{ $membreCabinet->prenom }}</h3>
                         <span>{{ $membreCabinet->hierarchie }}</span>
@@ -102,7 +102,7 @@
                 @if($membreCabinet->equipeMunicipale->libelle==='Conseil Municipal')
                     <div class="our-team-box">
                         <div class="team-img">
-                        <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" style="display: inline;" alt="Membre du canbinet">
+                        <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" class="rounded-circle" style="width: 160px;" alt="Membre du canbinet">
                         </div>
                     <h3>{{ $membreCabinet->nom }} {{ $membreCabinet->prenom }}</h3>
                         <span>{{ $membreCabinet->hierarchie }}</span>
