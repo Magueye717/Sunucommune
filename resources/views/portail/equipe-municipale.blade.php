@@ -16,7 +16,7 @@
             </div>
             <div class="col-xl-9 col-lg-7 col-md-8">
                 <div class="our-team-inner three-item-carousel mb-0 ">
-                    @foreach($membreCabinets as $membreCabinet)
+                @foreach($membreCabinets as $membreCabinet)
                 @if($membreCabinet->equipeMunicipale->libelle==='Cabinet du maire')
                     <div class="our-team-box">
                         <div class="team-img">

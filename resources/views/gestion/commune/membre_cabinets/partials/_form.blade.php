@@ -23,6 +23,13 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
+                <label class="control-label">Equipe <span class="text-danger">*</span></label>
+                {!! Form::select('equipe_municipale_id', $equipe, null, ['id' => 'equipe_municipale_id', 'class' => 'form-control',
+                    'required' => '', 'placeholder' => 'Choisir...']) !!}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 <label class="control-label">Fonction <span class="text-danger">*</span></label>
                 {!! Form::text('fonction', null, ['id' => 'fonction', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Fonction']) !!}
                 <div class="help-block with-errors"></div>

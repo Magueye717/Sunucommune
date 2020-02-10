@@ -22,7 +22,7 @@
                         
                         <div style="min-height: 160px; max-height: 160px; padding-bottom: 0;">
                             <p>
-                            {!! \Illuminate\Support\Str::limit($projet->texte, 130, $end='...') !!}
+                            {!! $projet->texte !!}
                             </p>
                         </div>
                         <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>

@@ -63,7 +63,10 @@
                     <div class="blog-title">
                         <h3 class="title">Recent News</h3>
                     </div>
-                    @foreach ($projets->last()->limit(3)->get() as $news)
+                   
+                    @foreach ($projets as $news)
+
+                   
                     <div class="blog-news-item">
                         <div class="item">
                             <a href="#">
@@ -73,7 +76,13 @@
                             <img src="{{ isset($news->photo) ? asset('storage/commune/articles/photos/'. $news->photo) : asset('themev1/images/default.png') }}" class="rounded-circle" style="width: 87px;" alt="">
                         </div>
                     </div>
+       
                     @endforeach
+                  
+                    <div class="container-fluid">
+                        ggfjhgdgfhfjkklhkgjfhdjkk
+                    </div>
+
                 </div>
                 <div class="blog-list white-bg mt-50 br-10">
                     <div class="blog-title">
