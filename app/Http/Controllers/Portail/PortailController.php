@@ -65,6 +65,21 @@ class PortailController extends Controller
   return view('portail.index', compact('communeInfo', 'projets','partenaires', 'membreCabinets', 'equipeMunicipales'));
     }
 
+    public function team()
+    {
+        return view('portail.team');
+    }
+
+    public function actualite()
+    {
+        return view('portail.actualites-page');
+    }
+
+    public function details_actualite()
+    {
+        return view('portail.actualites-details');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
