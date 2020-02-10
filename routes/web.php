@@ -20,6 +20,7 @@ Auth::routes();
 //Route::get('/', 'HomeController@index');
 Route::get('/', 'Portail\PortailController@index')->name('portail.index');
 Route::get('/actualite', 'Portail\PortailController@actualite')->name('portail.actualite');
+Route::get('/details', 'Portail\PortailController@details_actualite')->name('portail.actualites-details');
 Route::get('/team', 'Portail\PortailController@team')->name('portail.team');
 Route::get('/citoyenne', 'Portail\ParticipationController@index')->name('participation.index');
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');
