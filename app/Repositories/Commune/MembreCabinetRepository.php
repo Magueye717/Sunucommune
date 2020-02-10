@@ -19,4 +19,9 @@ class MembreCabinetRepository extends ResourceRepository
         return $this->model->select(DB::raw("CONCAT(prenom,' ',nom) AS fullname"), 'id')->orderBy('fullname')->pluck('fullname', 'id');
     }
 
+    public function getAllMembreCabinet()
+    {
+        return $this->model::with('equipeMunicipale')->get();
+    }
+
 }
