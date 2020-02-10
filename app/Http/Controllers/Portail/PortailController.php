@@ -15,8 +15,12 @@ use App\Repositories\RoleRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Models\Commune\CommuneInfo;
+use App\Models\Commune\EquipeMunicipale;
+use App\Models\Commune\MembreCabinet;
 use App\Models\Commune\TypeArticle;
 use App\Repositories\Commune\ArticleRepository;
+use App\Repositories\Commune\EquipeMunicipaleRepository;
+use App\Repositories\Commune\MembreCabinetRepository;
 
 class PortailController extends Controller
 {
@@ -25,15 +29,21 @@ class PortailController extends Controller
     protected $communeInfoRepository;
     protected $articlefoRepository;
     protected $partenaireRepository;
+    protected $equipeMunicipaleRepository;
   
   
 
-    public function __construct(ArticleRepository $articlefoRepository,PartenaireRepository $partenaireRepository,CommuneInfoRepository $communeInfoRepository)
+    public function __construct(ArticleRepository $articlefoRepository,
+                                PartenaireRepository $partenaireRepository,
+                                CommuneInfoRepository $communeInfoRepository,
+                                MembreCabinetRepository $membreCabinetRepository,
+                                EquipeMunicipaleRepository $equipeMunicipaleRepository)
 
     {
         $this->partenaireRepository = $partenaireRepository;
-
+        $this->equipeMunicipaleRepository = $equipeMunicipaleRepository;
         $this->communeInfoRepository = $communeInfoRepository;
+        $this->membreCabinetRepository = $membreCabinetRepository;
 
     }
 
@@ -48,9 +58,11 @@ class PortailController extends Controller
         $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
         $partenaires = $this->partenaireRepository->getData();
+        $membreCabinets = $this->membreCabinetRepository->getAllMembreCabinet();
+        $equipeMunicipales = $this->equipeMunicipaleRepository->getEquipeMunicipale();
     
-        
-  return view('portail.index', compact('communeInfo', 'projets','partenaires'));
+        //dd($memebreCabinet);
+  return view('portail.index', compact('communeInfo', 'projets','partenaires', 'membreCabinets', 'equipeMunicipales'));
     }
 
     /**
@@ -59,14 +71,10 @@ class PortailController extends Controller
      * @param int $id
      * @return Response
      */
-    public function team()
+    public function edit($id)
     {
-        return view('portail.team');
-    }
-
-    public function actualite()
-    {
-        return view('portail.actualites-page');
+        $permission = $this->permRepository->getById($id);
+        return view('admin.securite.permissions.edit', compact('permission'));
     }
 
     /**
