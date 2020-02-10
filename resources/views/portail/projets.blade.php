@@ -7,8 +7,7 @@
     </div>
 
     <div class="our-service-inner four-item-carousel">
-        @foreach ($projets as $projet)
-                
+        @foreach ($projets as $projet)  
         @if($projet->typeArticle->libelle==='Projet'&& $projet->est_publie===1  )
                 <div class="our-service-box" style="min-height:560px; max-height:560px;">
                     <div class="our-service-img">
@@ -16,13 +15,13 @@
                     </div>
                     <div class="our-service-content" style="min-height: 240px; max-height: 240px;">
                         <div  style="min-height: 80px; max-height: 80px;">
-                            <h6 class="text-uppercase"><a>{{\Illuminate\Support\Str::limit($projet->titre,65, $end='...')}}</a></h6>
+                            <h6 class="text-uppercase"><a>{{Str::limit($projet->titre,65, $end='...')}}</a></h6>
                             <span class="line"></span>
                         </div>
                         
                         <div style="min-height: 160px; max-height: 160px; padding-bottom: 0;">
                             <p>
-                            {!! \Illuminate\Support\Str::limit($projet->texte, 130, $end='...') !!}
+                            {!! Str::limit($projet->texte, 130, $end='...') !!}
                             </p>
                         </div>
                         <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
