@@ -32,14 +32,14 @@
             src="{{ isset($communeInfo->photo_maire) ? asset('storage/commune/photos/' . $communeInfo->photo_maire) : asset('themev1/images/default.png') }}"
             alt="avatar" class="profil-avatar"  width="250px" alt="Team Member">
             <div class="media-body">
-
-            <p style=" color: white; margin: 18px;">{!!$communeInfo->mot_du_maire!!}</p>
-                <h7 class="ml-20" style=" color: yellow;"> M. {{Str::upper($communeInfo->maire)}} <a href="blog-details.html"
-                                                                           class="theme-btn mb-20 br-10"
-                                                                           style="background-color: white; float: right; color: #12BDE3;">Présentation de la commune<i
-                            class="fal fa-arrow-alt-right ml-15"> </i></a></h7>
+                <div>
+                <p style=" color: white; margin: 18px;">{!!$communeInfo->mot_du_maire!!}</p>
+                </div>
+                <h7 class="ml-20" style=" color: yellow;"> M. {{Str::upper($communeInfo->maire)}} <a href="blog-details.html" class="theme-btn mb-20 br-10"                      style="background-color: white; float: right; color: #12BDE3;">Présentation    de la commune<i
+                    class="fal fa-arrow-alt-right ml-15"> </i></a>
+                </h7>
             </div>
-            
+
         </div>
     </div>
     @else

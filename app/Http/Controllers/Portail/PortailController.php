@@ -25,8 +25,8 @@ class PortailController extends Controller
     protected $communeInfoRepository;
     protected $articlefoRepository;
     protected $partenaireRepository;
-  
-  
+
+
 
     public function __construct(ArticleRepository $articlefoRepository,PartenaireRepository $partenaireRepository,CommuneInfoRepository $communeInfoRepository)
 
@@ -48,8 +48,8 @@ class PortailController extends Controller
         $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
         $partenaires = $this->partenaireRepository->getData();
-    
-        
+
+
   return view('portail.index', compact('communeInfo', 'projets','partenaires'));
     }
 
@@ -68,6 +68,12 @@ class PortailController extends Controller
     {
         return view('portail.actualites-page');
     }
+
+    public function details_actualite()
+    {
+        return view('portail.actualites-details');
+    }
+
 
     /**
      * Update the specified resource in storage.
