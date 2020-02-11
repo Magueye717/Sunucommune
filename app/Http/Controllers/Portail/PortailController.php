@@ -31,6 +31,7 @@ class PortailController extends Controller
     protected $articlefoRepository;
     protected $partenaireRepository;
     protected $equipeMunicipaleRepository;
+    protected $membreCabinetRepository;
   
   
 
@@ -67,8 +68,11 @@ class PortailController extends Controller
     }
 
     public function team()
-    {
-        return view('portail.team');
+    {   
+        $CabinetMaires = $this->membreCabinetRepository->getAllMembreCabinet();
+        //$CabinetMaires = MembreCabinet::where('equipe_municipale_id',$equipe->id);
+        ($CabinetMaires);
+        return view('portail.team', compact('CabinetMaires'));
     }
 
     public function actualite()
