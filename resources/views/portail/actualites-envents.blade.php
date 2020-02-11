@@ -22,7 +22,7 @@
                                         <div class="latest-news-content">
                                         <h3><a href="blog-details.html">{{$ActualiteEvenement->titre}}</a></h3>
                                         <span class="date">{{$ActualiteEvenement->created_at->formatLocalized('%d %B %Y') }}</span>
-                                            <p>{!! Str::limit($ActualiteEvenement->texte,200,$end='...') !!}</p>
+                                            <p>{{ strip_tags(TruncateTexte::truncate($ActualiteEvenement->texte, 350))  }}</p>
                                             <ul class="blog-statistics">
                                                 <li><i class="fas fa-share"></i>126</li>
                                                 <li><i class="fas fa-eye"></i>400</li>
@@ -46,7 +46,6 @@
                            
                         </div>
                     </section>
-                    
                 </div>
             </div>
         </div>
