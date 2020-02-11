@@ -16,13 +16,13 @@
                     </div>
                     <div class="our-service-content" style="min-height: 240px; max-height: 240px;">
                         <div  style="min-height: 80px; max-height: 80px;">
-                            <h6 class="text-uppercase"><a>{{\Illuminate\Support\Str::limit($projet->titre,65, $end='...')}}</a></h6>
+                            <h6 class="text-uppercase"><a>{{strip_tags(TruncateTexte::truncate($projet->titre,50))}}</a></h6>
                             <span class="line"></span>
                         </div>
                         
                         <div style="min-height: 160px; max-height: 160px; padding-bottom: 0;">
                             <p>
-                            {!! $projet->texte | truncate('200')!!}
+                            {{ strip_tags(TruncateTexte::truncate($projet->texte, 300)) }}
                             </p>
                         </div>
                         <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>
