@@ -19,6 +19,7 @@ Auth::routes();
 
 //Route::get('/', 'HomeController@index');
 Route::get('/', 'Portail\PortailController@index')->name('portail.index');
+Route::get('/article/search', 'Portail\PortailController@search')->name('portail.search');
 Route::get('/actualite', 'Portail\PortailController@actualite')->name('portail.actualite');
 Route::get('/details', 'Portail\PortailController@details_actualite')->name('portail.actualites-details');
 Route::get('/team', 'Portail\PortailController@team')->name('portail.team');
