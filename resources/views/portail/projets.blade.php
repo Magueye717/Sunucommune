@@ -22,7 +22,7 @@
                         
                         <div style="min-height: 160px; max-height: 160px; padding-bottom: 0;">
                             <p>
-                            {!! $projet->texte !!}
+                            {!! $projet->texte | truncate('200')!!}
                             </p>
                         </div>
                         <a href="service-details.html" class="theme-btn br-20">Voir Plus</a>

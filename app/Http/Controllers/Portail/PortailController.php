@@ -21,6 +21,7 @@ use App\Models\Commune\TypeArticle;
 use App\Repositories\Commune\ArticleRepository;
 use App\Repositories\Commune\EquipeMunicipaleRepository;
 use App\Repositories\Commune\MembreCabinetRepository;
+use Illuminate\Http\Request;
 
 class PortailController extends Controller
 {
@@ -102,6 +103,15 @@ class PortailController extends Controller
     {
         $this->permRepository->update($id, $request->all());
         return Redirect::route('permissions.index')->withMessage("La permission " . $request->input('description') . " a été modifiée.");
+    }
+
+    public function search(Request $request){
+        $inputs = $request->all();
+        $q = $inputs['text'];
+        $articles = Article::where('titre','LIKE','%'.$q.'%')->orWhere('slug','LIKE','%'.$q.'%')->get();
+        if(count($articles) > 0)
+            return view('portail.index')->withDetails($articles)->withQuery ( $q );
+        else return view ('portail.index')->withMessage('Aucun article trouvé !');
     }
 
 }

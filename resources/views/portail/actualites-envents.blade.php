@@ -20,9 +20,9 @@
                                             <img src="{{ isset($ActualiteEvenement->photo) ? asset('storage/commune/articles/photos/'. $ActualiteEvenement->photo) : asset('themev1/images/default.png') }}" alt="Blog Image">
                                         </div>
                                         <div class="latest-news-content">
-                                        <h3><a href="blog-details.html">{{$ActualiteEvenement->photo}}</a></h3>
-                                            <span class="date">12 Aug, 2019</span>
-                                            <p>{{ Str::limit($ActualiteEvenement->texte, 130, $end='...') }}</p>
+                                        <h3><a href="blog-details.html">{{$ActualiteEvenement->titre}}</a></h3>
+                                        <span class="date">{{$ActualiteEvenement->created_at->formatLocalized('%d %B %Y') }}</span>
+                                            <p>{!! Str::limit($ActualiteEvenement->texte,200,$end='...') !!}</p>
                                             <ul class="blog-statistics">
                                                 <li><i class="fas fa-share"></i>126</li>
                                                 <li><i class="fas fa-eye"></i>400</li>
@@ -37,22 +37,24 @@
                                 @endif
                                 @endforeach
                             </div>
-                            @if(isset($ActualiteEvenement))
+                            
                             <div class=" text-right w-100 mt-25 mb-30 !important ">
                                 <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
                                     <i class="fal fa-arrow-alt-right ml-15"> </i>
                                 </a>
                             </div>
-                            @endif
+                           
                         </div>
                     </section>
+                    
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-2 col-sm-9 br-10">
             <div class="blog-sidebar mt-30">
                 <div class="blog-search br-10 ">
-                    <form action="#">
+                    <form action="/article/search" method="POST">
+                        {{ csrf_field() }}
                         <div class="input-box ">
                             <input type="text" placeholder="Search Keywords">
                             <button type="button"><i class="fal fa-search"></i></button>
@@ -64,9 +66,8 @@
                         <h3 class="title">Recent News</h3>
                     </div>
                    
-                    @foreach ($projets as $news)
-
-                   
+                    @if(isset($projets))
+                    @foreach ($projets->sortByDesc('created_at')->slice(0, 3) as $news)
                     <div class="blog-news-item">
                         <div class="item">
                             <a href="#">
@@ -78,10 +79,11 @@
                     </div>
        
                     @endforeach
-                  
+                    @else
                     <div class="container-fluid">
-                        ggfjhgdgfhfjkklhkgjfhdjkk
+                        <h3>Aucun article disponible</h3>
                     </div>
+                    @endif
 
                 </div>
                 <div class="blog-list white-bg mt-50 br-10">
