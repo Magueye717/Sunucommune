@@ -6,7 +6,7 @@
                 <div class="section-title text-center">
                     <h7 style="font-size: 25px; "> <span>Cabinet du <span>Maire</span></span></h7>
                     <ul class="divider"><img src="assets/images/Sep.png" alt=""></ul>
-    
+
                     <p style="font-size: 14px;">
                             @foreach ($equipeMunicipales->where('libelle', 'Cabinet du maire') as $equipe)
                                 {{ $equipe->description }}
@@ -18,12 +18,14 @@
                 <div class="our-team-inner three-item-carousel mb-0 ">
                 @foreach($membreCabinets as $membreCabinet)
                 @if($membreCabinet->equipeMunicipale->libelle==='Cabinet du maire')
-                    <div class="our-team-box">
+                    <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                         <div class="team-img">
-                        <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="width: 160px;">
+                        <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
                         </div>
-                    <h3>{{ $membreCabinet->nom }} {{ $membreCabinet->prenom }}</h3>
-                        <span>{{ $membreCabinet->hierarchie }}</span>
+                        <div style="min-height:50px;">
+                            <h4>{{ $membreCabinet->prenom }} {{ $membreCabinet->nom }}</h4>
+                        </div>
+                        <span>{{ $membreCabinet->fonction }}</span>
                         <p>{{ $membreCabinet->adresse }}</p>
                         <div class="social-style-one">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -59,12 +61,14 @@
 
                 @foreach($membreCabinets as $membreCabinet)
             @if($membreCabinet->equipeMunicipale->libelle==='Secretariat municipale')
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                     <div class="team-img">
-                    <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" class="rounded-circle" style="width: 160px;" alt="Membre du canbinet">
+                    <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
                     </div>
-                <h3>{{ $membreCabinet->nom }} {{ $membreCabinet->prenom }}</h3>
-                    <span>{{ $membreCabinet->hierarchie }}</span>
+                    <div style="min-height:50px;">
+                        <h4>{{ $membreCabinet->prenom }} {{ $membreCabinet->nom }}</h4>
+                    </div>
+                    <span>{{ $membreCabinet->fonction }}</span>
                     <p>{{ $membreCabinet->adresse }}</p>
                     <div class="social-style-one">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -75,7 +79,7 @@
                 </div>
                 @endif
                 @endforeach
-                
+
             </div>
         </div>
     </div>
@@ -88,7 +92,7 @@
             <div class="section-title text-center">
                 <h7 style="font-size: 25px; "> <span>Conseil <span>Municipale</span></span></h7>
                 <ul class="divider"><img src="assets/images/Sep.png" alt=""></ul>
-    
+
                 <p style="font-size: 14px;">
                     @foreach ($equipeMunicipales->where('libelle', 'Conseil Municipal') as $equipe)
                     {{ $equipe->description }}
@@ -100,12 +104,14 @@
             <div class="our-team-inner three-item-carousel mb-0 ">
                 @foreach($membreCabinets as $membreCabinet)
             @if($membreCabinet->equipeMunicipale->libelle==='Conseil Municipal')
-                <div class="our-team-box">
+                <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                     <div class="team-img">
-                    <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" class="rounded-circle" style="width: 160px;" alt="Membre du canbinet">
+                    <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
                     </div>
-                <h3>{{ $membreCabinet->nom }} {{ $membreCabinet->prenom }}</h3>
-                    <span>{{ $membreCabinet->hierarchie }}</span>
+                    <div style="min-height:50px;">
+                        <h4>{{ $membreCabinet->prenom }} {{ $membreCabinet->nom }}</h4>
+                    </div>
+                    <span>{{ $membreCabinet->fonction }}</span>
                     <p>{{ $membreCabinet->adresse }}</p>
                     <div class="social-style-one">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>

@@ -12,15 +12,15 @@
                     <section class="blog-page text-center">
                         <div class="container">
                             <div class="row blog-load ">
-                                @foreach ($projets as $ActualiteEvenement)
+                                @foreach ($projets->sortByDesc('created_at')->slice(0, 6) as $ActualiteEvenement)
                                 @if($ActualiteEvenement->typeArticle->libelle==='Actualité'&& $ActualiteEvenement->est_publie===1  )
-                                <div class="col-xl-4 col-lg-6 col-md-6">
+                                <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="latest-news-box">
                                         <div class="latest-news-img">
-                                            <img src="{{ isset($ActualiteEvenement->photo) ? asset('storage/commune/articles/photos/'. $ActualiteEvenement->photo) : asset('themev1/images/default.png') }}" alt="Blog Image">
+                                            <img src="{{ isset($ActualiteEvenement->photo) ? asset('storage/commune/articles/photos/'. $ActualiteEvenement->photo) : asset('themev1/images/default.png') }}" height="200px" alt="Blog Image">
                                         </div>
                                         <div class="latest-news-content">
-                                        <h3><a href="blog-details.html">{{$ActualiteEvenement->titre}}</a></h3>
+                                        <h4><a href="">{{strip_tags(TruncateTexte::truncate($ActualiteEvenement->titre,30))}}</a></h4>
                                         <span class="date">{{$ActualiteEvenement->created_at->formatLocalized('%d %B %Y') }}</span>
                                             <p>{{ strip_tags(TruncateTexte::truncate($ActualiteEvenement->texte, 350))  }}</p>
                                             <ul class="blog-statistics">
@@ -37,20 +37,20 @@
                                 @endif
                                 @endforeach
                             </div>
-                            
+
                             <div class=" text-right w-100 mt-25 mb-30 !important ">
                                 <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
                                     <i class="fal fa-arrow-alt-right ml-15"> </i>
                                 </a>
                             </div>
-                           
+
                         </div>
                     </section>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-2 col-sm-9 br-10">
-            <div class="blog-sidebar mt-30">
+        <div class="col-lg-3 col-md-10 col-sm-9 br-10">
+            <div class="blog-sidebar mt-0">
                 <div class="blog-search br-10 ">
                     <form action="/article/search" method="POST">
                         {{ csrf_field() }}
@@ -64,19 +64,18 @@
                     <div class="blog-title">
                         <h3 class="title">Recent News</h3>
                     </div>
-                   
+
                     @if(isset($projets))
                     @foreach ($projets->sortByDesc('created_at')->slice(0, 3) as $news)
                     <div class="blog-news-item">
                         <div class="item">
                             <a href="#">
-                                <h5 class="title">{{ $news->titre }}</h5>
+                                <p class="font-weight-bold black"> {{ strip_tags(TruncateTexte::truncate($news->titre,35)) }}</p>
                             </a>
-                            <span>05 Apr 2019</span>
-                            <img src="{{ isset($news->photo) ? asset('storage/commune/articles/photos/'. $news->photo) : asset('themev1/images/default.png') }}" class="rounded-circle" style="width: 87px;" alt="">
+                            <span>{{ $ActualiteEvenement->created_at->formatLocalized('%d %B %Y') }}</span>
+                            <img src="{{ isset($news->photo) ? asset('storage/commune/articles/photos/'. $news->photo) : asset('themev1/images/default.png') }}" class="rounded-circle" style="width: 60px;" alt="">
                         </div>
                     </div>
-       
                     @endforeach
                     @else
                     <div class="container-fluid">
