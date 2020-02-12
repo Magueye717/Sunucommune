@@ -20,7 +20,7 @@
                 @if($membreCabinet->equipeMunicipale->libelle==='Cabinet du maire')
                     <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                         <div class="team-img">
-                        <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
+                        <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle img-thumbnail table-photo" style="height: 150px; width:150px;">
                         </div>
                         <div style="min-height:50px;">
                             <h4>{{ $membreCabinet->prenom }} {{ $membreCabinet->nom }}</h4>
@@ -63,7 +63,7 @@
             @if($membreCabinet->equipeMunicipale->libelle==='Secretariat municipale')
                 <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                     <div class="team-img">
-                    <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
+                    <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle img-thumbnail table-photo"  style="height: 150px; width:150px;">
                     </div>
                     <div style="min-height:50px;">
                         <h4>{{ $membreCabinet->prenom }} {{ $membreCabinet->nom }}</h4>
@@ -106,7 +106,7 @@
             @if($membreCabinet->equipeMunicipale->libelle==='Conseil Municipal')
                 <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                     <div class="team-img">
-                    <img src="{{ isset($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
+                    <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
                     </div>
                     <div style="min-height:50px;">
                         <h4>{{ $membreCabinet->prenom }} {{ $membreCabinet->nom }}</h4>
