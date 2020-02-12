@@ -18,12 +18,12 @@ class EquipeMunicipaleSeeder extends Seeder
         ));
 
         EquipeMunicipale::create(array(
-            'libelle' => 'Secretariat municipale',
+            'libelle' => 'Secretariat municipal',
             'description' => 'Délibérations de la commune'
         ));
 
         EquipeMunicipale::create(array(
-            'libelle' => 'Conseil Municipal',
+            'libelle' => 'Conseil municipal',
             'description' => 'Projets de la commune'
         ));
 

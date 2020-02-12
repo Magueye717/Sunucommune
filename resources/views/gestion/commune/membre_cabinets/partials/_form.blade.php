@@ -16,13 +16,6 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label">Type hierarchie <span class="text-danger">*</span></label>
-                {!! Form::select('hierarchie', $type, null, ['id' => 'hierarchie', 'class' => 'form-control',
-                    'required' => '', 'placeholder' => 'Choisir...']) !!}
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
                 <label class="control-label">Equipe <span class="text-danger">*</span></label>
                 {!! Form::select('equipe_municipale_id', $equipe, null, ['id' => 'equipe_municipale_id', 'class' => 'form-control',
                     'required' => '', 'placeholder' => 'Choisir...']) !!}
