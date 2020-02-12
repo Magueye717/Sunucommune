@@ -19,6 +19,10 @@ class ParticipationController extends Controller
         return view('participation.index');
     }
 
+    public function panel()
+    {
+        return view('participation.panel');
+    }
     /**
      * Show the form for editing the specified resource.
      *

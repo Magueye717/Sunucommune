@@ -17,7 +17,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="latest-news-box">
                                         <div class="latest-news-img">
-                                            <img src="{{ isset($ActualiteEvenement->photo) ? asset('storage/commune/articles/photos/'. $ActualiteEvenement->photo) : asset('themev1/images/default.png') }}" height="200px" alt="Blog Image">
+                                            <img src="{{ !empty($ActualiteEvenement->photo) ? asset('storage/commune/articles/photos/'. $ActualiteEvenement->photo) : asset('themev1/images/default.png') }}" height="200px" alt="Blog Image">
                                         </div>
                                         <div class="latest-news-content">
                                         <h4><a href="">{{strip_tags(TruncateTexte::truncate($ActualiteEvenement->titre,30))}}</a></h4>
@@ -29,7 +29,8 @@
                                                 <li><i class="fas fa-comments"></i>20</li>
                                             </ul>
                                             <div class="news-btn">
-                                                <a href="blog-details.html" class="theme-btn">Lire la suite</a>
+                                                <a href="{{route('portail.actualites-details')}}" class="theme-btn">Lire la suite
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +74,7 @@
                                 <p class="font-weight-bold black"> {{ strip_tags(TruncateTexte::truncate($news->titre,35)) }}</p>
                             </a>
                             <span>{{ $ActualiteEvenement->created_at->formatLocalized('%d %B %Y') }}</span>
-                            <img src="{{ isset($news->photo) ? asset('storage/commune/articles/photos/'. $news->photo) : asset('themev1/images/default.png') }}" class="rounded-circle" style="width: 60px;" alt="">
+                            <img src="{{ !empty($news->photo) ? asset('storage/commune/articles/photos/'. $news->photo) : asset('themev1/images/default.png') }}" class="rounded-circle" style="width: 60px;" alt="">
                         </div>
                     </div>
                     @endforeach

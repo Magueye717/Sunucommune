@@ -19,7 +19,7 @@
 
                             <td>
 
-                                <img src="{{ isset($ancien_maire->photo) ? asset('storage/commune/photos/' . $ancien_maire->photo) : asset('themev1/images/default.png') }}" alt="ss"></td>
+                                <img src="{{ isset($ancien_maire->photo) ? asset('storage/commune/photos/' . $ancien_maire->photo) : asset('themev1/images/default.png') }}" alt="ss" class="img-thumbnail table-photo"></td>
                             <td>{{ $ancien_maire->prenom }}</td>
                             <td>{{ $ancien_maire->nom }}</td>
                             <td>{{ $ancien_maire->date_debut_mandat }}</td>

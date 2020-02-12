@@ -1,7 +1,7 @@
 <div class="row m-t-30">
     <div class="col-lg-3 col-md-3">
         <img src="{{ isset($communeInfo->photo_maire) ? asset('storage/commune/photos/' . $communeInfo->photo_maire) : asset('themev1/images/default.png') }}"
-             alt="avatar" class="profil-avatar"  width="250px">
+             alt="avatar" class="img-thumbnail "  >
     </div>
     <div class="col-lg-9 col-md-9">
         <ul class="list-group list-group-striped list-unstyled">

@@ -32,8 +32,8 @@ class PortailController extends Controller
     protected $partenaireRepository;
     protected $equipeMunicipaleRepository;
     protected $membreCabinetRepository;
-  
-  
+
+
 
     public function __construct(ArticleRepository $articlefoRepository,
                                 PartenaireRepository $partenaireRepository,
@@ -62,13 +62,18 @@ class PortailController extends Controller
         $partenaires = $this->partenaireRepository->getData();
         $membreCabinets = $this->membreCabinetRepository->getAllMembreCabinet();
         $equipeMunicipales = $this->equipeMunicipaleRepository->getEquipeMunicipale();
-    
+
         //dd($memebreCabinet);
   return view('portail.index', compact('communeInfo', 'projets','partenaires', 'membreCabinets', 'equipeMunicipales'));
     }
 
+    public function info()
+    {
+        return view('portail.info-commune');
+    }
+
     public function team()
-    {   
+    {
         $CabinetMaires = $this->membreCabinetRepository->getAllMembreCabinet();
         //$CabinetMaires = MembreCabinet::where('equipe_municipale_id',$equipe->id);
         ($CabinetMaires);
@@ -77,7 +82,8 @@ class PortailController extends Controller
 
     public function actualite()
     {
-        return view('portail.actualites-page');
+        $projets = Article::all();
+        return view('portail.actualites-page',compact('projets'));
     }
 
     public function details_actualite()
