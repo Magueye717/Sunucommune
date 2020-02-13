@@ -9,7 +9,7 @@
     <div class="our-service-inner four-item-carousel">
         @foreach ($projets as $projet)
 
-        @if($projet->typeArticle->libelle==='Projet'&& $projet->est_publie===1  )
+        @if($projet && $projet->est_publie===1  )
                 <div class="our-service-box" style="min-height:560px; max-height:560px;">
                     <div class="our-service-img">
                         <img src="{{ !empty($projet->photo) ? asset('storage/commune/articles/photos/'. $projet->photo) : asset('themev1/images/default.png') }}" height="200px" alt="Service Image">
