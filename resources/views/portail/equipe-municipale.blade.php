@@ -43,7 +43,7 @@
                     @if($cabinetMaires->count() <= 0)
                         <div>
                             <h4 class="text-warning">Aucun membre pour le cabinet du maire</h4>
-                            <img src="{{ asset('storage/commune/noData/noData.png') }}" alt="Service Image">
+                            <img src="{{ asset('assets/images/noData/noData.png') }}" alt="Service Image">
                         </div>
                      @endif
                 </div>
@@ -105,7 +105,7 @@
             @if($secretariats->count() <= 0)
             <div>
                 <h4 class="text-warning">Aucun membre pour le sécretariat municipal</h4>
-                <img src="{{ asset('storage/commune/noData/noData.png') }}" alt="Service Image">
+                <img src="{{ asset('assets/images/noData/noData.png') }}" alt="Service Image">
             </div>
             @endif
             </div>
@@ -166,7 +166,7 @@
                 @if($conseils->count() <= 0)
                     <div>
                         <h4 class="text-warning">Aucun membre pour le conseil municipal</h4>
-                        <img src="{{ asset('storage/commune/noData/noData.png') }}" alt="Service Image">
+                        <img src="{{ asset('assets/images/noData/noData.png') }}" alt="Service Image">
                     </div>
                 @endif
             </div>
