@@ -1,7 +1,7 @@
 <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 col-sm-9 ">
-                    <a href="panel.html ">
+                    <a href="{{route('participation.panel')}}">
                         <div class="services-item text-center mt-10 wow fadeIn hoverable" style="border-radius: 10px;" data-wow-duration="1500ms" data-wow-delay="0ms">
                             <h3 class="title">Panels citoyens</h3>
                             <img class="mt-30 mb-30" src="assets/images/icon-panel.svg" width="20%" height="20%"  alt="">

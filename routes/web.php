@@ -20,6 +20,7 @@ Auth::routes();
 //Route::get('/', 'HomeController@index');
 Route::get('/', 'Portail\PortailController@index')->name('portail.index');
 Route::get('/article/search', 'Portail\PortailController@search')->name('portail.search');
+Route::get('/info-commune', 'Portail\PortailController@info')->name('portail.info');
 Route::get('/actualite', 'Portail\PortailController@actualite')->name('portail.actualite');
 Route::get('/details', 'Portail\PortailController@details_actualite')->name('portail.actualites-details');
 Route::get('/team/{id}', 'Portail\PortailController@cabinetDetail')->name('portail.cabinet');
@@ -27,6 +28,7 @@ Route::get('/team/{id}', 'Portail\PortailController@cabinetDetail')->name('porta
 Route::get('/conseil_municipal', 'Portail\PortailController@conseilDetail')->name('portail.conseil');
 Route::get('/secretariat_municipal', 'Portail\PortailController@secretariatDetail')->name('portail.secretariat');
 Route::get('/citoyenne', 'Portail\ParticipationController@index')->name('participation.index');
+Route::get('/panel-citoyenne', 'Portail\ParticipationController@panel')->name('participation.panel');
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');
 Route::get('/accueil', 'HomeController@index')->name('accueil');
 Route::get('/home', 'HomeController@index')->name('home');

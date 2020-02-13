@@ -20,7 +20,11 @@
                 @if($cabinetMaire)
                     <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                         <div class="team-img">
+
                         <img src="{{ isset($cabinetMaire->photo) ? asset('storage/commune/membres/'. $cabinetMaire->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
+
+                  {{--       <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle img-thumbnail table-photo" style="height: 150px; width:150px;">
+ --}}
                         </div>
                         <div style="min-height:50px;">
                             <h4>{{ $cabinetMaire->prenom }} {{ $cabinetMaire->nom }}</h4>
@@ -78,7 +82,11 @@
             @if($secretariat)
                 <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                     <div class="team-img">
+
                     <img src="{{ isset($secretariat->photo) ? asset('storage/commune/membres/'. $secretariat->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
+
+{{--                     <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle img-thumbnail table-photo"  style="height: 150px; width:150px;">
+ --}}
                     </div>
                     <div style="min-height:50px;">
                         <h4>{{ $secretariat->prenom }} {{ $secretariat->nom }}</h4>
@@ -135,7 +143,11 @@
             @if($conseil)
                 <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
                     <div class="team-img">
+
                     <img src="{{ isset($conseil->photo) ? asset('storage/commune/membres/'. $conseil->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
+
+{{--                     <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
+ --}}
                     </div>
                     <div style="min-height:50px;">
                         <h4>{{ $conseil->prenom }} {{ $conseil->nom }}</h4>
