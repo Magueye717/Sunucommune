@@ -8,7 +8,7 @@
             <div class="col-md-8 col-xs-12 center mb-30">
                 <div class="about_item_tb">
                     <div class="about_item_tbcell text-center">
-                    <h3>{{$libelle}}</h3>
+                        <h3>Le cabinet du maire</h3>
                         <p>We have been in the repair and service business since 1984. </p>
                     </div>
                 </div>

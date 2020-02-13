@@ -14,41 +14,48 @@
 
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+   
+    <link rel="stylesheet" href=" {{ asset('assets/css/bootstrap.min.css') }}">
+    
 
     <!--====== animate css ======-->
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/animate.css') }}">
+
 
     <!--====== Fontawesome css ======-->
-    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/all.css') }}">
 
     <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/magnific-popup.css') }}">
 
     <!--====== nice select css ======-->
-    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/nice-select.css') }}">
 
     <!--====== rangeSlider css ======-->
-    <link rel="stylesheet" href="assets/css/ion.rangeSlider.min.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/ion.rangeSlider.min.css') }}">
 
     <!--====== Slick css ======-->
-    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/slick.css') }}">
 
     <!--====== Default css ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/default.css') }}">
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="assets/css/Other/style.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/Other/style.css') }}">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/style.css') }}">
 
-    <link rel="stylesheet" href="assets/css/master.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/device.css">
+    <link rel="stylesheet" href=" {{ asset('assets/css/master.css') }}">
+
+    <link rel="stylesheet" href=" {{ asset('assets/css/owl.carousel.css') }}">
+
+    <link rel="stylesheet" href=" {{ asset('assets/css/device.css') }}">
+
 
     <!--====== Flaticon css ======-->
 
-    <link rel="stylesheet" type="text/css" href="assets/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href=" {{ asset('assets/fonts/flaticon/font/flaticon.css') }}">
 
 
 

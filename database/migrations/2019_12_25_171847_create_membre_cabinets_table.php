@@ -16,7 +16,6 @@ class CreateMembreCabinetsTable extends Migration {
 			$table->string('adresse')->nullable();
             $table->string('telephone')->nullable();
             $table->string('photo')->nullable();
-			$table->string('hierarchie');
 			$table->integer('equipe_municipale_id')->unsigned();
 			$table->boolean('statut')->default(1);
 			$table->timestamps();
