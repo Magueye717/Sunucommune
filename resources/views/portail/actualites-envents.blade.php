@@ -12,8 +12,8 @@
                     <section class="blog-page text-center">
                         <div class="container">
                             <div class="row blog-load ">
-                                @foreach ($projets->sortByDesc('created_at')->slice(0, 6) as $ActualiteEvenement)
-                                @if($ActualiteEvenement->typeArticle->libelle==='Actualité'&& $ActualiteEvenement->est_publie===1  )
+                                @foreach ($actualites->sortByDesc('created_at')->slice(0, 6) as $ActualiteEvenement)
+                                @if($ActualiteEvenement && $ActualiteEvenement->est_publie===1  )
                                 <div class="col-xl-4 col-lg-6 col-md-4">
                                     <div class="latest-news-box">
                                         <div class="latest-news-img">
@@ -38,13 +38,13 @@
                                 @endif
                                 @endforeach
                             </div>
-
-                            <div class=" text-right w-100 mt-25 mb-30 !important ">
-                                <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
-                                    <i class="fal fa-arrow-alt-right ml-15"> </i>
-                                </a>
-                            </div>
-
+                            @if($cabinetMaires->count() >= 6)
+                                <div class=" text-right w-100 mt-25 mb-30 !important ">
+                                    <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
+                                        <i class="fal fa-arrow-alt-right ml-15"> </i>
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </section>
                 </div>

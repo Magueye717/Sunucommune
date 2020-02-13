@@ -60,6 +60,15 @@ class PortailController extends Controller
         $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
         $partenaires = $this->partenaireRepository->getData();
+
+        $projets = Article::whereHas('typeArticle', function ($query) {
+            $query->where('libelle', 'like', 'Projet');
+        })->get();
+
+        $actualites = Article::whereHas('typeArticle', function ($query) {
+            $query->where('libelle', 'like', 'Actualité');
+        })->get();
+
         $cabinetMaires = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
             $query->where('libelle', 'like', 'Cabinet du maire%');
         })->get();
@@ -67,21 +76,21 @@ class PortailController extends Controller
         $secretariats = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
             $query->where('libelle', 'like', 'Secretariat municipal%');
         })->get();
-       
+
         $conseils = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
             $query->where('libelle', 'like', 'Conseil municipal%');
         })->get();
-        
+
         $equipeMunicipales = $this->equipeMunicipaleRepository->getEquipeMunicipale();
 
 
         //dd($memebreCabinet);
-  return view('portail.index', compact('communeInfo', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils'));
+  return view('portail.index', compact('communeInfo', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
     }
 
 
     public function cabinetDetail($id)
-    {   
+    {
         $equipe = $this->equipeMunicipaleRepository->getById($id);
    $libelle="";
     if($equipe->libelle==='Cabinet du maire')
@@ -92,7 +101,7 @@ class PortailController extends Controller
         $libelle="Cabinet du maire";
     }
 
-   
+
 elseif($equipe->libelle==='Secretariat municipal')
 {
     $teamDetails = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
@@ -105,10 +114,10 @@ else
 {
     $teamDetails = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
         $query->where('libelle', 'like', 'Conseil municipal%');
-    })->get();  
+    })->get();
     $libelle="Conseil municipal";
 }
-      
+
 return view('portail.team', compact('teamDetails','libelle'));
 }
 
@@ -125,16 +134,16 @@ public function team()
     return view('portail.team', compact('CabinetMaires'));
 
 }
-     
 
- 
+
+
    /*  public function secretariatDetail()
-    {   
+    {
         $secretariats = $this->membreCabinetRepository->getAllMembreCabinet();
         return view('portail.secretariat_detail', compact('secretariats'));
     }
     public function conseilDetail()
-    {   
+    {
         $conseils = $this->membreCabinetRepository->getAllMembreCabinet();
         return view('portail.conseil_detail', compact('conseils'));
     } */
