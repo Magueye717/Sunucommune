@@ -125,19 +125,6 @@ public function team()
     return view('portail.team', compact('CabinetMaires'));
 
 }
-     
-
- 
-   /*  public function secretariatDetail()
-    {   
-        $secretariats = $this->membreCabinetRepository->getAllMembreCabinet();
-        return view('portail.secretariat_detail', compact('secretariats'));
-    }
-    public function conseilDetail()
-    {   
-        $conseils = $this->membreCabinetRepository->getAllMembreCabinet();
-        return view('portail.conseil_detail', compact('conseils'));
-    } */
 
     public function actualite()
     {
