@@ -44,7 +44,7 @@ class MembreCabinetController extends Controller
     public function create()
     {
         $type = TypeHierarchie::toSelectArray();
-        $equipe= $this->equipeMunicipaleRepository->getListeEquipeMunicipale()->prepend("Choisissez l'équipe de l'agent");
+        $equipe= $this->equipeMunicipaleRepository->getListeEquipeMunicipale();
         return view('gestion.commune.membre_cabinets.create', compact('type', 'equipe'));
     }
 
