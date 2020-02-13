@@ -61,6 +61,10 @@ class PortailController extends Controller
         $communeInfo = $this->communeInfoRepository->getInfo();
         $partenaires = $this->partenaireRepository->getData();
 
+        $projets = Article::whereHas('typeArticle', function ($query) {
+            $query->where('libelle', 'like', 'Projet');
+        })->get();
+
         $actualites = Article::whereHas('typeArticle', function ($query) {
             $query->where('libelle', 'like', 'Actualité');
         })->get();
