@@ -23,6 +23,8 @@ use App\Repositories\Commune\ArticleRepository;
 use App\Repositories\Commune\EquipeMunicipaleRepository;
 use App\Repositories\Commune\MembreCabinetRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PortailController extends Controller
 {
@@ -188,6 +190,17 @@ public function team()
         if(count($articles) > 0)
             return view('portail.index')->withDetails($articles)->withQuery ( $q );
         else return view ('portail.index')->withMessage('Aucun article trouvé !');
+    }
+
+
+    public function document($id)
+    {
+        $delib = Article::find($id);
+        /* $filename = $delib->piece_jointe;
+        $path = storage_path('storage/commune/articles/files/' . $filename);
+        $headers = array('Content-Type' => File::mimeType($path)); */
+        //dd($delib);
+        return Storage::download($delib->path, $delib->photo);
     }
 
 }
