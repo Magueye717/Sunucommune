@@ -23,8 +23,6 @@
 
                         <img src="{{ isset($cabinetMaire->photo) ? asset('storage/commune/membres/'. $cabinetMaire->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
 
-                  {{--       <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/'. $membreCabinet->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle img-thumbnail table-photo" style="height: 150px; width:150px;">
- --}}
                         </div>
                         <div style="min-height:50px;">
                             <h4>{{ $cabinetMaire->prenom }} {{ $cabinetMaire->nom }}</h4>
@@ -101,7 +99,8 @@
                     </div>
                 </div>
             @endif
-            @endforeach
+            @endforeach 
+            
             @if($secretariats->count() <= 0)
             <div>
                 <h4 class="text-warning">Aucun membre pour le sécretariat municipal</h4>

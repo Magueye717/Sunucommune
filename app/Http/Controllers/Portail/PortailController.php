@@ -61,7 +61,6 @@ class PortailController extends Controller
     public function index()
     {
 
-        $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
         $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
         $partenaires = $this->partenaireRepository->getData();

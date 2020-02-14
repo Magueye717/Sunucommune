@@ -5,20 +5,24 @@
 </ol>
 <div class="carousel-inner">
     <!-- <div class="carousel-item active" style="max-height: 962px;"> -->
-    <div class="carousel-item active">
-        <img src="assets/images/Bg.jpeg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-            <h3 style="color: whitesmoke;">First slide label</h3>
-            <h4 style="color: whitesmoke;">Nulla vitae elit libero, a pharetra augue mollis interdum.</h4>
-        </div>
+    @foreach($actualites->sortByDesc('created_at')->slice(0, 3) as $actu)
+    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+        @if($actu->est_publie===1)
+            <img src="{{ isset($actu->photo) ? asset('storage/commune/articles/photos/'. $actu->photo) : asset('themev1/images/default.png') }}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 style="color: whitesmoke;">{{ $actu->titre }}</h3>
+                <h4 style="color: whitesmoke;">{{ strip_tags(TruncateTexte::truncate($actu->texte, 200))  }}</h4>
+            </div>
+        @endif
     </div>
-    <div class="carousel-item">
+ @endforeach
+    {{-- <div class="carousel-item">
         <img src="assets/images/BG2.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
             <h3 style="color: whitesmoke;">Second slide label</h3>
             <h4 style="color:whitesmoke;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
         </div>
-    </div>
+    </div> --}}
 </div>
 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
