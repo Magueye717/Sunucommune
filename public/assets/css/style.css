@@ -6818,7 +6818,7 @@ p {
 }
 
 .case-details-area .case-thumb img {
-    width: 100%
+    width: 50%;
 }
 
 .case-details-area .case-list {
@@ -8714,4 +8714,11 @@ p {
     transform: translate(-50%);
     color: #12BDE3;
     font-size: 100px
+}
+
+font-size: 100px
+}
+font-size: 100px
+}
+font-size: 100px
 }

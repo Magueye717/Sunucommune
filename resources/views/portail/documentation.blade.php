@@ -8,14 +8,14 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom fichier</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Telechargement</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($projets->sortByDesc('created_at')->slice(0, 6) as $ActualiteEvenement) @if($ActualiteEvenement->typeArticle->libelle==='Délibération'&& $ActualiteEvenement->est_publie===1 )
+                @foreach ($deliberations->sortByDesc('created_at')->slice(0, 6) as $deliberation) @if($deliberation->typeArticle->libelle==='Délibération'&& $deliberation->est_publie===1 )
                 <tr>
                     <th scope="row"><img src="assets/images/pdf.jpeg" width="30" height="20px" alt="Service Image"></th>
-                    <td alt="Service Image">{{strip_tags(TruncateTexte::truncate($ActualiteEvenement->titre,30))}}</td>
+                    <td alt="Service Image">{{strip_tags(TruncateTexte::truncate($deliberation->titre,30))}}</td>
                     <th scope="row">
                         <a><img src="assets/images/downloadv.png" width="30" height="30px" alt="Service Image"></a>
                     </th>
@@ -23,6 +23,16 @@
                 @endif @endforeach
             </tbody>
         </table>
-        <button type="button" class="btn btn-outline-primary btn-lg btn-block">Voir plus</button>
+        @if($projets->count() <= 0)
+            <div class="text-center ">
+                <h4 style="color:#12BDE3;">Aucune Deliberation</h4>
+                <img style="width:50%; height:50%;"  src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+            </div>
+        @endif
+        @if($deliberations->count() >= 5)
+        <div>
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block">Voir plus</button>
+        </div>
+        @endif
     </div>
 </div>
