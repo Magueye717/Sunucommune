@@ -13,6 +13,7 @@ use App\Repositories\Commune\PartenaireRepository;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Support\Facades\Redirect;
+use App\Repositories\Commune\CollectiviteRepository;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Models\Commune\CommuneInfo;
 use App\Models\Commune\EquipeMunicipale;
@@ -28,6 +29,7 @@ class PortailController extends Controller
     protected $permRepository;
 
     protected $communeInfoRepository;
+    protected $collectiviteRepository;
     protected $articlefoRepository;
     protected $partenaireRepository;
     protected $equipeMunicipaleRepository;
@@ -39,12 +41,14 @@ class PortailController extends Controller
                                 PartenaireRepository $partenaireRepository,
                                 CommuneInfoRepository $communeInfoRepository,
                                 MembreCabinetRepository $membreCabinetRepository,
-                                EquipeMunicipaleRepository $equipeMunicipaleRepository)
+                                EquipeMunicipaleRepository $equipeMunicipaleRepository,
+                                CollectiviteRepository $collectiviteRepository)
 
     {
         $this->partenaireRepository = $partenaireRepository;
         $this->equipeMunicipaleRepository = $equipeMunicipaleRepository;
         $this->communeInfoRepository = $communeInfoRepository;
+        $this->collectiviteRepository = $collectiviteRepository;
         $this->membreCabinetRepository = $membreCabinetRepository;
 
     }
@@ -59,7 +63,12 @@ class PortailController extends Controller
 
         $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
+        $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
         $partenaires = $this->partenaireRepository->getData();
+
+        $deliberations = Article::whereHas('typeArticle', function ($query) {
+            $query->where('libelle', 'like', 'Délibération');
+        })->get();
 
         $projets = Article::whereHas('typeArticle', function ($query) {
             $query->where('libelle', 'like', 'Projet');
@@ -85,7 +94,7 @@ class PortailController extends Controller
 
 
         //dd($memebreCabinet);
-  return view('portail.index', compact('communeInfo', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
+  return view('portail.index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
     }
 
 
@@ -123,7 +132,8 @@ return view('portail.team', compact('teamDetails','libelle'));
 
 public function info()
 {
-    return view('portail.info-commune');
+    $communeInfo = $this->communeInfoRepository->getInfo();
+    return view('portail.info-commune',compact('communeInfo'));
 }
 
 public function team()

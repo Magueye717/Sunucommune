@@ -57,7 +57,7 @@
                     elit. Modi ipsum dolor sit amet consectetur adipisicing elit. Modi rem sit ipsam corrupti minus
                     a consectetur adipisicing elit. Modi rem sit ipsam corrupti minus a fugit, ex iste nulla,
                     molestias inventore recusandae harum commodi. Vero impedit quibusdam fugit neque temporibus?</p>
-                <h7 class="ml-20" style=" color: yellow;"> M.BAMBA FALL <a href="blog-details.html"
+                <h7 class="ml-20" style=" color: yellow;"> M.BAMBA FALL <a href="{{route('portail.info')}}"
                                                                            class="theme-btn mb-20 br-10"
                                                                            style="background-color: white; float: right; color: #12BDE3;">Présentation de la commune<i
                             class="fal fa-arrow-alt-right ml-15"> </i></a></h7>
@@ -95,7 +95,7 @@
 
 
 <!-- Deliberation -->
-<section class=" container blog-standard-area pb-5 mb-5">
+<section class=" container-fluid blog-standard-area pb-5 mb-5">
     <div class="row blog-sidebar ">
 
         <!-- Documentation Debut -->

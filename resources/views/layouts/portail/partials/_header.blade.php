@@ -26,7 +26,7 @@
 
                     <nav class="navbar navbar-expand-lg navbar-light ">
 
-                        <a class="navbar-brand" href="index.html"><img src="assets/images/senegal.png"
+                        <a class="navbar-brand"  href="index.html"><img style="height:40%; width:40%;" src="assets/images/logo.png"
                                                                        alt=""></a> <!-- logo -->
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
