@@ -52,6 +52,7 @@ Route::resource('/partenaires', 'Commune\PartenaireController');
 Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
 Route::resource('/articles', 'Commune\ArticleController');
 Route::put('/articles/{id}/publication', 'Commune\ArticleController@publication')->name('articles.publication');
+Route::get('/articles/deliberation/{id}', 'Portail\PortailController@document')->name('articles.document');
 Route::resource('/mediatheques', 'Commune\MediathequeController');
 
 /* Espace participation */
