@@ -63,7 +63,7 @@
                 </div>
                 <div class="blog-news white-bg mt-50 br-10">
                     <div class="blog-title">
-                        <h3 class="title">Recent News</h3>
+                        <h3 class="title">Articles récents</h3>
                     </div>
 
                     @if(isset($projets))
@@ -78,27 +78,21 @@
                         </div>
                     </div>
                     @endforeach
-                    @else
-                    <div class="container-fluid">
-                        <h3>Aucun article disponible</h3>
-                    </div>
+                    @endif
+                    @if($projets->count() >= 6)
+                    <div class="text-center">Aucun projets</div>
                     @endif
 
                 </div>
                 <div class="blog-list white-bg mt-50 br-10">
                     <div class="blog-title">
-                        <h3 class="title">Category</h3>
+                        <h3 class="title">Categories</h3>
                     </div>
                     <div class="blog-list-item">
                         <ul>
-                            <li><a href="#"><span>Business Strategy</span> <span>(20)</span></a></li>
-                            <li><a href="#"><span>Investment Planning </span> <span>(05)</span></a></li>
-                            <li><a href="#"><span>Financial Investment</span> <span>(03)</span></a></li>
-                            <li><a href="#"><span>Banking &amp; Insurance</span> <span>(30)</span></a></li>
-                            <li><a href="#"><span>Free Consulting</span> <span>(07)</span></a></li>
-                            <li><a href="#"><span>Meet Our Team </span> <span>(09)</span></a></li>
-                            <li><a href="#"><span>Investment Planning </span> <span>(05)</span></a></li>
-                            <li><a href="#"><span>Financial Investment</span> <span>(03)</span></a></li>
+                            <li><a href="#"><span>Projets</span> <span>({{ $projets->count() }})</span></a></li>
+                            <li><a href="#"><span>Actualités et evenements</span> <span>({{ $actualites->count() }})</span></a></li>
+                            <li><a href="#"><span>Délibérations</span> <span>({{ $deliberations->count() }})</span></a></li>
                         </ul>
                     </div>
                 </div>

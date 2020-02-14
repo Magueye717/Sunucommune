@@ -57,7 +57,6 @@ class PortailController extends Controller
     public function index()
     {
 
-        $projets = Article::all();
         $communeInfo = $this->communeInfoRepository->getInfo();
         $partenaires = $this->partenaireRepository->getData();
 
@@ -67,6 +66,10 @@ class PortailController extends Controller
 
         $actualites = Article::whereHas('typeArticle', function ($query) {
             $query->where('libelle', 'like', 'Actualité');
+        })->get();
+
+        $deliberations = Article::whereHas('typeArticle', function ($query) {
+            $query->where('libelle', 'like', 'Délibération');
         })->get();
 
         $cabinetMaires = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
@@ -85,7 +88,7 @@ class PortailController extends Controller
 
 
         //dd($memebreCabinet);
-  return view('portail.index', compact('communeInfo', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
+  return view('portail.index', compact('communeInfo', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites', 'deliberations'));
     }
 
 
