@@ -178,7 +178,7 @@
 
 .hoverable:hover {
     transition: box-shadow .25s;
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-service {
@@ -278,3 +278,5 @@
 .our-team-box img {
     display: inline-block;
 }
+
+15

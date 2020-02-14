@@ -25,10 +25,10 @@
                 </div>
                 <div class="footer-items-2 d-flex">
                     <ul>
-                        <li><a href="#">Actualités</a></li>
-                        <li><a href="#">Services Publics</a></li>
+                        <li><a href="{{ route('portail.index') }}">Actualités</a></li>
+                        <li><a href="{{ route('procedure.index')}}">Services Publics</a></li>
                         <li><a href="#">Gestion des infrastructures</a></li>
-                        <li><a href="#">Participation Citoyenne</a></li>
+                        <li><a href="{{ route('participation.index') }}">Participation Citoyenne</a></li>
 
                     </ul>
 

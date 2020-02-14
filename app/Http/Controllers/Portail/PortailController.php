@@ -62,6 +62,7 @@ class PortailController extends Controller
     {
 
         $communeInfo = $this->communeInfoRepository->getInfo();
+        
         $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
         $partenaires = $this->partenaireRepository->getData();
 
@@ -132,7 +133,8 @@ return view('portail.team', compact('teamDetails','libelle'));
 public function info()
 {
     $communeInfo = $this->communeInfoRepository->getInfo();
-    return view('portail.info-commune',compact('communeInfo'));
+    $ancienMaires = $communeInfo->ancienMaires;
+    return view('portail.info-commune',compact('communeInfo','ancienMaires'));
 }
 
 public function team()
