@@ -20,7 +20,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="our-team-box" style="min-height: 350px;"> 
                 <div class="team-img">
-                    <img src="{{ isset($CabinetMaire->photo) ? asset('storage/commune/membres/'. $CabinetMaire->photo) : asset('themev1/images/default.png') }}" alt="Service Image" class="rounded-circle" style="width: 160px;" alt="Membre du canbinet">
+                    <img src="{{ isset($CabinetMaire->photo) ? asset('storage/commune/membres/'. $CabinetMaire->photo) : asset('themev1/images/default.png') }}" alt="Service Image" class="rounded-circle" style="height: 160px; width:160px; alt="Membre du canbinet">
                 </div>
                 <h3>{{ $CabinetMaire->prenom }} {{ $CabinetMaire->nom}}</h3>
                 <span>{{ $CabinetMaire->fonction}}</span>

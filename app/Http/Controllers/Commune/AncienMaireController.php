@@ -33,7 +33,7 @@ class AncienMaireController extends Controller
    */
   public function index()
   { $ancien_maires = $this->ancienMairesRepository->getData();
-  dd($ancien_maires);
+//   dd($ancien_maires);
       return view('gestion.commune.anciens_maires.index', compact('ancien_maires'));
 
   }

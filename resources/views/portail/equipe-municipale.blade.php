@@ -18,7 +18,7 @@
                 <div class="our-team-inner three-item-carousel mb-0 ">
                 @foreach($cabinetMaires as $cabinetMaire)
                 @if($cabinetMaire)
-                    <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
+                    <div class="our-team-box mb-20" style="min-height: 300px; max-height: 300px; margin-bottom:20px ">
                         <div class="team-img">
 
                         <img src="{{ isset($cabinetMaire->photo) ? asset('storage/commune/membres/'. $cabinetMaire->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
@@ -48,9 +48,8 @@
             </div>
         </div>
         @if($cabinetMaires->count() > 3)
-        <div class=" text-right w-100 mt-0 mb-0 !important ">
-
-            <a href="{{ route('portail.cabinet', $cabinet) }}"  class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
+        <div class=" text-right w-100 ">
+            <a href="{{ route('portail.cabinet', $cabinet) }}"  class="hoverable btn-sm br-30 " style=" margin-bottom: 25px; background-color:#12BDE3; color:white;">TOUT VOIR
                 <i class="fal fa-arrow-alt-right ml-15"> </i>
             </a>
         </div>
@@ -58,7 +57,7 @@
     </div>
 </section>
 
-<section class="our-team text-center   mt-50">
+<section class="our-team text-center mt-0">
 <div class="container-xl projet">
     <div class="row">
         <div class="col-xl-3 col-lg-5 col-md-4 mt-50">
@@ -78,7 +77,7 @@
 
             @foreach($secretariats as $secretariat)
             @if($secretariat)
-                <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
+                <div class="our-team-box mb-20" style="min-height: 300px; max-height: 300px; margin-bottom:20px">
                     <div class="team-img">
 
                     <img src="{{ isset($secretariat->photo) ? asset('storage/commune/membres/'. $secretariat->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
@@ -111,8 +110,8 @@
         </div>
     </div>
     @if($secretariats->count() > 3)
-        <div class=" text-right w-100 mt-25 mb-30 !important ">
-            <a href="{{route('portail.cabinet',$secret)}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
+        <div class=" text-right w-100 ">
+            <a href="{{ route('portail.cabinet', $cabinet) }}"  class="hoverable btn-sm br-30 " style=" margin-bottom: 25px; background-color:#12BDE3; color:white;">TOUT VOIR
                 <i class="fal fa-arrow-alt-right ml-15"> </i>
             </a>
         </div>
@@ -140,7 +139,7 @@
             <div class="our-team-inner three-item-carousel mb-0 ">
                 @foreach($conseils as $conseil)
             @if($conseil)
-                <div class="our-team-box" style="min-height: 300px; max-height: 300px;">
+                <div class="our-team-box mb-20" style="min-height: 300px; max-height: 300px; margin-bottom:20px">
                     <div class="team-img">
 
                     <img src="{{ isset($conseil->photo) ? asset('storage/commune/membres/'. $conseil->photo) : asset('themev1/images/default.png') }}" alt="Service Image" alt="Membre du canbinet" class="rounded-circle" style="height: 150px; width:150px;">
@@ -172,11 +171,11 @@
         </div>
     </div>
     @if($conseils->count() > 3)
-        <div class=" text-right w-100 mt-25 mb-30 !important ">
-            <a href="{{route('portail.conseil')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
-                <i class="fal fa-arrow-alt-right ml-15"> </i>
-            </a>
-        </div>
+    <div class=" text-right w-100 ">
+        <a href="{{ route('portail.cabinet', $cabinet) }}"  class="hoverable btn-sm br-30 " style=" margin-bottom: 25px; background-color:#12BDE3; color:white;">TOUT VOIR
+            <i class="fal fa-arrow-alt-right ml-15"> </i>
+        </a>
+    </div>
     @endif
 </div>
 </section>
