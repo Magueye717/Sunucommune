@@ -30,5 +30,12 @@
                 </div>
             @endif
      @endforeach
+
     </div>
+    @if($projets->count() <= 0)
+                        <div class="mx-auto text-center">
+                            <h4  style="color:#12BDE3;">Aucun Projet Publie</h4>
+                            <img src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+                        </div>
+    @endif
 </div>

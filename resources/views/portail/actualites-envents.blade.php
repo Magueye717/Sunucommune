@@ -38,6 +38,9 @@
                                 @endif
                                 @endforeach
                             </div>
+
+
+
                             @if($cabinetMaires->count() >= 6)
                                 <div class=" text-right w-100 mt-25 mb-30 !important ">
                                     <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
@@ -49,6 +52,12 @@
                     </section>
                 </div>
             </div>
+            @if($projets->count() <= 0)
+                <div class="text-center mt-200">
+                    <h4 style="color:#12BDE3;">Aucune Publication</h4>
+                    <img  src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+                </div>
+            @endif
         </div>
         <div class="col-lg-3 col-md-10 col-sm-9 br-10">
             <div class="blog-sidebar mt-0">
@@ -73,7 +82,7 @@
                             <a href="#">
                                 <p class="font-weight-bold black"> {{ strip_tags(TruncateTexte::truncate($news->titre,35)) }}</p>
                             </a>
-                            <span>{{ $ActualiteEvenement->created_at->formatLocalized('%d %B %Y') }}</span>
+                            <span>{{ $news->created_at->formatLocalized('%d %B %Y') }}</span>
                             <img src="{{ !empty($news->photo) ? asset('storage/commune/articles/photos/'. $news->photo) : asset('themev1/images/default.png') }}" class="rounded-circle" style="width: 60px;" alt="">
                         </div>
                     </div>
