@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call('EquipeMunicipaleSeeder');
         $this->command->info('EquipeMunicipale table seeded!');
+        $this->call('CategorieSeeder');
+        $this->command->info('Categorie table seeded!');
     }
 }

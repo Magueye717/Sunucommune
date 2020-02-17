@@ -1,14 +1,27 @@
 <?php
 namespace App\Http\Controllers\Portail;
 
-
-
+use App\Repositories\Procedure\ProcedureRepository;
+use App\Repositories\Procedure\CategorieRepository;
+use App\Models\GestionProcedure\Categorie;
+use App\Models\GestionProcedure\Procedure;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class ProcedureController extends Controller
 {
+
+    protected $procedureRepository;
+    protected $categorieRepository;
+
+    public function __construct(ProcedureRepository $procedureRepository,
+                                CategorieRepository $categorieRepository)
+    {
+        $this->procedureRepository = $procedureRepository;
+        $this->categorieRepository = $categorieRepository;
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +29,23 @@ class ProcedureController extends Controller
      */
     public function index()
     {
-        return view('procedure.index');
+        $etats = Procedure::whereHas('categorie', function ($query) {
+            $query->where('nom', 'like', 'Etat civil');
+        })->get();
+
+        $fonciers = Procedure::whereHas('categorie', function ($query) {
+            $query->where('nom', 'like', 'Foncier');
+        })->get();
+
+        $fiscalites = Procedure::whereHas('categorie', function ($query) {
+            $query->where('nom', 'like', 'Fiscalite');
+        })->get();
+
+        $socials = Procedure::whereHas('categorie', function ($query) {
+            $query->where('nom', 'like', 'Social');
+        })->get();
+
+        return view('procedure.index',compact('etats','fonciers','fiscalites','socials'));
     }
 
     /**
@@ -27,7 +56,7 @@ class ProcedureController extends Controller
      */
     public function edit($id)
     {
-       
+
     }
 
     /**
@@ -38,6 +67,6 @@ class ProcedureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
     }
 }

@@ -87,6 +87,7 @@ Route::prefix('procedures')->group(function (){
     Route::namespace('GestionProcedure')->group(function () {
         Route::resource('/categories', 'CategorieController');
         Route::resource('/procedures', 'ProcedureController');
+        Route::put('/procedures/{id}/valider', 'ProcedureController@valider')->name('procedures.valider');
         Route::resource('/procedure-pieces', 'ProcedurePieceController');
         Route::resource('/usagers', 'ProcedureUsagerController');
     });
