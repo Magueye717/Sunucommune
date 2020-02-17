@@ -16,19 +16,28 @@
                         <h3 class="title">Etat civil</h3>
                         <img class="mt-30 mb-30" src="assets/images/icon-famille.svg" width="25%" height="25%"  alt="">
                         <ul class="text-center">
-                        <li>
-                            <a href=""></i>  Bulletin de naissance</a>
-                        </li>
-                        <li>
-                            <a href=""></i>  Certificat de deces</a>
-                        </li>
-                        <li>
-                            <a href=""></i>  Certificat de mariage</a>
-                        </li>
+                            @php $procedure = 0; @endphp
+                            @foreach ($etats->sortByDesc('created_at')->slice(0, 3) as $etat)
+                            @if($etat->statut === 1  )
+                            @php $procedure ++;@endphp
+                                <li>
+                                    <a href=""></i>  {{ $etat->titre }}</a>
+                                </li>
+                            @endif
+                            @endforeach
+
+
+                            @if($procedure == 0)
+                                <li>
+                                    il n'existe pas de procedure pour cette categorie.
+                                </li>
+                            @endif
                         </ul>
+                        @if($procedure >= 3)
                         <div class="container">
                         <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-9">
@@ -36,19 +45,27 @@
                         <h3 class="title">Foncier</h3>
                         <img class="mt-30 mb-30" src="assets/images/icon-foncier.svg" width="15%" height="17%"  alt="">
                         <ul class="text-center">
-                            <li>
-                                <a href=""></i>  Demande de terrain</a>
-                            </li>
-                            <li>
-                                <a href=""></i>  Status de terrain</a>
-                            </li>
-                            <li>
-                                <a href=""></i>  Bulletin de naissance</a>
-                            </li>
+                            @php $procedure = 0; @endphp
+                            @foreach ($fonciers->sortByDesc('created_at')->slice(0, 3) as $foncier)
+                            @if($foncier->statut === 1  )
+                            @php $procedure ++;@endphp
+                                <li>
+                                    <a href=""></i>  {{ $foncier->titre }}</a>
+                                </li>
+                            @endif
+                            @endforeach
+
+                            @if($procedure == 0)
+                                <li>
+                                    il n'existe pas de procedure pour cette categorie.
+                                </li>
+                            @endif
                         </ul>
+                        @if($procedure >= 3)
                         <div class="container">
                         <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-9">
@@ -56,19 +73,28 @@
                         <h3 class="title">Fiscalite</h3>
                         <img class="mt-30 mb-30" src="assets/images/icon-fiscalite.svg" width="20%" height="20%"  alt="">
                         <ul class="text-center">
-                            <li>
-                                <a href=""></i>  Declaration fiscale</a>
-                            </li>
-                            <li>
-                                <a href=""></i>  Declaration d'activite</a>
-                            </li>
-                            <li>
-                                <a href=""></i>  Demande d'information</a>
-                            </li>
+                            @php $procedure = 0; @endphp
+                            @foreach ($fiscalites->sortByDesc('created_at')->slice(0, 3) as $fiscalite)
+                            @if($fiscalite->statut === 1  )
+                            @php $procedure ++;@endphp
+
+                                <li>
+                                    <a href=""></i>  {{ $fiscalite->titre }}</a>
+                                </li>
+                            @endif
+                            @endforeach
+
+                            @if($procedure == 0)
+                                <li>
+                                    il n'existe pas de procedure pour cette categorie.
+                                </li>
+                            @endif
                         </ul>
+                        @if($procedure >= 3)
                         <div class="container">
                         <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-9">
@@ -76,20 +102,30 @@
                         <h3 class="title">Social</h3>
                         <img class="mt-30 mb-30" src="assets/images/icon-social.svg " width="20%" height="20%"  alt="">
                         <ul class="text-center">
-                            <li>
-                                <a href=""></i>  Demande de subvention</a>
-                            </li>
-                            <li>
-                                <a href=""></i>  Demande d'information</a>
-                            </li>
-                            <li>
-                                <a href=""></i>  Bulletin de naissance</a>
-                            </li>
+                            @php $procedure = 0; @endphp
+                            @foreach ($socials->sortByDesc('created_at')->slice(0, 3) as $social)
+                            @if($social->statut === 1  )
+                            @php $procedure ++;@endphp
+
+                                <li>
+                                    <a href=""></i>  {{ $social->titre }}</a>
+                                </li>
+                            @endif
+                            @endforeach
+
+                            @if($procedure == 0)
+                                <li>
+                                    il n'existe pas de procedure pour cette categorie.
+                                </li>
+                            @endif
                         </ul>
+                        @if($procedure >= 3)
                         <div class="container">
                         <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
-                    </div>
+                        @endif
+                        </div>
+
                 </div>
             </div>
         </div>

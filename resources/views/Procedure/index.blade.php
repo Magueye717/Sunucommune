@@ -5,7 +5,7 @@
     @include('procedure.baniere')
 </div>
 
-<div class="about-section about_pg mt-50 mb-50">
+<div class="about-section about_pg">
     @include('procedure.info_commune')
 </div>
 

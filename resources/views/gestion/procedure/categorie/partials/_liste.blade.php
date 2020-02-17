@@ -24,9 +24,9 @@
                                         'style' => 'display: inline;',
                                         'route' => array('categories.destroy', $categorie))) !!}
                         {{ csrf_field() }}
-                        <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
+                        {{-- <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
                             <i class="ti-trash"></i>
-                        </a>
+                        </a> --}}
                         {!! Form::close() !!}
                     </td>
                 </tr>

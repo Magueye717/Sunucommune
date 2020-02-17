@@ -17,7 +17,6 @@
             <div class="col-xl-9 col-lg-7 col-md-8">
                 <div class="our-team-inner three-item-carousel mb-0 ">
                 @foreach($cabinetMaires as $cabinetMaire)
-                @if($cabinetMaire)
                     <div class="our-team-box mb-20" style="min-height: 300px; max-height: 300px; margin-bottom:20px ">
                         <div class="team-img">
 
@@ -36,7 +35,6 @@
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    @endif
                     @endforeach
                     @if($cabinetMaires->count() <= 0)
                         <div>
@@ -98,8 +96,8 @@
                     </div>
                 </div>
             @endif
-            @endforeach 
-            
+            @endforeach
+
             @if($secretariats->count() <= 0)
             <div>
                 <h4 class="text-warning">Aucun membre pour le sécretariat municipal</h4>

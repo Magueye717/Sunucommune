@@ -23,7 +23,7 @@ class CategorieRepository extends ResourceRepository
     {
         try {
             $inputs['slug'] = $this->slug->createSlug($this->model, $inputs['nom']);
-            
+
             return $this->model->create($inputs);
         } catch (\Exception $e) {
             return false;
@@ -43,6 +43,4 @@ class CategorieRepository extends ResourceRepository
             }
         }
     }
-
-
 }

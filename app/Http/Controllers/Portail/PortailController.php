@@ -64,7 +64,7 @@ class PortailController extends Controller
     {
 
         $communeInfo = $this->communeInfoRepository->getInfo();
-        
+
         $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
         $partenaires = $this->partenaireRepository->getData();
 
