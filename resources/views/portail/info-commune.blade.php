@@ -22,7 +22,7 @@
         <div class="row ">
             <div class="col-lg-12 ">
                 <div class="case-share d-block d-md-flex justify-content-between align-items-center ">
-                    <div class="case-tag">                   
+                    <div class="case-tag">
                     </div>
                     <div class="case-social " style="padding:10px 20px;">
                         <ul>
@@ -46,7 +46,7 @@
 <section class="case-details-area pb-130" style="background-color:white">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12"> 
+            <div class="col-lg-12">
                 <div class="case-list d-block d-sm-flex justify-content-between">
                     <div class="item mt-35">
                         <span>Commune</span>
@@ -81,12 +81,19 @@
             </div>
             <div class="col-lg-7">
                 <div class="case-content  pl-70">
+                    @php $historiques= $communeInfo->historique;  @endphp
+                    @if(empty($historiques))
+                    <div class="mx-auto text-center">
+                        <h4  style="color:#12BDE3;">Il n'existe pas d'historique pour cette commune</h4>
+                        <img src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+                    </div>
+                    @else
                     <p class="text">{!! $communeInfo->historique !!}</p>
-                    
+                    @endif
                 </div>
             </div>
         </div>
-        
+
     </div>
 </section>
 
@@ -106,43 +113,53 @@
                         <p>Something knows About Team</p>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row justify-content-center">
-                @foreach ($ancienMaires->sortByDesc('date_fin_mandat')->slice(0, 4) as $ancienMaire)
-                <div class="col-lg-3 col-md-6 col-sm-8">
-                    <div class="team-item mt-40 wow fadeIn" data-wow-duration="1500ms" data-wow-delay="0ms">
-                        <div class="team-thumb">
-                            <img src="{{ isset($ancienMaire->photo) ? asset('storage/commune/photos/' . $ancienMaire->photo) : asset('themev1/images/default.png') }}" alt="ss" style="height: 250px; width:250px;">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content text-center">
-                            <h3 class="title">{{ $ancienMaire->prenom }} {{ $ancienMaire->nom }}</h3>
+            @if($ancienMaires->count() === 0)
+            {{-- @if(empty($ancienMaires)) --}}
+                    <div class="mx-auto text-center">
+                        <h4  style="color:#12BDE3;">Aucun ancien maire</h4>
+                        <img src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+                    </div>
+                @else
+                    @foreach ($ancienMaires->sortByDesc('date_fin_mandat')->slice(0, 4) as $ancienMaire)
+                    <div class="col-lg-3 col-md-6 col-sm-8">
+                        <div class="team-item mt-40 wow fadeIn" data-wow-duration="1500ms" data-wow-delay="0ms">
+                            <div class="team-thumb">
+                                <img src="{{ isset($ancienMaire->photo) ? asset('storage/commune/photos/' . $ancienMaire->photo) : asset('themev1/images/default.png') }}" alt="ss" style="height: 250px; width:250px;">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="team-content text-center">
+                                <h3 class="title">{{ $ancienMaire->prenom }} {{ $ancienMaire->nom }}</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
-            </div>
-            @if($ancienMaire->count() > 4)
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="team-btn text-center mt-55">
-                        <a class="main-btn" href="team.html">View All Member</a>
+                    @endforeach
                     </div>
-                </div>
-            </div>
-            @endif
+                    {{-- @php dd($ancienMaires); @endphp --}}
+                    @if($ancienMaires->count() > 4)
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="team-btn text-center mt-55">
+                                <a class="main-btn" href="team.html">View All Member</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
 
-            @if($ancienMaire->count() <= 0)
-                <div class="text-center mt-200">
-                    <h4 style="color:#12BDE3;">Aucune Publication</h4>
-                    <img  src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
-                </div>
+{{--
+                    @if($ancienMaires->count() <= 0)
+                        <div class="text-center mt-200">
+                            <h4 style="color:#12BDE3;">Aucune Publication</h4>
+                            <img  src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+                        </div>
+                    @endif --}}
             @endif
         </div>
 </section>

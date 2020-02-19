@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //Route::get('/', 'HomeController@index');
+//Portail
 Route::get('/', 'Portail\PortailController@index')->name('portail.index');
 Route::get('/article/search', 'Portail\PortailController@search')->name('portail.search');
 Route::get('/info-commune', 'Portail\PortailController@info')->name('portail.info');
@@ -25,11 +26,16 @@ Route::get('/actualite', 'Portail\PortailController@actualite')->name('portail.a
 Route::get('/details/{id}', 'Portail\PortailController@details_actualite')->name('portail.actualites-details');
 Route::get('/team/{id}', 'Portail\PortailController@cabinetDetail')->name('portail.cabinet');
 /* Route::get('/team', 'Portail\PortailController@cabinetDetail')->name('portail.cabinet'); */
-Route::get('/conseil_municipal', 'Portail\PortailController@conseilDetail')->name('portail.conseil');
-Route::get('/secretariat_municipal', 'Portail\PortailController@secretariatDetail')->name('portail.secretariat');
+
+//Participation citoyenne
 Route::get('/citoyenne', 'Portail\ParticipationController@index')->name('participation.index');
 Route::get('/panel-citoyenne', 'Portail\ParticipationController@panel')->name('participation.panel');
+
+//Procedure administrative
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');
+Route::get('/procedure-page/{id}', 'Portail\ProcedureController@events')->name('procedure.events');
+
+
 Route::get('/accueil', 'HomeController@index')->name('accueil');
 Route::get('/home', 'HomeController@index')->name('home');
 
