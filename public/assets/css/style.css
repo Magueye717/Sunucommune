@@ -6308,8 +6308,8 @@ p {
     top: 0;
     height: 100%;
     width: 100%;
-    background-image: -moz-linear-gradient(90deg, #07285f 0%, rgba(12, 39, 86, .5) 70%, rgba(16, 50, 109, 0.01) 99%, #103574 100%);
-    background-image: -webkit-linear-gradient((90deg, #07285f 0%, rgba(12, 39, 86, .5) 70%, rgba(16, 50, 109, 0.01) 99%, #103574 100%);
+    background-image: -moz-linear-gradient(90deg, #061f49 0%, rgba(12, 39, 86, .5) 70%, rgba(14, 43, 92, .01) 99%, #0e2b5c 100%);
+    background-image: -webkit-linear-gradient(90deg, #061f49 0%, rgba(12, 39, 86, .5) 70%, rgba(14, 43, 92, .01) 99%, #0e2b5c 100%);
     background-image: -ms-linear-gradient(90deg, #061f49 0%, rgba(12, 39, 86, .5) 70%, rgba(14, 43, 92, .01) 99%, #0e2b5c 100%);
     background-image: -o-linear-gradient(90deg, #061f49 0%, rgba(12, 39, 86, .5) 70%, rgba(14, 43, 92, .01) 99%, #0e2b5c 100%);
     background-size: cover
@@ -8722,4 +8722,3 @@ font-size: 100px
 }
 font-size: 100px
 }
-0 0

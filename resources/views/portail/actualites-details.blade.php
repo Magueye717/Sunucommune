@@ -1,7 +1,7 @@
 @extends('layouts.portail.portail')
 @section('content')
 
-<div class="banner-area page-title bg_cover" style="background-image: url(assets/images/baniere.png);">
+<div class="banner-area page-title bg_cover" style="background-image: url({{ asset('assets/images/baniere.png')}});">
     @include('portail.baniere_actualite')
 </div>
 
