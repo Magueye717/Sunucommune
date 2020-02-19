@@ -20,7 +20,7 @@
                                             <img src="{{ !empty($ActualiteEvenement->photo) ? asset('storage/commune/articles/photos/'. $ActualiteEvenement->photo) : asset('themev1/images/default.png') }}" height="200px" alt="Blog Image">
                                         </div>
                                         <div class="latest-news-content">
-                                        <h4><a href="">{{strip_tags(TruncateTexte::truncate($ActualiteEvenement->titre,30))}}</a></h4>
+                                        <h4><a href="{{route('portail.actualites-details', $ActualiteEvenement->id)}}">{{strip_tags(TruncateTexte::truncate($ActualiteEvenement->titre,30))}}</a></h4>
                                         <span class="date">{{$ActualiteEvenement->created_at->formatLocalized('%d %B %Y') }}</span>
                                             <p>{{ strip_tags(TruncateTexte::truncate($ActualiteEvenement->texte, 350))  }}</p>
                                             <ul class="blog-statistics">
@@ -29,7 +29,7 @@
                                                 <li><i class="fas fa-comments"></i>20</li>
                                             </ul>
                                             <div class="news-btn">
-                                                <a href="{{route('portail.actualites-details')}}" class="theme-btn">Lire la suite
+                                                <a href="{{route('portail.actualites-details', $ActualiteEvenement->id)}}" class="theme-btn">Lire la suite
                                                 </a>
                                             </div>
                                         </div>

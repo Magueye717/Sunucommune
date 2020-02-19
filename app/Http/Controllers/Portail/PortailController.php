@@ -22,6 +22,7 @@ use App\Models\Commune\TypeArticle;
 use App\Repositories\Commune\ArticleRepository;
 use App\Repositories\Commune\EquipeMunicipaleRepository;
 use App\Repositories\Commune\MembreCabinetRepository;
+use App\Repositories\Commune\TypeArticleRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -36,6 +37,7 @@ class PortailController extends Controller
     protected $partenaireRepository;
     protected $equipeMunicipaleRepository;
     protected $membreCabinetRepository;
+    protected $typeArticleRepository;
 
 
 
@@ -44,7 +46,8 @@ class PortailController extends Controller
                                 CommuneInfoRepository $communeInfoRepository,
                                 MembreCabinetRepository $membreCabinetRepository,
                                 EquipeMunicipaleRepository $equipeMunicipaleRepository,
-                                CollectiviteRepository $collectiviteRepository)
+                                CollectiviteRepository $collectiviteRepository,
+                                TypeArticleRepository $typeArticleRepository)
 
     {
         $this->partenaireRepository = $partenaireRepository;
@@ -52,6 +55,8 @@ class PortailController extends Controller
         $this->communeInfoRepository = $communeInfoRepository;
         $this->collectiviteRepository = $collectiviteRepository;
         $this->membreCabinetRepository = $membreCabinetRepository;
+        $this->articlefoRepository = $articlefoRepository;
+        $this->typeArticleRepository = $typeArticleRepository;
 
     }
 
@@ -158,9 +163,27 @@ public function team()
         return view('portail.actualites-page',compact('actualites'));
     }
 
-    public function details_actualite()
+    public function details_actualite($id)
     {
-        return view('portail.actualites-details');
+        $detailActus=$this->articlefoRepository->getById($id);
+        $silimarActus=Article::whereHas('typeArticle', function ($query) {
+            $query->where('libelle', 'like', 'Actualité');
+        })->get();
+
+        
+       
+        
+        //dd($allArticles);
+        $allArticles = Article::groupby('type_articles.libelle')
+        ->selectRaw('COUNT(*) as nombre ,type_articles.libelle')
+        ->join('type_articles', 'type_articles.id', '=', 'articles.type_article_id')
+        ->groupBy('type_articles.id')
+        ->get();
+
+
+        /* $allArticles=$this->articlefoRepository->getData(); */
+        $typeArticles=$this->typeArticleRepository->getData();
+        return view('portail.actualites-details', compact('detailActus','silimarActus', 'allArticles', 'typeArticles'));
     }
 
     /**
