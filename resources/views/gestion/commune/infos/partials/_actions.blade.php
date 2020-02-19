@@ -18,11 +18,12 @@
                     <button class="btn btn-warning" data-toggle="modal" data-target="#add_historique">
                         <i class="ti-pencil-alt2 m-r-5"></i> Editer l'historique
                     </button>
-                    @include('gestion.commune.infos.partials._modal_add_historique')
-                    <a href="{{ route('infos.ancien-maires.create', $communeInfo) }}" class="btn btn-info">
-                        <i class="ti-user m-r-5"></i> Ajouter un ancien maire
-                    </a>
+
                 @endif
+                @include('gestion.commune.infos.partials._modal_add_historique')
+                <a href="{{ route('infos.ancien-maires.create', $communeInfo) }}" class="btn btn-info">
+                    <i class="ti-user m-r-5"></i> Ajouter un ancien maire
+                </a>
             @endif
         </div>
     </div>

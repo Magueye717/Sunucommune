@@ -67,6 +67,7 @@
                     @foreach ($equipeMunicipales->where('libelle', 'Secretariat municipal') as $secret)
                     {{ $secret->description }}
                     @endforeach
+
                 </p>
             </div>
         </div>
@@ -130,6 +131,7 @@
                     @foreach ($equipeMunicipales->where('libelle', 'Conseil municipal') as $conseilMunicipal)
                     {{ $conseilMunicipal->description }}
                     @endforeach
+                    
                 </p>
             </div>
         </div>

@@ -28,7 +28,7 @@
                 <div class="help-block with-errors"></div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="form-group">
                 <label class="control-label">Description</label>
                 {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control summernote']) !!}

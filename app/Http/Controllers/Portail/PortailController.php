@@ -115,6 +115,8 @@ class PortailController extends Controller
             $query->where('libelle', 'like', 'Cabinet du maire%');
         })->get();
         $libelle="Cabinet du maire";
+        dd($teamDetails);
+
     }
 
 
@@ -155,8 +157,10 @@ public function team()
 
     public function actualite()
     {
-        $projets = Article::all();
-        return view('portail.actualites-page',compact('projets'));
+        $actualites = Article::whereHas('typeArticle', function ($query) {
+            $query->where('libelle', 'like', 'Actualité');
+        })->get();
+        return view('portail.actualites-page',compact('actualites'));
     }
 
     public function details_actualite($id)

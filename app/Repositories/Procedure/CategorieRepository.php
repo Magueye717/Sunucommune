@@ -18,6 +18,11 @@ class CategorieRepository extends ResourceRepository
     {
         return $this->model->orderBy('nom')->pluck('nom', 'id');
     }
+    public function getCategories()
+    {
+        return $this->model->orderBy('nom')->get();
+    }
+
 
     public function store(Array $inputs)
     {

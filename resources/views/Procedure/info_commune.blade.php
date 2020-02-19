@@ -10,8 +10,12 @@
                     <div class="about_item_tb mt-10">
                     <div class="about_item_tbcell ">
                          <h3>Presentation de la plateforme
-                             <br>SUNU COMMUNE</h3>
-                         <p>We have been in the repair and service business since 1984.We have experience iservice department ready to handle all of your repair tasks. Whether you need a fixing or customization, our team will get your device with guarantehe repair and service bu ieed fixing or customization, our team will get your device with guarantee. </p>
+                            <br>SUNU COMMUNE</h3>
+                            @if(empty($communeInfo->historique))
+                            <p>La commune de {!! $communeInfo->collectivite->nom !!} est créé le {{ $communeInfo->date_creation }} et compte {{ $communeInfo->population }} habitants avec une superficie de {{ $communeInfo->superficie }} mètres carrés .</p>
+                            @else
+                                <p> {{ strip_tags(TruncateTexte::truncate($communeInfo->historique,850)) }} </p>
+                            @endif
                     </div>
                     </div>
                 </div>
