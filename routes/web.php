@@ -22,7 +22,7 @@ Route::get('/', 'Portail\PortailController@index')->name('portail.index');
 Route::get('/article/search', 'Portail\PortailController@search')->name('portail.search');
 Route::get('/info-commune', 'Portail\PortailController@info')->name('portail.info');
 Route::get('/actualite', 'Portail\PortailController@actualite')->name('portail.actualite');
-Route::get('/details', 'Portail\PortailController@details_actualite')->name('portail.actualites-details');
+Route::get('/details/{id}', 'Portail\PortailController@details_actualite')->name('portail.actualites-details');
 Route::get('/team/{id}', 'Portail\PortailController@cabinetDetail')->name('portail.cabinet');
 /* Route::get('/team', 'Portail\PortailController@cabinetDetail')->name('portail.cabinet'); */
 Route::get('/conseil_municipal', 'Portail\PortailController@conseilDetail')->name('portail.conseil');
