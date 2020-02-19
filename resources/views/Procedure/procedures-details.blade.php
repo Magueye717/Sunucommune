@@ -33,12 +33,9 @@
                                 </li>
                             @endif
                         </ul>
-                        {{-- @php dd($etat->categorie_id) @endphp --}}
                         @if($procedure >= 3)
-                        <div class="">
-                        <a class="btn btn-outline-primary btn-sm btn-block mt-50" style="color: #007bff;font-size: .875rem;font-weight: 400;"  href="{{ route('procedure.events',$etat->categorie_id) }}">Voir plus
-                        </a>
-                        {{-- <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button> --}}
+                        <div class="container">
+                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
                         @endif
                     </div>
@@ -66,8 +63,7 @@
                         </ul>
                         @if($procedure >= 3)
                         <div class="container">
-                            <a class="btn btn-outline-primary btn-sm btn-block mt-50" style="color: #007bff;font-size: .875rem;font-weight: 400;"  href="{{ route('procedure.events',$foncier->categorie_id) }}">Voir plus
-                            </a>
+                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
                         @endif
                     </div>
@@ -96,8 +92,7 @@
                         </ul>
                         @if($procedure >= 3)
                         <div class="container">
-                            <a class="btn btn-outline-primary btn-sm btn-block mt-50" style="color: #007bff;font-size: .875rem;font-weight: 400;"  href="{{ route('procedure.events',$fiscalite->categorie_id) }}">Voir plus
-                            </a>
+                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
                         @endif
                     </div>
@@ -126,8 +121,7 @@
                         </ul>
                         @if($procedure >= 3)
                         <div class="container">
-                            <a class="btn btn-outline-primary btn-sm btn-block mt-50" style="color: #007bff;font-size: .875rem;font-weight: 400;"  href="{{ route('procedure.events',$social->categorie_id) }}">Voir plus
-                            </a>
+                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
                         </div>
                         @endif
                         </div>
@@ -135,13 +129,3 @@
                 </div>
             </div>
         </div>
-
-        <style type="text/css">
-            .boutton{
-                color: #007bff;font-size: .875rem;font-weight: 400;
-            }
-            .boutton:hover{
-                color: white;
-            }
-
-        </style>
