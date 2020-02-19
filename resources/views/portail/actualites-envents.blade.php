@@ -41,7 +41,7 @@
 
 
 
-                            @if($cabinetMaires->count() >= 6)
+                            @if($ActualiteEvenement->count() >= 6)
                                 <div class=" text-right w-100 mt-25 mb-30 !important ">
                                     <a href="{{route('portail.actualite')}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
                                         <i class="fal fa-arrow-alt-right ml-15"> </i>
@@ -52,7 +52,7 @@
                     </section>
                 </div>
             </div>
-            @if($projets->count() <= 0)
+            @if($actualites->count() <= 0)
                 <div class="text-center mt-200">
                     <h4 style="color:#12BDE3;">Aucune Publication</h4>
                     <img  src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
