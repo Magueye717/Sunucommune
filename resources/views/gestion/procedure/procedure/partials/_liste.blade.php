@@ -4,7 +4,6 @@
         <tr>
             <th>Titre</th>
             <th>Categorie</th>
-            <th>description</th>
             <th>lieu de depot</th>
             <th>status</th>
             <th class="text-nowrap text-center">Actions</th>
@@ -16,7 +15,6 @@
                 <tr>
                     <td> {{ $procedure->titre }} </td>
                     <td><span class="label label-info">{{ $procedure->categorie->nom}}</span></td>
-                    <td>{{ $procedure->description }}</td>
                     <td>{{ $procedure->lieu_depot }}</td>
                     <td class="text-center">
                         @if($procedure->estActive())

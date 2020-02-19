@@ -24,8 +24,7 @@ class ProcedureRequest extends FormRequest
     public function rules()
     {
         return [
-            'titre' => 'required|max:255',
-            'description' => 'required|max:255'
+            'titre' => 'required|max:255'
 		];
     }
 }

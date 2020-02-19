@@ -64,16 +64,13 @@ class ProcedureController extends Controller
     public function events($id)
     {
         $categorie = $this->categorieRepository->getById($id);
-        //  dd($categorie->nom);
             $nom="";
-            //  dd($categorie->nom);
                 if($categorie->nom === 'Etat Civil')
                 {
                     $procedureDetails = Procedure::whereHas('categorie', function ($query) {
                         $query->where('nom', 'like', 'Etat civil');
                     })->get();
                     $nom="Etat civil";
-                    //  dd($procedureDetails);
                 }
 
                 elseif($categorie->nom ==='Foncier')
@@ -98,11 +95,8 @@ class ProcedureController extends Controller
                         $query->where('nom', 'like', 'Social');
                     })->get();
                     $nom="Social";
-                    // dd($categorie->nom);
                 }
-                // dd($categorie->nom);
-        $categories =  $this->categorieRepository->getCategories();
-        return view('procedure.procedures-page',compact('procedureDetails','nom'));
+        return view('procedure.procedures-page',compact('procedureDetails','nom','categorie'));
     }
 
     /**

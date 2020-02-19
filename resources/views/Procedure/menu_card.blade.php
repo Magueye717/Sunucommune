@@ -56,7 +56,7 @@
                                     <a href=""></i>  {{ $foncier->titre }}</a>
                                 </li>
                             @endif
-                            @endforeach
+                          @endforeach
 
                             @if($procedure == 0)
                                 <li>
