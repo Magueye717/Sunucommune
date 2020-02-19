@@ -97,18 +97,11 @@ class PortailController extends Controller
             $query->where('libelle', 'like', 'Conseil municipal%');
         })->get();
 
-
-        $equipes = MembreCabinet::select('equipe_municipales.id as equipe_id','equipe_municipales.libelle','membre_cabinets.*')
-        ->join('equipe_municipales', 'equipe_municipales.id', '=', 'membre_cabinets.equipe_municipale_id')
-       // ->groupBy('equipe_municipales.id')
-        ->get();
-       // dd($equipes);
-
         $equipeMunicipales = $this->equipeMunicipaleRepository->getEquipeMunicipale();
 
 
         //dd($memebreCabinet);
-  return view('portail .index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
+  return view('portail.index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
     }
 
 
