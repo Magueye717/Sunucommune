@@ -5,13 +5,13 @@
 </ol>
 <div class="carousel-inner">
     <!-- <div class="carousel-item active" style="max-height: 962px;"> -->
-    @foreach($mediateques->sortByDesc('created_at')->slice(0, 3) as $actu)
+    @foreach($mediateques->sortByDesc('created_at')->slice(0, 3) as $media)
     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-        @if($actu->est_publie===1)
-            <img src="{{ isset($actu->photo) ? asset('storage/commune/articles/photos/'. $actu->photo) : asset('themev1/images/default.png') }}" class="d-block w-100" alt="...">
+        @if($media->est_publie===1 && $media->rubrique==='slide')
+            <img src="{{ isset($media->fichier) ? asset('storage/commune/mediatheques/'. $media->fichier) : asset('themev1/images/default.png') }}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-                <h3 style="color: whitesmoke;">{{ $actu->titre }}</h3>
-                <h4 style="color: whitesmoke;">{{ strip_tags(TruncateTexte::truncate($actu->texte, 200))  }}</h4>
+                {{-- <h3 style="color: whitesmoke;">{{ $media->titre }}</h3> --}}
+                <h4 style="color: whitesmoke;">{!! strip_tags(TruncateTexte::truncate($media->description,700)) !!}</h4>
             </div>
         @endif
     </div>

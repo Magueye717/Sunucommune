@@ -104,7 +104,7 @@ class MediathequeController extends Controller
     public function edit($id)
     {
         $media = $this->mediathequeRepository->getById($id);
-        return view('gestion.commune.mediatheques.edit', compact('media', 'typeMedia'));
+        return view('gestion.commune.mediatheques.edit', compact('media',));
     }
 
     /**
@@ -144,6 +144,16 @@ class MediathequeController extends Controller
             return redirect()->back()->withMessage("La suppression est effective");
         else
             return redirect()->back()->withErrors("Ce média ne peut être supprimé...");
+    }
+
+    public function publication($id){
+        $mediatheque = $this->mediathequeRepository->getById($id);
+        $this->mediathequeRepository->publication($mediatheque, !$mediatheque->estPublie());
+
+        if($mediatheque->estPublie()){
+            return redirect()->back()->withMessage("La publication est effective");
+        }   
+            return redirect()->back()->withMessage("La dépublication est effective");
     }
 
 }

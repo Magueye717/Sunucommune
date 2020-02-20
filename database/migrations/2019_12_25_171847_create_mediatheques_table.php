@@ -9,10 +9,10 @@ class CreateMediathequesTable extends Migration {
 	{
 		Schema::create('mediatheques', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('type_media', 25);
+			$table->string('type_media', 5);
 			$table->string('fichier');
-			$table->string('description')->nullable();
-			$table->integer('priorite');
+			$table->string('rubrique');
+			$table->string('description', 300)->nullable();
 			$table->boolean('est_publie')->default(0);
 			$table->timestamps();
 		});

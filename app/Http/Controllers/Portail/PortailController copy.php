@@ -38,6 +38,7 @@ class PortailController extends Controller
     protected $equipeMunicipaleRepository;
     protected $membreCabinetRepository;
     protected $typeArticleRepository;
+    protected $mediathequeRepository;
 
 
 
@@ -47,7 +48,8 @@ class PortailController extends Controller
                                 MembreCabinetRepository $membreCabinetRepository,
                                 EquipeMunicipaleRepository $equipeMunicipaleRepository,
                                 CollectiviteRepository $collectiviteRepository,
-                                TypeArticleRepository $typeArticleRepository)
+                                TypeArticleRepository $typeArticleRepository,
+                                MediathequeRepository $mediathequeRepository)
 
     {
         $this->partenaireRepository = $partenaireRepository;
@@ -57,6 +59,7 @@ class PortailController extends Controller
         $this->membreCabinetRepository = $membreCabinetRepository;
         $this->articlefoRepository = $articlefoRepository;
         $this->typeArticleRepository = $typeArticleRepository;
+        $this->mediathequeRepository = $mediathequeRepository;
 
     }
 
