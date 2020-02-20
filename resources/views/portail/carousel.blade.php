@@ -5,7 +5,7 @@
 </ol>
 <div class="carousel-inner">
     <!-- <div class="carousel-item active" style="max-height: 962px;"> -->
-    @foreach($actualites->sortByDesc('created_at')->slice(0, 3) as $actu)
+    @foreach($mediateques->sortByDesc('created_at')->slice(0, 3) as $actu)
     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
         @if($actu->est_publie===1)
             <img src="{{ isset($actu->photo) ? asset('storage/commune/articles/photos/'. $actu->photo) : asset('themev1/images/default.png') }}" class="d-block w-100" alt="...">

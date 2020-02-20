@@ -12,6 +12,8 @@ class CreateMediathequesTable extends Migration {
 			$table->string('type_media', 25);
 			$table->string('fichier');
 			$table->string('description')->nullable();
+			$table->integer('priorite');
+			$table->boolean('est_publie')->default(0);
 			$table->timestamps();
 		});
 	}

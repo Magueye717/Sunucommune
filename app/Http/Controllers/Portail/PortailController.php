@@ -21,6 +21,7 @@ use App\Models\Commune\MembreCabinet;
 use App\Models\Commune\TypeArticle;
 use App\Repositories\Commune\ArticleRepository;
 use App\Repositories\Commune\EquipeMunicipaleRepository;
+use App\Repositories\Commune\MediathequeRepository;
 use App\Repositories\Commune\MembreCabinetRepository;
 use App\Repositories\Commune\TypeArticleRepository;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class PortailController extends Controller
     protected $equipeMunicipaleRepository;
     protected $membreCabinetRepository;
     protected $typeArticleRepository;
+    protected $mediathequeRepository;
 
 
 
@@ -47,7 +49,8 @@ class PortailController extends Controller
                                 MembreCabinetRepository $membreCabinetRepository,
                                 EquipeMunicipaleRepository $equipeMunicipaleRepository,
                                 CollectiviteRepository $collectiviteRepository,
-                                TypeArticleRepository $typeArticleRepository)
+                                TypeArticleRepository $typeArticleRepository,
+                                MediathequeRepository $mediathequeRepository)
 
     {
         $this->partenaireRepository = $partenaireRepository;
@@ -57,6 +60,7 @@ class PortailController extends Controller
         $this->membreCabinetRepository = $membreCabinetRepository;
         $this->articlefoRepository = $articlefoRepository;
         $this->typeArticleRepository = $typeArticleRepository;
+        $this->mediathequeRepository = $mediathequeRepository;
 
     }
 
@@ -73,6 +77,8 @@ class PortailController extends Controller
         $collectivites = $this->collectiviteRepository->getListeCollectivite()->prepend('choisir une région...', '');
         $partenaires = $this->partenaireRepository->getData();
 
+        $mediateques=$this->mediathequeRepository->getData();
+
         $deliberations = Article::whereHas('typeArticle', function ($query) {
             $query->where('libelle', 'like', 'Délibération');
         })->get();
@@ -85,7 +91,7 @@ class PortailController extends Controller
             $query->where('libelle', 'like', 'Actualité');
         })->get();
 
-        $cabinetMaires = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
+     /*    $cabinetMaires = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
             $query->where('libelle', 'like', 'Cabinet du maire%');
         })->get();
 
@@ -96,9 +102,9 @@ class PortailController extends Controller
         $conseils = MembreCabinet::whereHas('equipeMunicipale', function ($query) {
             $query->where('libelle', 'like', 'Conseil municipal%');
         })->get();
+ */
 
-
-        $equipes = MembreCabinet::select('equipe_municipales.id as equipe_id','equipe_municipales.libelle','membre_cabinets.*')
+        $equipes = MembreCabinet::select('equipe_municipales.id as equipe_id','equipe_municipales.libelle','equipe_municipales.description','membre_cabinets.*')
         ->join('equipe_municipales', 'equipe_municipales.id', '=', 'membre_cabinets.equipe_municipale_id')
        // ->groupBy('equipe_municipales.id')
         ->get();
@@ -108,8 +114,11 @@ class PortailController extends Controller
 
 
         //dd($memebreCabinet);
-  return view('portail .index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
-    }
+  //return view('portail.index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires', 'cabinetMaires', 'equipeMunicipales', 'secretariats', 'conseils','actualites'));
+  return view('portail.index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires',
+                                        'equipeMunicipales','actualites','equipes', 'mediateques'));
+  
+}
 
 
     public function cabinetDetail($id)
