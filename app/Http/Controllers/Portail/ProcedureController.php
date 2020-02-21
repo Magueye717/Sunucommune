@@ -25,7 +25,6 @@ class ProcedureController extends Controller
         $this->procedureRepository = $procedureRepository;
         $this->categorieRepository = $categorieRepository;
         $this->communeInfoRepository = $communeInfoRepository;
-        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -52,6 +51,7 @@ class ProcedureController extends Controller
             $query->where('nom', 'like', 'Social');
         })->get();
 
+        
         return view('procedure.index',compact('etats','fonciers','fiscalites','socials','communeInfo'));
     }
 
@@ -105,8 +105,55 @@ class ProcedureController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function details($id)
     {
+        $procedures = $this->procedureRepository->getData();
+        // dd($procedures);
+        $detailProcedure=$this->procedureRepository->getById($id);
+        //  dd($detailProcedure);
+            $nom="";
+                if($detailProcedure->categorie_id === 1)
+                {
+                    $similarProcedure = Procedure::whereHas('categorie', function ($query) {
+                        $query->where('nom', 'like', 'Etat civil');
+                    })->get();
+                    $nom="Etat civil";
+                    // dd($similarProcedure);
+                }
+
+                elseif($detailProcedure->categorie_id === 2)
+                {
+                    $similarProcedure = Procedure::whereHas('categorie', function ($query) {
+                        $query->where('nom', 'like', 'Foncier%');
+                    })->get();
+                    $nom="Foncier";
+                }
+
+                elseif($detailProcedure->categorie_id === 3)
+                {
+                    $similarProcedure = Procedure::whereHas('categorie', function ($query) {
+                        $query->where('nom', 'like', 'Fiscalite');
+                    })->get();
+                    $nom="Fiscalite";
+                }
+
+                else
+                {
+                    $similarProcedure = Procedure::whereHas('categorie', function ($query) {
+                        $query->where('nom', 'like', 'Social');
+                    })->get();
+                    $nom="Social";
+                }
+
+            $allProcedures = Procedure::groupby('categories.nom')
+            ->selectRaw('COUNT(*) as nombre ,categories.nom')
+            ->join('categories', 'categories.id', '=', 'procedures.categorie_id')
+            ->groupBy('categories.id')
+            ->get();
+            
+            // dd($procedures->id);
+
+        return view('procedure.procedures-details', compact('detailProcedure','similarProcedure','nom','allProcedures','procedures'));
 
     }
 }

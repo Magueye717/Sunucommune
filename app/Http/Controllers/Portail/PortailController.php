@@ -33,7 +33,7 @@ class PortailController extends Controller
 
     protected $communeInfoRepository;
     protected $collectiviteRepository;
-    protected $articlefoRepository;
+    protected $articleRepository;
     protected $partenaireRepository;
     protected $equipeMunicipaleRepository;
     protected $membreCabinetRepository;
@@ -41,7 +41,7 @@ class PortailController extends Controller
 
 
 
-    public function __construct(ArticleRepository $articlefoRepository,
+    public function __construct(ArticleRepository $articleRepository,
                                 PartenaireRepository $partenaireRepository,
                                 CommuneInfoRepository $communeInfoRepository,
                                 MembreCabinetRepository $membreCabinetRepository,
@@ -55,7 +55,7 @@ class PortailController extends Controller
         $this->communeInfoRepository = $communeInfoRepository;
         $this->collectiviteRepository = $collectiviteRepository;
         $this->membreCabinetRepository = $membreCabinetRepository;
-        $this->articlefoRepository = $articlefoRepository;
+        $this->articleRepository = $articleRepository;
         $this->typeArticleRepository = $typeArticleRepository;
 
     }
@@ -165,7 +165,7 @@ public function team()
 
     public function details_actualite($id)
     {
-        $detailActus=$this->articlefoRepository->getById($id);
+        $detailActus=$this->articleRepository->getById($id);
         $silimarActus=Article::whereHas('typeArticle', function ($query) {
             $query->where('libelle', 'like', 'Actualité');
         })->get();
@@ -181,7 +181,7 @@ public function team()
         ->get();
 
 
-        /* $allArticles=$this->articlefoRepository->getData(); */
+        /* $allArticles=$this->$articleRepository->getData(); */
         $typeArticles=$this->typeArticleRepository->getData();
         return view('portail.actualites-details', compact('detailActus','silimarActus', 'allArticles', 'typeArticles'));
     }

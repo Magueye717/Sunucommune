@@ -1,131 +1,108 @@
-<div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-2 col-xs-12 "></div>
-                <div class="col-lg-4 col-md-10 col-xs-12 center mt-30">
-                    <div class="about_item_tb">
-                        <div class="about_item_tbcell text-center">
-                            <h3>Les demarches les plus courantes
-                            <p>We have been in the repair and service business since 1984. </p>
+@extends('layouts.portail.portail')
+@section('content')
+
+
+    
+<div class="banner-area page-title bg_cover" style="background-image: url({{ asset('assets/images/baniere.png') }});">
+    @include('procedure.baniere', ['titre'=>$nom])
+</div>
+<!--====== BLOG STANDARD PART START ======-->
+   
+<section class="blog-standard-area blog-details-area pt-30 pb-130">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="blog-standard mt-30">
+                    <div class="blog-item">
+                        <div class="blog-content white-bg ">
+                            <div class="blog-quote ">
+                            <h2 class="title">{{ $detailProcedure->titre }}</h2>
+                            </div>
+                            <span class="line"></span>
+                            <p>{!! $detailProcedure->description !!}</p>
+
                         </div>
                     </div>
+                    <div class="blog-sharing pt-40 d-block d-sm-flex justify-content-between">
+                        <div class="blog-tag">   
+                            <ul>
+                                <li><span>Lieu de depot  : </span></li>
+                            <li> {{$detailProcedure->lieu_depot}}</li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-story">
+                        <h3 class="inner-title">Procedures simulaires</h3>
+                        <div class="row">
+                            @php $counter=0; @endphp
+                            @if(isset($similarProcedure))
+                                @foreach($similarProcedure->sortByDesc('created_at') as $similar)
+                                    @if(($similar->id != $detailProcedure->id )&& $counter<2)
+                                    @php $counter++; @endphp
+                                    <div class="col-lg-6">
+                                        <a href="{{route('procedure.details',$similar->id)}}">
+                                            <div class="blog-story-1 ">
+                                            <h6 class="title">{{ strip_tags(TruncateTexte::truncate($similar->titre,35))}}</h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-3 col-md-6 col-sm-9 ">
-                    <div class="services-item text-center mt-30 wow fadeIn hoverable card-service"  data-wow-duration="1500ms" data-wow-delay="0ms">
-                        <h3 class="title">Etat civil</h3>
-                        <img class="mt-30 mb-30" src="assets/images/icon-famille.svg" width="25%" height="25%"  alt="">
-                        <ul class="text-center">
-                            @php $procedure = 0; @endphp
-                            @foreach ($etats->sortByDesc('created_at')->slice(0, 3) as $etat)
-                            @if($etat->statut === 1  )
-                            @php $procedure ++;@endphp
-                                <li>
-                                    <a href=""></i>  {{ $etat->titre }}</a>
-                                </li>
-                            @endif
-                            @endforeach
-
-
-                            @if($procedure == 0)
-                                <li>
-                                    il n'existe pas de procedure pour cette categorie.
-                                </li>
-                            @endif
-                        </ul>
-                        @if($procedure >= 3)
-                        <div class="container">
-                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
-                        </div>
-                        @endif
+            <div class="col-lg-4 col-md-7 col-sm-9">
+                <div class="blog-sidebar mt-30">
+                    <div class="blog-search">
+                        <form action="#">
+                            <div class="input-box">
+                                <input type="text" placeholder="Search Keywords">
+                                <button type="button"><i class="far fa-search"></i></button>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-9">
-                    <div class="services-item text-center mt-30 wow fadeIn hoverable  card-service"  data-wow-duration="1500ms" data-wow-delay="400ms">
-                        <h3 class="title">Foncier</h3>
-                        <img class="mt-30 mb-30" src="assets/images/icon-foncier.svg" width="15%" height="17%"  alt="">
-                        <ul class="text-center">
-                            @php $procedure = 0; @endphp
-                            @foreach ($fonciers->sortByDesc('created_at')->slice(0, 3) as $foncier)
-                            @if($foncier->statut === 1  )
-                            @php $procedure ++;@endphp
-                                <li>
-                                    <a href=""></i>  {{ $foncier->titre }}</a>
-                                </li>
-                            @endif
-                            @endforeach
-
-                            @if($procedure == 0)
-                                <li>
-                                    il n'existe pas de procedure pour cette categorie.
-                                </li>
-                            @endif
-                        </ul>
-                        @if($procedure >= 3)
-                        <div class="container">
-                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
+                    <div class="blog-news white-bg mt-50">
+                        <div class="blog-title">
+                            <h3 class="title">Autres Procedures</h3>
                         </div>
-                        @endif
+                        @php $counter=0; @endphp
+                            @if(isset($procedures))
+                                @foreach($procedures->sortByDesc('created_at') as $procedure)
+                                    @if(($procedure->categorie_id != $detailProcedure->categorie_id ) && $counter<3)
+                                    @php $counter++; @endphp
+                                        <div class="blog-news-item">
+                                            <div>
+                                                <a href="{{route('procedure.details',$procedure->id)}}"><h5 class="title">{{ $procedure->titre }} </h5></a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-9">
-                    <div class="services-item text-center mt-30 wow fadeIn hoverable card-service"  data-wow-duration="1500ms" data-wow-delay="800ms">
-                        <h3 class="title">Fiscalite</h3>
-                        <img class="mt-30 mb-30" src="assets/images/icon-fiscalite.svg" width="20%" height="20%"  alt="">
-                        <ul class="text-center">
-                            @php $procedure = 0; @endphp
-                            @foreach ($fiscalites->sortByDesc('created_at')->slice(0, 3) as $fiscalite)
-                            @if($fiscalite->statut === 1  )
-                            @php $procedure ++;@endphp
-
-                                <li>
-                                    <a href=""></i>  {{ $fiscalite->titre }}</a>
-                                </li>
-                            @endif
-                            @endforeach
-
-                            @if($procedure == 0)
-                                <li>
-                                    il n'existe pas de procedure pour cette categorie.
-                                </li>
-                            @endif
-                        </ul>
-                        @if($procedure >= 3)
-                        <div class="container">
-                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
+                    <div class="blog-list white-bg mt-50">
+                        <div class="blog-title">
+                            <h3 class="title">Category</h3>
                         </div>
-                        @endif
+                        <div class="blog-list-item">
+                            <ul>
+                                @foreach ($allProcedures as $allProcedure)
+                                <li><a href="#"><span>{{ $allProcedure->nom }}</span> <span>({{ $allProcedure->nombre }})</span></a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-9">
-                    <div class="services-item text-center mt-30 wow fadeIn hoverable card-service"  data-wow-duration="1500ms" data-wow-delay="800ms">
-                        <h3 class="title">Social</h3>
-                        <img class="mt-30 mb-30" src="assets/images/icon-social.svg " width="20%" height="20%"  alt="">
-                        <ul class="text-center">
-                            @php $procedure = 0; @endphp
-                            @foreach ($socials->sortByDesc('created_at')->slice(0, 3) as $social)
-                            @if($social->statut === 1  )
-                            @php $procedure ++;@endphp
-
-                                <li>
-                                    <a href=""></i>  {{ $social->titre }}</a>
-                                </li>
-                            @endif
-                            @endforeach
-
-                            @if($procedure == 0)
-                                <li>
-                                    il n'existe pas de procedure pour cette categorie.
-                                </li>
-                            @endif
-                        </ul>
-                        @if($procedure >= 3)
-                        <div class="container">
-                        <button type="button" class="btn btn-outline-primary btn-sm btn-block mt-50">Voir plus</button>
-                        </div>
-                        @endif
-                        </div>
-
                 </div>
             </div>
         </div>
+    </div>
+</section> 
+
+<!--====== BLOG STANDARD PART ENDS ======-->
+
+
+@endsection

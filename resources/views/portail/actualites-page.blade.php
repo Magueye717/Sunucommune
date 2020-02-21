@@ -25,8 +25,10 @@
                         <li><i class="fas fa-eye"></i>400</li>
                         <li><i class="fas fa-comments"></i>20</li>
                     </ul>
+                    <div class="news-btn">
                     <a href="{{route('portail.actualites-details',$ActualiteEvenement->id)}}" class="theme-btn">Lire la suite
                     </a>
+                    </div>
                 </div>
             </div>
         </div>

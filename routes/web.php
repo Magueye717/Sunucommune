@@ -34,6 +34,7 @@ Route::get('/panel-citoyenne', 'Portail\ParticipationController@panel')->name('p
 //Procedure administrative
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');
 Route::get('/procedure-page/{id}', 'Portail\ProcedureController@events')->name('procedure.events');
+Route::get('/procedure-details/{id}', 'Portail\ProcedureController@details')->name('procedure.details');
 
 
 Route::get('/accueil', 'HomeController@index')->name('accueil');

@@ -29,7 +29,7 @@
                     <div class="case-overlay">
                         <div class="case-content">
                             <h4 class="title">{!! $procedure->titre !!}</h4>
-                            <a href="#">View Details <i class="fal fa-arrow-alt-right"></i></a>
+                            <a href="{{route('procedure.details', $procedure->id)}}">View Details <i class="fal fa-arrow-alt-right"></i></a>
                         </div>
                     </div>
                 </div>
