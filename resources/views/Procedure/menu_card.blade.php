@@ -21,7 +21,9 @@
                             @if($etat->statut === 1  )
                             @php $procedure ++;@endphp
                                 <li>
-                                    <a href=""></i>  {{ $etat->titre }}</a>
+                                    <a href="{{route('procedure.details', $etat->id)}}">
+                                        {{ $etat->titre }}
+                                    </a>
                                 </li>
                             @endif
                             @endforeach
@@ -53,7 +55,9 @@
                             @if($foncier->statut === 1  )
                             @php $procedure ++;@endphp
                                 <li>
-                                    <a href=""></i>  {{ $foncier->titre }}</a>
+                                    <a href="{{route('procedure.details', $foncier->id)}}">
+                                        {{ $foncier->titre }}
+                                    </a>
                                 </li>
                             @endif
                           @endforeach
@@ -83,7 +87,9 @@
                             @php $procedure ++;@endphp
 
                                 <li>
-                                    <a href=""></i>  {{ $fiscalite->titre }}</a>
+                                    <a href="{{route('procedure.details', $fiscalite->id)}}">
+                                        {{ $fiscalite->titre }}
+                                    </a>
                                 </li>
                             @endif
                             @endforeach
@@ -113,7 +119,9 @@
                             @php $procedure ++;@endphp
 
                                 <li>
-                                    <a href=""></i>  {{ $social->titre }}</a>
+                                    <a href="{{route('procedure.details', $social->id)}}">
+                                        {{ $social->titre }}
+                                    </a>
                                 </li>
                             @endif
                             @endforeach
