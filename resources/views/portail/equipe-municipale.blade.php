@@ -1,8 +1,8 @@
 <section class="our-service mb-150 rmb-100">
     <div class="container-xl">
-        <div class="section-title text-center">
-            <h2>Our Services</h2>
-            <span class="line"></span>
+        <div class="section-title text-center pt-40" style="margin-top: 10px;">
+            <h1 class="title"> <span>Equipes <span>Municipales</span></span></h1>
+            <ul class="divider"><img src="assets/images/Sep.png" alt=" "></ul>
         </div>
         @php $type_equipe=''; @endphp
         @foreach($equipes as $key => $equipe)
@@ -26,7 +26,7 @@
 
                             @if(($type_equipe != $equipe->equipe_id ) && ($equipe->equipe_id ==$equipee->equipe_id ))
 
-                                <div class="our-team-box mb-20"
+                                <div class="our-team-box mb-20 text-center"
                                      style="min-height: 300px; max-height: 300px; margin-bottom:20px ">
                                     <div class="team-img">
 
