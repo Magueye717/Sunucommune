@@ -34,7 +34,8 @@ class MediathequeRequest extends FormRequest
 
                      $rules = [
                         'fichier' => 'required',
-                        'description' => 'required',
+                        'rubrique' => 'required',
+                        'description' => 'required|max:300',
                     ];
 
                     //  si le type_fichier est audio
@@ -59,8 +60,8 @@ class MediathequeRequest extends FormRequest
             case 'PATCH':
                 {
                     $rules = [
-                        'fichier' => 'required',
-                        'description' => 'required',
+                        'rubrique' => 'required',
+                        'description' => 'required|max:300',
                     ];
 
                     //  si le type_fichier est audio

@@ -6,7 +6,7 @@
             <th>Prénom</th>
             <th>Nom</th>
             <th>Fonction</th>
-            <th>Hierarchie</th>
+            <th>Service</th>
             <th>Adresse</th>
             <th>Telephone</th>
             <th class="text-nowrap text-center">Actions</th>
@@ -23,7 +23,7 @@
                     <td>{{ $membreCabinet->prenom }}</td>
                     <td>{{ $membreCabinet->nom }}</td>
                     <td>{{ $membreCabinet->fonction }}</td>
-                    <td><span class="label label-info">{{ $membreCabinet->hierarchie }}</span></td>
+                    <td><span class="label label-info">{{ $membreCabinet->equipeMunicipale->libelle }}</span></td>
                     <td>{{ $membreCabinet->adresse }}</td>
                     <td>{{ $membreCabinet->telephone }}</td>
                     <td class="text-nowrap text-center">
