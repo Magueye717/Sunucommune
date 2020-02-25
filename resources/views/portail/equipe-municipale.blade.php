@@ -5,7 +5,7 @@
             <ul class="divider"><img src="assets/images/Sep.png" alt=" "></ul>
         </div>
         @php $type_equipe=''; @endphp
-        @foreach($equipes as $key => $equipe)
+        @forelse($equipes as $key => $equipe)
             <div class="row">
                 @if(($type_equipe != $equipe->equipe_id ))
                     <div class="col-xl-3 col-lg-5 col-md-4 mt-50">
@@ -55,7 +55,12 @@
                 </div>
             </div>
             @php $type_equipe=$equipe->equipe_id; @endphp
-        @endforeach
+            @empty
+            <div class="text-center pt-30">
+                <h4  style="color:#12BDE3;">Aucune équipe</h4>
+                <img  src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+            </div>
+     @endforelse
 
     </div>
 </section>
