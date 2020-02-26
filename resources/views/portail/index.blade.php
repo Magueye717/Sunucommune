@@ -16,7 +16,7 @@
 <!--====== BANNER PART ENDS ======-->
 
 <!--====== ABOUT PART START ======-->
-<div class="row container-fluid m-0 p-0 maire">
+<div class="row container-fluid  p-0 maire">
     <div class="col-md-4" style="background-color: #12BDE3; ">
         <div class="section-title text-center">
             <br>

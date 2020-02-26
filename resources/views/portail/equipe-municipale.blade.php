@@ -2,7 +2,7 @@
     <div class="container-xl">
         <div class="section-title text-center pt-40" style="margin-top: 10px;">
             <h1 class="title"> <span>Equipes <span>Municipales</span></span></h1>
-            <ul class="divider"><img src="assets/images/Sep.png" alt=" "></ul>
+            <ul class="divider"><img src="{{ asset('assets/images/Sep.png') }}" alt=" "></ul>
         </div>
         @php $type_equipe=''; @endphp
         @forelse($equipes as $key => $equipe)
@@ -17,7 +17,6 @@
                             </p>
                         </div>
                     </div>
-                @else
                 @endif
                 <div style="" class="col-md-9">
                     <div class="our-service-inner three-item-carousel">

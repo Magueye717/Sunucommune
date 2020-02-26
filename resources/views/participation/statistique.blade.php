@@ -11,12 +11,12 @@
                         <div class="col-md-6">
                             <div class="counter-item">
                                 <i class="fal fa-users-class"></i>
-                                <h3 class="title counter">19</h3>
+                            <h3 class="title counter">{{$allPanels->count()}}</h3>
                                 <span>Nombre de panels</span>
                             </div>
                             <div class="counter-item mt-60">
                                 <i class="fal fa-user-chart"></i>
-                                <h3 class="title counter">63</h3>
+                                <h3 class="title counter">6</h3>
                                 <span>Nombre de Sondages</span>
                             </div>
                         </div>
