@@ -14,6 +14,13 @@
                     <img class="avatar-min" src="{{ asset('storage/commune/mediatheques/'. $media->fichier) }}" alt="média" title="média"/>
                 @endif
             </div>
+
+            <div class="form-group">
+                <label class="control-label">Rubrique</label>
+                {!!  Form::select('rubrique', ['gallerie' => 'Gallerie', 'slide' => 'Slide'],  null, ['class' => 'form-control', 'placeholder'=>'Choisir une rubrique' ]) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+           
             <div class="form-group">
                 <label class="control-label">Texte</label>
                 {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control summernote']) !!}

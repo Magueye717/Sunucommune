@@ -58,10 +58,12 @@ Route::resource('infos.ancien-maires', 'Commune\AncienMaireController')->except(
 Route::resource('ancien-maires', 'Commune\AncienMaireController');
 Route::resource('/partenaires', 'Commune\PartenaireController');
 Route::resource('/membre-cabinets', 'Commune\MembreCabinetController');
+Route::post('/membre-cabinets/reseau', 'Commune\MembreCabinetController@storeReseau')->name('reseau_social.store');
 Route::resource('/articles', 'Commune\ArticleController');
 Route::put('/articles/{id}/publication', 'Commune\ArticleController@publication')->name('articles.publication');
 Route::get('/articles/deliberation/{id}', 'Portail\PortailController@document')->name('articles.document');
 Route::resource('/mediatheques', 'Commune\MediathequeController');
+Route::put('/mediatheques/{id}/publication', 'Commune\MediathequeController@publication')->name('mediatheques.publication');
 
 /* Espace participation */
 Route::prefix('participation')->group(function () {
