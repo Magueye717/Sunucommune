@@ -43,10 +43,9 @@
                                     <p>{{ $equipee->adresse }}</p>
 
                                     <div class="social-style-one">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-google"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        @foreach ($equipee->reseauxSociaux as $rs)
+                                        <a href="{{$rs->url}}" title="{{$rs->libelle}}"><i class="{{$rs->logo}}"></i></a>
+                                        @endforeach
                                     </div>
                                 </div>
                             @endif

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Commune;
 
+use App\Enums\ReseauxSociaux;
 use App\Enums\TypeHierarchie;
 use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
@@ -9,18 +10,25 @@ use App\Http\Requests\MembreCabinetRequest;
 use App\Models\Commune\EquipeMunicipale;
 use App\Repositories\Commune\EquipeMunicipaleRepository;
 use App\Repositories\Commune\MembreCabinetRepository;
+use App\Repositories\Commune\SocialLinkRepository;
 use App\Utils\UploadUtil;
+use Illuminate\Http\Request;
 
 class MembreCabinetController extends Controller
 {
     protected $membreCabinetRepository;
     protected $equipeMunicipaleRepository;
     protected $uploadUtil;
+    protected $socialLinkRepository;
 
-    public function __construct(MembreCabinetRepository $membreCabinetRepository,UploadUtil $uploadUtil, EquipeMunicipaleRepository $equipeMunicipaleRepository)
+    public function __construct(MembreCabinetRepository $membreCabinetRepository,
+                                UploadUtil $uploadUtil,
+                                EquipeMunicipaleRepository $equipeMunicipaleRepository,
+                                SocialLinkRepository $socialLinkRepository)
     {
         $this->membreCabinetRepository = $membreCabinetRepository;
         $this->equipeMunicipaleRepository = $equipeMunicipaleRepository;
+        $this->socialLinkRepository = $socialLinkRepository;
         $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
@@ -33,7 +41,8 @@ class MembreCabinetController extends Controller
     public function index()
     {
         $membres = $this->membreCabinetRepository->getData();
-        return view('gestion.commune.membre_cabinets.index', compact('membres'));
+        $reseaux= ReseauxSociaux::toSelectArray();
+        return view('gestion.commune.membre_cabinets.index', compact('membres','reseaux'));
     }
 
     /**
@@ -126,6 +135,22 @@ class MembreCabinetController extends Controller
             return redirect()->back()->withMessage("La suppression est effective");
         else
             return redirect()->back()->withErrors("Ce membre ne peut être supprimé...");
+    }
+
+    public function storeReseau(Request $request)
+    {
+        try{
+            $inputs = $request->all();
+            $inputs['cle']= $inputs['libelle']."_" .$inputs['membre_cabinet_id'];
+            $reseau = $this->socialLinkRepository->store($inputs);
+
+            return redirect('/membre-cabinets')->withMessage("Réseau social " . $reseau->libelle . " a été créé avec succés.");
+          
+          } catch (\Illuminate\Database\QueryException $e) {
+          
+            return redirect('/membre-cabinets')->withAlert("Ce membre a déja ce réseau social .");
+          }
+        
     }
 
 }
