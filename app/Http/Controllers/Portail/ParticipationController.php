@@ -29,7 +29,10 @@ class ParticipationController extends Controller
      */
     public function index()
     {
-        return view('participation.index');
+        $allPanels = Panel::select('thematiques.libelle','panel.*')
+        ->join('thematiques', 'thematiques.id', '=', 'panel.thematique_id')
+        ->get();
+        return view('participation.index',compact('allPanels'));
     }
 
     public function panel()
@@ -37,8 +40,19 @@ class ParticipationController extends Controller
         $allPanels = Panel::select('thematiques.libelle','panel.*')
         ->join('thematiques', 'thematiques.id', '=', 'panel.thematique_id')
         ->get();
-        // dd($allPanels);
-        return view('participation.panel');
+        //  dd($allPanels);
+        return view('participation.panel',compact('allPanels'));
+    }
+
+    public function thematiques($id)
+    {
+        $thematique=$this->thematiqueRepository->getById($id);
+      //  dd($thematique);
+        $panels = Panel::select('thematiques.libelle','panel.*')
+        ->join('thematiques', 'thematiques.id', '=', 'panel.thematique_id')
+        ->get();
+        //   dd($allPanels);
+        return view('participation.panels-thematique',compact('panels','thematique'));
     }
 
     public function details($id)
