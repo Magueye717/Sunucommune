@@ -51,7 +51,7 @@ class ProcedureController extends Controller
             $query->where('nom', 'like', 'Social');
         })->get();
 
-        
+
         return view('procedure.index',compact('etats','fonciers','fiscalites','socials','communeInfo'));
     }
 
@@ -144,13 +144,12 @@ class ProcedureController extends Controller
                     })->get();
                     $nom="Social";
                 }
-
             $allProcedures = Procedure::groupby('categories.nom')
             ->selectRaw('COUNT(*) as nombre ,categories.nom')
             ->join('categories', 'categories.id', '=', 'procedures.categorie_id')
             ->groupBy('categories.id')
             ->get();
-            
+
             // dd($procedures->id);
 
         return view('procedure.procedures-details', compact('detailProcedure','similarProcedure','nom','allProcedures','procedures'));

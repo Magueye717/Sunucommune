@@ -2,13 +2,26 @@
 namespace App\Http\Controllers\Portail;
 
 
-
+use App\Models\Participation\Panel;
+use App\Models\Participation\Thematique;
+use App\Repositories\Participation\ThematiqueRepository;
+use App\Repositories\Participation\PanelRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class ParticipationController extends Controller
 {
+    protected $thematiqueRepository;
+    protected $panelRepository;
+
+    public function __construct(ThematiqueRepository $thematiqueRepository,
+                                PanelRepository $panelRepository)
+    {
+        $this->thematiqueRepository = $thematiqueRepository;
+        $this->panelRepository = $panelRepository;
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +34,63 @@ class ParticipationController extends Controller
 
     public function panel()
     {
+        $allPanels = Panel::select('thematiques.libelle','panel.*')
+        ->join('thematiques', 'thematiques.id', '=', 'panel.thematique_id')
+        ->get();
+        // dd($allPanels);
         return view('participation.panel');
     }
+
+    public function details($id)
+    {
+        $panels = $this->panelRepository->getData();
+        // dd($panels);
+        $detailpanel=$this->panelRepository->getById($id);
+        //   dd($detailpanel);
+            // $nom="";
+            //     if($detailpanel->categorie_id === 1)
+            //     {
+            //         $similarpanel = panel::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Etat civil');
+            //         })->get();
+            //         $nom="Etat civil";
+            //         // dd($similarpanel);
+            //     }
+
+            //     elseif($detailpanel->categorie_id === 2)
+            //     {
+            //         $similarpanel = panel::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Foncier%');
+            //         })->get();
+            //         $nom="Foncier";
+            //     }
+
+            //     elseif($detailpanel->categorie_id === 3)
+            //     {
+            //         $similarpanel = panel::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Fiscalite');
+            //         })->get();
+            //         $nom="Fiscalite";
+            //     }
+
+            //     else
+            //     {
+            //         $similarpanel = panel::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Social');
+            //         })->get();
+            //         $nom="Social";
+            //     }
+            // $allpanels = panel::groupby('categories.nom')
+            // ->selectRaw('COUNT(*) as nombre ,categories.nom')
+            // ->join('categories', 'categories.id', '=', 'panels.categorie_id')
+            // ->groupBy('categories.id')
+            // ->get();
+
+            // dd($panels->id);
+
+        return view('participation.panels-details', compact('detailpanel','panels'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -31,7 +99,7 @@ class ParticipationController extends Controller
      */
     public function edit($id)
     {
-       
+
     }
 
     /**
@@ -42,6 +110,6 @@ class ParticipationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
     }
 }

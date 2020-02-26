@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-title-content text-center">
-                            <h3 class="title">Participation citoyenne</h3>
+                            <h3 class="title">{{$titre ?? 'Participation citoyenne'}}</h3>
                         </div>
                     </div>
                 </div>

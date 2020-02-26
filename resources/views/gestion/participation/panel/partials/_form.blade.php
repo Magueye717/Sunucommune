@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Thematique <span class="text-danger">*</span></label>
-                {!! Form::select('thematique_id', $categories, null, ['id' => 'thematique_id', 'class' => 'form-control select2', 'placeholder' => 'Choisir...', 'required' => '']) !!}
+                {!! Form::select('thematique_id', $thematiques, null, ['id' => 'thematique_id', 'class' => 'form-control select2', 'placeholder' => 'Choisir...', 'required' => '']) !!}
                 <div class="help-block with-errors"></div>
             </div>
         </div>

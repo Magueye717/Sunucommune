@@ -30,6 +30,7 @@ Route::get('/team/{id}', 'Portail\PortailController@cabinetDetail')->name('porta
 //Participation citoyenne
 Route::get('/citoyenne', 'Portail\ParticipationController@index')->name('participation.index');
 Route::get('/panel-citoyenne', 'Portail\ParticipationController@panel')->name('participation.panel');
+Route::get('/panel-details/{id}', 'Portail\ParticipationController@details')->name('panel.details');
 
 //Procedure administrative
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');

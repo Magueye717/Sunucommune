@@ -6,9 +6,12 @@
 </div>
 
  <!--====== CASE STUDY PART START ======-->
-   
+
  <section class="case-study-area pb-130 case-page-1">
     <div class="container">
+        <div class="blog-story">
+            <h3 class="inner-title">Procedures simulaires</h3>
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="case-item mt-30">
@@ -120,7 +123,7 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
 
 <!--====== CASE STUDY PART ENDS ======-->
 
