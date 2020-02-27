@@ -17,6 +17,9 @@ class CreateArticlesTable extends Migration {
 			$table->string('piece_jointe')->nullable();
 			$table->boolean('est_publie')->default(0);
 			$table->integer('add_by')->unsigned()->nullable();
+			$table->integer('priorite')->default(0);
+			$table->date('delais')->nullable();
+            $table->unsignedInteger('views')->default(0)->nullable();
 			$table->timestamps();
 		});
 	}
