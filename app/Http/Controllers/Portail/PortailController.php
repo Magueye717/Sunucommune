@@ -100,7 +100,7 @@ class PortailController extends Controller
 
   return view('portail.index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires',
                                         'equipeMunicipales','actualites','equipes', 'mediateques'));
-  
+
 }
 
 
@@ -165,13 +165,12 @@ public function team()
     public function details_actualite($id)
     {
         $detailActus=$this->articleRepository->getById($id);
+        $detailActus->increment('views');
+
         $silimarActus=Article::whereHas('typeArticle', function ($query) {
             $query->where('libelle', 'like', 'Actualité');
         })->get();
 
-        
-       
-        
         //dd($allArticles);
         $allArticles = Article::groupby('type_articles.libelle')
         ->selectRaw('COUNT(*) as nombre ,type_articles.libelle')
