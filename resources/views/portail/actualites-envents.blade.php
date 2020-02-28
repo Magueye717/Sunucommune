@@ -25,7 +25,7 @@
                                             <p>{{ strip_tags(TruncateTexte::truncate($ActualiteEvenement->texte, 350))  }}</p>
                                             <ul class="blog-statistics">
                                                 <li><i class="fas fa-share"></i>126</li>
-                                                <li><i class="fas fa-eye"></i>400</li>
+                                                <li><i class="fas fa-eye"></i>{{$ActualiteEvenement->views }}</li>
                                                 <li><i class="fas fa-comments"></i>20</li>
                                             </ul>
                                             <div class="news-btn">
