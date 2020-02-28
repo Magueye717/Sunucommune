@@ -114,7 +114,7 @@ class PortailController extends Controller
             $query->where('libelle', 'like', 'Cabinet du maire%');
         })->get();
         $libelle="Cabinet du maire";
-        dd($teamDetails);
+        //dd($teamDetails);
 
     }
 
