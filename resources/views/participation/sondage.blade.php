@@ -12,7 +12,7 @@
         @php $thematique=''; @endphp
         @foreach ($allsondages as $sondage)
         @if($thematique != $sondage->thematique_id)
-        <div class="section-title text-center pt-40" style="margin-top: 10px;">
+        <div class="section-title text-center ">
             <a href="{{ route('sondage.thematiques',$sondage->thematique_id) }}">
             <h1 class="title"> <span><span>{{ $sondage->libelle }}</span></span></h1>
             </a>
