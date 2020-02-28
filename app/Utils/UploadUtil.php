@@ -19,6 +19,7 @@ class UploadUtil
     const ARTICLE_PHOTO_PATH = '/commune/articles/photos/';
     const ARTICLE_FILE_PATH = '/commune/articles/files/';
     const PANEL_FILE_PATH = '/participation/panels/files/';
+    const AGENDA_FILE_PATH = '/commune/agenda/files/';
     const DEFAULT_PATH = '/default';
     protected $repertoire;
 
@@ -85,6 +86,9 @@ class UploadUtil
                 break;
            case TypeUpload::PhotoSondage:
                 return $this->repertoire = self::PHOTO_SONDAGE_PATH;
+                break;
+            case TypeUpload::PhotoAgenda:
+                return $this->repertoire = self::AGENDA_FILE_PATH;
                 break;
             default:
                 return self::DEFAULT_PATH;

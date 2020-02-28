@@ -72,6 +72,7 @@ Route::put('/articles/{id}/publication', 'Commune\ArticleController@publication'
 Route::get('/articles/deliberation/{id}', 'Portail\PortailController@document')->name('articles.document');
 Route::resource('/mediatheques', 'Commune\MediathequeController');
 Route::put('/mediatheques/{id}/publication', 'Commune\MediathequeController@publication')->name('mediatheques.publication');
+Route::resource('/agendas', 'Commune\AgendaController');
 
 /* Espace participation */
 Route::prefix('participation')->group(function () {
