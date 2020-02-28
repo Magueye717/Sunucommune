@@ -53,7 +53,7 @@
                     <p>{{strip_tags(TruncateTexte::truncate($simular->texte,200))}}</p>
                     <ul class="blog-statistics">
                     <li><i class="flaticon-share"></i>126</li>
-                    <li><i class="flaticon-eye"></i>400</li>
+                    <li><i class="flaticon-eye"></i>{{$simular->views}}</li>
                     <li><i class="flaticon-speech-bubbles"></i>20</li>
                     </ul>
                     <div class="news-btn">
@@ -67,7 +67,7 @@
         @endif
     </div>
     </div>
-    
+
     </div>
     <div class="col-lg-4">
     <div class="blog-sidebar rmt-50">
@@ -94,7 +94,7 @@
     <h3 class="widget-title">Categories</h3>
     <ul class="list-style-one">
 
-    @foreach($allArticles as $key => $allArticle)                  
+    @foreach($allArticles as $key => $allArticle)
     <li><a href="#">{{ $allArticle->libelle }} <span>({{ $allArticle->nombre }})</span></a></li>
     @endforeach
     </ul>

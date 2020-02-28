@@ -16,6 +16,8 @@ class CreatePanelTable extends Migration {
             $table->string('fichier')->nullable();
 			$table->date('date_publication')->nullable();
 			$table->boolean('statut')->default(0);
+            $table->integer('priorite')->default(0);
+            $table->unsignedInteger('views')->default(0)->nullable();
 			$table->timestamps();
 		});
 	}
