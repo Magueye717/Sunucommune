@@ -27,11 +27,18 @@ Route::get('/details/{id}', 'Portail\PortailController@details_actualite')->name
 Route::get('/team/{id}', 'Portail\PortailController@cabinetDetail')->name('portail.cabinet');
 /* Route::get('/team', 'Portail\PortailController@cabinetDetail')->name('portail.cabinet'); */
 
-//Participation citoyenne
+/*Participation citoyenne*/
 Route::get('/citoyenne', 'Portail\ParticipationController@index')->name('participation.index');
+
+/*Panel citoyenne*/
 Route::get('/panel-citoyenne', 'Portail\ParticipationController@panel')->name('participation.panel');
-Route::get('/panel-details/{id}', 'Portail\ParticipationController@details')->name('panel.details');
-Route::get('/panels-thematiques/{id}', 'Portail\ParticipationController@thematiques')->name('panel.thematiques');
+Route::get('/panels-thematiques/{id}', 'Portail\ParticipationController@panelThematiques')->name('panel.thematiques');
+Route::get('/panel-details/{id}', 'Portail\ParticipationController@panelDetails')->name('panel.details');
+
+/*Sondage citoyenne*/
+Route::get('/sondage-citoyenne', 'Portail\ParticipationController@sondage')->name('participation.sondage');
+Route::get('/sondages-thematiques/{id}', 'Portail\ParticipationController@sondageThematiques')->name('sondage.thematiques');
+Route::get('/sondage-details/{id}', 'Portail\ParticipationController@sondageDetails')->name('sondage.details');
 
 //Procedure administrative
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');

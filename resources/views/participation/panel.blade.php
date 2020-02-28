@@ -1,13 +1,64 @@
 @extends('layouts.portail.portail')
 @section('content')
 
-<div class="banner-area page-title bg_cover" style="background-image: url(assets/images/baniere.png);">
-    @include('participation.baniere')
-</div>
 
  <!--====== CASE STUDY PART START ======-->
 
- <section class="blog-page case-study-area pb-130 case-page-1">
+
+ <section class="blog-area-2 pt-80 pb-130">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="section-title text-center pt-40" style="margin-top: 10px;">
+                <h1 class="title"> <span>Panel <span>Citoyen</span></span></h1>
+                <ul class="divider"><img src="{{ asset('assets/images/Sep.png') }}" alt=" "></ul>
+            </div>
+        </div>
+        @php $thematique=''; @endphp
+        <div class="row justify-content-center">
+        @foreach ($allPanels as $panel)
+            @php $counter=0; @endphp
+            @foreach ($allPanels as $panels)
+            @if($thematique != $panel->thematique_id && $panel->thematique_id == $panels->thematique_id  && $counter<3)
+            @php $counter++; @endphp
+            <div class="col-lg-4 col-md-7 col-sm-9 pt-20">
+                <div class="blog-item mt-30 wow fadeIn animated" data-wow-duration="1500ms" data-wow-delay="0ms">
+                    <img src="{{ !empty($panels->photo) ? asset('storage/participation/panels/'. $panels->photo) : asset('themev1/images/default.png') }}" alt="Blog Details Image">
+                    <div class="blog-overlay">
+                        <div class="blog-tag">
+                            <a href="{{ route('panel.thematiques',$panels->thematique_id) }}">
+                            <span>{{ $panels->libelle }}</span>
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <ul>
+                                <li><i class="fal fa-calendar-alt"></i>{{$panels->created_at->formatLocalized('%d %B %Y') }}</li>
+                            </ul>
+                            <h4 class="title"><a href="#">{{$panels->question}}</a></h4>
+                            <p>{!! $panels->description !!} </p>
+                            <br>
+                            <a href="{{ route('panel.details',$panels->id) }}">View Details <i class="fal fa-long-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+            @endforeach
+
+        @php
+            $thematique = $panel->thematique_id
+        @endphp
+        @endforeach
+    </div>
+    </div>
+</section>
+
+<!--====== CASE STUDY PART ENDS ======-->
+
+<!--====== BLOG 2 PART START ======-->
+
+{{-- <!--====== CASE STUDY PART START ======-->
+
+<section class="blog-page case-study-area pb-130 case-page-1">
     <div class="container blog-load">
         @php $thematique=''; @endphp
         @foreach ($allPanels as $panel)
@@ -46,8 +97,9 @@
     </div>
 </section>
 
-<!--====== CASE STUDY PART ENDS ======-->
+<!--====== CASE STUDY PART ENDS ======--> --}}
 
+<!--====== BLOG 2 PART ENDS ======-->
 
 @endsection
 

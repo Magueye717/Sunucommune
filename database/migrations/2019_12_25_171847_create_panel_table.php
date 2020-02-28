@@ -11,7 +11,7 @@ class CreatePanelTable extends Migration {
             $table->increments('id');
             $table->integer('thematique_id')->unsigned();
             $table->string('question');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('photo')->nullable();
             $table->string('fichier')->nullable();
 			$table->date('date_publication')->nullable();

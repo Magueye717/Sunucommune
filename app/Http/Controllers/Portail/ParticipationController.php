@@ -3,9 +3,11 @@ namespace App\Http\Controllers\Portail;
 
 
 use App\Models\Participation\Panel;
+use App\Models\Participation\Sondage;
 use App\Models\Participation\Thematique;
 use App\Repositories\Participation\ThematiqueRepository;
 use App\Repositories\Participation\PanelRepository;
+use App\Repositories\Participation\SondageRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -14,12 +16,15 @@ class ParticipationController extends Controller
 {
     protected $thematiqueRepository;
     protected $panelRepository;
+    protected $sondageRepository;
 
     public function __construct(ThematiqueRepository $thematiqueRepository,
-                                PanelRepository $panelRepository)
+                                PanelRepository $panelRepository,
+                                SondageRepository $sondageRepository)
     {
         $this->thematiqueRepository = $thematiqueRepository;
         $this->panelRepository = $panelRepository;
+        $this->sondageRepository = $sondageRepository;
 
     }
     /**
@@ -44,7 +49,7 @@ class ParticipationController extends Controller
         return view('participation.panel',compact('allPanels'));
     }
 
-    public function thematiques($id)
+    public function panelThematiques($id)
     {
         $thematique=$this->thematiqueRepository->getById($id);
       //  dd($thematique);
@@ -55,7 +60,7 @@ class ParticipationController extends Controller
         return view('participation.panels-thematique',compact('panels','thematique'));
     }
 
-    public function details($id)
+    public function panelDetails($id)
     {
         $panels = $this->panelRepository->getData();
         // dd($panels);
@@ -103,6 +108,76 @@ class ParticipationController extends Controller
             // dd($panels->id);
 
         return view('participation.panels-details', compact('detailpanel','panels'));
+    }
+
+    public function sondage()
+    {
+        $allsondages = Sondage::select('thematiques.libelle','sondages.*')
+        ->join('thematiques', 'thematiques.id', '=', 'sondages.thematique_id')
+        ->get();
+        //  dd($allsondages);
+        return view('participation.sondage',compact('allsondages'));
+    }
+
+    public function sondageThematiques($id)
+    {
+        $thematique=$this->thematiqueRepository->getById($id);
+      //  dd($thematique);
+        $sondages = Sondage::select('thematiques.libelle','sondages.*')
+        ->join('thematiques', 'thematiques.id', '=', 'sondages.thematique_id')
+        ->get();
+        //   dd($allsondages);
+        return view('participation.sondages-thematique',compact('sondages','thematique'));
+    }
+
+    public function sondageDetails($id)
+    {
+        $sondages = $this->sondageRepository->getData();
+        // dd($sondages);
+        $detailsondage=$this->sondageRepository->getById($id);
+        //   dd($detailsondage);
+            // $nom="";
+            //     if($detailsondage->categorie_id === 1)
+            //     {
+            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Etat civil');
+            //         })->get();
+            //         $nom="Etat civil";
+            //         // dd($similarsondage);
+            //     }
+
+            //     elseif($detailsondage->categorie_id === 2)
+            //     {
+            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Foncier%');
+            //         })->get();
+            //         $nom="Foncier";
+            //     }
+
+            //     elseif($detailsondage->categorie_id === 3)
+            //     {
+            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Fiscalite');
+            //         })->get();
+            //         $nom="Fiscalite";
+            //     }
+
+            //     else
+            //     {
+            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
+            //             $query->where('nom', 'like', 'Social');
+            //         })->get();
+            //         $nom="Social";
+            //     }
+            // $allsondages = sondage::groupby('categories.nom')
+            // ->selectRaw('COUNT(*) as nombre ,categories.nom')
+            // ->join('categories', 'categories.id', '=', 'sondages.categorie_id')
+            // ->groupBy('categories.id')
+            // ->get();
+
+            // dd($sondages->id);
+
+        return view('participation.sondages-details', compact('detailsondage','sondages'));
     }
 
     /**

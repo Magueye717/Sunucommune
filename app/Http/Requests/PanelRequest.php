@@ -25,7 +25,6 @@ class PanelRequest extends FormRequest
     {
         return [
             'question' => 'required|max:255',
-            'photo' => 'nullable|mimes:jpeg,png|dimensions:min_width=150,min_height=150,max_width=1600,max_height=1600',
             'piece_jointe' => 'nullable|mimes:pdf,doc,docx,xls,xlsx|max:10000'
 		];
     }
