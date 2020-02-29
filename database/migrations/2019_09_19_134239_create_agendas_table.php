@@ -15,6 +15,13 @@ class CreateAgendasTable extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('libelle');
+            $table->text('description');
+            $table->date('date_evenement');
+            $table->integer('collectivite_id')->unsigned();
+            $table->string('lieu');
+            $table->string('photo')->nullable();
+            $table->integer('add_by')->unsigned();
             $table->timestamps();
         });
     }

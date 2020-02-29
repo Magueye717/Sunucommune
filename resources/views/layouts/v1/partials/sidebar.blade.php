@@ -35,6 +35,7 @@
                             <a href="{{ route('infos.index') }}" class="{{ areActiveRoutes($infoRoutes, 'active') }}">
                                 Infos de ma commune</a>
                         </li>
+                        <li><a href="{{ route('agendas.index') }}">Agenda maire</a></li>
                         <li>
                             <a href="{{ route('membre-cabinets.index') }}"
                                class="{{ areActiveRoutes($membreRoutes, 'active') }}">Membre du cabinet</a>

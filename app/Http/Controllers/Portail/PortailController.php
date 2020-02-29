@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Portail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
 use App\Http\Requests\RoleRequest;
-
+use App\Models\Commune\Agenda;
 use App\Models\Commune\Article;
 
 use App\Repositories\Commune\PartenaireRepository;
@@ -19,6 +19,7 @@ use App\Models\Commune\CommuneInfo;
 use App\Models\Commune\EquipeMunicipale;
 use App\Models\Commune\MembreCabinet;
 use App\Models\Commune\TypeArticle;
+use App\Repositories\Commune\AgendaRepository;
 use App\Repositories\Commune\ArticleRepository;
 use App\Repositories\Commune\EquipeMunicipaleRepository;
 use App\Repositories\Commune\MediathequeRepository;
@@ -40,6 +41,7 @@ class PortailController extends Controller
     protected $membreCabinetRepository;
     protected $typeArticleRepository;
     protected $mediathequeRepository;
+    protected   $agendaRepository;
 
 
 
@@ -50,7 +52,8 @@ class PortailController extends Controller
                                 EquipeMunicipaleRepository $equipeMunicipaleRepository,
                                 CollectiviteRepository $collectiviteRepository,
                                 TypeArticleRepository $typeArticleRepository,
-                                MediathequeRepository $mediathequeRepository)
+                                MediathequeRepository $mediathequeRepository,
+                                AgendaRepository $agendaRepository)
 
     {
         $this->partenaireRepository = $partenaireRepository;
@@ -61,6 +64,7 @@ class PortailController extends Controller
         $this->articleRepository = $articleRepository;
         $this->typeArticleRepository = $typeArticleRepository;
         $this->mediathequeRepository = $mediathequeRepository;
+        $this->agendaRepository = $agendaRepository;
 
     }
 
@@ -97,9 +101,9 @@ class PortailController extends Controller
         ->get();
 
         $equipeMunicipales = $this->equipeMunicipaleRepository->getEquipeMunicipale();
-
+        $agendas= Agenda::all();
   return view('portail.index', compact('communeInfo','collectivites','deliberations', 'projets','partenaires',
-                                        'equipeMunicipales','actualites','equipes', 'mediateques'));
+                                        'equipeMunicipales','actualites','equipes', 'mediateques', 'agendas'));
 
 }
 

@@ -6,41 +6,24 @@
         <table class="table table-striped center">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Date</th>
+                <th scope="col">Libelle</th>
+                <th scope="col">Date de l'évênement</th>
+                <th scope="col">Quartiers/villages</th>
                 <th scope="col">lieu</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
+            @foreach($agendas as $key => $agenda)
             <tr>
-                <td>Visite Marche Tilene</td>
-                <td>05/02/2019</td>
-                <td>lieu 1</td>
+                <td>{{$agenda->libelle}}</td>
+                <td>{{$agenda->date_evenement}}</td>
+                <td>{{$agenda->collectivite->nom}}</td>
+                <td>{{$agenda->lieu}}</td>
                 <td><button type="button" class="btn btn-outline-primary btn-sm">Voir plus</button>
                 </td>
             </tr>
-            <tr>
-                <td>Visite Marche Tilene</td>
-                <td>05/02/2019</td>
-                <td>lieu 1</td>
-                <td><button type="button" class="btn btn-outline-primary btn-sm">Voir plus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Visite Marche Tilene</td>
-                <td>05/02/2019</td>
-                <td>lieu 1</td>
-                <td><button type="button" class="btn btn-outline-primary btn-sm">Voir plus</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Visite Marche Tilene</td>
-                <td>05/02/2019</td>
-                <td>lieu 1</td>
-                <td><button type="button" class="btn btn-outline-primary btn-sm">Voir plus</button>
-                </td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
