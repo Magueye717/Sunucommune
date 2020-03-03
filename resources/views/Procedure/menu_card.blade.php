@@ -31,7 +31,7 @@
 
                             @if($procedure == 0)
                                 <li>
-                                    il n'existe pas de procedure pour cette categorie.
+                                    il n'existe pas de procedures pour cette categorie.
                                 </li>
                             @endif
                         </ul>
@@ -48,7 +48,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-9">
                     <div class="services-item text-center mt-30 wow fadeIn hoverable  card-service"  data-wow-duration="1500ms" data-wow-delay="400ms">
                         <h3 class="title">Foncier</h3>
-                        <img class="mt-30 mb-30" src="assets/images/icon-foncier.svg" width="15%" height="17%"  alt="">
+                        <img class="mt-30 mb-30" src="assets/images/icon-foncier.svg" width="15%" height="15%"  alt="">
                         <ul class="text-center">
                             @php $procedure = 0; @endphp
                             @foreach ($fonciers->sortByDesc('created_at')->slice(0, 3) as $foncier)
@@ -64,7 +64,7 @@
 
                             @if($procedure == 0)
                                 <li>
-                                    il n'existe pas de procedure pour cette categorie.
+                                    il n'existe pas de procedures pour cette categorie.
                                 </li>
                             @endif
                         </ul>
@@ -96,7 +96,7 @@
 
                             @if($procedure == 0)
                                 <li>
-                                    il n'existe pas de procedure pour cette categorie.
+                                    il n'existe pas de procedures pour cette categorie.
                                 </li>
                             @endif
                         </ul>
@@ -128,7 +128,7 @@
 
                             @if($procedure == 0)
                                 <li>
-                                    il n'existe pas de procedure pour cette categorie.
+                                    il n'existe pas de procedures pour cette categorie.
                                 </li>
                             @endif
                         </ul>

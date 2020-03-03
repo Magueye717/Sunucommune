@@ -1,20 +1,29 @@
 @extends('layouts.portail.portail')
 @section('content')
 
-<div class="banner-area page-title bg_cover" style="background-image: url(assets/images/baniere.png);">
-    @include('participation.baniere')
-</div>
 
  <!--====== CASE STUDY PART START ======-->
 
  <section class="blog-page case-study-area pb-130 case-page-1">
     <div class="container blog-load">
+        <div class="row justify-content-center">
+            <div class="section-title text-center pt-10">
+                <h1 class="title"> <span>Sondages <span></span></span></h1>
+                <ul class="divider"><img src="{{ asset('assets/images/Sep.png') }}" alt=" "></ul>
+            </div>
+        </div>
+        @if($allsondages->count() === 0)
+                    <div class="mx-auto mt-40 text-center">
+                        <h4 style="color:#12BDE3;">Aucun sondage n'a encore été créer.</h4>
+                        <img src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+                    </div>
+        @endif
         @php $thematique=''; @endphp
         @foreach ($allsondages as $sondage)
         @if($thematique != $sondage->thematique_id)
-        <div class="section-title text-center ">
+        <div class="section-title text-center pt-30">
             <a href="{{ route('sondage.thematiques',$sondage->thematique_id) }}">
-            <h1 class="title"> <span><span>{{ $sondage->libelle }}</span></span></h1>
+            <h4 class="title"> <span><span>{{ $sondage->libelle }}</span></span></h4>
             </a>
             <ul class="divider"><img src="{{ asset('assets/images/Sep.png') }}" alt=" "></ul>
         </div>
@@ -27,7 +36,7 @@
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="case-item mt-30">
                     <div class="case-thumb">
-                        <img src="{{ !empty($sondages->photo) ? asset('storage/participation/sondage/photos/'. $sondages->photo) : asset('themev1/images/default.png') }}" alt="Blog Details Image">
+                        <img src="{{ !empty($sondages->photo) ? asset('storage/participation/sondage/photos/'. $sondages->photo) : asset('themev1/images/default.png') }}" height="280px" alt="Blog Details Image">
                     </div>
                     <div class="case-content white-bg">
                         <h4 class="title">{{$sondages->titre}}</h4>
