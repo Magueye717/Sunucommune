@@ -10,7 +10,6 @@ use App\Repositories\Commune\AgendaRepository;
 use App\Repositories\Commune\CollectiviteRepository;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Utils\UploadUtil;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AgendaController extends Controller
@@ -30,7 +29,7 @@ class AgendaController extends Controller
         $this->communeInfoRepository = $communeInfoRepository;
         $this->collectiviteRepository = $collectiviteRepository;
         $this->uploadUtil = $uploadUtil;
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.

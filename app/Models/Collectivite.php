@@ -66,4 +66,9 @@ class Collectivite extends Model
         return $this->departement_qv->parent;
     }
 
+    public function ressources()
+    {
+        return $this->hasMany('App\Models\Commune\GestionInfrastructure');
+    }
+
 }

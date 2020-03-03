@@ -111,6 +111,11 @@ Route::prefix('procedures')->group(function (){
         Route::resource('/usagers', 'ProcedureUsagerController');
     });
 });
+Route::prefix('infrastructures')->group(function (){
+    Route::namespace('GestionInfrastructure')->group(function () {
+        Route::resource('/ressources', 'RessourceController');
+    });
+});
 
 /* Autres routes */
 Route::get('/mon-profil', 'HomeController@showProfile')->name('mon.profil');

@@ -3,6 +3,8 @@
     $membreRoutes = array('membre-cabinets.index', 'membre-cabinets.create', 'membre-cabinets.edit', 'membre-cabinets.show');
     $partenaireRoutes = array('partenaires.index', 'partenaires.create', 'partenaires.edit');
     $articleRoutes = array('articles.index', 'articles.create', 'articles.edit', 'articles.show');
+    $ressourceRoutes = array('ressources.index', 'ressources.create', 'ressources.edit', 'ressources.show');
+    $agendaRoutes = array('agendas.index', 'agendas.create', 'agendas.edit', 'agendas.show');
     $communeRoutes = array_merge($infoRoutes, $membreRoutes, $partenaireRoutes, $articleRoutes);
 @endphp
 <!-- ===== Left-Sidebar ===== -->
@@ -35,7 +37,8 @@
                             <a href="{{ route('infos.index') }}" class="{{ areActiveRoutes($infoRoutes, 'active') }}">
                                 Infos de ma commune</a>
                         </li>
-                        <li><a href="{{ route('agendas.index') }}">Agenda maire</a></li>
+                        <li><a href="{{ route('agendas.index') }}" class="{{ areActiveRoutes($agendaRoutes, 'active') }}">Agenda maire</a></li>
+                        <li><a href="{{ route('ressources.index') }}" class="{{ areActiveRoutes($ressourceRoutes, 'active') }}">Infrastructures</a></li>
                         <li>
                             <a href="{{ route('membre-cabinets.index') }}"
                                class="{{ areActiveRoutes($membreRoutes, 'active') }}">Membre du cabinet</a>
