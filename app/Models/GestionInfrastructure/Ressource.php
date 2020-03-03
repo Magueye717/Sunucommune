@@ -9,7 +9,7 @@ class Ressource extends Model
 
     protected $table = 'ressources';
     public $timestamps = true;
-    protected $fillable = array('commune_id', 'secteur_id', 'nom', 'description', 'heure_ouverture', 'heure_fermeture', 'photo', 'longitude', 'latittude', 'altitude', 'adresse', 'personne_contact', 'email', 'telephone', 'statut', 'add_by');
+    protected $fillable = array('collectivite_id', 'secteur_id', 'nom', 'description', 'heure_ouverture', 'heure_fermeture', 'photo', 'longitude', 'latittude', 'altitude', 'adresse', 'personne_contact', 'email', 'telephone', 'statut', 'add_by');
 
     public function secteur()
     {
@@ -19,6 +19,11 @@ class Ressource extends Model
     public function ajouterPar()
     {
         return $this->belongsTo('App\Models\User', 'add_by');
+    }
+
+    public function collectivite()
+    {
+        return $this->belongsTo('App\Models\Collectivite', 'collectivite_id');
     }
 
 }

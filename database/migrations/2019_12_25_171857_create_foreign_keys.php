@@ -75,6 +75,12 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
+
+		Schema::table('ressources', function(Blueprint $table) {
+			$table->foreign('collectivite_id')->references('id')->on('collectivites')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
 		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->foreign('agent_id')->references('id')->on('agents')
 						->onDelete('restrict')
@@ -235,6 +241,9 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('ressources', function(Blueprint $table) {
 			$table->dropForeign('ressources_add_by_foreign');
+		});
+		Schema::table('ressources', function(Blueprint $table) {
+			$table->dropForeign('ressources_collectivite_id_foreign');
 		});
 		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->dropForeign('historique_contrats_agent_id_foreign');
