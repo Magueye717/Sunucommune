@@ -20,7 +20,9 @@
                 @endif
                 <div style="" class="col-md-9">
                     <div class="our-service-inner three-item-carousel">
-
+                        @php
+                            $counter= 0;
+                        @endphp
                         @foreach($equipes as $key => $equipee)
 
                             @if(($type_equipe != $equipe->equipe_id ) && ($equipe->equipe_id ==$equipee->equipe_id ))
@@ -47,18 +49,26 @@
                                         @endforeach
                                     </div>
                                 </div>
+                                @php   $counter ++;  @endphp
                             @endif
                         @endforeach
                     </div>
                 </div>
             </div>
-            @php $type_equipe=$equipe->equipe_id; @endphp
+             @php $type_equipe=$equipe->equipe_id; @endphp
+            @if ($counter > 3 )
+            <div class=" text-right w-100 mt-25 mb-30 !important ">
+                <a href="{{route('portail.cabinet',$type_equipe)}}" class="theme-btn br-30 " style=" margin-bottom: 25px; background-color:#12BDE3;">TOUT VOIR
+                    <i class="fal fa-arrow-alt-right ml-15"> </i>
+                </a>
+            </div>
+            @endif
+           
             @empty
             <div class="text-center pt-30">
                 <h4  style="color:#12BDE3;">Aucune équipe</h4>
                 <img  src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
             </div>
      @endforelse
-
     </div>
 </section>

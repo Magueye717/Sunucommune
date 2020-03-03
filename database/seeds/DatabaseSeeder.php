@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
         
         $this->call('CategorieSeeder');
         $this->command->info('Categorie table seeded!');
+
+        $this->call('SecteurSeeder');
+        $this->command->info('Secteur table seeded!');
     }
 }

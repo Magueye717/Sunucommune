@@ -10,6 +10,7 @@ class CreateRessourcesTable extends Migration {
 		Schema::create('ressources', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('secteur_id')->unsigned();
+			$table->integer('collectivite_id')->unsigned();
 			$table->string('nom');
 			$table->string('description')->nullable();
 			$table->string('heure_ouverture', 50)->nullable();
@@ -22,7 +23,7 @@ class CreateRessourcesTable extends Migration {
 			$table->string('personne_contact')->nullable();
 			$table->string('email')->nullable();
 			$table->string('telephone')->nullable();
-			$table->boolean('statut')->default(1);
+			$table->boolean('statut')->default(0);
 			$table->integer('add_by')->unsigned();
 			$table->timestamps();
 		});

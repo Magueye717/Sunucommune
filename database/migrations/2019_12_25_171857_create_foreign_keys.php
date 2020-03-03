@@ -75,6 +75,12 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
+
+		Schema::table('ressources', function(Blueprint $table) {
+			$table->foreign('collectivite_id')->references('id')->on('collectivites')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
 		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->foreign('agent_id')->references('id')->on('agents')
 						->onDelete('restrict')
@@ -181,6 +187,16 @@ class CreateForeignKeys extends Migration {
 			$table->foreign('membre_cabinet_id')->references('id')->on('membre_cabinets')
 						->onDelete('restrict')
 						->onUpdate('restrict');
+		});
+		Schema::table('agendas', function(Blueprint $table) {
+			$table->foreign('collectivite_id')->references('id')->on('collectivites')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+		Schema::table('agendas', function(Blueprint $table) {
+			$table->foreign('add_by')->references('id')->on('users')
+						->onDelete('restrict')
+						->onUpdate('restrict');
         });
 	}
 
@@ -225,6 +241,9 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('ressources', function(Blueprint $table) {
 			$table->dropForeign('ressources_add_by_foreign');
+		});
+		Schema::table('ressources', function(Blueprint $table) {
+			$table->dropForeign('ressources_collectivite_id_foreign');
 		});
 		Schema::table('historique_contrat', function(Blueprint $table) {
 			$table->dropForeign('historique_contrats_agent_id_foreign');
@@ -289,6 +308,12 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('social_links', function(Blueprint $table) {
 			$table->dropForeign('social_links_membre_cabinet_id_foreign');
+		});
+		Schema::table('agendas', function(Blueprint $table) {
+			$table->dropForeign('agenda_collectivite_id_foreign');
+		});
+		Schema::table('agendas', function(Blueprint $table) {
+			$table->dropForeign('agenda_add_by_foreign');
         });
 	}
 }

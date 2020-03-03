@@ -72,6 +72,7 @@ Route::put('/articles/{id}/publication', 'Commune\ArticleController@publication'
 Route::get('/articles/deliberation/{id}', 'Portail\PortailController@document')->name('articles.document');
 Route::resource('/mediatheques', 'Commune\MediathequeController');
 Route::put('/mediatheques/{id}/publication', 'Commune\MediathequeController@publication')->name('mediatheques.publication');
+Route::resource('/agendas', 'Commune\AgendaController');
 
 /* Espace participation */
 Route::prefix('participation')->group(function () {
@@ -108,6 +109,11 @@ Route::prefix('procedures')->group(function (){
         Route::put('/procedures/{id}/valider', 'ProcedureController@valider')->name('procedures.valider');
         Route::resource('/procedure-pieces', 'ProcedurePieceController');
         Route::resource('/usagers', 'ProcedureUsagerController');
+    });
+});
+Route::prefix('infrastructures')->group(function (){
+    Route::namespace('GestionInfrastructure')->group(function () {
+        Route::resource('/ressources', 'RessourceController');
     });
 });
 
