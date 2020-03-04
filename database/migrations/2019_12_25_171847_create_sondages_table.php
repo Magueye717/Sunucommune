@@ -11,7 +11,7 @@ class CreateSondagesTable extends Migration {
 			$table->increments('id');
 			$table->string('titre');
 			$table->string('slug')->unique();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('photo')->nullable();
             $table->string('fichier')->nullable();
             $table->date('date_publication')->nullable();

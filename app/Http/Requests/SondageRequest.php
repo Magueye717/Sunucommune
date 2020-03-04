@@ -24,8 +24,7 @@ class SondageRequest extends FormRequest
     public function rules()
     {
         return [
-            'titre' => 'required|max:255',
-            'description' => 'nullable|max:255'
+            'titre' => 'required|max:255'
         ];
     }
 }

@@ -14,17 +14,17 @@
         <div class="row justify-content-center">
 
 
-            @foreach ($panels as $panel)
+            @foreach ($sondages as $panel)
             @if($panel->thematique_id==$thematique->id)
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="case-item mt-30">
                     <div class="case-thumb">
-                        <img src="{{ !empty($panel->photo) ? asset('storage/participation/panels/'. $panel->photo) : asset('themev1/images/default.png') }}" alt="Blog Details Image">
+                        <img src="{{ !empty($panel->photo) ? asset('storage/participation/sondage/photos/'. $panel->photo) : asset('themev1/images/default.png') }}" height="280px" alt="Blog Details Image">
                     </div>
                     <div class="case-content white-bg">
-                        <h4 class="title">{{$panel->question}}</h4>
+                        <h4 class="title">{{$panel->titre}}</h4>
                         <p>{!! $panel->description !!}</p>
-                        <a href="{{ route('panel.details',$panel->id) }}">View Details <i class="fal fa-long-arrow-right"></i></a>
+                        <a href="{{ route('sondage.details',$panel->id) }}">View Details <i class="fal fa-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

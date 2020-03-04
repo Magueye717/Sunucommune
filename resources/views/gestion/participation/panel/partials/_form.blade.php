@@ -34,7 +34,7 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="form-group">
                 <label class="control-label">Description</label>
                 {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control summernote']) !!}
@@ -58,6 +58,7 @@
     @parent
     @include('layouts.v1.partials.custom-select.style')
     @include('layouts.v1.partials.datepicker.style')
+    @include('layouts.v1.partials.summernote.style')
 
 @endsection
 
@@ -65,9 +66,31 @@
     @parent
     @include('layouts.v1.partials.custom-select.script')
     @include('layouts.v1.partials.datepicker.script')
+    @include('layouts.v1.partials.summernote.script')
     <!-- Validator -->
     <script src="{{ asset('themev1/js/validator.js') }}" type="text/javascript"></script>
 @endsection
 
 @push('myJS')
+<script>
+    $(function () {
+        'use strict';
+        // Select2
+        $('.select2').select2();
+        // Date Picker
+        jQuery('.mydatepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            language: 'fr',
+            todayHighlight: true,
+            endDate: '+2d'
+        });
+        //Summernote
+        $('.summernote').summernote({
+            placeholder: 'Ajouter la descripttion...',
+            tabsize: 2,
+            minHeight: 150,
+            lang: 'fr-FR'
+        });
+    });
+</script>
 @endpush

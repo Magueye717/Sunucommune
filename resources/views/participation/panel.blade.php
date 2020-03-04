@@ -13,6 +13,12 @@
                 <ul class="divider"><img src="{{ asset('assets/images/Sep.png') }}" alt=" "></ul>
             </div>
         </div>
+        @if($allPanels->count() === 0)
+                    <div class="mx-auto mt-40 text-center">
+                        <h4  style="color:#12BDE3;">Aucun panel n'a encore été créer.</h4>
+                        <img src="{{ asset('assets/images/noData/noData4.png') }}" alt="Service Image">
+                    </div>
+        @endif
         @php $thematique=''; @endphp
         <div class="row justify-content-center">
         @foreach ($allPanels as $panel)
@@ -33,8 +39,8 @@
                             <ul>
                                 <li><i class="fal fa-calendar-alt"></i>{{$panels->created_at->formatLocalized('%d %B %Y') }}</li>
                             </ul>
-                            <h4 class="title"><a href="#">{{$panels->question}}</a></h4>
-                            <p>{!! $panels->description !!} </p>
+                            <h4 class="title"><a href="#">{{strip_tags(TruncateTexte::truncate($panels->question,50))}}</a></h4>
+                            <p>{{ strip_tags(TruncateTexte::truncate($panels->description,250)) }}</p>
                             <br>
                             <a href="{{ route('panel.details',$panels->id) }}">View Details <i class="fal fa-long-arrow-right"></i></a>
                         </div>

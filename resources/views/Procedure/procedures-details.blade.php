@@ -2,12 +2,12 @@
 @section('content')
 
 
-    
+
 <div class="banner-area page-title bg_cover" style="background-image: url({{ asset('assets/images/baniere.png') }});">
     @include('procedure.baniere', ['titre'=>$nom])
 </div>
 <!--====== BLOG STANDARD PART START ======-->
-   
+
 <section class="blog-standard-area blog-details-area pt-30 pb-130">
     <div class="container">
         <div class="row justify-content-center">
@@ -24,20 +24,20 @@
                         </div>
                     </div>
                     <div class="blog-sharing pt-40 d-block d-sm-flex justify-content-between">
-                        <div class="blog-tag">   
+                        <div class="blog-tag">
                             <ul>
                                 <li><span>Lieu de depot  : </span></li>
                             <li> {{$detailProcedure->lieu_depot}}</li>
-                                
+
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="blog-story">
-                        <h3 class="inner-title">Procedures simulaires</h3>
-                        <div class="row">
-                            @php $counter=0; @endphp
-                            @if(isset($similarProcedure))
+                        @php $counter=0; @endphp
+                        @if(isset($similarProcedure))
+                            <h3 class="inner-title">Procedures similaires</h3>
+                            <div class="row">
                                 @foreach($similarProcedure->sortByDesc('created_at') as $similar)
                                     @if(($similar->id != $detailProcedure->id )&& $counter<2)
                                     @php $counter++; @endphp
@@ -50,10 +50,10 @@
                                     </div>
                                     @endif
                                 @endforeach
-                            @endif
-                        </div>
+                            </div>
+
+                        @endif
                     </div>
-                    
                 </div>
             </div>
             <div class="col-lg-4 col-md-7 col-sm-9">
@@ -100,7 +100,7 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
 
 <!--====== BLOG STANDARD PART ENDS ======-->
 

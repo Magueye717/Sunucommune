@@ -4,7 +4,6 @@
         <tr>
             <th>Illustration</th>
             <th>Titre</th>
-            <th>Description</th>
             <th>Thématique</th>
             <th>Options</th>
             <th>Ajouté par</th>
@@ -23,11 +22,11 @@
                         </td>
 
                     <td>{{ $sondage->titre }}</td>
-                    <td>{{ $sondage->description }}</td>
                     <td>{{ $sondage->thematique->libelle }}</td>
                     {{--                    <td>{{ $sondage->sondage_options_id }}</td>--}}
                     <td>
                         @foreach($sondage->sondageOptions as $option)
+                        {{-- @php dd($sondage); @endphp --}}
                             <span class="label label-info" style="margin: 2px;  display:block;
    float:left; ">  {{$option->libelle}} </span>
                         @endforeach

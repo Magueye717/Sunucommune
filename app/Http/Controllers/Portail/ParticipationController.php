@@ -37,7 +37,11 @@ class ParticipationController extends Controller
         $allPanels = Panel::select('thematiques.libelle','panel.*')
         ->join('thematiques', 'thematiques.id', '=', 'panel.thematique_id')
         ->get();
-        return view('participation.index',compact('allPanels'));
+
+        $allsondages = Sondage::select('thematiques.libelle','sondages.*')
+        ->join('thematiques', 'thematiques.id', '=', 'sondages.thematique_id')
+        ->get();
+        return view('participation.index',compact('allPanels','allsondages'));
     }
 
     public function panel()
@@ -133,9 +137,9 @@ class ParticipationController extends Controller
     public function sondageDetails($id)
     {
         $sondages = $this->sondageRepository->getData();
-        // dd($sondages);
+        //   dd($sondages);
         $detailsondage=$this->sondageRepository->getById($id);
-        //   dd($detailsondage);
+        //    dd($detailsondage);
             // $nom="";
             //     if($detailsondage->categorie_id === 1)
             //     {
