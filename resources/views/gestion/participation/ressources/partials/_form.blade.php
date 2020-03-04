@@ -4,14 +4,14 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label class="control-label">Quartier / Village  <span class="text-danger">*</span></label>
-                {!! Form::select('collectivite_id', $collectivites ,null, ['id' => 'collectivite', 'class' => 'form-control', 'placeholder'=>'Choisir un quartier ou un village',]) !!}
+                {!! Form::select('collectivite_id', $collectivites ,null, ['id' => 'collectivite', 'class' => 'form-control select2', 'placeholder'=>'Choisir un quartier ou un village',]) !!}
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="form-group">
                 <label class="control-label">Secteur de l'infrastructure  <span class="text-danger">*</span></label>
-                {!! Form::select('secteur_id', $secteurs ,null, ['id' => 'secteur', 'class' => 'form-control', 'placeholder'=>'Choisir le secteur', 'required',]) !!}
+                {!! Form::select('secteur_id', $secteurs ,null, ['id' => 'secteur', 'class' => 'form-control select2', 'placeholder'=>'Choisir le secteur', 'required',]) !!}
             </div>
         </div>
         <div class="col-md-3">
