@@ -50,10 +50,15 @@ class RessourceController extends Controller
    */
   public function create()
   {
+    try{
     $communeInfo=$this->communeInfoRepository->getCollectiviteId();
     $collectivites = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE');
     $secteurs=Secteur::all()->pluck('nom', 'id');
     return view('gestion.participation.ressources.create', compact('collectivites', 'secteurs'));
+  }catch ( \Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+
+    return redirect('/infos/create')->withWarning("Veuillez renseigner d'abord les informations concernant la commune");
+}
   }
 
   /**
@@ -63,7 +68,7 @@ class RessourceController extends Controller
    */
   public function store(RessourceRequest $request)
   {
-   // try{
+   
     $inputs = $request->all();
         $inputs['add_by'] = Auth::user()->id;
         //Illustration
@@ -76,10 +81,6 @@ class RessourceController extends Controller
             return \redirect()->back()->withErrors("L'ajout de le de la structure a échoué. Veuillez réessayer ou contacter l'administrateur.");
 
         return redirect('/infrastructures/ressources')->withMessage("La structure " . $ressource->nom . " a été créé avec succés.");
-      //}catch ( \Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-
-        //return redirect('/infos/create')->withWarning("Veuillez renseigner d'abord les informations concernant la commune");
-    //}
   }
 
   /**
