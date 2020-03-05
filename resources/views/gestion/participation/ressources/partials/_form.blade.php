@@ -38,7 +38,11 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">Heure d'ouverture <span class="text-danger">*</span></label>
-                {!! Form::text('heure_ouverture', null, ['id' => 'heure_ouverture', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Ouverture']) !!}
+                {{-- {!! Form::text('heure_ouverture',null, ['id' => 'heure_ouverture', 'class' => 'form-control clockpicker', 'required' => '', 'placeholder' => '00H : 00']) !!} --}}
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-time"></div>
+                    <input type="text" name="heure_ouverture" class="form-control clockpicker" id="heure_ouverture" placeholder="00h : 00">
+                  </div>
                 <div class="help-block with-errors"></div>
             </div>
         </div>
@@ -46,7 +50,11 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">Heure fermeture<span class="text-danger">*</span></label>
-                {!! Form::text('heure_fermeture', null, ['id' => 'heure_fermeture', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Fermeture']) !!}
+                {{-- {!! Form::text('heure_fermeture', null, ['id' => 'heure_fermeture', 'class' => 'form-control clockpicker', 'required' => '', 'placeholder' => '00H : 00']) !!} --}}
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-time"></div>
+                    <input type="text" name="heure_fermeture" class="form-control clockpicker" id="heure_fermeture" placeholder="00h : 00">
+                  </div>
                 <div class="help-block with-errors"></div>
             </div>
         </div>
@@ -127,6 +135,7 @@
     @include('layouts.v1.partials.datepicker.style')
     @include('layouts.v1.partials.custom-select.style')
     @include('layouts.v1.partials.summernote.style')
+    @include('layouts.v1.partials.timepicker.style')
 @endsection
 
 @section('scriptsAdditionnels')
@@ -134,32 +143,44 @@
     @include('layouts.v1.partials.datepicker.script')
     @include('layouts.v1.partials.custom-select.script')
     @include('layouts.v1.partials.summernote.script')
+    @include('layouts.v1.partials.timepicker.script')
     <!-- Validator -->
     <script src="{{ asset('themev1/js/validator.js') }}" type="text/javascript"></script>
 @endsection
+
 @push('myJS')
     <script>
-       $(function () {
-        'use strict';
-        // Select2
-        $('.select2').select2();
-
-          // Date Picker
-         /*  jQuery('.mydatepicker').datepicker({
-                format: 'yyyy/mm/dd',
+        $(function () {
+            'use strict';
+            // Select2
+            $('.select2').select2();
+            // Date Picker
+            jQuery('.mydatepicker').datepicker({
+                format: 'dd/mm/yyyy',
                 language: 'fr',
                 todayHighlight: true,
                 endDate: '+2d'
-            }); */
-
+            });
             //Summernote
             $('.summernote').summernote({
-                placeholder: 'Ajouter le mot du maire...',
+                placeholder: 'Ajouter la descripttion...',
                 tabsize: 2,
                 minHeight: 150,
                 lang: 'fr-FR'
             });
-    });
+
+             $('.clockpicker').clockpicker({
+                'default': 'now',
+                vibrate: true,
+                placement: "top",
+                align: "left",
+                autoclose: true,
+                twelvehour: false
+            });
+        });
     </script>
 @endpush
+
+
+
 
