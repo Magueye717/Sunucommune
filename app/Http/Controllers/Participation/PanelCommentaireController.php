@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Participation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\PanelCommentaireRequest;
+use App\Models\Participation\PanelCommentaire;
 use App\Repositories\Participation\PanelCommentaireRepository;
 use App\Repositories\Participation\PanelRepository;
 
@@ -18,7 +19,7 @@ class PanelCommentaireController extends Controller
     {
         $this->panelCommentaireRepository = $panelCommentaireRepository;
         $this->panelRepository = $panelRepository;
-        $this->middleware('auth');
+        /* $this->middleware('auth'); */
     }
     /**
      * Display a listing of the resource.
@@ -47,12 +48,12 @@ class PanelCommentaireController extends Controller
      *
      * @return Response
      */
-    public function store(PanelCommentaireRequest $request)
+    public function store(Request $request)
     {
+        
         $inputs = $request->all();
-        // dd($inputs);
         $this->panelCommentaireRepository->store($inputs);
-        return \redirect()->route('panels.index')->withMessage("Le commentaire a été créé avec succé.");
+        return \redirect()->back();
     }
 
     /**

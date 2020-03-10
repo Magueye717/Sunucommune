@@ -34,7 +34,7 @@
                             'method' => 'DELETE',
                             'class' => 'delete-form',
                             'style' => 'display: inline;',
-                            'route' => array('membre_cadres.destroy', $cadre))) !!}
+                            'route' => array('membre_cadress.destroy', $membreCadre))) !!}
                             {{ csrf_field() }}
                             <a href="#delete" class="text-danger sunucommune-delete" data-toggle="tooltip" title="Supprimer">
                                 <i class="ti-trash"></i>
