@@ -9,9 +9,9 @@ class CreatePanelCommentairesTable extends Migration {
 	{
 		Schema::create('panel_commentaires', function(Blueprint $table) {
 			$table->increments('id');
-            $table->integer('panel_id')->unsigned();
+            $table->integer('panel_id')->unsigned()->nullable();
             $table->integer('parent_id')->unsigned()->nullable();
-			$table->string('commentaire');
+			$table->mediumText('commentaire');
 			$table->string('nom');
 			$table->string('email')->nullable();
 			$table->boolean('statut')->default(1);

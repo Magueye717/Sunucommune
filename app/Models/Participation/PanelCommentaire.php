@@ -9,7 +9,7 @@ class PanelCommentaire extends CustomModel
 
     protected $table = 'panel_commentaires';
     public $timestamps = true;
-    protected $fillable = array('panel_id', 'commentaire', 'nom', 'email', 'statut');
+    protected $fillable = array('panel_id', 'commentaire', 'nom', 'email', 'statut', 'parent_id');
 
     public function panel()
     {
@@ -18,7 +18,7 @@ class PanelCommentaire extends CustomModel
 
     public function panelCommentaires()
     {
-        return $this->hasMany('App\Models\Participation\Panel', 'parent_id');
+        return $this->hasMany('App\Models\Participation\PanelCommentaire', 'parent_id');
     }
 
     public function estActive()
