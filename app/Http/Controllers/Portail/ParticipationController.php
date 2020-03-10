@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Portail;
 
 use App\Models\Participation\Panel;
 use App\Models\Participation\Sondage;
+use App\Models\Participation\MembreCadre;
+use App\Models\Participation\CadreConcertation;
 use App\Models\Participation\Thematique;
 use App\Repositories\Participation\ThematiqueRepository;
+use App\Repositories\Participation\CadreConcertationRepository;
+use App\Repositories\Participation\MembreCadreRepository;
 use App\Repositories\Participation\PanelRepository;
 use App\Repositories\Participation\SondageRepository;
 use App\Http\Controllers\Controller;
@@ -17,14 +21,20 @@ class ParticipationController extends Controller
     protected $thematiqueRepository;
     protected $panelRepository;
     protected $sondageRepository;
+    protected $cadreConcertationRepository;
+    protected $membreCadreRepository;
 
     public function __construct(ThematiqueRepository $thematiqueRepository,
                                 PanelRepository $panelRepository,
-                                SondageRepository $sondageRepository)
+                                SondageRepository $sondageRepository,
+                                CadreConcertationRepository $cadreConcertationRepository,
+                                MembreCadreRepository $membreCadreRepository)
     {
         $this->thematiqueRepository = $thematiqueRepository;
         $this->panelRepository = $panelRepository;
         $this->sondageRepository = $sondageRepository;
+        $this->cadreConcertationRepository = $cadreConcertationRepository;
+        $this->membreCadreRepository = $membreCadreRepository;
 
     }
     /**
@@ -69,47 +79,7 @@ class ParticipationController extends Controller
         $panels = $this->panelRepository->getData();
         // dd($panels);
         $detailpanel=$this->panelRepository->getById($id);
-        //   dd($detailpanel);
-            // $nom="";
-            //     if($detailpanel->categorie_id === 1)
-            //     {
-            //         $similarpanel = panel::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Etat civil');
-            //         })->get();
-            //         $nom="Etat civil";
-            //         // dd($similarpanel);
-            //     }
 
-            //     elseif($detailpanel->categorie_id === 2)
-            //     {
-            //         $similarpanel = panel::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Foncier%');
-            //         })->get();
-            //         $nom="Foncier";
-            //     }
-
-            //     elseif($detailpanel->categorie_id === 3)
-            //     {
-            //         $similarpanel = panel::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Fiscalite');
-            //         })->get();
-            //         $nom="Fiscalite";
-            //     }
-
-            //     else
-            //     {
-            //         $similarpanel = panel::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Social');
-            //         })->get();
-            //         $nom="Social";
-            //     }
-            // $allpanels = panel::groupby('categories.nom')
-            // ->selectRaw('COUNT(*) as nombre ,categories.nom')
-            // ->join('categories', 'categories.id', '=', 'panels.categorie_id')
-            // ->groupBy('categories.id')
-            // ->get();
-
-            // dd($panels->id);
 
         return view('participation.panels-details', compact('detailpanel','panels'));
     }
@@ -140,48 +110,18 @@ class ParticipationController extends Controller
         //   dd($sondages);
         $detailsondage=$this->sondageRepository->getById($id);
         //    dd($detailsondage);
-            // $nom="";
-            //     if($detailsondage->categorie_id === 1)
-            //     {
-            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Etat civil');
-            //         })->get();
-            //         $nom="Etat civil";
-            //         // dd($similarsondage);
-            //     }
-
-            //     elseif($detailsondage->categorie_id === 2)
-            //     {
-            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Foncier%');
-            //         })->get();
-            //         $nom="Foncier";
-            //     }
-
-            //     elseif($detailsondage->categorie_id === 3)
-            //     {
-            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Fiscalite');
-            //         })->get();
-            //         $nom="Fiscalite";
-            //     }
-
-            //     else
-            //     {
-            //         $similarsondage = sondage::whereHas('categorie', function ($query) {
-            //             $query->where('nom', 'like', 'Social');
-            //         })->get();
-            //         $nom="Social";
-            //     }
-            // $allsondages = sondage::groupby('categories.nom')
-            // ->selectRaw('COUNT(*) as nombre ,categories.nom')
-            // ->join('categories', 'categories.id', '=', 'sondages.categorie_id')
-            // ->groupBy('categories.id')
-            // ->get();
 
             // dd($sondages->id);
 
         return view('participation.sondages-details', compact('detailsondage','sondages'));
+    }
+
+
+    public function comite()
+    {
+        $comites = $this->cadreConcertationRepository->getData();
+        //  dd($comites);
+        return view('participation.comite',compact('comites'));
     }
 
     /**

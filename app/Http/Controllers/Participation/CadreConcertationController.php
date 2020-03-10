@@ -83,8 +83,9 @@ class CadreConcertationController extends Controller
     {
         $inputs = $request->all();
         $inputs['add_by'] = Auth::user()->id;
+        //Illustration
         if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'));
+            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PhotoMembre);
         }
         $cardre = $this->cadreConcerationRepository->store($inputs);
 

@@ -63,7 +63,7 @@ class PanelController extends Controller
         }
         //PJ
         if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PhotoPanel);
+            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PanelFile);
         }
         $this->panelRepository->store($inputs);
         return \redirect()->route('panels.index')->withMessage("Le panel a été créé avec succé.");

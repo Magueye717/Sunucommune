@@ -40,7 +40,12 @@ Route::get('/sondage-citoyenne', 'Portail\ParticipationController@sondage')->nam
 Route::get('/sondages-thematiques/{id}', 'Portail\ParticipationController@sondageThematiques')->name('sondage.thematiques');
 Route::get('/sondage-details/{id}', 'Portail\ParticipationController@sondageDetails')->name('sondage.details');
 
-//Procedure administrative
+/*comite consultatif*/
+Route::get('/comite-consultatif', 'Portail\ParticipationController@comite')->name('participation.comite');
+Route::get('/sondages-thematiques/{id}', 'Portail\ParticipationController@sondageThematiques')->name('sondage.thematiques');
+Route::get('/sondage-details/{id}', 'Portail\ParticipationController@sondageDetails')->name('sondage.details');
+
+/*Procedure administrative*/
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');
 Route::get('/procedure-page/{id}', 'Portail\ProcedureController@events')->name('procedure.events');
 Route::get('/procedure-details/{id}', 'Portail\ProcedureController@details')->name('procedure.details');
