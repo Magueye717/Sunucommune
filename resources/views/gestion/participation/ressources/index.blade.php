@@ -22,7 +22,7 @@
                             </span>
                         </a>
                     </div>
-                    @include('gestion.participation.cadre_concertation.partials._liste')
+                    @include('gestion.participation.ressources.partials._liste')
             </div>
         </div>
     </div>

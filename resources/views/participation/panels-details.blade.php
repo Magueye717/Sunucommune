@@ -67,52 +67,65 @@
                             </div>
                         </div>
                     </div>
+                   
+                        
                     <div class="blog-comments">
                         <div class="blog-title">
-                            <h3 class="title">Client’s Comments</h3>
+                        <h3 class="title">Commentaires</h3>
                         </div>
+                     @forelse($detailpanel->commentaires as $comment)
                         <div class="blog-comments-area">
                             <div class="blog-comments-item mt-40">
-                                <h6 class="title">Alexzeder Alex <span>25 July 2019</span></h6>
-                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete</p>
-                                <span>Reply Commets</span>
-                                <img src="assets/images/blog-commtents-1.png" alt="">
+                                <h6 class="title">{{$comment->nom}} <span>{{ \Carbon\Carbon::parse($comment->created_at)->diffForhumans() }}</span></h6>
+                            <p>{{$comment->commentaire}}</p>
+                            <div class="d-flex justify-content-between">
+                                <span>Les réponses</span>
+                            <img src="{{asset('themev1/images/default.png')}}" alt="" width=" 100px">
+                               <div class="btn btn-outline-primary btn-small repondreCommentaire" onclick="$('#parent_id').val('{{$comment->id}}');">Répondre</div>
                             </div>
+
+                            </div>
+                            @foreach ($comment->panelCommentaires as $item)
                             <div class="blog-comments-item mt-40 ml-60 item-2">
-                                <h6 class="title">Alexzeder Alex <span>25 July 2019</span></h6>
-                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete</p>
-                                <span>Reply Commets</span>
-                                <img src="assets/images/blog-commtents-2.png" alt="">
+                                <h6 class="title">{{ $item->nom }} <span>{{ \Carbon\Carbon::parse($item->created_at)->diffForhumans() }}</span></h6>
+                                <p>{{$item->commentaire}}</p>
+                                <span>Réponses</span>
+                                <img src="{{asset('themev1/images/default.png')}}" alt="" width=" 70px">
                             </div>
-                            <div class="blog-comments-item mt-40">
-                                <h6 class="title">Alexzeder Alex <span>25 July 2019</span></h6>
-                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete</p>
-                                <span>Reply Commets</span>
-                                <img src="assets/images/blog-commtents-3.png" alt="">
-                            </div>
+                            @endforeach
                         </div>
+                        @empty 
+                            <h5 class="pt-5 justify-content-center">Aucun commentaire</h5>
+                        @endforelse
                     </div>
-                    <div class="blog-massage">
+                    <div class="blog-massage pt-5" id="commentForm">
                         <div class="blog-title">
-                            <h3 class="title">Send A Message</h3>
+                            <h3 class="title">Vos commentaires</h3>
                         </div>
-                        <div class="blog-form">
-                            <form action="#">
+                        <div class="blog-form" >
+                        <form action="{{ route('commentaires.store') }}" method="post">
+                            @csrf
+                            <div class="col-lg-6">
+                                <div class="input-box mt-20">
+                                    <input type="hidden" name="panel_id" id="panel_id">
+                                    <input type="hidden" name="parent_id" id="parent_id">
+                                </div>
+                            </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="input-box mt-20">
-                                            <input type="text" placeholder="Your Full Name">
+                                            <input type="text" placeholder="Nom complet" name="nom">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="input-box mt-20">
-                                            <input type="text" placeholder="Your Full Name">
+                                            <input type="text" placeholder="Votre email" name="email">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="input-box mt-20">
-                                            <textarea name="#" id="#" cols="30" rows="10" placeholder="Write Message"></textarea>
-                                            <button class="main-btn" type="submit">Send Message</button>
+                                            <textarea name="commentaire" id="commentaire" cols="30" rows="10" placeholder="Votre commentaire" name="commentaire"></textarea>
+                                            <button class="main-btn" type="submit" onclick="$('#panel_id').val('{{$detailpanel->id}}');">Commenter</button>
                                         </div>
                                     </div>
                                 </div>
@@ -208,106 +221,14 @@
     </div>
 </section>
 
-<!--====== BLOG STANDARD PART ENDS ======-->
-
-
-<!--====== BLOG STANDARD PART START ======-->
-
-{{--  <section class="blog-standard-area blog-details-area pt-30 pb-130">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="blog-standard mt-30">
-                    <div class="blog-item">
-                        <div class="blog-content white-bg ">
-                            <div class="blog-quote ">
-                            <h2 class="title">{{ $detailProcedure->titre }}</h2>
-                            </div>
-                            <span class="line"></span>
-                            <p>{!! $detailProcedure->description !!}</p>
-
-                        </div>
-                    </div>
-                    <div class="blog-sharing pt-40 d-block d-sm-flex justify-content-between">
-                        <div class="blog-tag">
-                            <ul>
-                                <li><span>Lieu de depot  : </span></li>
-                            <li> {{$detailProcedure->lieu_depot}}</li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="blog-story">
-                        <h3 class="inner-title">Procedures simulaires</h3>
-                        <div class="row">
-                            @php $counter=0; @endphp
-                            @if(isset($similarProcedure))
-                                @foreach($similarProcedure->sortByDesc('created_at') as $similar)
-                                    @if(($similar->id != $detailProcedure->id )&& $counter<2)
-                                    @php $counter++; @endphp
-                                    <div class="col-lg-6">
-                                        <a href="{{route('procedure.details',$similar->id)}}">
-                                            <div class="blog-story-1 ">
-                                            <h6 class="title">{{ strip_tags(TruncateTexte::truncate($similar->titre,35))}}</h6>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    @endif
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-7 col-sm-9">
-                <div class="blog-sidebar mt-30">
-                    <div class="blog-search">
-                        <form action="#">
-                            <div class="input-box">
-                                <input type="text" placeholder="Search Keywords">
-                                <button type="button"><i class="far fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="blog-news white-bg mt-50">
-                        <div class="blog-title">
-                            <h3 class="title">Autres Procedures</h3>
-                        </div>
-                        @php $counter=0; @endphp
-                            @if(isset($procedures))
-                                @foreach($procedures->sortByDesc('created_at') as $procedure)
-                                    @if(($procedure->categorie_id != $detailProcedure->categorie_id ) && $counter<3)
-                                    @php $counter++; @endphp
-                                        <div class="blog-news-item">
-                                            <div>
-                                                <a href="{{route('procedure.details',$procedure->id)}}"><h5 class="title">{{ $procedure->titre }} </h5></a>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            @endif
-                    </div>
-                    <div class="blog-list white-bg mt-50">
-                        <div class="blog-title">
-                            <h3 class="title">Category</h3>
-                        </div>
-                        <div class="blog-list-item">
-                            <ul>
-                                @foreach ($allProcedures as $allProcedure)
-                                <li><a href="#"><span>{{ $allProcedure->nom }}</span> <span>({{ $allProcedure->nombre }})</span></a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  --}}
-
-<!--====== BLOG STANDARD PART ENDS ======-->
-
-
 @endsection
+@push('myJS')
+<script>
+   $(".repondreCommentaire").click(function() {
+    $("html, body").animate({ scrollTop: $("#commentForm").offset().top }, 1500);
+   });
+ </script>
+@endpush
+
+
+

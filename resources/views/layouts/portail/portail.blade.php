@@ -45,6 +45,15 @@
 
 
 @include('layouts.portail.partials._scripts')
+@include('layouts.v1.partials.script')
+@stack('myJS')
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 8000);
+    });
+</script>
 
 </body>
 
