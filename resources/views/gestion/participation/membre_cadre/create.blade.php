@@ -12,11 +12,18 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion des membres cadres</h3>
+                <h3 class="box-title m-b-0">Gestion des membres cadres </h3>
                 <p class="text-muted m-b-20">Création</p>
-                {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel']) !!}
+                {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel', 'files' => 'true']) !!}
+                @csrf_field
+               
+
                 @include('gestion.participation.membre_cadre.partials._form')
                 {!! Form::close() !!}
+                {{--  {!! Form::model(new App\Models\Participation\MembreCadre(), ['route' => ['membre_cadres.store'], 'role' => 'form',
+                'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
+                @include('gestion.participation.membre_cadre.partials._form')
+                {!! Form::close() !!}  --}}
             </div>
         </div>
     </div>

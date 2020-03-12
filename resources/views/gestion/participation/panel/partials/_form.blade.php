@@ -20,7 +20,8 @@
                 {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control', 'placeholder'=>'Choisir la photo d\'illustration']) !!}
                 <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 150x150 et max: 1600x1600.</small></span>
                 @if(isset($panel) && !empty($panel->photo))
-                    <img class="avatar-min" src="{{ asset('storage/commune/articles/photos/'. $article->photo) }}" alt="photo" title="Photo"/>
+                    <img class="avatar-min" src="{{ asset('storage/participation/panels/'. $panel->photo) }}" alt="avatar"
+                        title="Photo du membre"/>
                 @endif
             </div>
         </div>

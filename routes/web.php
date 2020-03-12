@@ -40,7 +40,12 @@ Route::get('/sondage-citoyenne', 'Portail\ParticipationController@sondage')->nam
 Route::get('/sondages-thematiques/{id}', 'Portail\ParticipationController@sondageThematiques')->name('sondage.thematiques');
 Route::get('/sondage-details/{id}', 'Portail\ParticipationController@sondageDetails')->name('sondage.details');
 
-//Procedure administrative
+/*comite consultatif*/
+Route::get('/comite-consultatif', 'Portail\ParticipationController@comite')->name('participation.comite');
+Route::get('/membre-comite/{id}', 'Portail\ParticipationController@membreComite')->name('participation.membre');
+Route::get('/sondage-details/{id}', 'Portail\ParticipationController@sondageDetails')->name('sondage.details');
+
+/*Procedure administrative*/
 Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('procedure.index');
 Route::get('/procedure-page/{id}', 'Portail\ProcedureController@events')->name('procedure.events');
 Route::get('/procedure-details/{id}', 'Portail\ProcedureController@details')->name('procedure.details');
@@ -82,7 +87,7 @@ Route::prefix('participation')->group(function () {
         Route::put('/panels/{id}/valider', 'PanelController@valider')->name('panels.valider');
         Route::resource('/commentaires', 'PanelCommentaireController');
         /* Route::put('/commentaires/{id}/valider', 'PanelCommentairesController@valider')->name('commentaires.valider'); */
-        Route::post('/membre_cadres', 'CadreConcertationController@storeMembre')->name('membre_cadres.store');
+        Route::put('/membre_cadres', 'CadreConcertationController@storeMembre')->name('membre_cadres.store');
         Route::resource('/sondages', 'SondageController');
         Route::put('/sondages/{id}/publication', 'SondageController@publication')->name('sondages.publication');
 

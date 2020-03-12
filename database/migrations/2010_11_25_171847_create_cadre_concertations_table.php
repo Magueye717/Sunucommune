@@ -12,7 +12,8 @@ class CreateCadreConcertationsTable extends Migration {
 			$table->integer('collectivite_id')->unsigned();
 			$table->string('nom');
 			$table->date('date_creation')->nullable();
-			$table->string('fichier');
+			$table->string('photo')->nullable();
+            $table->string('fichier')->nullable();
 			$table->timestamps();
 			$table->integer('add_by')->unsigned();
 		});
