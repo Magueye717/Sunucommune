@@ -8,7 +8,7 @@
           </button>
         </div>
         <div class="modal-body">
-            {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel']) !!}
+            {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel', 'files' => 'true']) !!}
             <div class="" align="center">
                 <div class="row">
                         {{ Form::hidden('cadre_de_concertation_id', null ,['id' => 'cadre_id'])}}
@@ -66,13 +66,16 @@
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label class="control-label">Statut <span class="text-danger">*</span></label>
-                                {!! Form::text('statut_cadre',null, ['id' => 'date_creation', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Statut du cadres']) !!}
-                                <div class="help-block with-errors"></div>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-0">
+                            <label class="control-label">Photo</label>
+                            {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control', 'placeholder'=>'Choisir la photo']) !!}
+                            <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
+                            @if(isset($cadre) && !empty($cadre->photo))
+                                <img class="avatar-min" src="{{ asset('storage/participation/comites/'. $cadre->photo) }}" alt="avatar"
+                                    title="Photo du membre"/>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 </div>

@@ -81,24 +81,35 @@ class CadreConcertationController extends Controller
      */
     public function store(CadreConcertationRequest $request)
     {
+
         $inputs = $request->all();
+        // dd($inputs);
         $inputs['add_by'] = Auth::user()->id;
         //Illustration
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoComite);
+        }
+
         if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PhotoMembre);
+            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PanelFile);
         }
         $cardre = $this->cadreConcerationRepository->store($inputs);
 
-        return redirect('/participation/cadres')->withMessage("La le menmbre cadre " . $cardre->nom . " a été créé avec succés.");
+        return redirect('/participation/cadres')->withMessage("le cadre " . $cardre->nom . " a été créé avec succés.");
     }
 
 
     public function storeMembre(MembreCadreRequest $request)
     {
         $inputs = $request->all();
+        //Illustration
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoComite);
+        }
+        // dd($inputs);
         $membre = $this->membreCadreRepository->store($inputs);
-
-        return redirect('/participation/cadres')->withMessage("La le menmbre cadre " . $membre->nom . " a été créé avec succés.");
+        // dd($membre);
+        return redirect('/participation/cadres')->withMessage("le cadre " . $membre->nom . " a été créé avec succés.");
     }
 
     /**
@@ -138,8 +149,13 @@ class CadreConcertationController extends Controller
     {
         $inputs = $request->all();
         $inputs['add_by'] = Auth::user()->id;
+        //Illustration
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoComite);
+        }
+
         if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'));
+            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PanelFile);
         }
         $this->cadreConcerationRepository->update($id, $inputs);
 

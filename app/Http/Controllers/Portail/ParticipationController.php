@@ -89,29 +89,26 @@ class ParticipationController extends Controller
         $allsondages = Sondage::select('thematiques.libelle','sondages.*')
         ->join('thematiques', 'thematiques.id', '=', 'sondages.thematique_id')
         ->get();
-        //  dd($allsondages);
+
         return view('participation.sondage',compact('allsondages'));
     }
 
     public function sondageThematiques($id)
     {
         $thematique=$this->thematiqueRepository->getById($id);
-      //  dd($thematique);
+
         $sondages = Sondage::select('thematiques.libelle','sondages.*')
         ->join('thematiques', 'thematiques.id', '=', 'sondages.thematique_id')
         ->get();
-        //   dd($allsondages);
+
         return view('participation.sondages-thematique',compact('sondages','thematique'));
     }
 
     public function sondageDetails($id)
     {
         $sondages = $this->sondageRepository->getData();
-        //   dd($sondages);
-        $detailsondage=$this->sondageRepository->getById($id);
-        //    dd($detailsondage);
 
-            // dd($sondages->id);
+        $detailsondage=$this->sondageRepository->getById($id);
 
         return view('participation.sondages-details', compact('detailsondage','sondages'));
     }
@@ -122,6 +119,17 @@ class ParticipationController extends Controller
         $comites = $this->cadreConcertationRepository->getData();
         //  dd($comites);
         return view('participation.comite',compact('comites'));
+    }
+
+    public function membrecomite($id)
+    {
+        $comites = $this->cadreConcertationRepository->getById($id);
+        //  dd($comites);
+        $membres = MembreCadre::select('cadre_concertations.nom','membre_cadres.*')
+        ->join('cadre_concertations', 'cadre_concertations.id', '=', 'membre_cadres.cadre_de_concertation_id')
+        ->get();
+        //  dd($membres);
+        return view('participation.membreComite',compact('comites','membres'));
     }
 
     /**

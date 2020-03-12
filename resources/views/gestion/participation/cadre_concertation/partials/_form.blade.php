@@ -28,11 +28,21 @@
         <div class="col-md-6">
             <div class="form-group mb-0">
                 <label class="control-label">Photo</label>
-                {!! Form::file('fichier', ['id' => 'fichier', 'class' => 'form-control', 'placeholder'=>'Choisir la photo']) !!}
+                {!! Form::file('photo', ['id' => 'photo', 'class' => 'form-control', 'placeholder'=>'Choisir la photo']) !!}
                 <span class="help-block"><small>La photo doit être au format jpg ou png et la dimension doit être min: 80x80 et max: 600x600.</small></span>
                 @if(isset($cadre) && !empty($cadre->fichier))
-                    <img class="avatar-min" src="{{ asset('storage/commune/membres/'. $cadre->fichier) }}" alt="avatar"
+                    <img class="avatar-min" src="{{ asset('storage/participation/comites/'. $cadre->photo) }}" alt="avatar"
                         title="Photo du membre"/>
+                @endif
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-0">
+                <label class="control-label">Piéce-jointe</label>
+                {!! Form::file('fichier', ['id' => 'fichier', 'class' => 'form-control', 'placeholder'=>'Choisir une piéce-jointe']) !!}
+                <span class="help-block"><small>Le fichier doit être au format pdf, docx ou xlsx et doit peser au maximum 10Mo.</small></span>
+                @if(isset($panel) && !empty($cadre->fichier))
+                    <a href="{{ asset('storage/partiicipation/panel/files/'. $cadre->fichier) }}" target="_blank"> {{ $cadre->fichier }} </a>
                 @endif
             </div>
         </div>

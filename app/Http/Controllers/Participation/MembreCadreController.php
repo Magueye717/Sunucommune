@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Participation;
 
+use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MembreCadreRequest;
 use App\Models\Collectivite;
@@ -9,6 +10,7 @@ use App\Repositories\Commune\CollectiviteRepository;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Repositories\Participation\CadreConcertationRepository;
 use App\Repositories\Participation\MembreCadreRepository;
+use App\Utils\UploadUtil;
 use Illuminate\Http\Request;
 
 class MembreCadreController extends Controller
@@ -23,9 +25,11 @@ class MembreCadreController extends Controller
     protected $cadreConcerationRepository;
     protected $membreCadreRepository;
     protected $communeInfoRepository;
+    protected $uploadUtil;
     protected $collectiviteRepository;
 
     public function __construct(CadreConcertationRepository $cadreConcerationRepository,
+                                UploadUtil $uploadUtil,
                                 MembreCadreRepository $membreCadreRepository,
                                 CommuneInfoRepository $communeInfoRepository,
                                 CollectiviteRepository $collectiviteRepository)
@@ -34,6 +38,7 @@ class MembreCadreController extends Controller
         $this->membreCadreRepository = $membreCadreRepository;
         $this->communeInfoRepository = $communeInfoRepository;
         $this->collectiviteRepository = $collectiviteRepository;
+        $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
 
@@ -106,7 +111,16 @@ class MembreCadreController extends Controller
      */
     public function update(MembreCadreRequest $request, $id)
     {
+        // dd('sdscc');
         $inputs = $request->all();
+        //Illustration
+        if ($request->hasFile('photo')) {
+            $inputs['photo'] = $this->uploadUtil->traiterFile($request->file('photo'), TypeUpload::PhotoComite);
+        }
+
+        if ($request->hasFile('fichier')) {
+            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PanelFile);
+        }
         $this->membreCadreRepository->update($id, $inputs);
 
         return redirect('/participation/membre_cadres')->withMessage("Membre Cadre " . $inputs['nom'] . " modifié avec succés.");

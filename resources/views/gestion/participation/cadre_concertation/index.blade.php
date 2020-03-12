@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion participation</h3>
-                <p class="text-muted m-b-10">Liste des cadres de la participation</p>
+                <h3 class="box-title m-b-0">Gestion cadres de concertation</h3>
+                <p class="text-muted m-b-10">Liste des cadres de concertation</p>
                     <div class="col-sm-12 m-t-5">
                         <a href="{{ route('cadres.create') }}">
                             <span class="pull-right m-b-10">
