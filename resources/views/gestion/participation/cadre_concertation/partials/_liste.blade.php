@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th>Nom</th>
-            <th>Collectivité</th>
+            <th>Collectivité(s)</th>
             <th>Date création</th>
             <th>Fichier</th>
             <th>Ajouté par:</th>
@@ -15,7 +15,11 @@
             @foreach($cadres as $cadre)
                 <tr>
                     <td>{{ $cadre->nom }}</td>
-                    <td>{{ $cadre->collectivite->nom }}</td>
+                    <td>
+                        @foreach ($cadre->collectivites as $collectivite)
+                        <span class="badge badge-pill badge-info">{{ $collectivite->nom }}</span>
+                        @endforeach
+                    </td>
                     <td>{{ $cadre->date_creation }}</td>
                     <td>{{ $cadre->fichier }}</td>
                     <td>{{ $cadre->ajouterPar->nom }}</td>

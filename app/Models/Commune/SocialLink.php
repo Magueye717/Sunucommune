@@ -15,6 +15,11 @@ class SocialLink extends Model
         return $this->belongsTo('App\Models\Commune\MembreCabinet');
     }
 
+    /* public function memebreCadres()
+    {
+        return $this->belongsToMany('App\Models\Participation\MemebreCadre');
+    } */
+
     public function getLogoAttribute()
     {
         if ($this->attributes['libelle']==='Facebook') {

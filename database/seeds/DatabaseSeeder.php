@@ -31,5 +31,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call('SecteurSeeder');
         $this->command->info('Secteur table seeded!');
+
+        $this->call(CommuneInfoSeeder::class);
+        $this->command->info('CommuneInfo table seeded!');
     }
 }

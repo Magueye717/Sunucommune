@@ -80,7 +80,8 @@ Route::prefix('participation')->group(function () {
         Route::resource('/cadres', 'CadreConcertationController');
         Route::resource('/panels', 'PanelController');
         Route::put('/panels/{id}/valider', 'PanelController@valider')->name('panels.valider');
-        Route::resource('/commentaires', 'PanelCommentaireController');
+        Route::resource('/commentaires', 'PanelCommentaireController')->except('store');
+        Route::post('commentaires','PanelCommentaireController@store')->name('commentaires.store');
         /* Route::put('/commentaires/{id}/valider', 'PanelCommentairesController@valider')->name('commentaires.valider'); */
         Route::post('/membre_cadres', 'CadreConcertationController@storeMembre')->name('membre_cadres.store');
         Route::resource('/sondages', 'SondageController');

@@ -12,7 +12,7 @@ class CreateRessourcesTable extends Migration {
 			$table->integer('secteur_id')->unsigned();
 			$table->integer('collectivite_id')->unsigned();
 			$table->string('nom');
-			$table->string('description')->nullable();
+			$table->string('description', 700)->nullable();
 			$table->string('heure_ouverture', 50)->nullable();
 			$table->string('heure_fermeture', 50)->nullable();
 			$table->string('photo')->nullable();

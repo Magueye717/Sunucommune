@@ -1,5 +1,6 @@
 @extends('layouts.portail.portail')
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 
 
@@ -73,59 +74,42 @@
                         <div class="blog-title">
                         <h3 class="title">Commentaires</h3>
                         </div>
-                     @forelse($detailpanel->commentaires as $comment)
+                    {{-- Commentaire ici --}}
                         <div class="blog-comments-area">
-                            <div class="blog-comments-item mt-40">
-                                <h6 class="title">{{$comment->nom}} <span>{{ \Carbon\Carbon::parse($comment->created_at)->diffForhumans() }}</span></h6>
-                            <p>{{$comment->commentaire}}</p>
-                            <div class="d-flex justify-content-between">
-                                <span>Les réponses</span>
-                            <img src="{{asset('themev1/images/default.png')}}" alt="" width=" 100px">
-                               <div class="btn btn-outline-primary btn-small repondreCommentaire" onclick="$('#parent_id').val('{{$comment->id}}');">Répondre</div>
-                            </div>
-
-                            </div>
-                            @foreach ($comment->panelCommentaires as $item)
-                            <div class="blog-comments-item mt-40 ml-60 item-2">
-                                <h6 class="title">{{ $item->nom }} <span>{{ \Carbon\Carbon::parse($item->created_at)->diffForhumans() }}</span></h6>
-                                <p>{{$item->commentaire}}</p>
-                                <span>Réponses</span>
-                                <img src="{{asset('themev1/images/default.png')}}" alt="" width=" 70px">
-                            </div>
-                            @endforeach
+                           
                         </div>
-                        @empty 
-                            <h5 class="pt-5 justify-content-center">Aucun commentaire</h5>
-                        @endforelse
+                    
                     </div>
                     <div class="blog-massage pt-5" id="commentForm">
                         <div class="blog-title">
                             <h3 class="title">Vos commentaires</h3>
                         </div>
                         <div class="blog-form" >
-                        <form action="{{ route('commentaires.store') }}" method="post">
+                        <form action="{{ route('commentaires.store') }}" method="post" class="myForm">
                             @csrf
                             <div class="col-lg-6">
                                 <div class="input-box mt-20">
-                                    <input type="hidden" name="panel_id" id="panel_id">
+                                    <input type="hidden" name="panel_id" id="panel_id" value="{{$detailpanel->id}}">
                                     <input type="hidden" name="parent_id" id="parent_id">
+                                    <input type="hidden" name="my_comment" id="my_comment">
+                                    <div class="invalid-feedback d-block"><strong id="error_validation"> </strong></div>
                                 </div>
                             </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="input-box mt-20">
-                                            <input type="text" placeholder="Nom complet" name="nom">
+                                            <input type="text" placeholder="Nom complet" name="nom" id="nom">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="input-box mt-20">
-                                            <input type="text" placeholder="Votre email" name="email">
+                                            <input type="email" placeholder="Votre email" name="email" id="email" required />
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="input-box mt-20">
                                             <textarea name="commentaire" id="commentaire" cols="30" rows="10" placeholder="Votre commentaire" name="commentaire"></textarea>
-                                            <button class="main-btn" type="submit" onclick="$('#panel_id').val('{{$detailpanel->id}}');">Commenter</button>
+                                            <button class="main-btn" id="submitComment" type="button" onclick="$('#panel_id').val('{{$detailpanel->id}}');">Commenter</button>
                                         </div>
                                     </div>
                                 </div>
@@ -224,9 +208,76 @@
 @endsection
 @push('myJS')
 <script>
-   $(".repondreCommentaire").click(function() {
+     function scrollToForm() {
     $("html, body").animate({ scrollTop: $("#commentForm").offset().top }, 1500);
-   });
+        
+    }
+   /* $(".repondreCommentaire").click(function() {
+    $("html, body").animate({ scrollTop: $("#commentForm").offset().top }, 1500);
+   }); */
+  
+
+   $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+        var url='{{ route('commentaires.store') }}';
+
+        var data={};
+        data['panel_id']= $('#panel_id').val();
+            $('#submitComment').click(function () {
+            
+            data['my_comment']= $('#my_comment').val();
+            data['nom']= $('#nom').val();
+            data['email']= $('#email').val();
+            data['commentaire']= $('#commentaire').val();
+            data['parent_id']= $('#parent_id').val();
+           
+            data['_token']= $('input[name="_token"]').val()
+            if (data['commentaire']==='' && data['nom']==='' && data['email']==='') {
+                $('#error_validation').html('Veuillez renseigner nom, commentaire et email ')
+                $('#nom,#email,#commentaire').attr('style',"border:1px solid red;")
+            }else if(data['nom']===''){
+                $('#error_validation').html('Veuillez renseigner nom')
+                $('#nom').attr('style',"border:1px solid red;")
+                $('#email,#commentaire').attr('style',"")
+            }else if(data['commentaire']===''){
+                $('#error_validation').html('Veuillez ajouter un commentaire')
+                $('#commentaire').attr('style',"border:1px solid red;")
+                $('#email,#nom').attr('style',"")
+            }else if(data['email']===''){
+                $('#error_validation').html('Veuillez ajouter un email')
+                $('#email').attr('style',"border:1px solid red;")
+                $('#commentaire,#nom').attr('style',"")
+            }else if (data['commentaire']!='' && data['nom']==='') {
+
+            }
+           
+        else
+            $.post( url,data, function( retour ) {
+                $('#nom,#email,#commentaire').attr('style',"")
+                $('#error_validation').html('')
+
+                $('.blog-comments-area').html(retour)
+                console.log(retour )
+            
+                $('.myForm')[0].reset();
+                $('#parent_id').val("");
+               
+
+            });
+            
+
+   
+     });
+  
+
+   
+     $.post( url,data, function( retour ) {
+         $('.blog-comments-area').html(retour)
+         $('#my_comment').val("loaded");
+     });
+
+
  </script>
 @endpush
 

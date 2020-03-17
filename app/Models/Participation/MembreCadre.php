@@ -16,4 +16,9 @@ class MembreCadre extends Model
         return $this->belongsTo('App\Models\Participation\CadreConcertation', 'cadre_de_concertation_id');
     }
 
+   /*  public function reseauxSociaux()
+    {
+        return $this->belongsToMany('App\Models\Commune\SocialLink');
+    } */
+
 }

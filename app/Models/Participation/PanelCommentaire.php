@@ -18,7 +18,7 @@ class PanelCommentaire extends CustomModel
 
     public function panelCommentaires()
     {
-        return $this->hasMany('App\Models\Participation\PanelCommentaire', 'parent_id');
+        return $this->hasMany('App\Models\Participation\PanelCommentaire', 'parent_id')->latest();
     }
 
     public function estActive()

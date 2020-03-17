@@ -17,13 +17,15 @@
         @isset($membres)
             @foreach($membres as $membreCabinet)
                 <tr>
-                    <td>
-                    @foreach($membreCabinet->reseauxSociaux as $rs)
-                    <div class="social-style-one">
-                    {{-- <a href="{{ $rs->url }}"><i class="{{ $rs->logo }}"></i></a> --}}
-                    <a href="#"><i class="btn-facebook"></i></a>
-                    </div>
-                    @endforeach
+                    <td>     
+                    @forelse($membreCabinet->reseauxSociaux as $rs)
+                        <span class="badge badge badge-pill badge-info">
+                        <a href="{{ $rs->url }}" title="{{ $rs->libelle }}"><i class="{{ $rs->logo }}"></i></a>
+                    {{-- <a href="#"><i class="fab fa-facebook-f"></i></a> --}}
+                        </span>
+                        @empty
+                        <div class="text-center">Aucun réseau social</div>
+                    @endforelse
                     </td>
                     <td class="text-center">
                         <img src="{{ !empty($membreCabinet->photo) ? asset('storage/commune/membres/' .$membreCabinet->photo) : asset('themev1/images/default.png')}}"

@@ -17,7 +17,7 @@ class CreateSocialLinksTable extends Migration
             $table->increments('id');
             $table->string('libelle');
             $table->string('url')->nullable();
-            $table->integer('membre_cabinet_id')->unsigned();
+            $table->integer('membre_cabinet_id')->unsigned()->nullable();
 			$table->string('cle')->unique()->nullable();
             $table->timestamps();
         });

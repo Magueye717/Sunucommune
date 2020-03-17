@@ -19,7 +19,7 @@ class Collectivite extends Model
 
     public function cadreConcertations()
     {
-        return $this->hasMany('App\Models\Participation\CadreConcertation');
+        return $this->belongsToMany('App\Models\Participation\CadreConcertation');
     }
 
     public function scopeByCodeParent($query, $code)

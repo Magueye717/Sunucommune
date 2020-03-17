@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PanelCommentaireRequest extends FormRequest
@@ -23,11 +24,33 @@ class PanelCommentaireRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'commentaire' => 'required|max:255',
-            'nom' => 'required|max:225',
-            'email' => 'email|required|max:255,email'
+        switch ($this->method()) {
+            case 'GET':
+            case 'DELETE':
+                {
+                    return [];
+                }
+            case 'POST':
+                {
+                    return [
+                        'email' => 'email|required|max:255',
+                        'nom' => 'required|max:225',
+                        'commentaire' => 'required|max:225',
+                        
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'email' => 'email|required|max:255',
+                        'nom' => 'required|max:225',
+                        'commentaire' => 'required|max:225',
 
-		];
+                    ];
+                }
+            default:
+                break;
+        }
     }
 }

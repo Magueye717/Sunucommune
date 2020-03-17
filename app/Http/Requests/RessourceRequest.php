@@ -52,7 +52,7 @@ class RessourceRequest extends FormRequest
                         'personne_contact' => 'required',
                         'email' => 'required|email',
                         'telephone' => 'required',
-                        'description' => 'required|max:255',
+                        'description' => 'required|max:700',
                         //'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,'
 
                     ];
@@ -73,7 +73,7 @@ class RessourceRequest extends FormRequest
                         'personne_contact' => 'required',
                         'email' => 'required|email',
                         'telephone' => 'required',
-                        'description' => 'required|max:255',
+                        'description' => 'required|max:700',
                         'photo' => 'nullable|mimes:jpeg,png'
                     ];
                 }

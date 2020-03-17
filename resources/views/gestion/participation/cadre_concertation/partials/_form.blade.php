@@ -11,7 +11,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Quartier / Village  <span class="text-danger">*</span></label>
-                {!! Form::select('collectivite_id', $collectivites ,null, ['id' => 'collectivite', 'class' => 'form-control select2 dynamic', 'required' => '']) !!}
+                {!! Form::select('collectivite_id[]', $collectivites ,null, ['id' => 'collectivite', 'class' => 'select2 js-example-basic-multiple dynamic', 'multiple'=>"multiple", 'required' => '']) !!}
             </div>
         </div>
     </div>
@@ -47,6 +47,13 @@
 
 @push('myJS')
 <script>
+
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2({
+                placeholder: "Sélectionez un ou plusieurs quartier(s)-village(s) sur la liste",
+            });
+        });
+        
     $(function () {
         'use strict';
         // Select2

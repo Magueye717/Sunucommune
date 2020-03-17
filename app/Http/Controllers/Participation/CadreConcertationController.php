@@ -6,6 +6,7 @@ use App\Enums\TypeUpload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CadreConcertationRequest;
 use App\Http\Requests\MembreCadreRequest;
+use App\Models\Commune\SocialLink;
 use App\Repositories\Commune\CollectiviteRepository;
 use App\Repositories\Commune\CommuneInfoRepository;
 use App\Repositories\Participation\CadreConcertationRepository;
@@ -48,7 +49,8 @@ class CadreConcertationController extends Controller
         try{
             $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
             $cadres=$this->cadreConcerationRepository->getData();
-            return view('gestion.participation.cadre_concertation.index', compact('cadres','cadreConcertations'));
+            $reseauxSociaux= SocialLink::all()->pluck("id", "libelle");
+            return view('gestion.participation.cadre_concertation.index', compact('cadres','cadreConcertations', 'reseauxSociaux'));
 
         }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
             return redirect('/infos/create')->withWarning("Veuillez renseigner d'abord les informations concernant la commune");
@@ -87,6 +89,7 @@ class CadreConcertationController extends Controller
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'));
         }
         $cardre = $this->cadreConcerationRepository->store($inputs);
+        $cardre->collectivites()->attach($inputs['collectivite_id']);
 
         return redirect('/participation/cadres')->withMessage("La le menmbre cadre " . $cardre->nom . " a été créé avec succés.");
     }

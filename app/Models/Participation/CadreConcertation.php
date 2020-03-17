@@ -9,11 +9,11 @@ class CadreConcertation extends Model
 
     protected $table = 'cadre_concertations';
     public $timestamps = true;
-    protected $fillable = array('collectivite_id', 'nom', 'date_creation', 'fichier', 'add_by');
+    protected $fillable = array('nom', 'date_creation', 'fichier', 'add_by');
 
-    public function collectivite()
+    public function collectivites()
     {
-        return $this->belongsTo('App\Models\Collectivite', 'collectivite_id');
+        return $this->belongsToMany('App\Models\Collectivite');
     }
 
     public function ajouterPar()

@@ -50,11 +50,74 @@ class PanelCommentaireController extends Controller
      */
     public function store(Request $request)
     {
-        
+            
+       
         $inputs = $request->all();
-        $this->panelCommentaireRepository->store($inputs);
-        return \redirect()->back();
+        //var_dump($inputs);die;
+        $retour= array();
+        if (empty($inputs["nom"] )) {
+            
+            return $this->fetchComment($inputs["panel_id"]);
+        }
+        else
+        {
+          $this->panelCommentaireRepository->store($inputs);
+    
+            return $this->fetchComment($inputs["panel_id"]);
+        }
+        
+        
     }
+
+    
+    public function fetchComment($panel)
+    {
+       $comments=PanelCommentaire::where('panel_id', $panel)->get();
+       $childComments=PanelCommentaire::where('parent_id', $panel)->get();
+       
+      // var_dump($detailpanel);die;
+       $retour="";
+        foreach ($comments as $comment) {
+            if ($comment->parent_id===null) {
+                $retour.='
+                    <div class="blog-comments-item mt-40">
+                    <h6 class="title">'.$comment->nom.' <span>'.\Carbon\Carbon::parse(''.$comment->created_at.'')->diffForhumans().'</span></h6>
+                    <p>'.$comment->commentaire.'</p>
+                    <div class="d-flex justify-content-between">
+                    <span>Les réponses</span>
+                    <img src="../themev1/images/default.png" alt="Photo utilisateur" width=" 100px">
+                    <div class="btn btn-outline-primary btn-small repondreCommentaire" onclick="$(\'#parent_id\').val('.$comment->id.'); scrollToForm();">Répondre</div>
+                    </div> </div>
+                    ';
+                 }
+           
+            $childComments=PanelCommentaire::where('parent_id', $comment->id)->get();
+            foreach ($childComments as $childComment) {
+                $retour.='
+                <div class="blog-comments-item mt-40 ml-60 item-2">
+                <h6 class="title">'.$childComment->nom.' <span>'.\Carbon\Carbon::parse(''.$childComment->created_at.'')->diffForhumans().'</span></h6>
+                <p>'.$childComment->commentaire.'</p>
+                    <span>Réponses</span>
+                    <img src="../themev1/images/default.png" alt="Photo utilisateur" alt="" width=" 70px">
+                </div>';
+
+            }
+
+       };
+       
+       if ($retour==="") {
+        $retour.='
+            <div class="bg-light p-5 text-center mt-3">Aucun commentaire disponible </div>
+        ';
+     }
+     
+         echo $retour ;
+       
+
+    }
+
+
+
 
     /**
      * Display the specified resource.
