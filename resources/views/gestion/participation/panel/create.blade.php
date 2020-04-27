@@ -19,7 +19,7 @@
                 'class' => 'sunucommune-form', 'data-toggle' => 'validator', 'files' => 'true']) !!}
                 @include('gestion.participation.panel.partials._form')
                 {!! Form::close() !!}
-
+                
             </div>
         </div>
     </div>

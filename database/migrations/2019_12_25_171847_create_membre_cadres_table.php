@@ -13,10 +13,11 @@ class CreateMembreCadresTable extends Migration {
 			$table->string('nom');
 			$table->string('prenom');
 			$table->string('adresse')->nullable();
-			$table->string('email')->nullable();
+            $table->string('email')->nullable();
+            $table->string('photo')->nullable();
 			$table->string('telephone')->nullable();
 			$table->string('fonction')->nullable();
-			$table->string('statut_cadre', 30);
+			$table->boolean('statut_cadre')->default(0);
 			$table->timestamps();
 		});
 	}

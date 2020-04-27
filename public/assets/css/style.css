@@ -2800,7 +2800,6 @@ p {
     font-weight: 500;
     color: #8a8a8a;
     padding-top: 8px;
-    padding-bottom: 19px
 }
 
 @media (max-width:767px) {
@@ -2819,7 +2818,7 @@ p {
     font-size: 15px;
     font-weight: 600;
     color: #0154f7;
-    padding-top: 18px;
+    padding-top: 5px;
     -webkit-transition: all 0.3s ease-out 0s;
     -moz-transition: all 0.3s ease-out 0s;
     -ms-transition: all 0.3s ease-out 0s;
@@ -3065,7 +3064,6 @@ p {
 
 .team-2-area {
     padding-top: 70px;
-    padding-bottom: 127px
 }
 
 .team-2-area .section-title p {

@@ -21,7 +21,8 @@
                         @endforeach
                     </td>
                     <td>{{ $cadre->date_creation }}</td>
-                    <td>{{ $cadre->fichier }}</td>
+                    <td><img src="{{ isset($cadre->photo) ? asset('storage/participation/comites/' .$cadre->photo) : asset('themev1/images/default.png')}}"
+                        alt="photo" class="img-thumbnail table-photo"></td>
                     <td>{{ $cadre->ajouterPar->nom }}</td>
                     <td class="text-nowrap text-center">
                     <a href="" data-toggle="modal" data-target="#membreModalLong" class="text-inverse p-r-10" data-toggle="tooltip"
