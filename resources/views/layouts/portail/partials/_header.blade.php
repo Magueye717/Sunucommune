@@ -47,7 +47,7 @@
 
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">GESTION DES INFRASTRUCTURES </a>
+                                    <a class="nav-link" href="{{ route('infrastructure.index')}}">GESTION DES INFRASTRUCTURES </a>
 
                                 </li>
                                 <li class="nav-item">

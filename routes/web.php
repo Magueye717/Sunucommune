@@ -50,6 +50,10 @@ Route::get('/procedureUsager', 'Portail\ProcedureController@index')->name('proce
 Route::get('/procedure-page/{id}', 'Portail\ProcedureController@events')->name('procedure.events');
 Route::get('/procedure-details/{id}', 'Portail\ProcedureController@details')->name('procedure.details');
 
+/*Gestion Insfratructure*/
+Route::get('/infrastructure', 'Portail\InfrastructureController@index')->name('infrastructure.index');
+;
+
 
 Route::get('/accueil', 'HomeController@index')->name('accueil');
 Route::get('/home', 'HomeController@index')->name('home');
