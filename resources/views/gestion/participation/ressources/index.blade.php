@@ -36,6 +36,9 @@
 @section('scriptsAdditionnels')
     @include('layouts.v1.partials.datatables.script')
     <script src="{{ asset('themev1/js/datatables/basic.js') }}"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e7200481166b878"></script>
+
     @include('layouts.v1.partials.swal.script')
 @endsection
 
