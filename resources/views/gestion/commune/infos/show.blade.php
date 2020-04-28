@@ -31,10 +31,15 @@
                             Informations sur la commune</a>
                     </li>
                     <li class="nav-item {{ $historiqueTab }}">
-                        <a class="nav-link" id="historique-tab" data-toggle="pill"
-                           href="#historique" role="tab" aria-controls="historique" aria-selected="true">
+                        <a class="nav-link" id="histo-tab" data-toggle="pill"
+                           href="#histo" role="tab" aria-controls="histo" aria-selected="true">
                             Historique</a>
                     </li>
+{{--                    <li class="nav-item {{ $historiqueTab }}">--}}
+{{--                        <a class="nav-link" id="historique-tab" data-toggle="pill"--}}
+{{--                           href="#historique" role="tab" aria-controls="historique" aria-selected="true">--}}
+{{--                            Historique</a>--}}
+{{--                    </li>--}}
                     @if(isset($ancienMaires))
                         <li class="nav-item {{ $ancienMaireTab }}">
                             <a class="nav-link" id="ancien-maire-tab" data-toggle="pill"
@@ -56,18 +61,34 @@
                             </div>
                         @endif
                     </div>
-                    <div class="tab-pane {{ $historiqueTab }}" id="historique" role="tabpanel"
-                         aria-labelledby="historique-tab">
+
+                    <div class="tab-pane {{ $historiqueTab }}" id="histo" role="tabpanel"
+                         aria-labelledby="histo-tab">
                         @if(!empty($historique))
                             @include('gestion.commune.infos.partials._detail_historique')
                         @else
                             <div class="row">
                                 <div class="col-md-12">
                                     <p> L'historique de la commune doit être renseigné pour être visible.</p>
+
                                 </div>
                             </div>
                         @endif
                     </div>
+
+
+{{--                    <div class="tab-pane {{ $historiqueTab }}" id="historique" role="tabpanel"--}}
+{{--                         aria-labelledby="historique-tab">--}}
+{{--                        @if(!empty($historique))--}}
+{{--                            @include('gestion.commune.infos.partials._detail_historique')--}}
+{{--                        @else--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12">--}}
+{{--                                    <p> L'historique de la commune doit être renseigné pour être visible.</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
 
                     @if(isset($ancienMaires))
                         <div class="tab-pane {{ $ancienMaireTab }}" id="ancien-maire" role="tabpanel"
