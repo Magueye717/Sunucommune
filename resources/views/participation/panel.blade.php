@@ -24,7 +24,7 @@
         @foreach ($allPanels as $panel)
             @php $counter=0; @endphp
             @foreach ($allPanels as $panels)
-            @if($thematique != $panel->thematique_id && $panel->thematique_id == $panels->thematique_id  && $counter<3)
+            @if($thematique != $panel->thematique_id && $panel->thematique_id == $panels->thematique_id  && $counter<3 && $panel->statut==1)
             @php $counter++; @endphp
             <div class="col-lg-4 col-md-7 col-sm-9 pt-20">
                 <div class="blog-item mt-30 wow fadeIn animated" data-wow-duration="1500ms" data-wow-delay="0ms">

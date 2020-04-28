@@ -15,14 +15,16 @@
             </thead>
             <tbody>
             @foreach($agendas as $key => $agenda)
-            <tr>
-                <td>{{$agenda->libelle}}</td>
-                <td>{{$agenda->date_evenement}}</td>
-                <td>{{$agenda->collectivite->nom}}</td>
-                <td>{{$agenda->lieu}}</td>
-                <td><button type="button" class="btn btn-outline-primary btn-sm">Voir plus</button>
-                </td>
-            </tr>
+                @if($agenda->est_publie == 1)
+                <tr>
+                    <td>{{$agenda->libelle}}</td>
+                    <td>{{$agenda->date_evenement}}</td>
+                    <td>{{$agenda->collectivite->nom}}</td>
+                    <td>{{$agenda->lieu}}</td>
+                    <td><button type="button" class="btn btn-outline-primary btn-sm">Voir plus</button>
+                    </td>
+                </tr>
+                @endif
             @endforeach
             </tbody>
         </table>

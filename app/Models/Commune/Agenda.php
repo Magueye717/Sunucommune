@@ -20,4 +20,8 @@ class Agenda extends Model
         return $this->belongsTo('App\Models\Collectivite', 'collectivite_id');
     }
 
+    public function estPublie(){
+        return $this->est_publie === 1 ? true : false;
+    }
+
 }

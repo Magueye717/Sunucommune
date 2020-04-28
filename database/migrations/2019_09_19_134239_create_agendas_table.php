@@ -20,6 +20,7 @@ class CreateAgendasTable extends Migration
             $table->date('date_evenement');
             $table->integer('collectivite_id')->unsigned();
             $table->string('lieu');
+            $table->boolean('est_publie')->default(0);
             $table->string('photo')->nullable();
             $table->integer('add_by')->unsigned();
             $table->timestamps();

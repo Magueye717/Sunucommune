@@ -12,9 +12,9 @@
     <div class="row brand-active">
 
         @foreach($partenaires as $partenaire)
-        <div class="col-lg-12">
+        <div class="col-lg-4 col-md-6">
             <div class="brand-item text-center">
-                <img src="{{ isset($partenaire->logo) ? asset('storage/commune/partenaires/' . $partenaire->logo) : asset('themev1/images/default.png') }}" alt="ss" width="600px">
+                <img src="{{ isset($partenaire->logo) ? asset('storage/commune/partenaires/' . $partenaire->logo) : asset('themev1/images/default.png') }}" alt="ss" width="400px" height="200px">
 
             </div>
         </div>

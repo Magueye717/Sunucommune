@@ -137,4 +137,10 @@ class AgendaController extends Controller
          else
             return redirect()->back()->withErrors("Supression impossible...");
     }
+
+    public function publication($id){
+        $article = $this->agendaRepository->getById($id);
+        $this->agendaRepository->publication($article, !$article->estPublie());
+        return redirect()->back()->withMessage("La publication est effective");
+    }
 }

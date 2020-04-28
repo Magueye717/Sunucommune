@@ -25,4 +25,6 @@ class Article extends Model
         return $this->est_publie === 1 ? true : false;
     }
 
+    
+
 }
