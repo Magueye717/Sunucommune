@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call('SecteurSeeder');
         $this->command->info('Secteur table seeded!');
 
-       // $this->call('CommuneInfoSeeder');
-        //$this->command->info('CommuneInfo table seeded!');
+        $this->call('CommuneInfoSeeder');
+        $this->command->info('CommuneInfo table seeded!');
     }
 }
