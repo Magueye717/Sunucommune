@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Participation;
 
-use App\Models\Participation\CadreCollectivites;
+use App\Models\Participation\CadreConcertationCollectivite;
 use Illuminate\Http\Request;
 
 class CadreCollectivitesController extends Controller
@@ -41,10 +41,10 @@ class CadreCollectivitesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Participation\CadreCollectivites  $cadreCollectivites
+     * @param  \App\Models\Participation\CadreConcertationCollectivite  $cadreCollectivites
      * @return \Illuminate\Http\Response
      */
-    public function show(CadreCollectivites $cadreCollectivites)
+    public function show(CadreConcertationCollectivite $cadreCollectivites)
     {
         //
     }
@@ -52,10 +52,10 @@ class CadreCollectivitesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Participation\CadreCollectivites  $cadreCollectivites
+     * @param  \App\Models\Participation\CadreConcertationCollectivite  $cadreCollectivites
      * @return \Illuminate\Http\Response
      */
-    public function edit(CadreCollectivites $cadreCollectivites)
+    public function edit(CadreConcertationCollectivite $cadreCollectivites)
     {
         //
     }
@@ -64,10 +64,10 @@ class CadreCollectivitesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Participation\CadreCollectivites  $cadreCollectivites
+     * @param  \App\Models\Participation\CadreConcertationCollectivite  $cadreCollectivites
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CadreCollectivites $cadreCollectivites)
+    public function update(Request $request, CadreConcertationCollectivite $cadreCollectivites)
     {
         //
     }
@@ -75,10 +75,10 @@ class CadreCollectivitesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Participation\CadreCollectivites  $cadreCollectivites
+     * @param  \App\Models\Participation\CadreConcertationCollectivite  $cadreCollectivites
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CadreCollectivites $cadreCollectivites)
+    public function destroy(CadreConcertationCollectivite $cadreCollectivites)
     {
         //
     }

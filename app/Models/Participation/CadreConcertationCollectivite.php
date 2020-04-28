@@ -4,10 +4,10 @@ namespace App\Models\Participation;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CadreCollectivites extends Model
+class CadreConcertationCollectivite extends Model
 {
     protected $table = 'cadre_collectivite';
-    protected $fillable = array('collectivite_id', 'cadre_id');
+    protected $fillable = array('collectivite_id', 'cadre_concertation_id');
 
     public $timestamps = false;
 }
