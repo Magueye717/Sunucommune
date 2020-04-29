@@ -94,7 +94,7 @@ Route::prefix('participation')->group(function () {
         Route::resource('/commentaires', 'PanelCommentaireController')->except('store');
         Route::post('commentaires','PanelCommentaireController@store')->name('commentaires.store');
         /* Route::put('/commentaires/{id}/valider', 'PanelCommentairesController@valider')->name('commentaires.valider'); */
-        Route::put('/membre_cadres', 'CadreConcertationController@storeMembre')->name('membre_cadres.store');
+        Route::post('/membre_cadres', 'CadreConcertationController@storeMembre')->name('membre_cadres.store');
         Route::resource('/sondages', 'SondageController');
         Route::put('/sondages/{id}/publication', 'SondageController@publication')->name('sondages.publication');
 

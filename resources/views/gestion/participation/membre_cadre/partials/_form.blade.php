@@ -1,5 +1,4 @@
-{{ csrf_field() }}
-{{--  {{ method_field('PUT') }}  --}}
+
 <div class="" align="center">
     <div class="row">
         <div class="col-md-6">
