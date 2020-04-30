@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th>Nom</th>
-            <th>Collectivité(s)</th>
+            <th>Quatiés(s) / Village(s)</th>
             <th>Date création</th>
             <th>Fichier</th>
             <th>Ajouté par:</th>

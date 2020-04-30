@@ -8,12 +8,9 @@
           </button>
         </div>
         <div class="modal-body">
-<<<<<<< HEAD
-            {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel']) !!}
-=======
+
             {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel', 'files' => 'true']) !!}
             <div class="" align="center">
->>>>>>> 458727a64a1a775e50029c3cd6d9a23f21a12d0b
                 <div class="row">
                         {{ Form::hidden('cadre_de_concertation_id', null ,['id' => 'cadre_id'])}}
                         <div class="col-md-4">
@@ -91,6 +88,6 @@
         </div>
       </div>
     </div>
-</div>
+
 
 

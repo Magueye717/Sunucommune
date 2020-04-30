@@ -9,6 +9,7 @@ use App\Http\Requests\MembreCadreRequest;
 use App\Models\Commune\SocialLink;
 use App\Repositories\Commune\CollectiviteRepository;
 use App\Repositories\Commune\CommuneInfoRepository;
+use App\Repositories\Participation\CadreConcertationCollectiviteRepository;
 use App\Repositories\Participation\CadreConcertationRepository;
 use App\Repositories\Participation\MembreCadreRepository;
 use App\Utils\UploadUtil;
@@ -28,9 +29,11 @@ class CadreConcertationController extends Controller
     protected $communeInfoRepository;
     protected $uploadUtil;
     protected $membreCadreRepository;
+    protected $cadreConcertationCollectiviteRepository;
 
     public function __construct(CadreConcertationRepository $cadreConcerationRepository,
                                 UploadUtil $uploadUtil,
+                                CadreConcertationCollectiviteRepository $cadreConcertationCollectiviteRepository,
                                 CollectiviteRepository $collectiviteRepository,
                                 CommuneInfoRepository $communeInfoRepository,
                                 MembreCadreRepository $membreCadreRepository)
@@ -39,6 +42,7 @@ class CadreConcertationController extends Controller
         $this->collectiviteRepository = $collectiviteRepository;
         $this->communeInfoRepository = $communeInfoRepository;
         $this->membreCadreRepository = $membreCadreRepository;
+        $this->cadreConcertationCollectiviteRepository = $cadreConcertationCollectiviteRepository;
         $this->uploadUtil = $uploadUtil;
         $this->middleware('auth');
     }
@@ -85,7 +89,6 @@ class CadreConcertationController extends Controller
     {
 
         $inputs = $request->all();
-        // dd($inputs);
         $inputs['add_by'] = Auth::user()->id;
         //Illustration
         if ($request->hasFile('photo')) {
@@ -95,10 +98,16 @@ class CadreConcertationController extends Controller
         if ($request->hasFile('fichier')) {
             $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PanelFile);
         }
-        $cardre = $this->cadreConcerationRepository->store($inputs);
-        $cardre->collectivites()->attach($inputs['collectivite_id']);
 
-        return redirect('/participation/cadres')->withMessage("le cadre " . $cardre->nom . " a été créé avec succés.");
+        $cardre = $this->cadreConcerationRepository->store($inputs);
+       //  dd($inputs['collectivite_id']);
+
+        $cardrecollectivites = $this->cadreConcertationCollectiviteRepository->saveMany($inputs['collectivite_id'],$cardre['id']);
+
+
+       // $cardre->collectivites()->attach($inputs['collectivite_id']);
+
+        return redirect('/participation/cadres')->withMessage("le cadre " . $inputs['nom'] . " a été créé avec succés.");
     }
 
 

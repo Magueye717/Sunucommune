@@ -63,7 +63,7 @@
                 placeholder: "Sélectionez un ou plusieurs quartier(s)-village(s) sur la liste",
             });
         });
-        
+
     $(function () {
         'use strict';
         // Select2
