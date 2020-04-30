@@ -79,9 +79,10 @@
         <button type="submit" class="btn btn-primary waves-effect waves-light"><i class="ti-check"></i> Enregistrer</button>
         <button type="button" class="btn btn-default waves-effect waves-light" data-dismiss="modal">Annuler</button>
     </div>
+
     <!--/row-->
 
-</div>
+
 @push('myJS')
 <script>
     $(function () {
