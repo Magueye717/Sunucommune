@@ -107,6 +107,7 @@
             };
         var marches = {
             "Marches Sandiara": { "lat": 14.435386744583505, "lon": -16.79157257080078 },
+            "2eme marché 《daralle sandiara》": { "lat": 14.43691408699362, "lon": -16.796261072158813 },
             };
         var pharmacies = {
            "Pharmacie Ya Latif": { "lat": 14.435023090083915, "lon": -16.792398691177368 },
