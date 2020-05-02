@@ -1,5 +1,4 @@
-{{ csrf_field() }}
-{{--  {{ method_field('PUT') }}  --}}
+
 <div class="" align="center">
     <div class="row">
         <div class="col-md-6">
@@ -79,9 +78,10 @@
         <button type="submit" class="btn btn-primary waves-effect waves-light"><i class="ti-check"></i> Enregistrer</button>
         <button type="button" class="btn btn-default waves-effect waves-light" data-dismiss="modal">Annuler</button>
     </div>
+
     <!--/row-->
 
-</div>
+
 @push('myJS')
 <script>
     $(function () {

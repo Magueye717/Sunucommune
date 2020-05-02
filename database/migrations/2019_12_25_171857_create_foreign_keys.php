@@ -197,7 +197,7 @@ class CreateForeignKeys extends Migration {
 			$table->foreign('add_by')->references('id')->on('users')
 						->onDelete('restrict')
 						->onUpdate('restrict');
-        });
+		});
 	}
 
 	public function down()
@@ -314,6 +314,6 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('agendas', function(Blueprint $table) {
 			$table->dropForeign('agenda_add_by_foreign');
-        });
+		});
 	}
 }
