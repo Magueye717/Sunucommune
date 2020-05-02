@@ -13,7 +13,7 @@
                     <div class="col-lg-10 col-md-6 col-sm-6 ">
                         <div class="achievement-counter text-center mt-30">
                             <i class="fal fa-users"></i><br>
-                            <span class="counter">58</span>
+                            <span class="counter">{{ $nb_membres }}</span>
                             <h5 class="title">membres</h5>
                         </div>
                     </div>
@@ -23,7 +23,8 @@
                 <div class="section-title mt-45">
                     <h2 class="title"><span>Cadre de  <span> concertation </span></span> <br>{{ $comites->nom }}  </h2>
                     <p>Something knows About Team</p>
-                    <a class="main-btn" href="team.html">Integrer</a>
+                    <a class="main-btn" href="" data-toggle="modal" data-target="#membreModalLong" class="text-inverse p-r-10" data-toggle="tooltip"
+                    onclick="$('#cadre_id').val('{{$comites->id}}');">Integrer</a>
                 </div>
             </div>
         </div>
@@ -64,6 +65,47 @@
 
     </div>
 </section>
+
+@include('participation._modal_form')
+        <script>
+            $(function () {
+                'use strict';
+                // Select2
+                $('.select2').select2();
+
+                //Gestion collectivite
+                $('.dynamic').change(function () {
+                    if ($(this).val() != '') {
+                        var select = $(this).attr("id");
+                        var value = $(this).val();
+                        var dependent = $(this).data('dependent');
+                        var _token = $('input[name="_token"]').val();
+
+                        $.ajax({
+                            url: "{{ route('collectivites.fetch') }}",
+                            type: "POST",
+                            data: {select: select, value: value, _token: _token, dependent: dependent},
+                            success: function (result) {
+                                $('#' + dependent).html(result);
+                            }
+                        })
+
+                    }
+                });
+                $('#region').change(function () {
+                    $('#departement').val('').trigger("change");
+                    $('#commune').val('').trigger("change").empty();
+                    $('#quartiervillage').val('').trigger("change").empty();
+                });
+                $('#departement').change(function () {
+                    $('#commune').val('').trigger("change");
+                    $('#quartiervillage').val('').trigger("change").empty();
+                });
+                $('#commune').change(function () {
+                    $('#quartiervillage').val('').trigger("change")
+                });
+            });
+        </script>
 
 <!--====== TEAM 2 PART ENDS ======-->
 

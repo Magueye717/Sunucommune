@@ -6,6 +6,7 @@
             <th>Quatiés(s) / Village(s)</th>
             <th>Date création</th>
             <th>Fichier</th>
+            <th>status</th>
             <th>Ajouté par:</th>
             <th class="text-nowrap text-center">Actions</th>
         </tr>
@@ -22,7 +23,15 @@
                     </td>
                     <td>{{ $cadre->date_creation }}</td>
                     <td><img src="{{ isset($cadre->photo) ? asset('storage/participation/comites/' .$cadre->photo) : asset('themev1/images/default.png')}}"
-                        alt="photo" class="img-thumbnail table-photo"></td>
+                        alt="photo" class="img-thumbnail table-photo">
+                    </td>
+                    <td class="text-center">
+                        @if($cadre->estActive())
+                            <span class="label label-success">Active</span>
+                        @else
+                            <span class="label label-danger">Desactive</span>
+                        @endif
+                    </td>
                     <td>{{ $cadre->ajouterPar->nom }}</td>
                     <td class="text-nowrap text-center">
                     <a href="" data-toggle="modal" data-target="#membreModalLong" class="text-inverse p-r-10" data-toggle="tooltip"
@@ -30,6 +39,24 @@
                           title="Ajouter membre">
                             <i class="ti-plus"></i>
                         </a>
+                        {!! Form::open(array(
+                            'method' => 'PUT',
+                            'class' => 'sunucommune-form',
+                            'style' => 'display: inline;',
+                            'route' => array('cadres.valider', $cadre))) !!}
+                        {{ csrf_field() }}
+                        @if($cadre->estActive())
+                            <a href="#depublie" class="text-warning sunucommune-confirm p-r-5" data-toggle="tooltip"
+                            title="Désactivé">
+                                <i class="ti-archive"></i>
+                            </a>
+                        @else
+                            <a href="#publie" class="text-success sunucommune-confirm p-r-5" data-toggle="tooltip"
+                            title="Activé">
+                                <i class="ti-check-box"></i>
+                            </a>
+                        @endif
+                        {!! Form::close() !!}
                         <a href="{{ route('cadres.edit', $cadre) }}" class="text-inverse p-r-10" data-toggle="tooltip"
                            title="Modifier">
                             <i class="ti-marker-alt"></i>

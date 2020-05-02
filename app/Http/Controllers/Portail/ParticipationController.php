@@ -123,13 +123,16 @@ class ParticipationController extends Controller
 
     public function membrecomite($id)
     {
+
         $comites = $this->cadreConcertationRepository->getById($id);
         //  dd($comites);
+        $nb_membres = MembreCadre::all()->count();
+        // dd($nb_membres);
         $membres = MembreCadre::select('cadre_concertations.nom','membre_cadres.*')
         ->join('cadre_concertations', 'cadre_concertations.id', '=', 'membre_cadres.cadre_de_concertation_id')
         ->get();
         //  dd($membres);
-        return view('participation.membreComite',compact('comites','membres'));
+        return view('participation.membreComite',compact('comites','membres','nb_membres'));
     }
 
     /**

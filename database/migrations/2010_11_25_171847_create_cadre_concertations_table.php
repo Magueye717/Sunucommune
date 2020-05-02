@@ -13,6 +13,7 @@ class CreateCadreConcertationsTable extends Migration {
 			$table->string('nom');
 			$table->date('date_creation')->nullable();
 			$table->string('photo')->nullable();
+			$table->boolean('statut')->default(0);
             $table->string('fichier')->nullable();
 			$table->timestamps();
 			$table->integer('add_by')->unsigned();

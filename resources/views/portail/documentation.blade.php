@@ -12,15 +12,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($deliberations->sortByDesc('created_at')->slice(0, 6) as $deliberation) 
+                @foreach ($deliberations->sortByDesc('created_at')->slice(0, 6) as $deliberation)
                 @if($deliberation->typeArticle->libelle==='Délibération'&& $deliberation->est_publie===1 )
                 <tr>
                     <th scope="row"><img src="assets/images/pdf.jpeg" width="30" height="20px" alt="Service Image"></th>
                     <td alt="Service Image">{{strip_tags(TruncateTexte::truncate($deliberation->titre,30))}}</td>
                     <th scope="row">
-                        
+
                     <a href="storage/commune/articles/files/{{$deliberation->piece_jointe}}" download="{{$deliberation->piece_jointe}}"><img src="assets/images/downloadv.png" width="30" height="30px" alt="Service Image"></a>
-                    <a href="{{asset('storage/commune/articles/files/'. $deliberation->piece_jointe) }}"><img src="assets/images/downloadv.png" width="30" height="30px" alt="Service Image"></a>
+                    {{-- <a href="{{asset('storage/commune/articles/files/'. $deliberation->piece_jointe) }}"><img src="assets/images/downloadv.png" width="30" height="30px" alt="Service Image"></a> --}}
                     </th>
                 </tr>
                 @endif @endforeach
