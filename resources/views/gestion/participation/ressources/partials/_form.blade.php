@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">Heure d'ouverture <span class="text-danger">*</span></label>
+                <label class="control-label">Heure d'ouverture </label>
                 {{-- {!! Form::text('heure_ouverture',null, ['id' => 'heure_ouverture', 'class' => 'form-control clockpicker', 'required' => '', 'placeholder' => '00H : 00']) !!} --}}
                 <div class="input-group">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-time"></div>
@@ -49,7 +49,7 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">Heure fermeture<span class="text-danger">*</span></label>
+                <label class="control-label">Heure fermeture</label>
                 {{-- {!! Form::text('heure_fermeture', null, ['id' => 'heure_fermeture', 'class' => 'form-control clockpicker', 'required' => '', 'placeholder' => '00H : 00']) !!} --}}
                 <div class="input-group">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-time"></div>
@@ -60,7 +60,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">Contact personne responsable<span class="text-danger">*</span></label>
+                <label class="control-label">Contact personne responsable</label>
                 {!! Form::text('personne_contact', null, ['id' => 'personne_contact', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Personne responsable de la structure']) !!}
                 <div class="help-block with-errors"></div>
             </div>
@@ -85,7 +85,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">Altitude<span class="text-danger">*</span></label>
+                <label class="control-label">Altitude</label>
                 {!! Form::text('altitude', null, ['id' => 'altitude', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Coordonnée altitude']) !!}
                 <div class="help-block with-errors"></div>
             </div>
@@ -104,7 +104,7 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">Email<span class="text-danger">*</span></label>
+                <label class="control-label">Email</label>
                 {!! Form::text('email', null, ['id' => 'email', 'class' => 'form-control', 'required' => '', 'placeholder' => 'email']) !!}
                 <div class="help-block with-errors"></div>
             </div>
@@ -119,7 +119,7 @@
     </div>
     <div class="col-md-12">
         <div class="form-group">
-            <label class="control-label">Description<span class="text-danger">*</span></label>
+            <label class="control-label">Description</label>
             {!! Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control summernote', 'required' => '']) !!}
             <div class="help-block with-errors"></div>
         </div>

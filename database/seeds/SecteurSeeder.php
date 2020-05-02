@@ -23,6 +23,11 @@ class SecteurSeeder extends Seeder
         ));
 
         Secteur::create(array(
+            'nom' => 'Connerce',
+            'nom_court' => 'com'
+        ));
+
+        Secteur::create(array(
             'nom' => 'Santé',
             'nom_court' => 'sn'
         ));
