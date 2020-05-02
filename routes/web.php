@@ -89,12 +89,14 @@ Route::put('/agendas/{id}/publication', 'Commune\AgendaController@publication')-
 Route::prefix('participation')->group(function () {
     Route::namespace('Participation')->group(function () {
         Route::resource('/cadres', 'CadreConcertationController');
+        Route::put('/cadres/{id}/valider', 'CadreConcertationController@valider')->name('cadres.valider');
         Route::resource('/panels', 'PanelController');
         Route::put('/panels/{id}/valider', 'PanelController@valider')->name('panels.valider');
         Route::resource('/commentaires', 'PanelCommentaireController')->except('store');
         Route::post('commentaires','PanelCommentaireController@store')->name('commentaires.store');
         /* Route::put('/commentaires/{id}/valider', 'PanelCommentairesController@valider')->name('commentaires.valider'); */
         Route::post('/membre_cadres', 'CadreConcertationController@storeMembre')->name('membre_cadres.store');
+        Route::put('/membre_cadres/{id}/valider', 'MembreCadreController@valider')->name('membreCadres.valider');
         Route::resource('/sondages', 'SondageController');
         Route::put('/sondages/{id}/publication', 'SondageController@publication')->name('sondages.publication');
 

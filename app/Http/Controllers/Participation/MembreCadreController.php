@@ -140,6 +140,13 @@ class MembreCadreController extends Controller
             return redirect()->back()->withErrors("Ce cadre ne peut être supprimée...");
     }
 
+    public function valider($id)
+    {
+        $membre = $this->membreCadreRepository->getById($id);
+        $this->membreCadreRepository->valider($membre, !$membre->estActive());
+        return redirect()->back()->withMessage($membre->statut?"Le membre a été activé.":"Le membre a été désactivé.");
+    }
+
 }
 
 ?>

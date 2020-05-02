@@ -24,21 +24,21 @@ class CadreConcertationController extends Controller
      *
      * @return Response
      */
-    protected $cadreConcerationRepository;
+    protected $cadreConcertationRepository;
     protected $collectiviteRepository;
     protected $communeInfoRepository;
     protected $uploadUtil;
     protected $membreCadreRepository;
     protected $cadreConcertationCollectiviteRepository;
 
-    public function __construct(CadreConcertationRepository $cadreConcerationRepository,
+    public function __construct(CadreConcertationRepository $cadreConcertationRepository,
                                 UploadUtil $uploadUtil,
                                 CadreConcertationCollectiviteRepository $cadreConcertationCollectiviteRepository,
                                 CollectiviteRepository $collectiviteRepository,
                                 CommuneInfoRepository $communeInfoRepository,
                                 MembreCadreRepository $membreCadreRepository)
     {
-        $this->cadreConcerationRepository = $cadreConcerationRepository;
+        $this->cadreConcertationRepository = $cadreConcertationRepository;
         $this->collectiviteRepository = $collectiviteRepository;
         $this->communeInfoRepository = $communeInfoRepository;
         $this->membreCadreRepository = $membreCadreRepository;
@@ -51,8 +51,8 @@ class CadreConcertationController extends Controller
     public function index()
     {
         try{
-            $cadreConcertations=$this->cadreConcerationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
-            $cadres=$this->cadreConcerationRepository->getData();
+            $cadreConcertations=$this->cadreConcertationRepository->getListeCadreConcertation()->prepend('choisir un cadre de concertation...', '');
+            $cadres=$this->cadreConcertationRepository->getData();
             $reseauxSociaux= SocialLink::all()->pluck("id", "libelle");
             return view('gestion.participation.cadre_concertation.index', compact('cadres','cadreConcertations', 'reseauxSociaux'));
 
@@ -96,10 +96,10 @@ class CadreConcertationController extends Controller
         }
 
         if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PanelFile);
+            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::cadreFile);
         }
 
-        $cardre = $this->cadreConcerationRepository->store($inputs);
+        $cardre = $this->cadreConcertationRepository->store($inputs);
        //  dd($inputs['collectivite_id']);
 
         $cardrecollectivites = $this->cadreConcertationCollectiviteRepository->saveMany($inputs['collectivite_id'],$cardre['id']);
@@ -143,7 +143,7 @@ class CadreConcertationController extends Controller
      */
     public function edit($id)
     {
-        $cadre = $this->cadreConcerationRepository->getById($id);
+        $cadre = $this->cadreConcertationRepository->getById($id);
         $communeInfo=$this->communeInfoRepository->getCollectiviteId();
         $collectivites = $this->collectiviteRepository->getListeByParentCode($this->collectiviteRepository->getCodeById($communeInfo), 'QUARTIERVILLAGE')->prepend('Choisir un quartier ou village...');
         ($communeDuCadre=$cadre->collectivite);
@@ -167,9 +167,9 @@ class CadreConcertationController extends Controller
         }
 
         if ($request->hasFile('fichier')) {
-            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::PanelFile);
+            $inputs['fichier'] = $this->uploadUtil->traiterFile($request->file('fichier'), TypeUpload::cadreFile);
         }
-        $this->cadreConcerationRepository->update($id, $inputs);
+        $this->cadreConcertationRepository->update($id, $inputs);
 
         return redirect('/participation/cadres')->withMessage("Cadre " . $inputs['nom'] . " modifié avec succés.");
     }
@@ -182,7 +182,7 @@ class CadreConcertationController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->cadreConcerationRepository->destroy($id))
+        if ($this->cadreConcertationRepository->destroy($id))
             return redirect()->back()->withMessage("La suppression est effective");
          else
             return redirect()->back()->withErrors("Ce cadre ne peut être supprimée...");
@@ -198,6 +198,13 @@ class CadreConcertationController extends Controller
             $output .= '<option value="' . $key . '">' . $value . '</option>';
         }
         echo $output;
+    }
+
+    public function valider($id)
+    {
+        $cadre = $this->cadreConcertationRepository->getById($id);
+        $this->cadreConcertationRepository->valider($cadre, !$cadre->estActive());
+        return redirect()->back()->withMessage($cadre->statut?"Le cadre a été activé.":"Le cadre a été désactivé.");
     }
 
    /*  private function getLocalisationData($cadreConcertation)

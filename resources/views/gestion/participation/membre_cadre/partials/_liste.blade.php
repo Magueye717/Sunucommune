@@ -8,7 +8,7 @@
             <th>Adresse</th>
             <th>Email</th>
             <th>Tel</th>
-            <th>Satut du memebre</th>
+            <th>Satut du membre</th>
             <th>Cadre de concertation</th>
             <th class="text-nowrap text-center">Actions</th>
         </tr>
@@ -23,9 +23,33 @@
                     <td>{{ $membreCadre->adresse }}</td>
                     <td>{{ $membreCadre->email }}</td>
                     <td>{{ $membreCadre->telephone }}</td>
-                    <td>{{ $membreCadre->statut_cadre }}</td>
+                    <td class="text-center">
+                        @if($membreCadre->estActive())
+                            <span class="label label-success">Active</span>
+                        @else
+                            <span class="label label-danger">Desactive</span>
+                        @endif
+                    </td>
                     <td>{{ $membreCadre->cadreConcertation->nom }}</td>
                     <td class="text-nowrap text-center">
+                        {!! Form::open(array(
+                            'method' => 'PUT',
+                            'class' => 'sunucommune-form',
+                            'style' => 'display: inline;',
+                            'route' => array('membreCadres.valider', $membreCadre))) !!}
+                        {{ csrf_field() }}
+                        @if($membreCadre->estActive())
+                            <a href="#depublie" class="text-warning sunucommune-confirm p-r-5" data-toggle="tooltip"
+                            title="Désactivé">
+                                <i class="ti-archive"></i>
+                            </a>
+                        @else
+                            <a href="#publie" class="text-success sunucommune-confirm p-r-5" data-toggle="tooltip"
+                            title="Activé">
+                                <i class="ti-check-box"></i>
+                            </a>
+                        @endif
+                        {!! Form::close() !!}
                         <a href="{{ route('membre_cadress.edit', $membreCadre) }}" class="text-inverse p-r-10" data-toggle="tooltip"
                            title="Modifier">
                             <i class="ti-marker-alt"></i>

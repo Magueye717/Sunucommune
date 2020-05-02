@@ -17,7 +17,7 @@ class CreateMembreCadresTable extends Migration {
             $table->string('photo')->nullable();
 			$table->string('telephone')->nullable();
 			$table->string('fonction')->nullable();
-			$table->boolean('statut_cadre')->default(0);
+			$table->boolean('statut')->default(0);
 			$table->timestamps();
 		});
 	}

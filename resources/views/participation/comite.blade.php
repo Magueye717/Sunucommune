@@ -23,7 +23,7 @@
                     </div>
                     <div class="project-case-content text-center pt-20">
                     <h4 class="title">{{$comite->nom}}</h4>
-                        <span>{{$comite->collectivite->nom}}</span>
+                        {{-- <span>{{$comite->collectivite->nom}}</span> --}}
                         <br>
                         <a href="{{ route('participation.membre',$comite->id) }}">Details <i class="fal fa-arrow-right"></i></a>
                     </div>
@@ -33,6 +33,7 @@
         </div>
     </div>
 </section>
+
 
 <!--====== PROJECT PART START ======-->
 

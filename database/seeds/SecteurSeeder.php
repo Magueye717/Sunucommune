@@ -23,7 +23,7 @@ class SecteurSeeder extends Seeder
         ));
 
         Secteur::create(array(
-            'nom' => 'Connerce',
+            'nom' => 'Commerce',
             'nom_court' => 'com'
         ));
 
