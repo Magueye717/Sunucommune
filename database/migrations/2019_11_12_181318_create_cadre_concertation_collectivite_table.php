@@ -16,6 +16,7 @@ class CreateCadreConcertationCollectiviteTable extends Migration
         Schema::create('cadre_concertation_collectivite', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cadre_concertation_id')->unsigned();
+            $table->boolean('statut')->default(0);
             $table->integer('collectivite_id')->unsigned();
             $table->foreign('cadre_concertation_id')->references('id')->on('cadre_concertations')
                      ->onDelete('cascade');
