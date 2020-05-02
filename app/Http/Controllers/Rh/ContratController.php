@@ -3,9 +3,11 @@
 
 namespace App\Http\Controllers\Rh;
 
+use App\Enums\StatutContrat;
 use App\Enums\TypeContrat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Rh\Agent;
 use App\Models\Rh\Contrat;
 use App\Repositories\Rh\ContratRepository;
 
@@ -40,7 +42,9 @@ class ContratController extends Controller
   public function create()
   {
     $typeContrat= TypeContrat::toSelectArray();
-    return view('rh.contrat.create', compact('typeContrat'));
+    $statuContrat= StatutContrat::toSelectArray();
+    $agents = Agent::all()->pluck('prenom', 'id');
+    return view('rh.contrat.create', compact('typeContrat', 'agents', 'statuContrat'));
   }
 
   /**
@@ -76,8 +80,9 @@ class ContratController extends Controller
   public function edit(Contrat $contrat)
   {
     $typeContrat= TypeContrat::toSelectArray();
-
-    return view('rh.contrat.edit', compact('contrat', 'typeContrat'));
+    $statuContrat= StatutContrat::toSelectArray();
+    $agents = Agent::all()->pluck('prenom', 'id');
+    return view('rh.contrat.edit', compact('contrat', 'typeContrat', 'statuContrat', 'agents'));
   }
 
   /**
@@ -90,6 +95,7 @@ class ContratController extends Controller
   {
     $contrat=$this->contratRepository->getById($id);
       $inputs = $request->all();
+      
 
 
           $this->contratRepository->update($id, $inputs);
