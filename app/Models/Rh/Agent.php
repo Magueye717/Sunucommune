@@ -21,4 +21,9 @@ class Agent extends Model
         return $this->hasMany('App\Models\Rh\Conge');
     }
 
+    public function contrats()
+    {
+        return $this->hasMany('App\Models\Rh\Contrat');
+    }
+
 }

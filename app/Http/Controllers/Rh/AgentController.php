@@ -33,6 +33,7 @@ class AgentController extends Controller
     public function index()
   {
       $agents=$this->agentRepository->getData();
+      $agent= Agent::find(1);
 //      dd($agents    );
       return view('rh.agent.index', compact('agents'));
 

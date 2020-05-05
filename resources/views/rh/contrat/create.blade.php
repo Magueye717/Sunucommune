@@ -4,7 +4,7 @@
 @section('pageTitle', 'Gestion des membres du cabinet')
 
 @section('filAriane')
-    <li><a href="{{ route('users.index') }}">Gestion des membres cadres</a></li>
+    <li><a href="{{ route('contrats.index') }}">Gestion des contrats</a></li>
     <li class="active">Création</li>
 @endsection
 
@@ -12,10 +12,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                <h3 class="box-title m-b-0">Gestion des membres cadres</h3>
+                <h3 class="box-title m-b-0">Gestion des contrats</h3>
                 <p class="text-muted m-b-20">Création</p>
-                {!! Form::open(['route' => 'membre_cadres.store', 'class' => 'form-horizontal panel']) !!}
-                @include('gestion.participation.membre_cadre.partials._form')
+                {!! Form::open(['route' => 'contrats.store', 'class' => 'form-horizontal panel']) !!}
+                @include('rh.contrat.partials._form')
                 {!! Form::close() !!}
             </div>
         </div>
