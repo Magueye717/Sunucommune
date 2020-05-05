@@ -90,8 +90,24 @@
 </section>
 
 
+    <script>
+        var map;
+        function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 14.4350715, lng: -16.7925748},
+            zoom: 16.2
+        });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ4VA-48dfvFRR4ITUfCeErMBpWgli4cQ&callback=initMap"
+    async defer></script>
 
-    <!-- Fichiers Javascript -->
+
+
+
+
+
+    {{-- <!-- Fichiers Javascript -->
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 <script type="text/javascript">
         // On initialise la latitude et la longitude de Paris (centre de la carte)
@@ -219,4 +235,4 @@
     #map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
         height:640px;
     }
-</style>
+</style> --}}
