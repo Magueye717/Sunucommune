@@ -14,6 +14,7 @@
         </div>
         <div class="row justify-content-center mb-50">
             @foreach ($comites as $comite)
+            @if ($comite->statut==1)
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="project-case-item mt-30">
                     <div class="project-case-thumb">
@@ -29,6 +30,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
         </div>
     </div>

@@ -1,59 +1,53 @@
-<div class="mx-auto">
-    <div class="row">
-        <div class="col-md-6">
-            <div >
-                <div class="form-group">
-                    <label class="control-label">Cadre de concertation <span class="text-danger">*</span></label>
-                    {!! Form::select('cadre_de_concertation_id', $cadreConcertations, isset($infoLocalisation) ? $infoLocalisation['region'] : null, ['id' => 'region', 'class' => 'form-control select2 dynamic', 'data-dependent' => 'departement']) !!}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Prénom: <span class="text-danger">*</span></label>
-                {!! Form::text('prenom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+    <div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label class="control-label">Nom du contrat: <span class="text-danger">*</span></label>
+                {!! Form::text('nom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Libelle du contrat']) !!}
                 <div class="help-block with-errors"></div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label">Nom: <span class="text-danger">*</span></label>
-                {!! Form::text('nom', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+            <div class="form-group col-md-4">
+                <label class="control-label">Type de contrat <span class="text-danger">*</span></label>
+                {!! Form::select('type_contrat', $typeContrat, null, ['id' => 'type_contrat', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Choisir...']) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="control-label">Agent <span class="text-danger">*</span></label>
+                {!! Form::select('agent_id', $agents, null, ['id' => 'agent_id', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Choisir...']) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label class="control-label">Date début: <span class="text-danger">*</span></label>
+                {!! Form::text('date_debut', null, ['id' => 'date_debut', 'class' => 'form-control mydatepicker', 'required' => '','placeholder' => 'DD/MM/YYYY']) !!}
                 <div class="help-block with-errors"></div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label">Adresse <span class="text-danger">*</span></label>
-                {!! Form::text('adresse', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+            <div class="form-group col-md-4">
+                <label class="control-label">Date fin: <span class="text-danger">*</span></label>
+                {!! Form::text('date_fin', null, ['id' => 'date_fin', 'class' => 'form-control mydatepicker', 'required' => '', 'placeholder' => 'DD/MM/YYYY']) !!}
                 <div class="help-block with-errors"></div>
             </div>
-
-            <div class="form-group">
-                <label class="control-label">Téléphone: <span class="text-danger">*</span></label>
-                {!! Form::text('telephone', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
+            <div class="form-group col-md-4">
+                <label class="control-label">statut <span class="text-danger">*</span></label>
+                {!! Form::select('statut', $statuContrat, null, ['id' => 'statut', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Choisir...']) !!}
                 <div class="help-block with-errors"></div>
             </div>
-
-            <div class="form-group">
-                <label class="control-label">Email: <span class="text-danger">*</span></label>
-                {!! Form::text('email', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
-                <div class="help-block with-errors"></div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Fonction: <span class="text-danger">*</span></label>
-                {!! Form::text('fonction', null, ['id' => 'nom', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Prénom']) !!}
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group">
-                    <label class="control-label">Statut <span class="text-danger">*</span></label>
-                    {!! Form::text('statut_cadre',null, ['id' => 'date_creation', 'class' => 'form-control', 'required' => '', 'placeholder' => 'Nom']) !!}
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-check">
+                  <label class="form-check-label    "> Congé  <span class="text-danger">*</span></label>
+                    {!! Form::checkbox('conge', '1', 1,  ['id' => 'conge','class'=>'form-check-input']) !!}
                     <div class="help-block with-errors"></div>
                 </div>
+            </div>
         </div>
     </div>
+    
     <!--/row-->
-
-</div>
-<div class="form-actions">
+<div class="form-actions text-center">
     <button type="submit" class="btn btn-primary waves-effect waves-light"><i class="ti-check"></i> Enregistrer</button>
     <a href="{{ url()->previous() }}" class="btn btn-default waves-effect waves-light">Annuler</a>
 </div>
@@ -64,6 +58,13 @@
         'use strict';
         // Select2
         $('.select2').select2();
+
+        jQuery('.mydatepicker').datepicker({
+                format: 'yyyy/mm/dd',
+                language: 'fr',
+                todayHighlight: true,
+                endDate: '+2d'
+            });
 
         //Gestion collectivite
         $('.dynamic').change(function () {

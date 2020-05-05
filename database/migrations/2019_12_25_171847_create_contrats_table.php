@@ -9,7 +9,14 @@ class CreateContratsTable extends Migration {
 	{
 		Schema::create('contrats', function(Blueprint $table) {
 			$table->increments('id');
+			$table->date('date_debut');
 			$table->string('nom');
+			$table->date('date_fin');
+			$table->string('statut');
+			$table->boolean('conge')->default(0);
+			$table->integer('agent_id')->unsigned()->nullable();
+			$table->foreign('agent_id')->references('id')->on('agents')
+                     ->onDelete('cascade');
 			$table->string('type_contrat', 15);
 		});
 	}
