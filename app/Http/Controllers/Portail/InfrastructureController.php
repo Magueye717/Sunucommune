@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portail;
 
 use App\Http\Controllers\Controller;
+use App\Models\GestionInfrastructure\Secteur;
 use Illuminate\Http\Request;
 
 class InfrastructureController extends Controller
@@ -14,7 +15,17 @@ class InfrastructureController extends Controller
      */
     public function index()
     {
-        return view('infrastructure.index');
+        $secteurs = Secteur::with(['resssources' => function ($query) {
+            $query->where('nom','LIKE', 'Batiment')
+                  ->orWhere('nom','LIKE', 'Sante')
+                  ->orWhere('nom','LIKE', 'Education')
+                  ->orWhere('nom','LIKE', 'Culture')
+                  ->orWhere('nom','LIKE', 'Commerce')
+                  ->orWhere('nom','LIKE', 'Sport')
+                  ->orWhere('nom','LIKE', 'Autre');
+                  }])->get();
+                  dd($secteurs);
+        return view('infrastructure.index', compact('secteurs'));
     }
 
     /**
