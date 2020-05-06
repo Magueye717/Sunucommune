@@ -77,6 +77,9 @@
                     <div class="contact-map">
                         <div class="outer-container">
                             <div class="map-outer">
+                                <div id="floating-panel">
+                                    <button id="drop" onclick="drop()">Ajouter Markers</button>
+                                  </div>
                                 <div class="" id="map">
 
                                 </div>
@@ -91,15 +94,94 @@
 
 
     <script>
+
+        var ressouces = [
+                {lat: 14.43654, lng: -16.790665},
+                {lat: 14.436353, lng: -16.793755},
+                {lat: 14.435916, lng: -16.79015},
+                {lat: 14.433152, lng: -16.793154}
+            ];
+
+        var markers = [];
         var map;
         function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 14.4350715, lng: -16.7925748},
-            zoom: 16.2
+            zoom: 15.8,
+            mapTypeId: 'terrain'
         });
+
+
+        var quadrillage = [
+          {lat: 14.440963, lng: -16.788283},
+          {lat: 14.437108, lng: -16.786331},
+          {lat: 14.433087, lng: -16.785108},
+          {lat: 14.429056, lng: -16.786953},
+          {lat: 14.428435, lng: -16.790279},
+          {lat: 14.429056, lng: -16.793347},
+          {lat: 14.4313, lng: -16.796695},
+          {lat:  14.43636, lng: -16.797253},
+          {lat:  14.438853, lng: -16.796158},
+          {lat: 14.441482, lng: -16.793455},
+          {lat: 14.442157, lng: -16.79148}
+        ];
+
+        var delimitation = new google.maps.Polygon({
+          paths: quadrillage,
+          strokeColor: 'dodgerblue',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: 'dodgerblue',
+          fillOpacity: 0.05
+        });
+        delimitation.setMap(map);
+      }
+
+      function drop() {
+        clearMarkers();
+        for (var i = 0; i < ressouces.length; i++) {
+          addMarkerWithTimeout(ressouces[i], i * 200);
         }
+      }
+
+      function addMarkerWithTimeout(position, timeout) {
+        window.setTimeout(function() {
+          markers.push(new google.maps.Marker({
+            position: position,
+            map: map,
+            animation: google.maps.Animation.DROP
+          }));
+        }, timeout);
+      }
+
+      function clearMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+      }
+
+        // var drawingManager = new google.maps.drawing.DrawingManager({
+        //   drawingMode: google.maps.drawing.OverlayType.MARKER,
+        //   drawingControl: true,
+        //   drawingControlOptions: {
+        //     position: google.maps.ControlPosition.TOP_CENTER,
+        //     drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
+        //   },
+        //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+        //   circleOptions: {
+        //     fillColor: '#ffff00',
+        //     fillOpacity: 1,
+        //     strokeWeight: 5,
+        //     clickable: false,
+        //     editable: true,
+        //     zIndex: 1
+        //   }
+        // });
+        // drawingManager.setMap(map);
+        // }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ4VA-48dfvFRR4ITUfCeErMBpWgli4cQ&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ4VA-48dfvFRR4ITUfCeErMBpWgli4cQ&libraries=drawing&callback=initMap"
     async defer></script>
 
 
