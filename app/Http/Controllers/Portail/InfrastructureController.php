@@ -24,7 +24,7 @@ class InfrastructureController extends Controller
                   ->orWhere('nom','LIKE', 'Sport')
                   ->orWhere('nom','LIKE', 'Autre');
                   }])->get();
-                  dd($secteurs);
+                //   dd($secteurs);
         return view('infrastructure.index', compact('secteurs'));
     }
 
