@@ -141,9 +141,8 @@
 
       function drop() {
         clearMarkers();
-        for (var i = 0; i < ressource.length; i++) {
-            var position = [ressource.latittude, ressource.longitude];
-          addMarkerWithTimeout(position, i * 200);
+        for (var i = 0; i < ressouces.length; i++) {
+          addMarkerWithTimeout(ressouces[i], i * 200);
         }
       }
 
