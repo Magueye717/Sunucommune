@@ -14,7 +14,7 @@ class InfrastructureController extends Controller
     public function __construct(RessourceRepository $ressourceRepository)
     {
         $this->ressourceRepository = $ressourceRepository;
-        $this->middleware('auth');
+     //   $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
