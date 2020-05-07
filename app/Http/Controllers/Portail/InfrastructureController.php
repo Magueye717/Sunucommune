@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Portail;
 use App\Http\Controllers\Controller;
 use App\Models\GestionInfrastructure\Secteur;
 use Illuminate\Http\Request;
+use App\Repositories\Infrastructures\RessourceRepository;
 
 class InfrastructureController extends Controller
 {
+    protected $ressourceRepository;
+
+    public function __construct(RessourceRepository $ressourceRepository)
+    {
+        $this->ressourceRepository = $ressourceRepository;
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +23,8 @@ class InfrastructureController extends Controller
      */
     public function index()
     {
+        $ressources= $this->ressourceRepository->getdata();
+        // dd($ressources);
         $secteurs = Secteur::with(['resssources' => function ($query) {
             $query->where('nom','LIKE', 'Batiment')
                   ->orWhere('nom','LIKE', 'Sante')
@@ -25,7 +35,7 @@ class InfrastructureController extends Controller
                   ->orWhere('nom','LIKE', 'Autre');
                   }])->get();
                 //   dd($secteurs);
-        return view('infrastructure.index', compact('secteurs'));
+        return view('infrastructure.index', compact('secteurs','ressources'));
     }
 
     /**

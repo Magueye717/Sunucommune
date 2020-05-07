@@ -101,6 +101,7 @@
                 {lat: 14.435916, lng: -16.79015},
                 {lat: 14.433152, lng: -16.793154}
             ];
+        var ressource = @json($ressources);
 
         var markers = [];
         var map;
@@ -110,6 +111,7 @@
             zoom: 15.8,
             mapTypeId: 'terrain'
         });
+
 
 
         var quadrillage = [
@@ -139,8 +141,9 @@
 
       function drop() {
         clearMarkers();
-        for (var i = 0; i < ressouces.length; i++) {
-          addMarkerWithTimeout(ressouces[i], i * 200);
+        for (var i = 0; i < ressource.length; i++) {
+            var position = [ressource.latittude, ressource.longitude];
+          addMarkerWithTimeout(position, i * 200);
         }
       }
 
@@ -161,6 +164,7 @@
         markers = [];
       }
 
+
         // var drawingManager = new google.maps.drawing.DrawingManager({
         //   drawingMode: google.maps.drawing.OverlayType.MARKER,
         //   drawingControl: true,
@@ -180,6 +184,10 @@
         // });
         // drawingManager.setMap(map);
         // }
+    </script>
+
+    <!-- Replace following script src -->
+    <script src="/maps/documentation/javascript/examples/markerclusterer/markerclustererplus@4.0.1.min.js">
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ4VA-48dfvFRR4ITUfCeErMBpWgli4cQ&libraries=drawing&callback=initMap"
     async defer></script>
