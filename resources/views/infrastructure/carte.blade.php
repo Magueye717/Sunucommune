@@ -18,8 +18,8 @@
                                     BATIMENT ADMINSTRATIF
                                   </button>
                                   <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                      <a class="dropdown-item" href="#">Mairie</a>
-                                      <a class="dropdown-item" href="#">Police</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur_mairie" href="#">Mairie</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur_police" href="#">Police</a>
                                   </div>
                                 </div>
                                 <div class="btn-group dropright" role="group">
@@ -27,10 +27,10 @@
                                       SANTE
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                      <a class="dropdown-item" href="#">Hopitaux</a>
-                                      <a class="dropdown-item" href="#">Pharmacie</a>
-                                      <a class="dropdown-item" href="#">Poste de sante</a>
-                                      <a class="dropdown-item" href="#">Maternite</a>
+                                      <a class="dropdown-item sous_secteur " id="sous_secteur_hopitaux"  href="#">Hopitaux</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Pharmacie</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Poste de sante</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Maternite</a>
                                     </div>
                                 </div>
                                 <div class="btn-group dropright" role="group">
@@ -38,10 +38,10 @@
                                       EDUCATION ET FORMATION
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                      <a class="dropdown-item" href="#">Colleges</a>
-                                      <a class="dropdown-item" href="#">Lycées</a>
-                                      <a class="dropdown-item" href="#">Centre de formation</a>
-                                      <a class="dropdown-item" href="#">Ecoles coraniques</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Colleges</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Lycées</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Centre de formation</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Ecoles coraniques</a>
                                     </div>
                                 </div>
                                 <div class="btn-group dropright" role="group">
@@ -49,11 +49,11 @@
                                       LIEU DE SPORT LOISIR ET CULTE
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                      <a class="dropdown-item" href="#">Stades</a>
-                                      <a class="dropdown-item" href="#">Centre culturel</a>
-                                      <a class="dropdown-item" href="#">Piscine</a>
-                                      <a class="dropdown-item" href="#">Centre Musical</a>
-                                      <a class="dropdown-item" href="#">Salle de sport</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Stades</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Centre culturel</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Piscine</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Centre Musical</a>
+                                      <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Salle de sport</a>
                                     </div>
                                 </div>
                                 <div class="btn-group dropright" role="group">
@@ -61,11 +61,11 @@
                                       COMMERCE
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <a class="dropdown-item" href="#">Marches</a>
-                                        <a class="dropdown-item" href="#">station d'essence</a>
-                                        <a class="dropdown-item" href="#">Magasin</a>
-                                        <a class="dropdown-item" href="#">Centre Musical</a>
-                                        <a class="dropdown-item" href="#">Salle de sport</a>
+                                        <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Marches</a>
+                                        <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">station d'essence</a>
+                                        <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Magasin</a>
+                                        <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Centre Musical</a>
+                                        <a class="dropdown-item sous_secteur"  id="sous_secteur" href="#">Salle de sport</a>
                                     </div>
                                 </div>
                               </div>
